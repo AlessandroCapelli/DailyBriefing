@@ -1,0 +1,624 @@
+{
+	"meta": {
+		"date": "22-03-2026",
+		"dayOfWeek": "Domenica",
+		"fullDate": "22 marzo 2026",
+		"time": "10:00",
+		"categoryCount": 6,
+		"sourceCount": 3,
+		"articleCount": 28,
+		"deepDiveCount": 25,
+		"availableReports": {
+			"daily": ["19-03-2026", "20-03-2026", "21-03-2026", "22-03-2026"],
+			"stocks": ["19-03-2026", "20-03-2026", "21-03-2026"]
+		}
+	},
+	"categories": [
+		{
+			"id": "politica",
+			"emoji": "&#x1F5F3;&#xFE0F;",
+			"name": "Politica",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"Morte Robert Mueller",
+				"Voto estero donne cognome marito"
+			],
+			"continuingThemes": [
+				"Referendum giustizia CSM",
+				"Delmastro e legami mafiosi",
+				"Indagine USA su Petro"
+			],
+			"summary": "La giornata politica e dominata dal referendum sulla riforma della giustizia, che si tiene oggi (domenica 22 marzo) e domani (lunedi 23 marzo). Il quesito piu controverso resta il sorteggio dei membri del CSM in sostituzione delle elezioni interne alla magistratura, un meccanismo che eliminerebbe le correnti ma solleva interrogativi sulla meritocrazia e sulla competenza dei selezionati. L'unico precedente europeo e la Grecia, modello che paradossalmente i riformatori dichiarano di voler evitare. Le incognite operative -- criteri di selezione, modalita di estrazione, garanzie di competenza -- restano irrisolte nel testo costituzionale.<br><br>Prosegue la copertura sullo scandalo del sottosegretario alla Giustizia Andrea Delmastro, che risulta aver fondato una societa con la figlia di un criminale condannato per intestazione fittizia di beni con aggravante mafiosa. La cessione delle quote, avvenuta in due fasi tra novembre 2025 e febbraio 2026, coincide sospettosamente con la condanna definitiva del padre. L'opposizione chiede le dimissioni, ma Giorgia Meloni le esclude. Il tema si intreccia con il referendum: Delmastro e sottosegretario alla Giustizia proprio nel momento in cui si vota per riformare il sistema giudiziario.<br><br>Emerge oggi la notizia della morte di Robert Mueller, ex direttore dell'FBI ed ex procuratore speciale che indago sull'interferenza russa nelle elezioni americane del 2016, scomparso a 81 anni. Mueller diresse l'FBI per 12 anni attraverso le amministrazioni Bush e Obama, diventando poi procuratore speciale nel maggio 2017 dopo che Trump licenzio James Comey. La sua indagine biennale produsse un rapporto di 400 pagine, 34 incriminazioni e stabili che la Russia aveva interferito in modo radicale e sistematico, pur senza prove sufficienti per accuse di cospirazione diretta. Trump ha commentato la morte con approvazione su Truth Social, definendola implicitamente la fine di un capitolo della sua narrativa sul deep state.<br><br>Sul fronte del voto all'estero, emerge un problema strutturale: molte donne italiane residenti all'estero ricevono i documenti elettorali con il cognome del marito aggiunto al proprio, sulla base di una legge elettorale del 1947 mai aggiornata per il voto estero. In Svezia una elettrice non ha potuto ritirare la scheda perche il nome sulla busta non corrispondeva ai suoi documenti. La Cassazione ha definito la pratica discriminatoria, ma il problema persiste soprattutto in Germania e Francia. Prosegue l'indagine USA su Petro in Colombia per presunti legami con il narcotraffico, con due procure di New York attive.",
+			"articles": [
+				{
+					"title": "Il punto piu discusso della riforma della giustizia",
+					"url": "https://www.ilpost.it/2026/03/21/sorteggio-csm-riforma-magistratura-referendum-22-23-marzo/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Il referendum sulla riforma della giustizia del 22-23 marzo 2026 prevede il sorteggio casuale dei membri del CSM in sostituzione delle elezioni interne alla magistratura. I sostenitori ritengono che eliminerebbe le correnti e il clientelismo, gli oppositori temono la perdita della meritocrazia. L'unico precedente europeo e la Grecia.",
+						"dataPoints": [],
+						"entities": ["CSM"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "L'ennesima grana per il sottosegretario alla Giustizia Andrea Delmastro",
+					"url": "https://www.ilpost.it/2026/03/20/andrea-delmastro-societa-mauro-caroccia-roma/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Delmastro ha fondato societa con figlia di criminale condannato con aggravante mafiosa. Cessione quote tra novembre 2025 e febbraio 2026, coincidente con condanna definitiva del padre. L'opposizione chiede dimissioni, Meloni le esclude.",
+						"dataPoints": [
+							"Condanna a 4 anni con aggravante mafiosa"
+						],
+						"entities": [
+							"Andrea Delmastro",
+							"Mauro Caroccia",
+							"Fratelli d'Italia",
+							"Giorgia Meloni"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "E morto Robert Mueller",
+					"url": "https://www.ilpost.it/2026/03/21/morto-robert-mueller/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Robert Mueller, ex direttore FBI e procuratore speciale per il Russiagate, e morto a 81 anni. Diresse l'FBI per 12 anni dal 2001. La sua indagine biennale produsse 400 pagine, 34 incriminazioni, stabilendo interferenza russa sistematica nelle elezioni 2016 ma senza prove di cospirazione diretta Trump-Russia. Trump ha commentato con approvazione su Truth Social.",
+						"dataPoints": [
+							"81 anni",
+							"12 anni alla guida FBI",
+							"400 pagine di rapporto",
+							"34 incriminazioni"
+						],
+						"entities": [
+							"Robert Mueller",
+							"FBI",
+							"Donald Trump",
+							"James Comey",
+							"Paul Manafort"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Gli Stati Uniti hanno messo sotto indagine il presidente colombiano Gustavo Petro",
+					"url": "https://www.ilpost.it/2026/03/21/stati-uniti-indagine-gustavo-petro-narcotraffico/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Due procure di New York conducono indagini preliminari su Petro per presunti legami con il narcotraffico, in un contesto di pressione diplomatica crescente da parte dell'amministrazione Trump.",
+						"dataPoints": [],
+						"entities": ["Gustavo Petro", "Donald Trump"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Le italiane all'estero che ricevono i documenti per votare col cognome del marito",
+					"url": "https://www.ilpost.it/2026/03/20/voto-estero-donne-sposate-aire-referendum/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Donne italiane all'estero ricevono documenti elettorali con cognome del marito, basandosi su legge del 1947. In Svezia una elettrice non ha potuto ritirare la scheda. Cassazione ha definito la pratica discriminatoria. Problema diffuso in Germania.",
+						"dataPoints": [],
+						"entities": ["AIRE", "Corte di Cassazione"],
+						"tickers": []
+					}
+				}
+			]
+		},
+		{
+			"id": "attualita",
+			"emoji": "&#x1F30D;",
+			"name": "Attualita",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "acceleration",
+			"newThemes": [
+				"Missili iraniani su Diego Garcia",
+				"Attacchi su Dimona e Arad",
+				"Brent a 112 dollari"
+			],
+			"continuingThemes": [
+				"Guerra Medio Oriente Iran",
+				"Esplosione anarchici Roma",
+				"Alluvioni Hawaii"
+			],
+			"summary": "La guerra in Medio Oriente segna un'escalation significativa nel ventiduesimo giorno di conflitto. L'Iran ha lanciato due missili contro la base militare di Diego Garcia, gestita da Stati Uniti e Regno Unito nell'Oceano Indiano, a quasi 4.000 km dall'Iran. Nessuno dei due ha colpito il bersaglio, ma la dimostrazione di una gittata molto superiore a quanto ipotizzato ha implicazioni strategiche dirette per l'Europa, inclusa l'Italia. Due ulteriori missili iraniani hanno superato le difese israeliane colpendo Dimona e Arad nel deserto del Negev, ferendo circa cento persone. Le citta sono vicine al centro di ricerca nucleare Shimon Peres, dove si ritiene Israele abbia sviluppato le testate nucleari, anche se il centro non ha subito danni.<br><br>Gli attacchi su Dimona appaiono come ritorsione per i bombardamenti israeliani sul sito nucleare iraniano di Natanz, senza fuoriuscite radioattive. Il conflitto si allarga geograficamente: l'Iran ha attaccato anche Arabia Saudita, Kuwait ed Emirati Arabi Uniti, mentre Israele prosegue le operazioni in Libano uccidendo quattro miliziani di Hezbollah. La nuova Guida suprema iraniana Mojtaba Khamenei resta irreperibile nonostante il Nowruz, primo giorno di primavera e capodanno persiano, mentre le agenzie di intelligence cercano di localizzarlo ed eliminarlo.<br><br>Sul piano economico-energetico, il petrolio Brent ha raggiunto i 112 dollari al barile, livello che conferma l'impatto crescente del conflitto sui mercati energetici globali. Gli USA hanno rimosso parte delle sanzioni sul petrolio iraniano nel tentativo di contenere i prezzi, una mossa che rivela la tensione tra obiettivi militari e stabilita economica. Trump continua con dichiarazioni contraddittorie: da un lato afferma di stare annientando l'Iran e rifiuta di negoziare un cessate il fuoco, dall'altro suggerisce che le operazioni potrebbero rallentare. Il dispiegamento di 2.200-2.500 marines aggiuntivi e due navi d'assalto anfibio contraddice la de-escalation verbale.<br><br>La Cassazione ha confermato le condanne definitive contro Francesco Bidognetti, boss dei Casalesi, e il suo ex avvocato Michele Santonastaso per minacce aggravate con metodo mafioso contro Roberto Saviano e Rosaria Capacchione durante il processo Spartacus del 2008. A Roma, la procura prosegue l'inchiesta sull'esplosione nel casale abbandonato al Parco degli Acquedotti che ha ucciso due membri di gruppi anarchici. Alle Hawaii, le alluvioni piu gravi degli ultimi vent'anni hanno causato danni per un miliardo di dollari con 5.500 evacuati a Oahu. In Corea del Sud, l'incendio nella fabbrica di componenti auto a Daejeon ha ucciso almeno 11 persone.",
+			"articles": [
+				{
+					"title": "Cos'e successo nel ventiduesimo giorno di guerra",
+					"url": "https://www.ilpost.it/2026/03/21/riassunto-guerra-medio-oriente-21-marzo/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "negative",
+					"extract": {
+						"text": "L'Iran ha lanciato due missili contro la base Diego Garcia a 4.000 km, dimostrando gittata superiore al previsto. Due missili hanno colpito Dimona e Arad in Israele, ferendo circa 100 persone, vicino al centro nucleare Shimon Peres. Attacchi ritorsivi per bombardamento israeliano su Natanz. Iran ha attaccato anche Arabia Saudita, Kuwait ed EAU. Mojtaba Khamenei irreperibile. Brent a 112 dollari al barile.",
+						"dataPoints": [
+							"4.000 km gittata missili",
+							"100 feriti a Dimona/Arad",
+							"Brent 112 USD/barile"
+						],
+						"entities": [
+							"Iran",
+							"Israele",
+							"Diego Garcia",
+							"Mojtaba Khamenei",
+							"Trump",
+							"Hezbollah"
+						],
+						"tickers": ["CL=F", "BZ=F", "XLE"]
+					}
+				},
+				{
+					"title": "Ma quindi davvero Trump vuole rallentare la guerra?",
+					"url": "https://www.ilpost.it/2026/03/21/trump-rallentare-guerra-iran/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Trump ha fatto dichiarazioni contraddittorie sulla guerra. 2.200-2.500 marines aggiuntivi inviati. Due navi d'assalto anfibio. Il ministro della Difesa israeliano annuncia intensificazione bombardamenti la prossima settimana.",
+						"dataPoints": ["2.200-2.500 marines aggiuntivi"],
+						"entities": ["Trump", "Iran", "Israele"],
+						"tickers": ["CL=F", "BZ=F", "NG=F", "XLE"]
+					}
+				},
+				{
+					"title": "L'attacco all'impianto di gas in Qatar e un grosso guaio",
+					"url": "https://www.ilpost.it/2026/03/20/attacco-qatar-gas/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Iran ha attaccato Ras Laffan eliminando 17% capacita export gas Qatar. Perdite 20 miliardi/anno. Italia importa 11% gas dal Qatar. BCE prevede inflazione 6,3% nello scenario peggiore.",
+						"dataPoints": [
+							"17% capacita export eliminata",
+							"20 miliardi USD perdite annue",
+							"11% import gas Italia dal Qatar",
+							"6,3% inflazione BCE worst case"
+						],
+						"entities": ["QatarEnergy", "BCE", "Edison"],
+						"tickers": ["NG=F", "ENEL.MI", "ENI.MI"]
+					}
+				},
+				{
+					"title": "La Svizzera ha interrotto la vendita di armi agli Stati Uniti",
+					"url": "https://www.ilpost.it/2026/03/21/svizzera-blocco-esportazioni-armi-stati-uniti/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Svizzera blocca export armi verso USA dal 28 febbraio per rispettare neutralita nel conflitto mediorientale. USA erano secondo mercato per armi svizzere con circa 100 milioni EUR nel 2025.",
+						"dataPoints": ["100 milioni EUR export armi 2025"],
+						"entities": ["Svizzera", "SIG Sauer"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "La Cassazione ha confermato le condanne al boss Francesco Bidognetti",
+					"url": "https://www.ilpost.it/2026/03/20/corte-cassazione-conferma-condanne-minacce-roberto-saviano-rosaria-capacchione/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Cassazione conferma condanne definitive a Bidognetti e Santonastaso per minacce aggravate con metodo mafioso a Saviano e Capacchione nel 2008 durante il processo Spartacus. Sentenza diventa definitiva dopo primo grado 2021 e appello 2025.",
+						"dataPoints": [
+							"1 anno e mezzo pena Bidognetti",
+							"1 anno e 2 mesi pena Santonastaso"
+						],
+						"entities": [
+							"Francesco Bidognetti",
+							"Roberto Saviano",
+							"Rosaria Capacchione",
+							"Casalesi"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Cosa sappiamo dell'esplosione in cui sono morti due anarchici a Roma",
+					"url": "https://www.ilpost.it/2026/03/21/esplosione-casale-roma-parco-acquedotti-anarchici-bomba/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Due anarchici morti in esplosione casale Roma al Parco degli Acquedotti. Sara Ardizzone (36 anni) e Alessandro Mercogliano (53 anni). Bomba artigianale esplosa accidentalmente. Convocato Comitato sicurezza dal ministero dell'Interno.",
+						"dataPoints": [],
+						"entities": [
+							"Sara Ardizzone",
+							"Alessandro Mercogliano",
+							"FAI"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Le Hawaii sono alle prese con le alluvioni piu gravi degli ultimi venti anni",
+					"url": "https://www.ilpost.it/2026/03/21/hawaii-alluvioni-oahu-honolulu/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Peggiori alluvioni in 20 anni a Oahu. Danni stimati 1 miliardo USD. 5.500 evacuati a Honolulu.",
+						"dataPoints": [
+							"1 miliardo USD danni",
+							"5.500 evacuati"
+						],
+						"entities": ["Hawaii", "Honolulu"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Almeno 11 persone sono morte in un grosso incendio in Corea del Sud",
+					"url": "https://www.ilpost.it/2026/03/21/incendio-corea-del-sud-fabbrica-auto/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Incendio in fabbrica componenti auto a Daejeon, Corea del Sud. 11 morti, 4 dispersi, 59 feriti.",
+						"dataPoints": ["11 morti", "4 dispersi", "59 feriti"],
+						"entities": ["Daejeon", "Corea del Sud"],
+						"tickers": []
+					}
+				}
+			]
+		},
+		{
+			"id": "finanza",
+			"emoji": "&#x1F4B0;",
+			"name": "Finanza",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [],
+			"continuingThemes": [
+				"Crisi energetica Medio Oriente",
+				"Ozempic generico",
+				"MSC acquisizione Sinokor",
+				"Taglio accise carburanti",
+				"Meta metaverso"
+			],
+			"summary": "La giornata finanziaria resta dominata dalle conseguenze economiche del conflitto mediorientale. Il petrolio Brent ha raggiunto i 112 dollari al barile, confermando la traiettoria rialzista che accompagna l'escalation militare. L'attacco iraniano all'impianto di Ras Laffan in Qatar, che ha eliminato il 17% della capacita di esportazione del gas qatariota, continua a pesare sui mercati energetici con perdite stimate di 20 miliardi di dollari annui e riparazioni che richiederanno 3-5 anni. L'Italia e particolarmente esposta, importando l'11% del suo gas dal Qatar contro il 3,8% medio europeo, e la BCE mantiene lo scenario peggiore di inflazione al 6,3% nell'Eurozona.<br><br>Prosegue la copertura sul taglio delle accise sui carburanti da parte del governo italiano, con una riduzione di 25 centesimi al litro. La benzina e scesa a 1,714 euro/litro e il gasolio a 1,966 euro/litro. Le variazioni regionali restano significative e il margine dei distributori di circa 3 centesimi spiega la gradualita dell'adeguamento. La misura ha durata limitata di 20 giorni e la sua efficacia dipende interamente dall'evoluzione del conflitto e dal prezzo del Brent.<br><br>Rispetto a ieri, l'operazione MSC-Sinokor resta rilevante: l'acquisizione del 50% della flotta petroliera sudcoreana per circa 5 miliardi di dollari darebbe a MSC il controllo potenziale del 20% delle navi VLCC mondiali non sanzionate, ciascuna capace di trasportare oltre 200.000 tonnellate di greggio. In un contesto di guerra e sanzioni, il controllo delle rotte petrolifere ha un valore strategico senza precedenti.<br><br>Sul fronte farmaceutico, il brevetto di Ozempic e scaduto il 21 marzo in sei paesi che ospitano il 40% della popolazione mondiale: Cina, India, Brasile, Turchia, Sudafrica e Canada. Dieci aziende cinesi sono gia in fase avanzata di approvazione. L'impatto su Novo Nordisk e significativo: l'azienda danese, che a meta 2024 era la societa europea con il maggior valore in borsa, ha gia subito un forte crollo per la competizione di Eli Lilly con Mounjaro e Zepbound. I brevetti scadono dopo il 2030 in USA e Europa. Meta continua il disimpegno dal metaverso dopo aver investito oltre 70 miliardi di dollari con risultati deludenti: Horizon Worlds conta solo 900 utenti e Reality Labs ha ridotto il personale del 10%.<br><br>Non piu presente oggi: contributi pubblici alla stampa italiana.",
+			"articles": [
+				{
+					"title": "Msc comprera il 50 per cento di una delle flotte di navi petroliere piu grandi al mondo",
+					"url": "https://www.ilpost.it/2026/03/20/msc-sinokor-navi-petroliere/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "MSC acquisisce 50% Sinokor per circa 5 miliardi USD. 78 navi VLCC, potenziale 20% VLCC mondiali non sanzionate. Ogni nave trasporta oltre 200.000 tonnellate di greggio.",
+						"dataPoints": [
+							"5 miliardi USD",
+							"78 navi VLCC",
+							"20% VLCC mondiali"
+						],
+						"entities": ["MSC", "Sinokor"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Si comincia a vedere il primo calo dei prezzi dei carburanti",
+					"url": "https://www.ilpost.it/2026/03/21/riduzione-prezzi-carburanti-taglio-accise-governo-speculazione/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "Taglio accise 25 centesimi/litro. Benzina scesa da 1,89 a 1,714 EUR/litro (-17,4 cent). Gasolio da 2,125 a 1,966 (-15,8 cent). Margine distributori circa 3 centesimi. Variazioni regionali significative.",
+						"dataPoints": [
+							"25 cent taglio accise",
+							"Benzina 1,714 EUR/l",
+							"Gasolio 1,966 EUR/l"
+						],
+						"entities": ["Governo italiano"],
+						"tickers": ["ENI.MI", "CL=F"]
+					}
+				},
+				{
+					"title": "In molti paesi sta arrivando la versione generica dell'Ozempic",
+					"url": "https://www.ilpost.it/2026/03/20/ozempic-diventa-generico/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Brevetto Ozempic scaduto il 21 marzo in 6 paesi (40% pop mondiale): Cina, India, Brasile, Turchia, Sudafrica, Canada. 10 aziende cinesi in approvazione. Prezzi da centinaia a decine di euro/mese. Novo Nordisk gia in crollo per competizione Eli Lilly.",
+						"dataPoints": [
+							"6 paesi",
+							"40% pop mondiale",
+							"10 aziende cinesi"
+						],
+						"entities": ["Novo Nordisk", "Eli Lilly"],
+						"tickers": ["NVO", "LLY"]
+					}
+				},
+				{
+					"title": "Nel metaverso c'e aria di sbaracco",
+					"url": "https://www.ilpost.it/2026/03/20/metaverso-meta-fine/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Meta ha investito oltre 70 miliardi USD nel metaverso. Horizon Worlds conta 900 utenti. Reality Labs ha ridotto personale del 10% a gennaio 2026. Riorienta verso AI e wearable.",
+						"dataPoints": [
+							"70+ miliardi USD investiti",
+							"900 utenti",
+							"-10% personale Reality Labs"
+						],
+						"entities": ["Meta", "Mark Zuckerberg"],
+						"tickers": ["META"]
+					}
+				}
+			]
+		},
+		{
+			"id": "tech",
+			"emoji": "&#x1F916;",
+			"name": "Tech",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": ["Claude e Bernie Sanders su AI e democrazia"],
+			"continuingThemes": ["20 anni Twitter/X"],
+			"summary": "La giornata tech e segnata dal dibattito sull'intelligenza artificiale e la democrazia, dopo che un video virale del senatore statunitense Bernie Sanders in conversazione con Claude, il chatbot di Anthropic, ha raggiunto 750.000 visualizzazioni in poche ore. Nel dialogo, Claude ha descritto in dettaglio come le aziende tech creino profili utente estremamente dettagliati raccogliendo dati da cronologia di ricerca, acquisti e tempo trascorso su pagine web, definendo la profilazione AI una vera minaccia per la democrazia per la capacita di raggiungere milioni di persone e sfruttarne le vulnerabilita. Sanders e Claude hanno concordato che una moratoria sulla costruzione di nuovi data center sia l'unica opzione praticabile per contenere i rischi. Il video evidenzia la posizione peculiare di Anthropic nel settore: l'azienda si distingue per l'enfasi sulla protezione dei dati e cautela nello sviluppo, un approccio differente da Meta, Alphabet e OpenAI.<br><br>Prosegue la riflessione sui 20 anni di Twitter, che compie l'anniversario dal primo tweet di Jack Dorsey. Rispetto a ieri, l'analisi resta centrata sulla trasformazione della piattaforma sotto Elon Musk: eliminazione dell'80% dei dipendenti, calo del 15% degli utenti attivi tra 2024 e 2025, e il sorpasso di Threads (Meta) che ha raggiunto 141 milioni di utenti attivi giornalieri contro i 125 milioni di X. La piattaforma e diventata sussidiaria SpaceX, con i dati utilizzati per addestrare xAI, e gli inserzionisti si sono largamente ritirati per la ridotta moderazione e le posizioni politiche di Musk.<br><br>Non piu presente oggi: OpenAI Superapp, Cursor Composer 2, fondo Bezos da 100 miliardi (temi TLDR di ieri, la newsletter non pubblica nel weekend).",
+			"articles": [
+				{
+					"title": "Il chatbot Claude che dice a Bernie Sanders che l'IA e una minaccia",
+					"url": "https://www.ilpost.it/flashes/bernie-sanders-chatbot-claude-intelligenza-artificiale/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Video virale di Bernie Sanders con chatbot Claude di Anthropic, 750.000 visualizzazioni. Claude descrive profilazione AI come minaccia alla democrazia. Proposta moratoria su nuovi data center. Anthropic si distingue per cautela rispetto a Meta, Alphabet e OpenAI.",
+						"dataPoints": ["750.000 visualizzazioni"],
+						"entities": ["Bernie Sanders", "Anthropic", "Claude"],
+						"tickers": ["GOOGL", "META"]
+					}
+				},
+				{
+					"title": "Cos'e rimasto di Twitter a 20 anni dalla fondazione",
+					"url": "https://www.ilpost.it/2026/03/21/20-anni-twitter-x/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Twitter compie 20 anni dal primo tweet. Dopo acquisizione Musk: -80% dipendenti, -15% utenti 2024-2025. Threads supera X: 141M vs 125M utenti giornalieri attivi. Piattaforma diventata sussidiaria SpaceX. Dati usati per addestrare xAI.",
+						"dataPoints": [
+							"-80% dipendenti",
+							"-15% utenti 2024-2025",
+							"141M Threads vs 125M X"
+						],
+						"entities": [
+							"Twitter",
+							"X",
+							"Elon Musk",
+							"Meta",
+							"SpaceX",
+							"xAI"
+						],
+						"tickers": ["META"]
+					}
+				}
+			]
+		},
+		{
+			"id": "altro",
+			"emoji": "&#x1F4CC;",
+			"name": "Altro",
+			"isYoutube": false,
+			"isOther": true,
+			"evolution": null,
+			"newThemes": [],
+			"continuingThemes": [],
+			"summary": "Giornata ricca di sport: ai Mondiali di atletica indoor a Torun, l'Italia conquista tre ori con Zaynab Dosso (60 metri in 7 secondi), Nadia Battocletti (3000 metri in 8:57) e Andy Diaz Hernandez (salto triplo). Il tribunale di Milano ha condannato nove persone per l'incendio della Torre dei Moro del 2021, con pene da 8 mesi a 3 anni. Il Comune di Napoli ha vietato la vendita di frutti di mare crudi per un'epidemia di epatite A con oltre 150 casi, 41 volte la media dei tre anni precedenti. Il ministro degli Esteri Tajani ha fatto dichiarazioni infelici sulle vittime dell'incendio di Crans-Montana. Monza e Venezia guidano la Serie B a 7 giornate dalla fine.",
+			"articles": [
+				{
+					"title": "Zaynab Dosso ha vinto la medaglia d'oro nei 60 metri ai Mondiali",
+					"url": "https://www.ilpost.it/2026/03/21/zaynab-dosso-medaglia-oro-60-metri-mondiali-atletica-indoor/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "Zaynab Dosso vince oro nei 60m ai Mondiali indoor di Torun in 7 secondi. 26 anni, nata in Costa d'Avorio, in Italia dall'eta di 9 anni. Argento Sears (USA), bronzo Alfred (Santa Lucia).",
+						"dataPoints": ["7 secondi", "26 anni"],
+						"entities": [
+							"Zaynab Dosso",
+							"Jacious Sears",
+							"Julien Alfred"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Nadia Battocletti ha vinto la medaglia d'oro nei 3000 metri",
+					"url": "https://www.ilpost.it/2026/03/21/nadia-battocletti-oro-3000-metri-mondiali-atletica/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "Battocletti vince oro 3000m ai Mondiali indoor di Torun in 8:57. 25 anni. Argento Emily Mackey (USA), bronzo Jessica Hull (Australia). Palmares: ori Europei 2024, argento olimpico Parigi 10000m.",
+						"dataPoints": ["8 minuti 57 secondi", "25 anni"],
+						"entities": [
+							"Nadia Battocletti",
+							"Emily Mackey",
+							"Jessica Hull"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Il tribunale di Milano ha condannato nove persone per l'incendio della Torre dei Moro",
+					"url": "https://www.ilpost.it/2026/03/20/milano-incendio-torre-dei-moro-condanne/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Nove condannati per incendio Torre dei Moro del 29 agosto 2021. Pene da 8 mesi a 3 anni. Edificio di 18 piani, 60 famiglie. Nessun morto grazie a evacuazione via WhatsApp. Irregolarita nei materiali di rivestimento.",
+						"dataPoints": [
+							"9 condannati",
+							"Pene da 8 mesi a 3 anni",
+							"18 piani",
+							"60 famiglie"
+						],
+						"entities": ["Torre dei Moro", "Alucoil"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Il comune di Napoli ha vietato la vendita di frutti di mare crudi",
+					"url": "https://www.ilpost.it/2026/03/20/napoli-divieto-vendita-frutti-mare-crudi-ristoranti/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Sindaco Manfredi firma ordinanza divieto frutti di mare crudi a Napoli. Oltre 150 casi confermati epatite A, 41 volte media triennio precedente. Sanzioni da 2.000 a 20.000 EUR.",
+						"dataPoints": [
+							"150+ casi epatite A",
+							"41x la media",
+							"Sanzioni 2.000-20.000 EUR"
+						],
+						"entities": ["Gaetano Manfredi", "Napoli"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Antonio Tajani ne sta dicendo una peggio dell'altra",
+					"url": "https://www.ilpost.it/2026/03/20/antonio-tajani-droni-crans-montana/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Il ministro degli Esteri Tajani in TV su La7 ha incolpato le vittime dell'incendio di Crans-Montana (41 morti, 115 feriti) dicendo che filmavano invece di fuggire. Indagini: uscite di emergenza bloccate e assenza di ispezioni.",
+						"dataPoints": ["41 morti", "115 feriti"],
+						"entities": ["Antonio Tajani", "Crans-Montana"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Le due migliori squadre della Serie B",
+					"url": "https://www.ilpost.it/2026/03/21/monza-venezia-serie-b/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Monza-Venezia, scontro diretto in testa alla Serie B. Venezia primo a 67 punti, Monza secondo a 64. 7 giornate rimanenti. Venezia 63 gol in 31 partite. Monza venduto dalla famiglia Berlusconi a fondo USA.",
+						"dataPoints": [
+							"Venezia 67 punti",
+							"Monza 64 punti",
+							"63 gol Venezia"
+						],
+						"entities": [
+							"Venezia",
+							"Monza",
+							"Giovanni Stroppa",
+							"Paolo Bianco"
+						],
+						"tickers": []
+					}
+				}
+			]
+		},
+		{
+			"id": "youtube",
+			"emoji": "&#x1F4FA;",
+			"name": "YouTube",
+			"isYoutube": true,
+			"isOther": false,
+			"evolution": null,
+			"newThemes": [],
+			"continuingThemes": [],
+			"summary": null,
+			"articles": [
+				{
+					"title": "Perche tutti sbagliano la comunicazione? Non se ne puo piu",
+					"url": "https://www.youtube.com/watch?v=zu1WQKOjbNs",
+					"source": "Salvatore Sanfilippo",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "I test nel software: le tecniche che uso",
+					"url": "https://www.youtube.com/watch?v=521V3S3QmnQ",
+					"source": "Salvatore Sanfilippo",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Riaprire Hormuz e complicato, ma finche e bloccato Trump non puo cantare vittoria",
+					"url": "https://www.youtube.com/watch?v=rN7OAx9U9Kg",
+					"source": "Stories",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				}
+			]
+		}
+	]
+}

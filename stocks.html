@@ -1,0 +1,1428 @@
+<!doctype html>
+<html lang="it">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#0d0f15" />
+		<link rel="manifest" href="manifest.json" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<title>Stock Trend Report</title>
+		<script src="chart.min.js"></script>
+		<style>
+			:root {
+				--bg: #0f1117;
+				--card: #1a1d27;
+				--t1: #e2e8f0;
+				--t2: #94a3b8;
+				--acc: #7c9ef8;
+				--acc2: #a5b9ff;
+				--brd: #2d3148;
+				--r: 12px;
+				--up: #4ade80;
+				--dn: #f87171;
+				--nt: #facc15;
+				--chbg: #141720;
+				--chbrd: #2d3748;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: var(--bg);
+				color: var(--t1);
+				font-family:
+					system-ui,
+					-apple-system,
+					sans-serif;
+				font-size: 16px;
+				line-height: 1.6;
+				padding: 0;
+			}
+
+			.wrap {
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 2rem 1.5rem 4rem;
+			}
+
+			header {
+				margin-bottom: 1rem;
+				padding-bottom: 1rem;
+				border-bottom: 1px solid var(--brd);
+			}
+
+			.hlbl {
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--acc);
+				margin-bottom: 0.4rem;
+			}
+
+			header h1 {
+				font-size: 1.6rem;
+				font-weight: 700;
+				margin-bottom: 0.3rem;
+			}
+
+			.hmeta {
+				font-size: 0.82rem;
+				color: var(--t2);
+			}
+
+			/* CONTROLS — sticky */
+			.ctrl {
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				background: var(--bg);
+				padding: 0.75rem 0;
+				margin-bottom: 1.25rem;
+				border-bottom: 1px solid var(--brd);
+			}
+
+			.ctrl-inner {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
+				align-items: center;
+				padding: 0.75rem 1rem;
+				background: var(--card);
+				border: 1px solid var(--brd);
+				border-radius: var(--r);
+			}
+
+			.srch {
+				position: relative;
+				flex: 1;
+				min-width: 200px;
+			}
+
+			.srch input {
+				width: 100%;
+				padding: 0.45rem 0.7rem 0.45rem 2rem;
+				background: var(--chbg);
+				border: 1px solid var(--chbrd);
+				border-radius: 8px;
+				color: var(--t1);
+				font-size: 0.85rem;
+				outline: none;
+			}
+
+			.srch input:focus {
+				border-color: var(--acc);
+			}
+
+			.srch input::placeholder {
+				color: var(--t2);
+			}
+
+			.srch::before {
+				content: "⌕";
+				position: absolute;
+				left: 0.65rem;
+				top: 50%;
+				transform: translateY(-55%);
+				color: var(--t2);
+				font-size: 0.8rem;
+				line-height: 1;
+				pointer-events: none;
+			}
+
+			.fg {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.35rem;
+			}
+
+			.fb {
+				padding: 0.25rem 0.65rem;
+				border-radius: 6px;
+				border: 1px solid var(--brd);
+				background: var(--chbg);
+				color: var(--t2);
+				font-size: 0.75rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.15s;
+				user-select: none;
+			}
+
+			.fb:hover {
+				border-color: var(--acc);
+				color: var(--acc);
+			}
+
+			.fb.on {
+				background: var(--acc);
+				border-color: var(--acc);
+				color: #0f1117;
+			}
+
+			.counter {
+				font-size: 0.75rem;
+				color: var(--t2);
+				margin-left: auto;
+				white-space: nowrap;
+			}
+
+			/* CARD */
+			.card {
+				background: var(--card);
+				border: 1px solid var(--brd);
+				border-radius: var(--r);
+				padding: 1.75rem 2rem;
+				margin-bottom: 1.5rem;
+				transition: opacity 0.2s;
+			}
+
+			.card.hide {
+				display: none;
+			}
+
+			.ch {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				margin-bottom: 0.15rem;
+			}
+
+			.senti {
+				font-size: 1.25rem;
+			}
+
+			.ch h2 {
+				font-size: 1.1rem;
+				font-weight: 700;
+				flex: 1;
+			}
+
+			.evo {
+				font-size: 0.7rem;
+				font-weight: 600;
+				padding: 0.15rem 0.55rem;
+				border-radius: 5px;
+				white-space: nowrap;
+			}
+
+			.evo-new {
+				background: rgba(124, 158, 248, 0.15);
+				color: var(--acc);
+			}
+
+			.evo-cont {
+				background: rgba(148, 163, 184, 0.12);
+				color: var(--t2);
+			}
+
+			.evo-acc {
+				background: rgba(74, 222, 128, 0.12);
+				color: var(--up);
+			}
+
+			.evo-rev {
+				background: rgba(248, 113, 113, 0.12);
+				color: var(--dn);
+			}
+
+			.cperiod {
+				font-size: 0.75rem;
+				color: var(--t2);
+				margin-bottom: 0.75rem;
+				padding-left: 1.85rem;
+			}
+
+			.narr {
+				font-size: 0.9rem;
+				color: var(--t2);
+				line-height: 1.75;
+				margin-bottom: 1.25rem;
+			}
+
+			/* KEY METRICS */
+			.kms {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				margin-bottom: 1.25rem;
+			}
+
+			.km {
+				padding: 0.5rem 0.85rem;
+				background: var(--chbg);
+				border: 1px solid var(--chbrd);
+				border-radius: 8px;
+				text-align: center;
+				min-width: 120px;
+			}
+
+			.km-label {
+				font-size: 0.68rem;
+				color: var(--t2);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				margin-bottom: 0.15rem;
+			}
+
+			.km-val {
+				font-size: 1rem;
+				font-weight: 700;
+			}
+
+			.km-delta {
+				font-size: 0.75rem;
+				font-weight: 600;
+			}
+
+			/* TICKER GRID */
+			.tg {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+				gap: 1rem;
+				margin-bottom: 1.25rem;
+			}
+
+			.tc {
+				background: var(--chbg);
+				border: 1px solid var(--chbrd);
+				border-radius: 10px;
+				padding: 1rem 1.1rem 0.85rem;
+				transition:
+					border-color 0.15s,
+					opacity 0.2s;
+			}
+
+			.tc:hover {
+				border-color: #4a5268;
+			}
+
+			.tc.dim {
+				opacity: 0.25;
+				pointer-events: none;
+			}
+
+			.tt {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				margin-bottom: 0.15rem;
+			}
+
+			.tsym {
+				font-weight: 700;
+				font-size: 1rem;
+			}
+
+			.tprc {
+				font-weight: 600;
+				font-size: 0.95rem;
+			}
+
+			.tnm {
+				font-size: 0.7rem;
+				color: var(--t2);
+				margin-bottom: 0.15rem;
+			}
+
+			.tmeta {
+				display: flex;
+				gap: 0.5rem;
+				font-size: 0.72rem;
+				color: var(--t2);
+				margin-bottom: 0.4rem;
+				flex-wrap: wrap;
+			}
+
+			/* TIME RANGE BUTTONS */
+			.trng {
+				display: flex;
+				gap: 0.25rem;
+				margin-bottom: 0.35rem;
+			}
+
+			.trng button {
+				padding: 0.15rem 0.5rem;
+				border-radius: 4px;
+				border: 1px solid var(--brd);
+				background: transparent;
+				color: var(--t2);
+				font-size: 0.68rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.12s;
+			}
+
+			.trng button:hover {
+				border-color: var(--acc);
+				color: var(--acc);
+			}
+
+			.trng button.on {
+				background: var(--acc);
+				border-color: var(--acc);
+				color: #0f1117;
+			}
+
+			/* CHART */
+			.cc {
+				position: relative;
+				height: 280px;
+				margin-bottom: 0.25rem;
+			}
+
+			/* COMPARE BTN */
+			.cmpbtn {
+				font-size: 0.68rem;
+				color: var(--t2);
+				cursor: pointer;
+				border: none;
+				background: none;
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				transition: color 0.12s;
+			}
+
+			.cmpbtn:hover {
+				color: var(--acc);
+			}
+
+			.cmpbtn.added {
+				color: var(--up);
+			}
+
+			/* SOURCES */
+			.slbl {
+				font-size: 0.73rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.07em;
+				color: var(--t2);
+				margin-bottom: 0.4rem;
+			}
+
+			.slist {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 0.3rem;
+			}
+
+			.slist li {
+				font-size: 0.82rem;
+				line-height: 1.5;
+			}
+
+			.slist a {
+				color: var(--acc);
+				text-decoration: none;
+			}
+
+			.slist a:hover {
+				color: var(--acc2);
+				text-decoration: underline;
+			}
+
+			.sdom {
+				color: var(--t2);
+				font-size: 0.73rem;
+			}
+
+			/* COMPARISON PANEL */
+			#cmp-panel {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 200;
+				background: var(--card);
+				border-top: 2px solid var(--acc);
+				padding: 1rem 1.5rem;
+				display: none;
+				box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
+			}
+
+			#cmp-panel.show {
+				display: block;
+			}
+
+			#cmp-panel .cmp-head {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				margin-bottom: 0.5rem;
+			}
+
+			#cmp-panel h3 {
+				font-size: 0.95rem;
+				font-weight: 700;
+				flex: 1;
+			}
+
+			#cmp-panel .cmp-chips {
+				display: flex;
+				gap: 0.35rem;
+				flex-wrap: wrap;
+			}
+
+			.cmp-chip {
+				display: flex;
+				align-items: center;
+				gap: 0.3rem;
+				padding: 0.2rem 0.55rem;
+				border-radius: 5px;
+				font-size: 0.72rem;
+				font-weight: 600;
+				cursor: default;
+			}
+
+			.cmp-chip button {
+				background: none;
+				border: none;
+				color: inherit;
+				cursor: pointer;
+				font-size: 0.8rem;
+				padding: 0 0.15rem;
+			}
+
+			#cmp-chart-wrap {
+				height: 300px;
+				position: relative;
+			}
+
+			#cmp-close {
+				background: none;
+				border: 1px solid var(--brd);
+				border-radius: 6px;
+				color: var(--t2);
+				padding: 0.25rem 0.6rem;
+				font-size: 0.75rem;
+				cursor: pointer;
+			}
+
+			#cmp-close:hover {
+				border-color: var(--dn);
+				color: var(--dn);
+			}
+
+			/* FOOTER */
+
+			/* EXPAND/COLLAPSE */
+			.collapse-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.3rem;
+				padding: 0.2rem 0.5rem;
+				border-radius: 5px;
+				border: 1px solid #2d3148;
+				background: transparent;
+				color: #94a3b8;
+				font-size: 0.65rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.12s;
+				float: right;
+				margin-top: -0.2rem;
+			}
+			.collapse-btn:hover {
+				border-color: #7c9ef8;
+				color: #7c9ef8;
+			}
+			.collapsible {
+				overflow: hidden;
+				transition:
+					max-height 0.3s ease,
+					opacity 0.2s ease;
+			}
+			.collapsible.collapsed {
+				max-height: 0 !important;
+				opacity: 0;
+				margin: 0;
+				padding: 0;
+			}
+
+			@media (max-width: 500px) {
+				.tg {
+					grid-template-columns: 1fr;
+				}
+
+				.kms {
+					flex-direction: column;
+				}
+
+				.km {
+					min-width: auto;
+				}
+
+				.wrap {
+					padding: 1rem 0.75rem 3rem;
+				}
+			}
+
+			@keyframes sk-shimmer {
+				0% {
+					background-position: 200% 0;
+				}
+				100% {
+					background-position: -200% 0;
+				}
+			}
+			.sk {
+				background: linear-gradient(90deg, #1a1d27 0%, #252838 30%, #2d3148 50%, #252838 70%, #1a1d27 100%);
+				background-size: 200% 100%;
+				animation: sk-shimmer 1.8s ease-in-out infinite;
+				border-radius: 8px;
+			}
+			.sk-card {
+				height: 250px;
+				margin-bottom: 1.25rem;
+				border-radius: 12px;
+			}
+			.sk-wrap {
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 2rem 1.5rem;
+			}
+
+			.loading {
+				padding: 0;
+				color: var(--t2);
+				font-size: 0.9rem;
+			}
+
+			.error {
+				text-align: center;
+				padding: 4rem 1rem;
+				color: #f87171;
+				font-size: 0.9rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<header>
+				<div class="hlbl">Stock Trend Report</div>
+				<h1 id="rpt-title"></h1>
+				<div class="hmeta" id="rpt-meta"></div>
+			</header>
+			<div class="ctrl">
+				<div class="ctrl-inner">
+					<div class="srch">
+						<input type="text" id="q" placeholder="Cerca ticker, trend, articoli…" autocomplete="off" />
+					</div>
+					<div class="fg" id="cat-filters"></div>
+					<div class="fg" id="sent-filters"></div>
+					<div class="fg" id="date-filters"></div>
+					<span class="counter" id="counter"></span>
+				</div>
+			</div>
+			<div id="trends-root">
+				<div class="sk sk-card" style="height: 300px"></div>
+				<div class="sk sk-card" style="height: 250px"></div>
+				<div class="sk sk-card" style="height: 280px"></div>
+			</div>
+			<div id="no-results" class="card hide" style="text-align: center; color: var(--t2); padding: 3rem">
+				Nessun risultato.
+			</div>
+			<div style="text-align: right; margin-bottom: 1rem; display: flex; gap: 0.5rem; justify-content: flex-end">
+				<button
+					id="export-btn"
+					style="
+						padding: 0.35rem 0.8rem;
+						border-radius: 6px;
+						border: 1px solid #2d3148;
+						background: #1a1d27;
+						color: #94a3b8;
+						font-size: 0.72rem;
+						font-weight: 600;
+						cursor: pointer;
+					"
+				>
+					Esporta JSON
+				</button>
+				<button
+					onclick="window.print()"
+					style="
+						padding: 0.35rem 0.8rem;
+						border-radius: 6px;
+						border: 1px solid #2d3148;
+						background: #1a1d27;
+						color: #94a3b8;
+						font-size: 0.72rem;
+						font-weight: 600;
+						cursor: pointer;
+					"
+				>
+					Stampa / PDF
+				</button>
+				<button
+					id="copy-link"
+					style="
+						padding: 0.35rem 0.8rem;
+						border-radius: 6px;
+						border: 1px solid #2d3148;
+						background: #1a1d27;
+						color: #94a3b8;
+						font-size: 0.72rem;
+						font-weight: 600;
+						cursor: pointer;
+					"
+				>
+					Copia link
+				</button>
+			</div>
+			<footer></footer>
+		</div>
+		<div id="cmp-panel">
+			<div class="cmp-head">
+				<h3>&#x1F4CA; Confronto</h3>
+				<div class="cmp-chips" id="cmp-chips"></div>
+				<div class="trng" id="cmp-trng"></div>
+				<button id="cmp-close">Chiudi ✕</button>
+			</div>
+			<div id="cmp-chart-wrap"><canvas id="cmp-canvas"></canvas></div>
+		</div>
+		<div id="loading" style="display: none"></div>
+
+		<script>
+			function showError(t, m) {
+				console.error("DailyBriefing error:", t, m);
+				location.replace("404.html");
+			}
+			(function () {
+				var params = new URLSearchParams(location.search);
+				var date = params.get("d");
+				if (!date) {
+					fetch("data/reports.json")
+						.then(function (r) {
+							return r.json();
+						})
+						.then(function (rp) {
+							var dates = (rp.stocks || []).slice().sort(function (a, b) {
+								var pa = a.split("-").map(Number),
+									pb = b.split("-").map(Number);
+								return new Date(pb[2], pb[1] - 1, pb[0]) - new Date(pa[2], pa[1] - 1, pa[0]);
+							});
+							if (dates.length) location.replace("stocks.html?d=" + dates[0]);
+							else location.replace("404.html");
+						})
+						.catch(function () {
+							location.replace("404.html");
+						});
+					return;
+				}
+				document.title = "Stock Trend Report - " + date;
+				// Load main data first (fast, ~30KB), then charts lazily (~1MB)
+				fetch("data/stocks-" + date + ".json")
+					.then(function (r) {
+						if (!r.ok) throw new Error("Report non trovato per " + date);
+						return r.text();
+					})
+					.then(function (text) {
+						var REPORT_DATA = new Function("return " + text)();
+						window.REPORT_DATA = REPORT_DATA;
+						document.getElementById("loading").style.display = "none";
+						// Render everything except charts
+						try {
+							initReport(REPORT_DATA);
+						} catch (err) {
+							showError("Errore rendering", "Dati non validi: " + err.message);
+						}
+						// Lazy load chart data
+						fetch("data/stocks-" + date + "-charts.json")
+							.then(function (r) {
+								return r.ok ? r.text() : null;
+							})
+							.then(function (ct) {
+								if (ct) {
+									var chartData = new Function("return " + ct)();
+									// Merge history back into tickers
+									Object.keys(chartData).forEach(function (sym) {
+										if (REPORT_DATA.tickers && REPORT_DATA.tickers[sym]) {
+											REPORT_DATA.tickers[sym].history = chartData[sym];
+										}
+									});
+									// Now create all charts
+									if (typeof window.initCharts === "function") window.initCharts();
+								}
+							})
+							.catch(function () {
+								// Charts file not found — try legacy format (history already in main JSON)
+								if (typeof window.initCharts === "function") window.initCharts();
+							});
+					})
+					.catch(function (e) {
+						showError("Report non trovato", e.message);
+					});
+			})();
+
+			function initReport(REPORT_DATA) {
+				var D = REPORT_DATA,
+					M = D.meta,
+					T = D.trends,
+					TK = D.tickers;
+
+				// Clean up ugly futures/contract names from yfinance
+				var nameOverrides = {
+					"CL=F": "WTI Crude Oil",
+					"BZ=F": "Brent Crude Oil",
+					"NG=F": "Natural Gas",
+					"GC=F": "Gold",
+					"SI=F": "Silver",
+					"HG=F": "Copper",
+					"ZW=F": "Wheat",
+					"^GDAXI": "DAX",
+					"^STOXX50E": "Euro Stoxx 50",
+					"^FCHI": "CAC 40",
+					"^IBEX": "IBEX 35",
+					"FTSEMIB.MI": "FTSE MIB",
+				};
+				Object.keys(TK).forEach(function (sym) {
+					if (nameOverrides[sym]) TK[sym].name = nameOverrides[sym];
+					// Remove contract month/year suffixes like "Apr 26", "May 26"
+					else if (TK[sym].name)
+						TK[sym].name = TK[sym].name.replace(/\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{2,4}$/i, "");
+				});
+				const PERIODS = [
+					{
+						k: "5d",
+						l: "5G",
+					},
+					{
+						k: "1mo",
+						l: "1M",
+					},
+					{
+						k: "6mo",
+						l: "6M",
+					},
+					{
+						k: "1y",
+						l: "1A",
+					},
+					{
+						k: "5y",
+						l: "5A",
+					},
+				];
+				const COLORS = {
+					positive: "#4ade80",
+					negative: "#f87171",
+					neutral: "#facc15",
+				};
+				const EVO_MAP = {
+					continuation: ["&#x1F504; Continuazione", "evo-cont"],
+					acceleration: ["&#x1F4C8; Accelerazione", "evo-acc"],
+					reversal: ["&#x1F4C9; Inversione", "evo-rev"],
+					new: ["&#x1F195; Nuovo", "evo-new"],
+				};
+				const charts = {};
+				let cmpTickers = [],
+					cmpChart = null,
+					cmpPeriod = "1mo";
+
+				// ── Header ──
+				document.getElementById("rpt-title").textContent = M.title;
+				document.getElementById("rpt-meta").textContent =
+					M.trendCount + " trend · " + M.tickerCount + " ticker · " + M.articleCount + " articoli analizzati";
+
+				// ── Build filter buttons ──
+				const cats = [...new Set(T.map((t) => t.category))];
+				const sents = [...new Set(T.map((t) => t.sentiment))];
+				const dates = M.dates || [];
+				const sentEmoji = {
+					positive: "\u{1F7E2}",
+					negative: "\u{1F534}",
+					neutral: "\u{1F7E1}",
+				};
+
+				function mkFilters(containerId, items, labelFn, allLabel) {
+					const c = document.getElementById(containerId);
+					const ab = document.createElement("button");
+					ab.className = "fb on";
+					ab.dataset.v = "all";
+					ab.textContent = allLabel;
+					c.appendChild(ab);
+					items.forEach((v) => {
+						const b = document.createElement("button");
+						b.className = "fb";
+						b.dataset.v = v;
+						b.innerHTML = labelFn(v);
+						c.appendChild(b);
+					});
+					c.addEventListener("click", (e) => {
+						const b = e.target.closest(".fb");
+						if (!b) return;
+						if (b.dataset.v === "all") {
+							c.querySelectorAll(".fb").forEach((x) => x.classList.remove("on"));
+							b.classList.add("on");
+						} else {
+							c.querySelector('[data-v="all"]').classList.remove("on");
+							b.classList.toggle("on");
+							if (!c.querySelector(".fb.on")) c.querySelector('[data-v="all"]').classList.add("on");
+						}
+						applyFilters();
+					});
+				}
+				var catCounts = {};
+				T.forEach(function (tr) {
+					catCounts[tr.category] = (catCounts[tr.category] || 0) + 1;
+				});
+				mkFilters(
+					"cat-filters",
+					cats,
+					function (v) {
+						return (
+							v.charAt(0).toUpperCase() +
+							v.slice(1) +
+							' <span style="opacity:.5;font-size:.65rem">' +
+							(catCounts[v] || 0) +
+							"</span>"
+						);
+					},
+					"Tutti",
+				);
+				mkFilters("sent-filters", sents, (v) => sentEmoji[v] || v, "Tutti");
+				if (dates.length > 1) mkFilters("date-filters", dates, (v) => v, "Tutte le date");
+
+				function getActive(id) {
+					const btns = [...document.getElementById(id).querySelectorAll(".fb.on")];
+					if (!btns.length) return null;
+					return btns.some((b) => b.dataset.v === "all") ? null : btns.map((b) => b.dataset.v);
+				}
+
+				// ── Render trends ──
+				const root = document.getElementById("trends-root");
+				root.innerHTML = "";
+				T.forEach((tr, ti) => {
+					const sec = document.createElement("section");
+					sec.className = "card";
+					sec.dataset.cat = tr.category;
+					sec.dataset.sent = tr.sentiment;
+					sec.dataset.dates = (tr.detectedDates || []).join(",");
+					sec.dataset.kw = (
+						tr.title +
+						" " +
+						tr.narrative +
+						" " +
+						tr.tickers.join(" ") +
+						" " +
+						(tr.sources || []).map((s) => s.title).join(" ")
+					).toLowerCase();
+
+					let evoHtml = "";
+					if (tr.evolution && EVO_MAP[tr.evolution]) {
+						const [label, cls] = EVO_MAP[tr.evolution];
+						evoHtml = `<span class="evo ${cls}">${label}</span>`;
+					}
+
+					let metricsHtml = "";
+					if (tr.metrics && tr.metrics.length) {
+						metricsHtml =
+							'<div class="kms">' +
+							tr.metrics
+								.map((m) => {
+									const dc = m.delta
+										? m.delta.startsWith("+") || m.delta.startsWith("-")
+											? m.delta.startsWith("+")
+												? 'class="km-delta" style="color:var(--up)"'
+												: 'class="km-delta" style="color:var(--dn)"'
+											: 'class="km-delta"'
+										: 'class="km-delta"';
+									return `<div class="km"><div class="km-label">${m.label}</div><div class="km-val">${m.value}</div>${m.delta ? `<div ${dc}>${m.delta}</div>` : ""}</div>`;
+								})
+								.join("") +
+							"</div>";
+					}
+
+					let tickerCards = tr.tickers
+						.map((sym) => {
+							const tk = TK[sym];
+							if (!tk)
+								return `<div class="tc" data-sym="${sym}"><div class="tt"><span class="tsym">${sym}</span></div><div class="tnm">Dati non disponibili</div></div>`;
+							const cur = tk.currency === "EUR" ? "€" : "$";
+							const cpct = tk.change_pct || 0;
+							const cc = cpct >= 0 ? "var(--up)" : "var(--dn)";
+							const cid = "ch-" + ti + "-" + sym.replace(/[^a-zA-Z0-9]/g, "");
+							const avail = PERIODS.filter((p) => tk.history && tk.history[p.k]);
+							const rangeHtml = avail
+								.map((p) => `<button data-p="${p.k}" ${p.k === "1mo" ? 'class="on"' : ""}>${p.l}</button>`)
+								.join("");
+							return `<div class="tc" data-sym="${sym}">
+      <div class="tt"><span class="tsym">${sym}</span><span class="tprc" style="color:${cc}">${cur}${tk.price}</span></div>
+      <div class="tnm">${tk.name}</div>
+      <div class="tmeta"><span style="color:${cc}">${cpct >= 0 ? "+" : ""}${cpct.toFixed(2)}% oggi</span><span>${tk.sector || ""}</span><span>Vol: ${formatVol(tk.avg_volume)}</span></div>
+      <div class="trng" data-chart="${cid}">${rangeHtml}</div>
+      <div class="cc"><canvas id="${cid}"></canvas></div>
+      <button class="cmpbtn" data-sym="${sym}">&#x1F4CA; Confronta</button>
+    </div>`;
+						})
+						.join("");
+
+					let srcHtml = "";
+					if (tr.sources && tr.sources.length) {
+						srcHtml = `<div class="slbl">Fonti (${tr.sources.length})</div><ul class="slist">${tr.sources.map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title}</a> <span class="sdom">(${s.domain})</span></li>`).join("")}</ul>`;
+					}
+
+					const tEmoji = sentEmoji[tr.sentiment] || "";
+					sec.innerHTML = `<div class="ch"><span class="senti">${tEmoji}</span><h2>${tr.title}</h2>${evoHtml}</div>
+    <div class="cperiod">${tr.period}</div>
+    <div style="font-size:.68rem;color:#4a5268;margin-bottom:.6rem">~${Math.max(1, Math.round(tr.narrative.split(/\s+/).length / 200))} min lettura · ${tr.tickers.length} ticker</div>
+    <div class="collapsible">
+    <p class="narr">${tr.narrative}</p>
+    ${metricsHtml}
+    <div class="tg">${tickerCards}</div>
+    ${srcHtml}
+    </div>`;
+					root.appendChild(sec);
+
+					// Charts created lazily via initCharts()
+				});
+
+				// ── initCharts: called after chart data is loaded ──
+				window.initCharts = function () {
+					T.forEach((tr, ti) => {
+						tr.tickers.forEach((sym) => {
+							const tk = TK[sym];
+							if (!tk || !tk.history) return;
+							const cid = "ch-" + ti + "-" + sym.replace(/[^a-zA-Z0-9]/g, "");
+							const canvas = document.getElementById(cid);
+							if (!canvas || charts[cid]) return; // Already created
+							const defP = tk.history["1mo"] ? "1mo" : Object.keys(tk.history)[0];
+							if (defP) charts[cid] = createChart(canvas, tk, defP, sym);
+						});
+					});
+				};
+				// If history data already exists (legacy format), init charts now
+				var hasHistory = T.some((tr) =>
+					tr.tickers.some((sym) => TK[sym] && TK[sym].history && Object.keys(TK[sym].history).length > 0),
+				);
+				if (hasHistory) window.initCharts();
+
+				// ── Time range switching ──
+				document.addEventListener("click", (e) => {
+					const btn = e.target.closest(".trng button");
+					if (!btn) return;
+					const wrap = btn.parentElement;
+					const cid = wrap.dataset.chart;
+					const period = btn.dataset.p;
+					wrap.querySelectorAll("button").forEach((b) => b.classList.remove("on"));
+					btn.classList.add("on");
+					const sym = wrap.closest(".tc").dataset.sym;
+					const tk = TK[sym];
+					if (!tk) return;
+					updateChart(cid, tk, period);
+				});
+
+				// ── Compare buttons ──
+				document.addEventListener("click", (e) => {
+					const cb = e.target.closest(".cmpbtn");
+					if (!cb) return;
+					const sym = cb.dataset.sym;
+					if (cmpTickers.includes(sym)) {
+						cmpTickers = cmpTickers.filter((s) => s !== sym);
+						cb.classList.remove("added");
+					} else if (cmpTickers.length < 5) {
+						cmpTickers.push(sym);
+						cb.classList.add("added");
+					}
+					renderCompare();
+				});
+
+				// ── Chart factory ──
+				const crosshairPlugin = {
+					id: "crosshair",
+					afterDraw(chart) {
+						if (chart._active && chart._active.length) {
+							const x = chart._active[0].element.x;
+							const yA = chart.chartArea;
+							const ctx = chart.ctx;
+							ctx.save();
+							ctx.beginPath();
+							ctx.moveTo(x, yA.top);
+							ctx.lineTo(x, yA.bottom);
+							ctx.lineWidth = 1;
+							ctx.strokeStyle = "rgba(124,158,248,.4)";
+							ctx.setLineDash([4, 3]);
+							ctx.stroke();
+							ctx.restore();
+						}
+					},
+				};
+				Chart.register(crosshairPlugin);
+
+				function createChart(canvas, tk, period, sym) {
+					const h = tk.history[period];
+					if (!h) return null;
+					const color = getLineColor(h.prices);
+					return new Chart(canvas, {
+						type: "line",
+						data: {
+							labels: fmtDates(h.dates, period),
+							datasets: [
+								{
+									data: h.prices,
+									borderColor: color,
+									backgroundColor: color + "18",
+									fill: true,
+									pointRadius: 0,
+									pointHitRadius: 10,
+									pointHoverRadius: 5,
+									pointHoverBackgroundColor: color,
+									borderWidth: 2,
+									tension: 0.3,
+									yAxisID: "y",
+									order: 1,
+								},
+								{
+									type: "bar",
+									data: h.volumes,
+									backgroundColor: "rgba(124,158,248,.08)",
+									borderWidth: 0,
+									yAxisID: "yVol",
+									order: 2,
+								},
+							],
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							animation: false,
+							interaction: {
+								mode: "index",
+								intersect: false,
+							},
+							plugins: {
+								legend: {
+									display: false,
+								},
+								tooltip: {
+									enabled: true,
+									backgroundColor: "#1a1d27",
+									borderColor: "#2d3148",
+									borderWidth: 1,
+									titleColor: "#94a3b8",
+									bodyColor: "#e2e8f0",
+									padding: 10,
+									maxWidth: 400,
+									callbacks: {
+										title: function (items) {
+											var date = items[0] ? items[0].label : "";
+											return tk.name + " (" + sym + ") — " + date;
+										},
+										label: (ctx) => {
+											if (ctx.datasetIndex === 0)
+												return " " + (tk.currency === "EUR" ? "€" : "$") + ctx.parsed.y.toFixed(2);
+											return " Vol: " + formatVol(ctx.parsed.y);
+										},
+									},
+								},
+							},
+							scales: {
+								x: {
+									display: true,
+									ticks: {
+										color: "#4a5268",
+										font: {
+											size: 9,
+										},
+										maxTicksLimit: 8,
+										maxRotation: 0,
+									},
+									grid: {
+										color: "#1e2235",
+									},
+								},
+								y: {
+									display: true,
+									position: "right",
+									ticks: {
+										color: "#4a5268",
+										font: {
+											size: 9,
+										},
+										maxTicksLimit: 5,
+										callback: (v) => (tk.currency === "EUR" ? "€" : "$") + v.toFixed(v >= 100 ? 0 : 2),
+									},
+									grid: {
+										color: "#1e2235",
+									},
+								},
+								yVol: {
+									display: false,
+									position: "left",
+									beginAtZero: true,
+									grid: {
+										display: false,
+									},
+								},
+							},
+						},
+					});
+				}
+
+				function updateChart(cid, tk, period) {
+					const ch = charts[cid];
+					if (!ch) return;
+					const h = tk.history[period];
+					if (!h) return;
+					const color = getLineColor(h.prices);
+					ch.data.labels = fmtDates(h.dates, period);
+					ch.data.datasets[0].data = h.prices;
+					ch.data.datasets[0].borderColor = color;
+					ch.data.datasets[0].backgroundColor = color + "18";
+					ch.data.datasets[0].pointHoverBackgroundColor = color;
+					if (h.volumes) ch.data.datasets[1].data = h.volumes;
+					ch.update();
+				}
+
+				function getLineColor(prices) {
+					if (!prices || prices.length < 2) return "#facc15";
+					return prices[prices.length - 1] >= prices[0] ? "#4ade80" : "#f87171";
+				}
+
+				var MESI = ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"];
+				function fmtDates(dates, period) {
+					return dates.map((d) => {
+						const p = d.split("-");
+						const mm = parseInt(p[1]) - 1;
+						if (period === "5y") return MESI[mm] + " " + p[0].slice(2);
+						if (period === "1y" || period === "6mo") return p[2] + " " + MESI[mm];
+						return p[2] + " " + MESI[mm];
+					});
+				}
+
+				function formatVol(v) {
+					if (!v) return "—";
+					if (v >= 1e9) return (v / 1e9).toFixed(1) + "B";
+					if (v >= 1e6) return (v / 1e6).toFixed(1) + "M";
+					if (v >= 1e3) return (v / 1e3).toFixed(0) + "K";
+					return v.toString();
+				}
+
+				// ── Comparison panel ──
+				function renderCompare() {
+					const panel = document.getElementById("cmp-panel");
+					if (!cmpTickers.length) {
+						panel.classList.remove("show");
+						return;
+					}
+					panel.classList.add("show");
+					const chips = document.getElementById("cmp-chips");
+					const colors = ["#7c9ef8", "#4ade80", "#f87171", "#facc15", "#c084fc"];
+					chips.innerHTML = cmpTickers
+						.map(
+							(s, i) =>
+								`<span class="cmp-chip" style="background:${colors[i]}22;color:${colors[i]}">${s}<button data-rm="${s}">✕</button></span>`,
+						)
+						.join("");
+					// Range buttons
+					const trng = document.getElementById("cmp-trng");
+					trng.innerHTML = PERIODS.map(
+						(p) => `<button data-cp="${p.k}" ${p.k === cmpPeriod ? 'class="on"' : ""}>${p.l}</button>`,
+					).join("");
+					drawCompare();
+				}
+				document.addEventListener("click", (e) => {
+					const rm = e.target.closest("[data-rm]");
+					if (rm) {
+						const s = rm.dataset.rm;
+						cmpTickers = cmpTickers.filter((x) => x !== s);
+						document.querySelectorAll(`.cmpbtn[data-sym="${s}"]`).forEach((b) => b.classList.remove("added"));
+						renderCompare();
+						return;
+					}
+					const cp = e.target.closest("[data-cp]");
+					if (cp) {
+						cmpPeriod = cp.dataset.cp;
+						document
+							.getElementById("cmp-trng")
+							.querySelectorAll("button")
+							.forEach((b) => b.classList.remove("on"));
+						cp.classList.add("on");
+						drawCompare();
+						return;
+					}
+				});
+				document.getElementById("cmp-close").addEventListener("click", () => {
+					cmpTickers = [];
+					document.querySelectorAll(".cmpbtn").forEach((b) => b.classList.remove("added"));
+					renderCompare();
+				});
+
+				function drawCompare() {
+					const canvas = document.getElementById("cmp-canvas");
+					if (cmpChart) {
+						cmpChart.destroy();
+						cmpChart = null;
+					}
+					if (!cmpTickers.length) return;
+					const colors = ["#7c9ef8", "#4ade80", "#f87171", "#facc15", "#c084fc"];
+					const datasets = [];
+					let maxLen = 0;
+					let labels = [];
+					cmpTickers.forEach((sym, i) => {
+						const tk = TK[sym];
+						if (!tk || !tk.history || !tk.history[cmpPeriod]) return;
+						const h = tk.history[cmpPeriod];
+						const base = h.prices[0] || 1;
+						const norm = h.prices.map((p) => ((p - base) / base) * 100);
+						if (h.dates.length > maxLen) {
+							maxLen = h.dates.length;
+							labels = fmtDates(h.dates, cmpPeriod);
+						}
+						datasets.push({
+							label: sym,
+							data: norm,
+							borderColor: colors[i % 5],
+							backgroundColor: "transparent",
+							pointRadius: 0,
+							pointHitRadius: 8,
+							pointHoverRadius: 4,
+							borderWidth: 2,
+							tension: 0.3,
+						});
+					});
+					cmpChart = new Chart(canvas, {
+						type: "line",
+						data: {
+							labels,
+							datasets,
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							animation: false,
+							interaction: {
+								mode: "index",
+								intersect: false,
+							},
+							plugins: {
+								legend: {
+									display: true,
+									labels: {
+										color: "#e2e8f0",
+										font: {
+											size: 11,
+										},
+									},
+								},
+								tooltip: {
+									enabled: true,
+									backgroundColor: "#1a1d27",
+									borderColor: "#2d3148",
+									borderWidth: 1,
+									titleColor: "#94a3b8",
+									bodyColor: "#e2e8f0",
+									callbacks: {
+										label: (ctx) =>
+											ctx.dataset.label + ": " + (ctx.parsed.y >= 0 ? "+" : "") + ctx.parsed.y.toFixed(2) + "%",
+									},
+								},
+							},
+							scales: {
+								x: {
+									display: true,
+									ticks: {
+										color: "#4a5268",
+										font: {
+											size: 9,
+										},
+										maxTicksLimit: 10,
+										maxRotation: 0,
+									},
+									grid: {
+										color: "#1e2235",
+									},
+								},
+								y: {
+									display: true,
+									position: "right",
+									ticks: {
+										color: "#4a5268",
+										font: {
+											size: 9,
+										},
+										callback: (v) => (v >= 0 ? "+" : "") + v.toFixed(1) + "%",
+									},
+									grid: {
+										color: "#1e2235",
+									},
+								},
+							},
+						},
+					});
+				}
+
+				// ── Filtering ──
+				const allCards = [...document.querySelectorAll("#trends-root .card")];
+				const noRes = document.getElementById("no-results");
+				const qInput = document.getElementById("q");
+
+				var applyFilters = (window.applyFilters = function () {
+					const q = qInput.value.trim().toLowerCase();
+					const ac = getActive("cat-filters");
+					const as = getActive("sent-filters");
+					const ad = getActive("date-filters");
+					let visT = 0,
+						visK = 0;
+					allCards.forEach((card) => {
+						const matchCat = !ac || ac.includes(card.dataset.cat);
+						const matchSent = !as || as.includes(card.dataset.sent);
+						const cardDates = (card.dataset.dates || "").split(",").filter(Boolean);
+						const matchDate = !ad || ad.some((d) => cardDates.includes(d));
+						const matchQ = !q || card.dataset.kw.includes(q);
+						const show = matchCat && matchSent && matchDate && matchQ;
+						card.classList.toggle("hide", !show);
+						if (show) visT++;
+						// Per-ticker filtering within card
+						const tcs = card.querySelectorAll(".tc");
+						tcs.forEach((tc) => {
+							if (q && show) {
+								const sym = (tc.dataset.sym || "").toLowerCase();
+								const tnm = (
+									tc.querySelector(".tnm") || {
+										textContent: "",
+									}
+								).textContent.toLowerCase();
+								const match = sym.includes(q) || tnm.includes(q);
+								tc.classList.toggle("dim", !match);
+								if (!tc.classList.contains("dim")) visK++;
+							} else {
+								tc.classList.remove("dim");
+								if (show) visK++;
+							}
+						});
+					});
+					noRes.classList.toggle("hide", visT > 0);
+					document.getElementById("counter").textContent =
+						"Mostra " + visT + " di " + allCards.length + " trend · " + visK + " ticker";
+				});
+				qInput.addEventListener("input", applyFilters);
+				applyFilters();
+
+				// Export
+				var eb = document.getElementById("export-btn");
+				if (eb) {
+					eb.addEventListener("click", function () {
+						var b = new Blob([JSON.stringify(REPORT_DATA, null, 2)], { type: "application/json" });
+						var a = document.createElement("a");
+						a.href = URL.createObjectURL(b);
+						a.download = "stocks-" + M.generatedAt.split(" ")[0] + ".json";
+						a.click();
+					});
+				}
+			}
+		</script>
+		<script src="nav.js"></script>
+		<script src="shared.js"></script>
+	</body>
+</html>

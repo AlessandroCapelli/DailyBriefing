@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="it">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#0d0f15" />
+		<link rel="manifest" href="manifest.json" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<script src="chart.min.js"></script>
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<title>Dashboard | DailyBriefing</title>
+		<style>
+			:root {
+				--bg: #0f1117;
+				--card: #1a1d27;
+				--t1: #e2e8f0;
+				--t2: #94a3b8;
+				--acc: #7c9ef8;
+				--acc2: #a5b9ff;
+				--brd: #2d3148;
+				--r: 12px;
+				--up: #4ade80;
+				--dn: #f87171;
+				--nt: #facc15;
+				--chbg: #141720;
+				--chbrd: #2d3748;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: var(--bg);
+				color: var(--t1);
+				font-family:
+					system-ui,
+					-apple-system,
+					sans-serif;
+				font-size: 16px;
+				line-height: 1.6;
+				padding: 0;
+			}
+
+			.wrap {
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 2rem 1.5rem 4rem;
+			}
+
+			header {
+				margin-bottom: 1.5rem;
+				padding-bottom: 1rem;
+				border-bottom: 1px solid var(--brd);
+			}
+
+			.hlbl {
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--acc);
+				margin-bottom: 0.4rem;
+			}
+
+			header h1 {
+				font-size: 1.6rem;
+				font-weight: 700;
+				margin-bottom: 0.3rem;
+			}
+
+			.hmeta {
+				font-size: 0.82rem;
+				color: var(--t2);
+			}
+
+			/* STATS GRID */
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+				gap: 0.75rem;
+				margin-bottom: 2rem;
+			}
+
+			.stat-card {
+				background: var(--card);
+				border: 1px solid var(--brd);
+				border-radius: var(--r);
+				padding: 1.25rem;
+				text-align: center;
+			}
+
+			.stat-card .val {
+				font-size: 1.6rem;
+				font-weight: 800;
+				color: var(--acc);
+			}
+
+			.stat-card .label {
+				font-size: 0.68rem;
+				color: var(--t2);
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				margin-top: 0.2rem;
+			}
+
+			/* SECTIONS */
+			.section {
+				margin-bottom: 2rem;
+			}
+
+			.section h2 {
+				font-size: 0.75rem;
+				font-weight: 700;
+				color: var(--acc);
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				margin-bottom: 0.75rem;
+				padding-bottom: 0.4rem;
+				border-bottom: 1px solid var(--brd);
+			}
+
+			/* TOP LISTS */
+			.top-list {
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+			}
+
+			.top-item {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				padding: 0.6rem 0.9rem;
+				background: var(--card);
+				border: 1px solid var(--brd);
+				border-radius: 8px;
+			}
+
+			.top-rank {
+				font-size: 0.7rem;
+				font-weight: 700;
+				color: var(--acc);
+				min-width: 20px;
+			}
+
+			.top-name {
+				flex: 1;
+				font-size: 0.85rem;
+				font-weight: 600;
+			}
+
+			.top-val {
+				font-size: 0.82rem;
+				color: var(--t2);
+				font-weight: 600;
+			}
+
+			/* CATEGORY BARS */
+			.cat-bar {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.5rem 0;
+			}
+
+			.cat-name {
+				font-size: 0.82rem;
+				min-width: 100px;
+				color: var(--t2);
+			}
+
+			.cat-fill {
+				height: 6px;
+				border-radius: 3px;
+				background: var(--acc);
+				transition: width 0.3s;
+			}
+
+			.cat-count {
+				font-size: 0.72rem;
+				color: var(--t2);
+				min-width: 30px;
+				text-align: right;
+			}
+
+			/* SENTIMENT */
+			.sent-row {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+
+			.sent-item {
+				text-align: center;
+				padding: 1rem 1.5rem;
+				background: var(--card);
+				border: 1px solid var(--brd);
+				border-radius: var(--r);
+				min-width: 120px;
+			}
+
+			.sent-emoji {
+				font-size: 1.5rem;
+			}
+
+			.sent-val {
+				font-size: 1.3rem;
+				font-weight: 800;
+				margin-top: 0.3rem;
+			}
+
+			.sent-label {
+				font-size: 0.65rem;
+				color: var(--t2);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+			}
+
+			/* EXPORT */
+			.export-bar {
+				display: flex;
+				gap: 0.5rem;
+				flex-wrap: wrap;
+				margin-bottom: 1.5rem;
+			}
+
+			.export-btn {
+				padding: 0.4rem 0.9rem;
+				border-radius: 6px;
+				border: 1px solid var(--brd);
+				background: var(--card);
+				color: var(--t2);
+				font-size: 0.75rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.15s;
+			}
+
+			.export-btn:hover {
+				border-color: var(--acc);
+				color: var(--acc);
+			}
+
+			@keyframes sk-shimmer {
+				0% {
+					background-position: 200% 0;
+				}
+				100% {
+					background-position: -200% 0;
+				}
+			}
+			.sk {
+				background: linear-gradient(90deg, #1a1d27 0%, #252838 30%, #2d3148 50%, #252838 70%, #1a1d27 100%);
+				background-size: 200% 100%;
+				animation: sk-shimmer 1.8s ease-in-out infinite;
+			}
+
+			@media (max-width: 500px) {
+				.wrap {
+					padding: 1rem 0.75rem 3rem;
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<header>
+				<div class="hlbl">Dashboard</div>
+				<h1>Riepilogo</h1>
+			</header>
+
+			<div class="export-bar">
+				<button class="export-btn" id="export-json">Esporta JSON</button>
+				<button class="export-btn" id="export-csv">Esporta CSV Ticker</button>
+				<button class="export-btn" onclick="window.print()">Stampa / PDF</button>
+			</div>
+
+			<div class="stats-grid" id="stats-grid">
+				<div class="sk" style="height: 80px; border-radius: 12px"></div>
+				<div class="sk" style="height: 80px; border-radius: 12px"></div>
+				<div class="sk" style="height: 80px; border-radius: 12px"></div>
+				<div class="sk" style="height: 80px; border-radius: 12px"></div>
+			</div>
+
+			<div class="section" id="sent-section">
+				<h2>Sentiment Trend</h2>
+				<div class="sent-row" id="sent-row"></div>
+			</div>
+
+			<div class="section">
+				<h2>Categorie (articoli totali)</h2>
+				<div id="cat-bars"></div>
+			</div>
+
+			<div class="section">
+				<h2>Articoli per giorno</h2>
+				<div style="position: relative; height: 200px"><canvas id="chart-articles"></canvas></div>
+			</div>
+
+			<div class="section">
+				<h2>Sentiment nel tempo</h2>
+				<div style="position: relative; height: 200px"><canvas id="chart-sentiment"></canvas></div>
+			</div>
+
+			<div class="section">
+				<h2>Top Ticker (variazione % giornaliera)</h2>
+				<div style="position: relative; height: 250px"><canvas id="chart-ticker-perf"></canvas></div>
+			</div>
+
+			<div class="section">
+				<h2>Ticker piu menzionati</h2>
+				<div class="top-list" id="top-tickers"></div>
+			</div>
+
+			<div class="section">
+				<h2>Fonti piu attive</h2>
+				<div class="top-list" id="top-sources"></div>
+			</div>
+		</div>
+
+		<script>
+			(function () {
+				fetch("data/reports.json")
+					.then((r) => r.json())
+					.then(function (manifest) {
+						var dailyDates = manifest.daily || [];
+						var stocksDates = manifest.stocks || [];
+						var promises = [];
+
+						dailyDates.forEach(function (d) {
+							promises.push(
+								fetch("data/daily-" + d + ".json")
+									.then((r) => (r.ok ? r.text() : null))
+									.then(function (t) {
+										return t
+											? {
+													type: "daily",
+													date: d,
+													data: new Function("return " + t)(),
+												}
+											: null;
+									})
+									.catch(function () {
+										return null;
+									}),
+							);
+						});
+						stocksDates.forEach(function (d) {
+							promises.push(
+								fetch("data/stocks-" + d + ".json")
+									.then((r) => (r.ok ? r.text() : null))
+									.then(function (t) {
+										return t
+											? {
+													type: "stocks",
+													date: d,
+													data: new Function("return " + t)(),
+												}
+											: null;
+									})
+									.catch(function () {
+										return null;
+									}),
+							);
+						});
+
+						Promise.all(promises).then(function (results) {
+							// Clear skeleton placeholders
+							document.getElementById("stats-grid").innerHTML = "";
+							var dailies = results.filter(function (r) {
+								return r && r.type === "daily";
+							});
+							var stocks = results.filter(function (r) {
+								return r && r.type === "stocks";
+							});
+							renderDashboard(dailies, stocks, manifest);
+						});
+					})
+					.catch(function () {
+						document.getElementById("stats-grid").innerHTML =
+							'<div style="grid-column:1/-1;text-align:center;color:#f87171;padding:2rem">Errore caricamento dati</div>';
+					});
+
+				function renderDashboard(dailies, stocks, manifest) {
+					// Stats
+					var totalArticles = 0,
+						totalTrends = 0,
+						totalTickers = 0,
+						categories = {},
+						sources = {},
+						tickers = {},
+						sentiments = {
+							positive: 0,
+							negative: 0,
+							neutral: 0,
+						};
+
+					dailies.forEach(function (d) {
+						var data = d.data;
+						if (data.categories) {
+							data.categories.forEach(function (cat) {
+								categories[cat.name] = (categories[cat.name] || 0) + cat.articles.length;
+								totalArticles += cat.articles.length;
+								cat.articles.forEach(function (a) {
+									sources[a.source] = (sources[a.source] || 0) + 1;
+									if (a.extract && a.extract.tickers) {
+										a.extract.tickers.forEach(function (t) {
+											tickers[t] = (tickers[t] || 0) + 1;
+										});
+									}
+								});
+							});
+						}
+					});
+
+					stocks.forEach(function (s) {
+						var data = s.data;
+						if (data.trends) {
+							totalTrends += data.trends.length;
+							data.trends.forEach(function (tr) {
+								if (tr.sentiment) sentiments[tr.sentiment] = (sentiments[tr.sentiment] || 0) + 1;
+								if (tr.tickers) totalTickers += tr.tickers.length;
+								if (tr.tickers) {
+									tr.tickers.forEach(function (t) {
+										tickers[t] = (tickers[t] || 0) + 1;
+									});
+								}
+							});
+						}
+					});
+
+					// Stats grid
+					var sg = document.getElementById("stats-grid");
+					[
+						{
+							v: totalArticles,
+							l: "Articoli",
+						},
+						{
+							v: totalTrends,
+							l: "Trend",
+						},
+						{
+							v: Object.keys(tickers).length,
+							l: "Ticker unici",
+						},
+						{
+							v: Object.keys(sources).length,
+							l: "Fonti",
+						},
+						{
+							v: dailies.length,
+							l: "Daily",
+						},
+						{
+							v: stocks.length,
+							l: "Stocks",
+						},
+						{
+							v: Math.round((JSON.stringify(dailies).length + JSON.stringify(stocks).length) / 1024) + " KB",
+							l: "Dati totali",
+						},
+					].forEach(function (s) {
+						sg.innerHTML +=
+							'<div class="stat-card"><div class="val">' + s.v + '</div><div class="label">' + s.l + "</div></div>";
+					});
+
+					// Sentiment
+					var sr = document.getElementById("sent-row");
+					var semoji = {
+						positive: "\u{1F7E2}",
+						negative: "\u{1F534}",
+						neutral: "\u{1F7E1}",
+					};
+					var slabel = {
+						positive: "Positivo",
+						negative: "Negativo",
+						neutral: "Neutrale",
+					};
+					["positive", "negative", "neutral"].forEach(function (s) {
+						sr.innerHTML +=
+							'<div class="sent-item"><div class="sent-emoji">' +
+							semoji[s] +
+							'</div><div class="sent-val">' +
+							sentiments[s] +
+							'</div><div class="sent-label">' +
+							slabel[s] +
+							"</div></div>";
+					});
+
+					// Category bars
+					var cb = document.getElementById("cat-bars");
+					var maxCat = Math.max.apply(null, Object.values(categories)) || 1;
+					Object.keys(categories)
+						.sort(function (a, b) {
+							return categories[b] - categories[a];
+						})
+						.forEach(function (name) {
+							var pct = Math.round((categories[name] / maxCat) * 100);
+							cb.innerHTML +=
+								'<div class="cat-bar"><span class="cat-name">' +
+								name +
+								'</span><div style="flex:1;background:var(--chbg);border-radius:3px;height:6px"><div class="cat-fill" style="width:' +
+								pct +
+								'%"></div></div><span class="cat-count">' +
+								categories[name] +
+								"</span></div>";
+						});
+
+					// Top tickers
+					var tt = document.getElementById("top-tickers");
+					Object.keys(tickers)
+						.sort(function (a, b) {
+							return tickers[b] - tickers[a];
+						})
+						.slice(0, 10)
+						.forEach(function (t, i) {
+							tt.innerHTML +=
+								'<div class="top-item"><span class="top-rank">#' +
+								(i + 1) +
+								'</span><span class="top-name">' +
+								t +
+								'</span><span class="top-val">' +
+								tickers[t] +
+								"x</span></div>";
+						});
+
+					// Top sources
+					var ts = document.getElementById("top-sources");
+					Object.keys(sources)
+						.sort(function (a, b) {
+							return sources[b] - sources[a];
+						})
+						.slice(0, 10)
+						.forEach(function (s, i) {
+							ts.innerHTML +=
+								'<div class="top-item"><span class="top-rank">#' +
+								(i + 1) +
+								'</span><span class="top-name">' +
+								s +
+								'</span><span class="top-val">' +
+								sources[s] +
+								"x</span></div>";
+						});
+
+					// Articles per day chart
+					var dailyByDate = {};
+					dailies.forEach(function (d) {
+						var count = 0;
+						if (d.data.categories)
+							d.data.categories.forEach(function (c) {
+								count += c.articles.length;
+							});
+						dailyByDate[d.date] = count;
+					});
+					var chartDates = Object.keys(dailyByDate).sort(function (a, b) {
+						var pa = a.split("-").map(Number),
+							pb = b.split("-").map(Number);
+						return new Date(pa[2], pa[1] - 1, pa[0]) - new Date(pb[2], pb[1] - 1, pb[0]);
+					});
+					var chartCanvas = document.getElementById("chart-articles");
+					if (chartCanvas && chartDates.length > 0) {
+						new Chart(chartCanvas, {
+							type: "bar",
+							data: {
+								labels: chartDates.map(function (d) {
+									return d.substring(0, 5);
+								}),
+								datasets: [
+									{
+										data: chartDates.map(function (d) {
+											return dailyByDate[d];
+										}),
+										backgroundColor: "rgba(124,158,248,.3)",
+										borderColor: "#7c9ef8",
+										borderWidth: 1,
+										borderRadius: 4,
+									},
+								],
+							},
+							options: {
+								responsive: true,
+								maintainAspectRatio: false,
+								animation: false,
+								plugins: {
+									legend: { display: false },
+									tooltip: {
+										backgroundColor: "#1a1d27",
+										borderColor: "#2d3148",
+										borderWidth: 1,
+										titleColor: "#94a3b8",
+										bodyColor: "#e2e8f0",
+									},
+								},
+								scales: {
+									x: { display: true, ticks: { color: "#4a5268", font: { size: 10 } }, grid: { color: "#1e2235" } },
+									y: {
+										display: true,
+										beginAtZero: true,
+										ticks: { color: "#4a5268", font: { size: 10 }, stepSize: 5 },
+										grid: { color: "#1e2235" },
+									},
+								},
+							},
+						});
+					}
+
+					// Build tickerDetails (used by charts and CSV export)
+					var tickerDetails = {};
+					stocks.forEach(function (s) {
+						var data = s.data;
+						if (data.tickers) {
+							Object.keys(data.tickers).forEach(function (sym) {
+								var tk = data.tickers[sym];
+								if (!tickerDetails[sym]) {
+									tickerDetails[sym] = {
+										name: tk.name || "",
+										sector: tk.sector || "",
+										currency: tk.currency || "USD",
+										price: tk.price || 0,
+										change_pct: tk.change_pct || 0,
+										mentions: tickers[sym] || 0,
+										trends: [],
+									};
+								}
+								if (tk.price) tickerDetails[sym].price = tk.price;
+								if (tk.change_pct) tickerDetails[sym].change_pct = tk.change_pct;
+							});
+						}
+						if (data.trends) {
+							data.trends.forEach(function (tr) {
+								if (tr.tickers)
+									tr.tickers.forEach(function (sym) {
+										if (tickerDetails[sym] && tickerDetails[sym].trends.indexOf(tr.title) < 0) {
+											tickerDetails[sym].trends.push(tr.title);
+										}
+									});
+							});
+						}
+					});
+
+					// Sentiment over time chart
+					var sentByDate = {};
+					stocks.forEach(function (s) {
+						var d = s.date;
+						sentByDate[d] = { positive: 0, negative: 0, neutral: 0 };
+						if (s.data.trends)
+							s.data.trends.forEach(function (tr) {
+								if (tr.sentiment) sentByDate[d][tr.sentiment] = (sentByDate[d][tr.sentiment] || 0) + 1;
+							});
+					});
+					var sentDates = Object.keys(sentByDate).sort(function (a, b) {
+						var pa = a.split("-").map(Number),
+							pb = b.split("-").map(Number);
+						return new Date(pa[2], pa[1] - 1, pa[0]) - new Date(pb[2], pb[1] - 1, pb[0]);
+					});
+					var sentCanvas = document.getElementById("chart-sentiment");
+					if (sentCanvas && sentDates.length > 0) {
+						new Chart(sentCanvas, {
+							type: "bar",
+							data: {
+								labels: sentDates.map(function (d) {
+									return d.substring(0, 5);
+								}),
+								datasets: [
+									{
+										label: "Positivo",
+										data: sentDates.map(function (d) {
+											return sentByDate[d].positive;
+										}),
+										backgroundColor: "rgba(74,222,128,.5)",
+										borderRadius: 3,
+									},
+									{
+										label: "Negativo",
+										data: sentDates.map(function (d) {
+											return sentByDate[d].negative;
+										}),
+										backgroundColor: "rgba(248,113,113,.5)",
+										borderRadius: 3,
+									},
+									{
+										label: "Neutrale",
+										data: sentDates.map(function (d) {
+											return sentByDate[d].neutral;
+										}),
+										backgroundColor: "rgba(250,204,21,.5)",
+										borderRadius: 3,
+									},
+								],
+							},
+							options: {
+								responsive: true,
+								maintainAspectRatio: false,
+								animation: false,
+								plugins: {
+									legend: { labels: { color: "#e2e8f0", font: { size: 10 } } },
+									tooltip: {
+										backgroundColor: "#1a1d27",
+										borderColor: "#2d3148",
+										borderWidth: 1,
+										titleColor: "#94a3b8",
+										bodyColor: "#e2e8f0",
+									},
+								},
+								scales: {
+									x: { stacked: true, ticks: { color: "#4a5268" }, grid: { color: "#1e2235" } },
+									y: {
+										stacked: true,
+										beginAtZero: true,
+										ticks: { color: "#4a5268", stepSize: 1 },
+										grid: { color: "#1e2235" },
+									},
+								},
+							},
+						});
+					}
+
+					// Top ticker performance chart (bar chart of change_pct)
+					var tickerPerf = [];
+					Object.keys(tickerDetails).forEach(function (sym) {
+						var d = tickerDetails[sym];
+						if (d.price && d.change_pct) tickerPerf.push({ sym: sym, pct: d.change_pct, name: d.name });
+					});
+					tickerPerf.sort(function (a, b) {
+						return b.pct - a.pct;
+					});
+					var perfCanvas = document.getElementById("chart-ticker-perf");
+					if (perfCanvas && tickerPerf.length > 0) {
+						var topN = tickerPerf.slice(0, 15);
+						new Chart(perfCanvas, {
+							type: "bar",
+							data: {
+								labels: topN.map(function (t) {
+									return t.sym;
+								}),
+								datasets: [
+									{
+										data: topN.map(function (t) {
+											return t.pct;
+										}),
+										backgroundColor: topN.map(function (t) {
+											return t.pct >= 0 ? "rgba(74,222,128,.5)" : "rgba(248,113,113,.5)";
+										}),
+										borderColor: topN.map(function (t) {
+											return t.pct >= 0 ? "#4ade80" : "#f87171";
+										}),
+										borderWidth: 1,
+										borderRadius: 3,
+									},
+								],
+							},
+							options: {
+								indexAxis: "y",
+								responsive: true,
+								maintainAspectRatio: false,
+								animation: false,
+								plugins: {
+									legend: { display: false },
+									tooltip: {
+										backgroundColor: "#1a1d27",
+										borderColor: "#2d3148",
+										borderWidth: 1,
+										titleColor: "#94a3b8",
+										bodyColor: "#e2e8f0",
+										callbacks: {
+											label: function (ctx) {
+												var t = topN[ctx.dataIndex];
+												return t.name + " " + t.pct.toFixed(2) + "%";
+											},
+										},
+									},
+								},
+								scales: {
+									x: {
+										ticks: {
+											color: "#4a5268",
+											callback: function (v) {
+												return v + "%";
+											},
+										},
+										grid: { color: "#1e2235" },
+									},
+									y: { ticks: { color: "#e2e8f0", font: { size: 10 } }, grid: { display: false } },
+								},
+							},
+						});
+					}
+
+					// Export JSON
+					document.getElementById("export-json").addEventListener("click", function () {
+						var exportData = {
+							dailies: dailies.map(function (d) {
+								return {
+									date: d.date,
+									data: d.data,
+								};
+							}),
+							stocks: stocks.map(function (s) {
+								return {
+									date: s.date,
+									data: s.data,
+								};
+							}),
+						};
+						var blob = new Blob([JSON.stringify(exportData, null, 2)], {
+							type: "application/json",
+						});
+						var a = document.createElement("a");
+						a.href = URL.createObjectURL(blob);
+						a.download = "dailybriefing-export.json";
+						a.click();
+					});
+
+					// Export CSV (uses tickerDetails built above)
+
+					function csvQ(s) {
+						return '"' + (s || "").toString().replace(/"/g, '""') + '"';
+					}
+					document.getElementById("export-csv").addEventListener("click", function () {
+						var rows = ["Ticker,Nome,Settore,Valuta,Prezzo,Variazione %,Menzioni,Trend associati"];
+						Object.keys(tickerDetails)
+							.sort(function (a, b) {
+								return (tickers[b] || 0) - (tickers[a] || 0);
+							})
+							.forEach(function (sym) {
+								var d = tickerDetails[sym];
+								rows.push(
+									[
+										csvQ(sym),
+										csvQ(d.name),
+										csvQ(d.sector),
+										csvQ(d.currency),
+										d.price,
+										d.change_pct,
+										d.mentions,
+										csvQ(d.trends.join("; ")),
+									].join(","),
+								);
+							});
+						Object.keys(tickers).forEach(function (sym) {
+							if (!tickerDetails[sym]) {
+								rows.push([csvQ(sym), "", "", "", "", "", tickers[sym], ""].join(","));
+							}
+						});
+						var blob = new Blob([rows.join("\n")], { type: "text/csv" });
+						var a = document.createElement("a");
+						a.href = URL.createObjectURL(blob);
+						a.download = "tickers-report.csv";
+						a.click();
+					});
+				}
+			})();
+		</script>
+		<script src="nav.js"></script>
+		<script src="shared.js"></script>
+	</body>
+</html>

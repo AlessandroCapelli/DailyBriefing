@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="it">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#0d0f15" />
+		<link rel="manifest" href="manifest.json" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<title>Daily Briefing</title>
+		<style>
+			:root {
+				--bg: #0f1117;
+				--card: #1a1d27;
+				--card-yt: #1a1520;
+				--card-other: #161820;
+				--t1: #e2e8f0;
+				--t2: #94a3b8;
+				--acc: #7c9ef8;
+				--acc2: #a5b9ff;
+				--brd: #2d3148;
+				--brd-yt: #3d2040;
+				--brd-other: #252838;
+				--r: 12px;
+				--font: system-ui, -apple-system, sans-serif;
+				--up: #4ade80;
+				--dn: #f87171;
+				--nt: #facc15;
+				--chbg: #141720;
+				--chbrd: #2d3748;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: var(--bg);
+				color: var(--t1);
+				font-family:
+					system-ui,
+					-apple-system,
+					sans-serif;
+				font-size: 16px;
+				line-height: 1.6;
+				padding: 0;
+			}
+
+			.wrap {
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 2rem 1.5rem 4rem;
+			}
+
+			header {
+				margin-bottom: 1rem;
+				padding-bottom: 1rem;
+				border-bottom: 1px solid var(--brd);
+			}
+
+			.hlbl {
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--acc);
+				margin-bottom: 0.4rem;
+			}
+
+			header h1 {
+				font-size: 1.6rem;
+				font-weight: 700;
+				margin-bottom: 0.3rem;
+			}
+
+			.hmeta {
+				font-size: 0.82rem;
+				color: var(--t2);
+			}
+
+			.ctrl {
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				background: var(--bg);
+				padding: 0.75rem 0;
+				margin-bottom: 1.25rem;
+				border-bottom: 1px solid var(--brd);
+			}
+
+			.ctrl-inner {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
+				align-items: center;
+				padding: 0.75rem 1rem;
+				background: var(--card);
+				border: 1px solid var(--brd);
+				border-radius: var(--r);
+			}
+
+			.srch {
+				position: relative;
+				flex: 1;
+				min-width: 200px;
+			}
+
+			.srch input {
+				width: 100%;
+				padding: 0.45rem 0.7rem 0.45rem 2rem;
+				background: var(--chbg);
+				border: 1px solid var(--chbrd);
+				border-radius: 8px;
+				color: var(--t1);
+				font-size: 0.85rem;
+				outline: none;
+			}
+
+			.srch input:focus {
+				border-color: var(--acc);
+			}
+
+			.srch input::placeholder {
+				color: var(--t2);
+			}
+
+			.srch::before {
+				content: "⌕";
+				position: absolute;
+				left: 0.65rem;
+				top: 50%;
+				transform: translateY(-55%);
+				color: var(--t2);
+				font-size: 0.8rem;
+				line-height: 1;
+				pointer-events: none;
+			}
+
+			.fg {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.35rem;
+			}
+
+			.fb {
+				padding: 0.25rem 0.65rem;
+				border-radius: 6px;
+				border: 1px solid var(--brd);
+				background: #141720;
+				color: var(--t2);
+				font-size: 0.75rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.15s;
+				user-select: none;
+			}
+
+			.fb:hover {
+				border-color: var(--acc);
+				color: var(--acc);
+			}
+
+			.fb.on {
+				background: var(--acc);
+				border-color: var(--acc);
+				color: #0f1117;
+			}
+
+			.counter {
+				font-size: 0.75rem;
+				color: var(--t2);
+				margin-left: auto;
+				white-space: nowrap;
+			}
+
+			.fin-toggle {
+				display: flex;
+				align-items: center;
+				gap: 0.35rem;
+				font-size: 0.75rem;
+				color: var(--t2);
+				cursor: pointer;
+				user-select: none;
+			}
+
+			.fin-toggle input {
+				accent-color: var(--acc);
+			}
+
+			.card {
+				background: var(--card);
+				border: 1px solid var(--brd);
+				border-radius: var(--r);
+				padding: 1.75rem 2rem;
+				margin-bottom: 1.5rem;
+				transition: opacity 0.2s;
+			}
+
+			.card.hide {
+				display: none;
+			}
+
+			.card.yt {
+				background: var(--card-yt);
+				border-color: var(--brd-yt);
+			}
+
+			.card.other {
+				background: var(--card-other);
+				border-color: var(--brd-other);
+				opacity: 0.85;
+			}
+
+			.other-badge {
+				font-size: 0.65rem;
+				font-weight: 600;
+				padding: 0.2rem 0.55rem;
+				border-radius: 5px;
+				background: rgba(148, 163, 184, 0.12);
+				color: var(--t2);
+				letter-spacing: 0.04em;
+			}
+
+			.evo-badge {
+				font-size: 0.65rem;
+				font-weight: 600;
+				padding: 0.15rem 0.5rem;
+				border-radius: 5px;
+				margin-left: 0.5rem;
+			}
+
+			.evo-new {
+				background: rgba(124, 158, 248, 0.15);
+				color: var(--acc);
+			}
+
+			.evo-cont {
+				background: rgba(148, 163, 184, 0.12);
+				color: var(--t2);
+			}
+
+			.evo-exp {
+				background: rgba(74, 222, 128, 0.12);
+				color: #4ade80;
+			}
+
+			.evo-red {
+				background: rgba(248, 113, 113, 0.12);
+				color: #f87171;
+			}
+
+			.card-hdr {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				margin-bottom: 0.75rem;
+			}
+
+			.emoji {
+				font-size: 1.25rem;
+			}
+
+			.card-hdr h2 {
+				font-size: 1.1rem;
+				font-weight: 700;
+				flex: 1;
+			}
+
+			.yt-badge {
+				font-size: 0.65rem;
+				font-weight: 700;
+				padding: 0.2rem 0.55rem;
+				border-radius: 5px;
+				background: #dc2626;
+				color: #fff;
+				letter-spacing: 0.04em;
+			}
+
+			.summary {
+				font-size: 0.9rem;
+				color: var(--t2);
+				line-height: 1.75;
+				margin-bottom: 1rem;
+			}
+
+			.links {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+			}
+
+			.links li {
+				font-size: 0.85rem;
+				line-height: 1.55;
+				padding: 0.3rem 0.5rem;
+				border-radius: 6px;
+				transition: background 0.12s;
+			}
+
+			.links li:hover {
+				background: rgba(124, 158, 248, 0.06);
+			}
+
+			.links li.fin {
+				border-left: 2px solid var(--acc);
+				padding-left: 0.75rem;
+			}
+
+			.links li.dim {
+				opacity: 0.2;
+			}
+
+			.links a {
+				color: var(--acc);
+				text-decoration: none;
+			}
+
+			.links a:hover {
+				color: var(--acc2);
+				text-decoration: underline;
+			}
+
+			.src {
+				color: var(--t2);
+				font-size: 0.75rem;
+			}
+
+			.fin-tag {
+				font-size: 0.6rem;
+				font-weight: 600;
+				padding: 0.1rem 0.35rem;
+				border-radius: 3px;
+				background: rgba(124, 158, 248, 0.12);
+				color: var(--acc);
+				margin-left: 0.4rem;
+				vertical-align: middle;
+			}
+
+			.links li[data-impact="high"] {
+				border-left: 3px solid #f87171 !important;
+				padding-left: 0.75rem;
+				background: rgba(248, 113, 113, 0.06) !important;
+				border-radius: 6px;
+			}
+
+			.hi-alert {
+				font-size: 0.6rem;
+				font-weight: 700;
+				padding: 0.15rem 0.45rem;
+				border-radius: 4px;
+				background: rgba(248, 113, 113, 0.15);
+				color: #f87171;
+				margin-left: 0.4rem;
+				vertical-align: middle;
+				letter-spacing: 0.04em;
+			}
+
+			.no-res {
+				display: none;
+				text-align: center;
+				color: var(--t2);
+				padding: 3rem 1rem;
+				font-size: 0.95rem;
+			}
+
+			footer {
+			}
+
+			.collapse-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.3rem;
+				padding: 0.2rem 0.5rem;
+				border-radius: 5px;
+				border: 1px solid #2d3148;
+				background: transparent;
+				color: #94a3b8;
+				font-size: 0.65rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.12s;
+				float: right;
+				margin-top: -0.2rem;
+			}
+			.collapse-btn:hover {
+				border-color: #7c9ef8;
+				color: #7c9ef8;
+			}
+			.collapsible {
+				overflow: hidden;
+				transition:
+					max-height 0.3s ease,
+					opacity 0.2s ease;
+			}
+			.collapsible.collapsed {
+				max-height: 0 !important;
+				opacity: 0;
+				margin: 0;
+				padding: 0;
+			}
+
+			@media (max-width: 500px) {
+				.wrap {
+					padding: 1rem 0.75rem 3rem;
+				}
+			}
+
+			@keyframes sk-shimmer {
+				0% {
+					background-position: 200% 0;
+				}
+				100% {
+					background-position: -200% 0;
+				}
+			}
+			.sk {
+				background: linear-gradient(90deg, #1a1d27 0%, #252838 30%, #2d3148 50%, #252838 70%, #1a1d27 100%);
+				background-size: 200% 100%;
+				animation: sk-shimmer 1.8s ease-in-out infinite;
+				border-radius: 8px;
+			}
+			.sk-card {
+				height: 180px;
+				margin-bottom: 1.25rem;
+				border-radius: 12px;
+			}
+			.sk-wrap {
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 2rem 1.5rem;
+			}
+
+			.loading {
+				padding: 0;
+				color: var(--t2);
+				font-size: 0.9rem;
+			}
+
+			.error {
+				text-align: center;
+				padding: 4rem 1rem;
+				color: #f87171;
+				font-size: 0.9rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<header>
+				<div class="hlbl">Briefing quotidiano</div>
+				<h1 id="rpt-title"></h1>
+				<div class="hmeta" id="rpt-meta"></div>
+			</header>
+			<div class="ctrl">
+				<div class="ctrl-inner">
+					<div class="srch">
+						<input type="text" id="q" placeholder="Cerca articoli, fonti, temi…" autocomplete="off" />
+					</div>
+					<div class="fg" id="cat-filters"></div>
+					<label class="fin-toggle">
+						<input type="checkbox" id="fin-only" />
+						Solo finanza
+					</label>
+					<label class="fin-toggle">
+						<input type="checkbox" id="hi-only" />
+						Solo alert
+					</label>
+					<span class="counter" id="counter"></span>
+				</div>
+			</div>
+			<div id="cards-root">
+				<div class="sk sk-card" style="height: 120px"></div>
+				<div class="sk sk-card" style="height: 200px"></div>
+				<div class="sk sk-card" style="height: 160px"></div>
+				<div class="sk sk-card" style="height: 180px"></div>
+			</div>
+			<div id="no-results" class="no-res">Nessun risultato.</div>
+			<div style="text-align: right; margin-bottom: 1rem; display: flex; gap: 0.5rem; justify-content: flex-end">
+				<button
+					id="export-btn"
+					style="
+						padding: 0.35rem 0.8rem;
+						border-radius: 6px;
+						border: 1px solid #2d3148;
+						background: #1a1d27;
+						color: #94a3b8;
+						font-size: 0.72rem;
+						font-weight: 600;
+						cursor: pointer;
+					"
+				>
+					Esporta JSON
+				</button>
+				<button
+					onclick="window.print()"
+					style="
+						padding: 0.35rem 0.8rem;
+						border-radius: 6px;
+						border: 1px solid #2d3148;
+						background: #1a1d27;
+						color: #94a3b8;
+						font-size: 0.72rem;
+						font-weight: 600;
+						cursor: pointer;
+					"
+				>
+					Stampa / PDF
+				</button>
+				<button
+					id="copy-link"
+					style="
+						padding: 0.35rem 0.8rem;
+						border-radius: 6px;
+						border: 1px solid #2d3148;
+						background: #1a1d27;
+						color: #94a3b8;
+						font-size: 0.72rem;
+						font-weight: 600;
+						cursor: pointer;
+					"
+				>
+					Copia link
+				</button>
+			</div>
+			<footer></footer>
+		</div>
+		<div id="loading" style="display: none"></div>
+		<script>
+			function showError(t, m) {
+				console.error("DailyBriefing error:", t, m);
+				location.replace("404.html");
+			}
+			(function () {
+				var params = new URLSearchParams(location.search);
+				var date = params.get("d");
+				if (!date) {
+					// Redirect to latest available report
+					fetch("data/reports.json")
+						.then(function (r) {
+							return r.json();
+						})
+						.then(function (rp) {
+							var dates = (rp.daily || []).slice().sort(function (a, b) {
+								var pa = a.split("-").map(Number),
+									pb = b.split("-").map(Number);
+								return new Date(pb[2], pb[1] - 1, pb[0]) - new Date(pa[2], pa[1] - 1, pa[0]);
+							});
+							if (dates.length) location.replace("daily.html?d=" + dates[0]);
+							else location.replace("404.html");
+						})
+						.catch(function () {
+							location.replace("404.html");
+						});
+					return;
+				}
+				document.title = "Daily Briefing - " + date;
+				fetch("data/daily-" + date + ".json")
+					.then(function (r) {
+						if (!r.ok) throw new Error("Report non trovato per " + date);
+						return r.text();
+					})
+					.then(function (text) {
+						// Parse as JS object (may have unquoted keys, trailing commas)
+						var DAILY_DATA = new Function("return " + text)();
+						window.DAILY_DATA = DAILY_DATA;
+						document.getElementById("loading").style.display = "none";
+						try {
+							initReport(DAILY_DATA);
+						} catch (err) {
+							showError("Errore rendering", "Il report contiene dati non validi: " + err.message);
+						}
+					})
+					.catch(function (e) {
+						showError("Report non trovato", e.message);
+					});
+			})();
+
+			function initReport(DAILY_DATA) {
+				const D = DAILY_DATA,
+					M = D.meta,
+					C = D.categories;
+
+				document.getElementById("rpt-title").textContent = M.dayOfWeek + ", " + M.fullDate;
+				document.getElementById("rpt-meta").textContent =
+					"Generato alle " +
+					M.time +
+					" · " +
+					M.categoryCount +
+					" categorie · " +
+					M.articleCount +
+					" articoli · " +
+					M.deepDiveCount +
+					" approfonditi · " +
+					M.sourceCount +
+					" fonti";
+
+				const catC = document.getElementById("cat-filters");
+				const allBtn = document.createElement("button");
+				allBtn.className = "fb on";
+				allBtn.dataset.v = "all";
+				allBtn.textContent = "Tutti";
+				catC.appendChild(allBtn);
+				C.forEach((c) => {
+					const b = document.createElement("button");
+					b.className = "fb";
+					b.dataset.v = c.id;
+					b.innerHTML =
+						c.emoji + " " + c.name + ' <span style="opacity:.5;font-size:.65rem">' + c.articles.length + "</span>";
+					catC.appendChild(b);
+				});
+				catC.addEventListener("click", (e) => {
+					const b = e.target.closest(".fb");
+					if (!b) return;
+					if (b.dataset.v === "all") {
+						catC.querySelectorAll(".fb").forEach((x) => x.classList.remove("on"));
+						b.classList.add("on");
+					} else {
+						catC.querySelector('[data-v="all"]').classList.remove("on");
+						b.classList.toggle("on");
+						if (!catC.querySelector(".fb.on")) catC.querySelector('[data-v="all"]').classList.add("on");
+					}
+					applyFilters();
+				});
+
+				const root = document.getElementById("cards-root");
+				root.innerHTML = "";
+				C.forEach((cat) => {
+					const sec = document.createElement("section");
+					sec.className = "card" + (cat.isYoutube ? " yt" : "") + (cat.isOther ? " other" : "");
+					sec.dataset.cat = cat.id;
+					sec.dataset.kw = (
+						cat.name +
+						" " +
+						(cat.summary || "") +
+						" " +
+						cat.articles.map((a) => a.title + " " + a.source).join(" ")
+					).toLowerCase();
+
+					const badge = cat.isYoutube
+						? '<span class="yt-badge">&#9654; YouTube</span>'
+						: cat.isOther
+							? '<span class="other-badge">Minori</span>'
+							: "";
+					const evoMap = {
+						continuation: ["Continua", "evo-cont"],
+						new: ["Novita'", "evo-new"],
+						acceleration: ["In espansione", "evo-exp"],
+						reversal: ["In calo", "evo-red"],
+					};
+					const evoBadge =
+						cat.evolution && evoMap[cat.evolution]
+							? '<span class="evo-badge ' + evoMap[cat.evolution][1] + '">' + evoMap[cat.evolution][0] + "</span>"
+							: "";
+					let hdr =
+						'<div class="card-hdr"><span class="emoji">' +
+						cat.emoji +
+						"</span><h2>" +
+						cat.name +
+						"</h2>" +
+						evoBadge +
+						badge +
+						"</div>";
+					var wordCount = (
+						(cat.summary || "") +
+						" " +
+						cat.articles
+							.map(function (a) {
+								return a.title;
+							})
+							.join(" ")
+					).split(/\s+/).length;
+					var readMin = Math.max(1, Math.round(wordCount / 200));
+					var readTag = !cat.isYoutube
+						? '<div style="font-size:.68rem;color:#4a5268;margin-bottom:.6rem">~' +
+							readMin +
+							" min lettura · " +
+							cat.articles.length +
+							" articoli</div>"
+						: "";
+					let summ = cat.summary ? '<p class="summary">' + cat.summary + "</p>" : "";
+					let links =
+						'<ul class="links">' +
+						cat.articles
+							.map((a) => {
+								const finCls = a.financial ? " fin" : "";
+								const finTag = a.financial ? '<span class="fin-tag">Fin</span>' : "";
+								const hiTag = a.impact === "high" ? '<span class="hi-alert">ALERT</span>' : "";
+								return (
+									'<li class="' +
+									finCls +
+									'" data-fin="' +
+									a.financial +
+									'" data-impact="' +
+									(a.impact || "normal") +
+									'" data-kw="' +
+									(a.title + " " + a.source).toLowerCase() +
+									'"><a href="' +
+									a.url +
+									'" target="_blank" rel="noopener noreferrer">' +
+									a.title +
+									'</a> <span class="src">(' +
+									a.source +
+									")</span>" +
+									finTag +
+									hiTag +
+									"</li>"
+								);
+							})
+							.join("") +
+						"</ul>";
+
+					sec.innerHTML = hdr + readTag + '<div class="collapsible">' + summ + links + "</div>";
+					root.appendChild(sec);
+				});
+
+				const allCards = [...document.querySelectorAll("#cards-root .card")];
+				const noRes = document.getElementById("no-results");
+				const qInput = document.getElementById("q");
+				const finOnly = document.getElementById("fin-only");
+				const hiOnly = document.getElementById("hi-only");
+
+				function getActive() {
+					const btns = [...catC.querySelectorAll(".fb.on")];
+					return btns.some((b) => b.dataset.v === "all") ? null : btns.map((b) => b.dataset.v);
+				}
+
+				var applyFilters = (window.applyFilters = function () {
+					const q = qInput.value.trim().toLowerCase();
+					const ac = getActive();
+					const fin = finOnly.checked;
+					const hi = hiOnly.checked;
+					let visCards = 0,
+						visArticles = 0,
+						totArticles = 0;
+
+					allCards.forEach((card) => {
+						const matchCat = !ac || ac.includes(card.dataset.cat);
+						const matchQ = !q || card.dataset.kw.includes(q);
+						const show = matchCat && matchQ;
+
+						const lis = card.querySelectorAll(".links li");
+						let visInCard = 0;
+						lis.forEach((li) => {
+							totArticles++;
+							const matchFin = !fin || li.dataset.fin === "true";
+							const matchHi = !hi || li.dataset.impact === "high";
+							const matchLiQ = !q || li.dataset.kw.includes(q);
+							const liShow = matchFin && matchLiQ && matchHi;
+							li.classList.toggle("dim", !liShow);
+							if (liShow && show) {
+								visInCard++;
+								visArticles++;
+							}
+						});
+
+						const cardVisible = show && ((!fin && !hi) || visInCard > 0);
+						card.classList.toggle("hide", !cardVisible);
+						if (cardVisible) visCards++;
+					});
+
+					noRes.style.display = visCards === 0 ? "block" : "none";
+					document.getElementById("counter").textContent = visCards + " categorie · " + visArticles + " articoli";
+				});
+
+				qInput.addEventListener("input", applyFilters);
+				finOnly.addEventListener("change", applyFilters);
+				hiOnly.addEventListener("change", applyFilters);
+				applyFilters();
+
+				// Export
+				var eb = document.getElementById("export-btn");
+				if (eb) {
+					eb.addEventListener("click", function () {
+						var b = new Blob([JSON.stringify(DAILY_DATA, null, 2)], { type: "application/json" });
+						var a = document.createElement("a");
+						a.href = URL.createObjectURL(b);
+						a.download = "daily-" + M.date + ".json";
+						a.click();
+					});
+				}
+			}
+		</script>
+		<script src="nav.js"></script>
+		<script src="shared.js"></script>
+	</body>
+</html>
