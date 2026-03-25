@@ -1,27 +1,11 @@
 {
 	"meta": {
-		"title": "Analisi 5 giorni -- 23-03-2026",
+		"title": "Analisi 5 giorni — 23-03-2026",
 		"dates": ["23/03", "22/03", "21/03", "20/03", "19/03"],
 		"trendCount": 7,
 		"tickerCount": 21,
 		"articleCount": 25,
-		"generatedAt": "23-03-2026 11:10",
-		"availableReports": {
-			"daily": [
-				"19-03-2026",
-				"20-03-2026",
-				"21-03-2026",
-				"22-03-2026",
-				"23-03-2026"
-			],
-			"stocks": [
-				"19-03-2026",
-				"20-03-2026",
-				"21-03-2026",
-				"22-03-2026",
-				"23-03-2026"
-			]
-		}
+		"generatedAt": "23-03-2026 11:10"
 	},
 	"trends": [
 		{
@@ -183,7 +167,7 @@
 			"evolution": "continuation",
 			"period": "20-03-2026 -> 23-03-2026",
 			"detectedDates": ["23/03", "22/03", "21/03", "20/03"],
-			"narrative": "La scadenza del brevetto di Ozempic (semaglutide) il 21 marzo 2026 in sei paesi che ospitano il 40% della popolazione mondiale continua a generare pressione su Novo Nordisk. I mercati interessati -- Cina, India, Brasile, Turchia, Sudafrica e Canada -- rappresentano una base potenziale enorme per i generici, con dieci aziende farmaceutiche cinesi già in fase avanzata di approvazione.<br><br>L'impatto sui prezzi potrebbe essere drammatico: da centinaia di euro al mese a poche decine per trattamento. Novo Nordisk, che a metà 2024 era la società europea con il maggior valore in borsa, ha già subito un forte crollo azionario per la crescente competizione di Eli Lilly con Mounjaro e Zepbound. NVO quota $36,53 (-1,48%), un livello che riflette sia la concorrenza che la prospettiva della genericizzazione.<br><br>La dinamica competitiva resta complessa. I brevetti in USA e Europa rimangono validi oltre il 2030, proteggendo i mercati più remunerativi. Tuttavia, l'accesso ai generici nei paesi emergenti potrebbe generare evidenze di efficacia a costi ridotti che aumenteranno la pressione politica per licenze obbligatorie anche nei paesi sviluppati. Eli Lilly (LLY a $906,70) mantiene un profilo di rischio-rendimento più equilibrato grazie a un pipeline diversificato che include trattamenti per Alzheimer e oncologia.<br><br>Il mercato globale dei farmaci GLP-1 vale oltre 30 miliardi di dollari annui e rappresenta il segmento a crescita più rapida dell'industria farmaceutica. L'apertura dei mercati emergenti accelererà l'adozione globale ma comprimerà i margini nel lungo termine per tutti gli operatori del settore.",
+			"narrative": "La scadenza del brevetto di Ozempic (semaglutide) il 21 marzo 2026 in sei paesi che ospitano il 40% della popolazione mondiale continua a generare pressione su Novo Nordisk. I mercati interessati — Cina, India, Brasile, Turchia, Sudafrica e Canada — rappresentano una base potenziale enorme per i generici, con dieci aziende farmaceutiche cinesi già in fase avanzata di approvazione.<br><br>L'impatto sui prezzi potrebbe essere drammatico: da centinaia di euro al mese a poche decine per trattamento. Novo Nordisk, che a metà 2024 era la società europea con il maggior valore in borsa, ha già subito un forte crollo azionario per la crescente competizione di Eli Lilly con Mounjaro e Zepbound. NVO quota $36,53 (-1,48%), un livello che riflette sia la concorrenza che la prospettiva della genericizzazione.<br><br>La dinamica competitiva resta complessa. I brevetti in USA e Europa rimangono validi oltre il 2030, proteggendo i mercati più remunerativi. Tuttavia, l'accesso ai generici nei paesi emergenti potrebbe generare evidenze di efficacia a costi ridotti che aumenteranno la pressione politica per licenze obbligatorie anche nei paesi sviluppati. Eli Lilly (LLY a $906,70) mantiene un profilo di rischio-rendimento più equilibrato grazie a un pipeline diversificato che include trattamenti per Alzheimer e oncologia.<br><br>Il mercato globale dei farmaci GLP-1 vale oltre 30 miliardi di dollari annui e rappresenta il segmento a crescita più rapida dell'industria farmaceutica. L'apertura dei mercati emergenti accelererà l'adozione globale ma comprimerà i margini nel lungo termine per tutti gli operatori del settore.",
 			"metrics": [
 				{ "label": "NVO", "value": "$36.53", "delta": "-1.48%" },
 				{ "label": "LLY", "value": "$906.70", "delta": "-1.18%" },

@@ -5,11 +5,7 @@
 		"trendCount": 6,
 		"tickerCount": 12,
 		"articleCount": 25,
-		"generatedAt": "21-03-2026 21:45",
-		"availableReports": {
-			"daily": ["20-03-2026", "21-03-2026"],
-			"stocks": ["20-03-2026", "21-03-2026"]
-		}
+		"generatedAt": "21-03-2026 21:45"
 	},
 	"trends": [
 		{

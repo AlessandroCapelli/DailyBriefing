@@ -628,7 +628,6 @@
 				</div>
 				<div class="fg" id="cat-filters"></div>
 				<div class="fg" id="sent-filters"></div>
-				<div class="fg" id="date-filters"></div>
 				<span class="counter" id="counter"></span>
 			</div>
 		</div>
@@ -890,7 +889,6 @@
 				"Tutti",
 			);
 			mkFilters("sent-filters", sents, (v) => sentEmoji[v] || v, "Tutti");
-			if (dates.length > 1) mkFilters("date-filters", dates, (v) => v, "Tutte le date");
 
 			function getActive(id) {
 				const btns = [...document.getElementById(id).querySelectorAll(".fb.on")];
@@ -1379,16 +1377,13 @@
 				const q = qInput.value.trim().toLowerCase();
 				const ac = getActive("cat-filters");
 				const as = getActive("sent-filters");
-				const ad = getActive("date-filters");
 				let visT = 0,
 					visK = 0;
 				allCards.forEach((card) => {
 					const matchCat = !ac || ac.includes(card.dataset.cat);
 					const matchSent = !as || as.includes(card.dataset.sent);
-					const cardDates = (card.dataset.dates || "").split(",").filter(Boolean);
-					const matchDate = !ad || ad.some((d) => cardDates.includes(d));
 					const matchQ = !q || card.dataset.kw.includes(q);
-					const show = matchCat && matchSent && matchDate && matchQ;
+					const show = matchCat && matchSent && matchQ;
 					card.classList.toggle("hide", !show);
 					if (show) visT++;
 					// Per-ticker filtering within card

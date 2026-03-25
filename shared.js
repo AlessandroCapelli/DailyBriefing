@@ -278,9 +278,7 @@ var DB_VERSION = "1.0";
 		function checkFilters() {
 			var active = 0;
 			document
-				.querySelectorAll(
-					"#cat-filters .fb.on, #sent-filters .fb.on, #date-filters .fb.on",
-				)
+				.querySelectorAll("#cat-filters .fb.on, #sent-filters .fb.on")
 				.forEach(function (b) {
 					if (b.dataset.v !== "all") active++;
 				});
@@ -302,7 +300,7 @@ var DB_VERSION = "1.0";
 						// Reset all filters
 						document
 							.querySelectorAll(
-								"#cat-filters .fb, #sent-filters .fb, #date-filters .fb",
+								"#cat-filters .fb, #sent-filters .fb",
 							)
 							.forEach(function (b) {
 								b.classList.toggle("on", b.dataset.v === "all");
@@ -360,7 +358,7 @@ var DB_VERSION = "1.0";
 				});
 			// Also listen for clicks on filter button groups
 			document
-				.querySelectorAll("#cat-filters,#sent-filters,#date-filters")
+				.querySelectorAll("#cat-filters,#sent-filters")
 				.forEach(function (el) {
 					el.addEventListener("click", function () {
 						setTimeout(checkFilters, 100);

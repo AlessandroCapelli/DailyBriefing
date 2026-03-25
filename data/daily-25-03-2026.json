@@ -7,25 +7,7 @@
 		"categoryCount": 6,
 		"sourceCount": 5,
 		"articleCount": 27,
-		"deepDiveCount": 19,
-		"availableReports": {
-			"daily": [
-				"19-03-2026",
-				"20-03-2026",
-				"21-03-2026",
-				"22-03-2026",
-				"23-03-2026",
-				"24-03-2026",
-				"25-03-2026"
-			],
-			"stocks": [
-				"19-03-2026",
-				"20-03-2026",
-				"21-03-2026",
-				"22-03-2026",
-				"23-03-2026"
-			]
-		}
+		"deepDiveCount": 19
 	},
 	"categories": [
 		{
@@ -395,7 +377,7 @@
 				"Ramp self-maintaining systems"
 			],
 			"continuingThemes": ["Evoluzione AI agenti e strumenti"],
-			"summary": "La notizia tech più significativa della giornata e la chiusura inattesa di Sora, l'applicazione di OpenAI per la generazione di video tramite intelligenza artificiale. L'app, lanciata nel 2024 come primo strumento pubblicamente disponibile a ottenere risultati convincenti nella generazione video da testo, è stata rimossa dagli store Apple e Google mercoledì 25 marzo. La decisione è particolarmente sorprendente dato il tempismo: appena lunedì OpenAI aveva pubblicato un post sul blog dettagliando i miglioramenti alle funzionalita di sicurezza dell'app, e solo pochi mesi fa aveva annunciato una partnership da un miliardo di dollari con Disney per consentire la creazione di video con personaggi Disney -- accordo che ora e saltato, come confermato da un rappresentante Disney. OpenAI ha dichiarato alla BBC che la chiusura serve a concentrare le risorse su altri settori, in particolare la robotica, senza fornire spiegazioni dettagliate.\n\nQuesta mossa si inserisce in un contesto di rapida evoluzione del settore AI. La newsletter TLDR del 24 marzo riporta che Anthropic ha rilasciato la funzionalita computer use per Claude, disponibile per utenti Pro e Max su macOS, che consente l'automazione di compiti attraverso il controllo diretto di tastiera e cursore con un sistema di permessi. OpenAI nel frattempo offre rendimenti garantiti del 17,5% a investitori di private equity, segnalando possibili pressioni sulla liquidita dell'azienda -- un dato che contestualizza la decisione di chiudere Sora per riallocare risorse.\n\nAlphabet, tramite Wing, ha espanso il servizio di consegna con droni alla Bay Area californiana dopo aver completato oltre 750.000 consegne nei mercati esistenti, in partnership con Walmart e DoorDash. Sul fronte dello sviluppo software, Ramp ha implementato un sistema agentico per il monitoraggio continuo della produzione e il triage degli alert, proponendo fix automatici mantenendo però la revisione umana del codice. Mozilla ha rilasciato cq, descritto come Stack Overflow per agenti, che permette agli agenti AI di condividere conoscenza verificata per ridurre lo spreco di token.\n\nUn articolo di analisi su Nvidia del Wall Street Journal evidenzia come l'azienda sfrutti la domanda straordinaria di chip per finanziare investimenti nell'ecosistema è bloccare i clienti nei suoi prodotti proprietari, consolidando il suo ruolo di finanziatore dominante dell'industria AI. Emerge oggi il tema della chiusura di Sora come segnale di consolidamento nel settore AI generativo.",
+			"summary": "La notizia tech più significativa della giornata e la chiusura inattesa di Sora, l'applicazione di OpenAI per la generazione di video tramite intelligenza artificiale. L'app, lanciata nel 2024 come primo strumento pubblicamente disponibile a ottenere risultati convincenti nella generazione video da testo, è stata rimossa dagli store Apple e Google mercoledì 25 marzo. La decisione è particolarmente sorprendente dato il tempismo: appena lunedì OpenAI aveva pubblicato un post sul blog dettagliando i miglioramenti alle funzionalita di sicurezza dell'app, e solo pochi mesi fa aveva annunciato una partnership da un miliardo di dollari con Disney per consentire la creazione di video con personaggi Disney — accordo che ora e saltato, come confermato da un rappresentante Disney. OpenAI ha dichiarato alla BBC che la chiusura serve a concentrare le risorse su altri settori, in particolare la robotica, senza fornire spiegazioni dettagliate.\n\nQuesta mossa si inserisce in un contesto di rapida evoluzione del settore AI. La newsletter TLDR del 24 marzo riporta che Anthropic ha rilasciato la funzionalita computer use per Claude, disponibile per utenti Pro e Max su macOS, che consente l'automazione di compiti attraverso il controllo diretto di tastiera e cursore con un sistema di permessi. OpenAI nel frattempo offre rendimenti garantiti del 17,5% a investitori di private equity, segnalando possibili pressioni sulla liquidita dell'azienda — un dato che contestualizza la decisione di chiudere Sora per riallocare risorse.\n\nAlphabet, tramite Wing, ha espanso il servizio di consegna con droni alla Bay Area californiana dopo aver completato oltre 750.000 consegne nei mercati esistenti, in partnership con Walmart e DoorDash. Sul fronte dello sviluppo software, Ramp ha implementato un sistema agentico per il monitoraggio continuo della produzione e il triage degli alert, proponendo fix automatici mantenendo però la revisione umana del codice. Mozilla ha rilasciato cq, descritto come Stack Overflow per agenti, che permette agli agenti AI di condividere conoscenza verificata per ridurre lo spreco di token.\n\nUn articolo di analisi su Nvidia del Wall Street Journal evidenzia come l'azienda sfrutti la domanda straordinaria di chip per finanziare investimenti nell'ecosistema è bloccare i clienti nei suoi prodotti proprietari, consolidando il suo ruolo di finanziatore dominante dell'industria AI. Emerge oggi il tema della chiusura di Sora come segnale di consolidamento nel settore AI generativo.",
 			"articles": [
 				{
 					"title": "OpenAI chiuderà Sora, la sua app per generare video con l'intelligenza artificiale",

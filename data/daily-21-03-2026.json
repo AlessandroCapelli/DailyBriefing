@@ -7,11 +7,7 @@
 		"categoryCount": 6,
 		"sourceCount": 5,
 		"articleCount": 37,
-		"deepDiveCount": 25,
-		"availableReports": {
-			"daily": ["21-03-2026"],
-			"stocks": ["21-03-2026"]
-		}
+		"deepDiveCount": 25
 	},
 	"categories": [
 		{

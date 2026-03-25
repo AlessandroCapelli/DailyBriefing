@@ -5,11 +5,7 @@
 		"trendCount": 6,
 		"tickerCount": 13,
 		"articleCount": 25,
-		"generatedAt": "22-03-2026 01:28",
-		"availableReports": {
-			"daily": ["19-03-2026", "20-03-2026", "21-03-2026", "22-03-2026"],
-			"stocks": ["19-03-2026", "20-03-2026", "21-03-2026", "22-03-2026"]
-		}
+		"generatedAt": "22-03-2026 01:28"
 	},
 	"trends": [
 		{
@@ -106,7 +102,7 @@
 			"evolution": "continuation",
 			"period": "20-03-2026 -> 22-03-2026",
 			"detectedDates": ["22/03", "21/03", "20/03"],
-			"narrative": "Il 21 marzo 2026 segna una data storica per il mercato farmaceutico globale: il brevetto di Ozempic (semaglutide) di Novo Nordisk e scaduto in sei paesi che ospitano il 40% della popolazione mondiale -- Cina, India, Brasile, Turchia, Sudafrica e Canada. Dieci aziende farmaceutiche cinesi sono già in fase avanzata di approvazione per versioni generiche del farmaco, è i prezzi potrebbero crollare da centinaia di euro al mese a poche decine, con implicazioni profonde per l'accessibilità globale ai trattamenti anti-obesità.<br><br>Novo Nordisk, che a metà 2024 era la società europea con il maggior valore di borsa, ha subito un crollo azionario significativo nell'ultimo anno per la concorrenza crescente di Eli Lilly con i farmaci Mounjaro e Zepbound, ai quali si aggiunge ora la prospettiva della genericizzazione nei mercati emergenti. Il titolo NVO ha chiuso a 36,53 dollari con un calo dell'1,48% nell'ultima sessione.<br><br>La dinamica competitiva è complessa. I brevetti in USA e Europa restano validi oltre il 2030, proteggendo i mercati più remunerativi di Novo Nordisk. Tuttavia, l'accesso ai generici nei paesi emergenti potrebbe generare evidenze di efficacia a costi ridotti che aumenteranno la pressione politica per licenze obbligatorie anche nei paesi sviluppati. Il mercato globale dei farmaci GLP-1 vale oltre 30 miliardi di dollari annui e rappresenta il segmento a crescita più rapida dell'industria farmaceutica.<br><br>Per gli investitori, Novo Nordisk appare esposta alla genericizzazione con un pipeline meno diversificato rispetto a Eli Lilly, che beneficia di un portafoglio più ampio comprendente trattamenti per l'Alzheimer (donanemab) è l'oncologia. LLY ha chiuso a 906,70 dollari (-1,18%), ma il suo profilo di rischio-rendimento appare più equilibrato nel medio termine.",
+			"narrative": "Il 21 marzo 2026 segna una data storica per il mercato farmaceutico globale: il brevetto di Ozempic (semaglutide) di Novo Nordisk e scaduto in sei paesi che ospitano il 40% della popolazione mondiale — Cina, India, Brasile, Turchia, Sudafrica e Canada. Dieci aziende farmaceutiche cinesi sono già in fase avanzata di approvazione per versioni generiche del farmaco, è i prezzi potrebbero crollare da centinaia di euro al mese a poche decine, con implicazioni profonde per l'accessibilità globale ai trattamenti anti-obesità.<br><br>Novo Nordisk, che a metà 2024 era la società europea con il maggior valore di borsa, ha subito un crollo azionario significativo nell'ultimo anno per la concorrenza crescente di Eli Lilly con i farmaci Mounjaro e Zepbound, ai quali si aggiunge ora la prospettiva della genericizzazione nei mercati emergenti. Il titolo NVO ha chiuso a 36,53 dollari con un calo dell'1,48% nell'ultima sessione.<br><br>La dinamica competitiva è complessa. I brevetti in USA e Europa restano validi oltre il 2030, proteggendo i mercati più remunerativi di Novo Nordisk. Tuttavia, l'accesso ai generici nei paesi emergenti potrebbe generare evidenze di efficacia a costi ridotti che aumenteranno la pressione politica per licenze obbligatorie anche nei paesi sviluppati. Il mercato globale dei farmaci GLP-1 vale oltre 30 miliardi di dollari annui e rappresenta il segmento a crescita più rapida dell'industria farmaceutica.<br><br>Per gli investitori, Novo Nordisk appare esposta alla genericizzazione con un pipeline meno diversificato rispetto a Eli Lilly, che beneficia di un portafoglio più ampio comprendente trattamenti per l'Alzheimer (donanemab) è l'oncologia. LLY ha chiuso a 906,70 dollari (-1,18%), ma il suo profilo di rischio-rendimento appare più equilibrato nel medio termine.",
 			"metrics": [
 				{ "label": "NVO", "value": "$36.53", "delta": "-1.48%" },
 				{ "label": "LLY", "value": "$906.70", "delta": "-1.18%" },
