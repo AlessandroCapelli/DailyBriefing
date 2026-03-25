@@ -121,9 +121,19 @@
 			if (crossDates.indexOf(pageDate) >= 0) {
 				addEl("span", "db-s", "/");
 				if (pageType === "daily") {
-					addEl("a", "db-x", "\u{1F4C8} <span class='db-lbl'>Analisi</span>", makeUrl("stocks", pageDate));
+					addEl(
+						"a",
+						"db-x",
+						"\u{1F4C8} <span class='db-lbl'>Analisi</span>",
+						makeUrl("stocks", pageDate),
+					);
 				} else {
-					addEl("a", "db-x", "\u{1F4F0} <span class='db-lbl'>Briefing</span>", makeUrl("daily", pageDate));
+					addEl(
+						"a",
+						"db-x",
+						"\u{1F4F0} <span class='db-lbl'>Briefing</span>",
+						makeUrl("daily", pageDate),
+					);
 				}
 			}
 
@@ -145,7 +155,8 @@
 			cur.textContent = pageDate.split("-").slice(0, 2).join("/");
 			dg.appendChild(cur);
 
-			var nextDate = idx >= 0 && idx < dates.length - 1 ? dates[idx + 1] : null;
+			var nextDate =
+				idx >= 0 && idx < dates.length - 1 ? dates[idx + 1] : null;
 			var nextEl = document.createElement(nextDate ? "a" : "span");
 			nextEl.className = "db-ar" + (nextDate ? "" : " off");
 			nextEl.innerHTML = "\u2192";

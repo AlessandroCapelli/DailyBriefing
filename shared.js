@@ -39,7 +39,9 @@ var DB_VERSION = "1.0";
 					return v.lang === "it-IT" && v.name.indexOf("Google") >= 0;
 				}) ||
 				voices.find(function (v) {
-					return v.lang === "it-IT" && v.name.indexOf("Microsoft") >= 0;
+					return (
+						v.lang === "it-IT" && v.name.indexOf("Microsoft") >= 0
+					);
 				}) ||
 				voices.find(function (v) {
 					return v.lang === "it-IT";
@@ -125,7 +127,9 @@ var DB_VERSION = "1.0";
 		// Add TTS buttons to summaries and narratives
 		function addButtons() {
 			if (!italianVoice && voicesReady) return; // No Italian voice available
-			var targets = document.querySelectorAll(".summary:not([data-tts]), .narr:not([data-tts])");
+			var targets = document.querySelectorAll(
+				".summary:not([data-tts]), .narr:not([data-tts])",
+			);
 			targets.forEach(function (el) {
 				el.setAttribute("data-tts", "1");
 				var text = el.textContent.trim();
@@ -150,26 +154,28 @@ var DB_VERSION = "1.0";
 	// ── Expand/Collapse cards ──
 	(function () {
 		function addCollapseButtons() {
-			document.querySelectorAll(".card:not([data-collapse])").forEach(function (card) {
-				var content = card.querySelector(".collapsible");
-				if (!content) return;
-				card.setAttribute("data-collapse", "1");
-				var hdr = card.querySelector(".card-hdr, .ch");
-				if (!hdr) return;
-				var btn = document.createElement("button");
-				btn.className = "collapse-btn";
-				btn.innerHTML = "&#9650;";
-				btn.title = "Comprimi";
-				btn.addEventListener("click", function (e) {
-					e.stopPropagation();
-					var collapsed = content.classList.toggle("collapsed");
-					btn.innerHTML = collapsed ? "&#9660;" : "&#9650;";
-					btn.title = collapsed ? "Espandi" : "Comprimi";
+			document
+				.querySelectorAll(".card:not([data-collapse])")
+				.forEach(function (card) {
+					var content = card.querySelector(".collapsible");
+					if (!content) return;
+					card.setAttribute("data-collapse", "1");
+					var hdr = card.querySelector(".card-hdr, .ch");
+					if (!hdr) return;
+					var btn = document.createElement("button");
+					btn.className = "collapse-btn";
+					btn.innerHTML = "&#9650;";
+					btn.title = "Comprimi";
+					btn.addEventListener("click", function (e) {
+						e.stopPropagation();
+						var collapsed = content.classList.toggle("collapsed");
+						btn.innerHTML = collapsed ? "&#9660;" : "&#9650;";
+						btn.title = collapsed ? "Espandi" : "Comprimi";
+					});
+					hdr.appendChild(btn);
+					// Set max-height for animation
+					content.style.maxHeight = content.scrollHeight + "px";
 				});
-				hdr.appendChild(btn);
-				// Set max-height for animation
-				content.style.maxHeight = content.scrollHeight + "px";
-			});
 		}
 		var obs = new MutationObserver(addCollapseButtons);
 		obs.observe(document.body, { childList: true, subtree: true });
@@ -178,9 +184,15 @@ var DB_VERSION = "1.0";
 
 	// ── Focus search with / key ──
 	document.addEventListener("keydown", function (e) {
-		if (e.key === "/" && e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA") {
+		if (
+			e.key === "/" &&
+			e.target.tagName !== "INPUT" &&
+			e.target.tagName !== "TEXTAREA"
+		) {
 			e.preventDefault();
-			var input = document.getElementById("q") || document.getElementById("idx-q");
+			var input =
+				document.getElementById("q") ||
+				document.getElementById("idx-q");
 			if (input) input.focus();
 		}
 	});
@@ -194,10 +206,16 @@ var DB_VERSION = "1.0";
 		var desc = "Briefing quotidiani e analisi finanziarie";
 		if (loc === "daily.html" && date) {
 			title = "Daily Briefing " + date;
-			desc = "Briefing quotidiano del " + date + " — notizie, finanza, tech, geopolitica";
+			desc =
+				"Briefing quotidiano del " +
+				date +
+				" — notizie, finanza, tech, geopolitica";
 		} else if (loc === "stocks.html" && date) {
 			title = "Stock Trend Report " + date;
-			desc = "Analisi trend finanziari del " + date + " — ticker, grafici, dati di mercato";
+			desc =
+				"Analisi trend finanziari del " +
+				date +
+				" — ticker, grafici, dati di mercato";
 		} else if (loc === "dashboard.html") {
 			title = "Dashboard | DailyBriefing";
 			desc = "Statistiche aggregate, top ticker, sentiment, fonti";
@@ -235,7 +253,10 @@ var DB_VERSION = "1.0";
 			footer = document.createElement("footer");
 			footer.style.cssText =
 				"margin-top:3rem;padding:1.5rem 1rem;border-top:1px solid #2d3148;text-align:center;font-size:.7rem;color:#2d3148";
-			var wrap = document.querySelector(".wrap") || document.querySelector(".content") || document.body;
+			var wrap =
+				document.querySelector(".wrap") ||
+				document.querySelector(".content") ||
+				document.body;
 			wrap.appendChild(footer);
 		}
 		footer.style.cssText =
@@ -257,7 +278,9 @@ var DB_VERSION = "1.0";
 		function checkFilters() {
 			var active = 0;
 			document
-				.querySelectorAll("#cat-filters .fb.on, #sent-filters .fb.on, #date-filters .fb.on")
+				.querySelectorAll(
+					"#cat-filters .fb.on, #sent-filters .fb.on, #date-filters .fb.on",
+				)
 				.forEach(function (b) {
 					if (b.dataset.v !== "all") active++;
 				});
@@ -277,23 +300,31 @@ var DB_VERSION = "1.0";
 					btn.textContent = "Reset";
 					btn.addEventListener("click", function () {
 						// Reset all filters
-						document.querySelectorAll("#cat-filters .fb, #sent-filters .fb, #date-filters .fb").forEach(function (b) {
-							b.classList.toggle("on", b.dataset.v === "all");
-						});
+						document
+							.querySelectorAll(
+								"#cat-filters .fb, #sent-filters .fb, #date-filters .fb",
+							)
+							.forEach(function (b) {
+								b.classList.toggle("on", b.dataset.v === "all");
+							});
 						if (finCb) finCb.checked = false;
 						if (hiCb) hiCb.checked = false;
 						if (qInput) qInput.value = "";
 						// Also reset index search
 						var idxQ = document.getElementById("idx-q");
 						if (idxQ) idxQ.value = "";
-						if (typeof window.applyFilters === "function") window.applyFilters();
+						if (typeof window.applyFilters === "function")
+							window.applyFilters();
 						// Update permalink
 						history.replaceState(
 							null,
 							"",
 							location.pathname +
 								(new URLSearchParams(location.search).get("d")
-									? "?d=" + new URLSearchParams(location.search).get("d")
+									? "?d=" +
+										new URLSearchParams(
+											location.search,
+										).get("d")
 									: ""),
 						);
 						btn.remove();
@@ -310,22 +341,31 @@ var DB_VERSION = "1.0";
 		setTimeout(function () {
 			var ctrl = document.querySelector(".ctrl-inner");
 			if (ctrl) {
-				obs.observe(ctrl, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
+				obs.observe(ctrl, {
+					childList: true,
+					subtree: true,
+					attributes: true,
+					attributeFilter: ["class"],
+				});
 			}
-			document.querySelectorAll("#fin-only,#hi-only,#q,#idx-q").forEach(function (el) {
-				el.addEventListener("input", function () {
-					setTimeout(checkFilters, 100);
+			document
+				.querySelectorAll("#fin-only,#hi-only,#q,#idx-q")
+				.forEach(function (el) {
+					el.addEventListener("input", function () {
+						setTimeout(checkFilters, 100);
+					});
+					el.addEventListener("change", function () {
+						setTimeout(checkFilters, 100);
+					});
 				});
-				el.addEventListener("change", function () {
-					setTimeout(checkFilters, 100);
-				});
-			});
 			// Also listen for clicks on filter button groups
-			document.querySelectorAll("#cat-filters,#sent-filters,#date-filters").forEach(function (el) {
-				el.addEventListener("click", function () {
-					setTimeout(checkFilters, 100);
+			document
+				.querySelectorAll("#cat-filters,#sent-filters,#date-filters")
+				.forEach(function (el) {
+					el.addEventListener("click", function () {
+						setTimeout(checkFilters, 100);
+					});
 				});
-			});
 		}, 2000);
 	})();
 
@@ -343,13 +383,17 @@ var DB_VERSION = "1.0";
 				allDates.sort(function (a, b) {
 					var pa = a.split("-").map(Number),
 						pb = b.split("-").map(Number);
-					return new Date(pb[2], pb[1] - 1, pb[0]) - new Date(pa[2], pa[1] - 1, pa[0]);
+					return (
+						new Date(pb[2], pb[1] - 1, pb[0]) -
+						new Date(pa[2], pa[1] - 1, pa[0])
+					);
 				});
 				var latest = allDates[0];
 				var heroSub = document.querySelector(".hero-sub");
 				if (heroSub) {
 					var badge = document.createElement("div");
-					badge.style.cssText = "font-size:.72rem;color:#4a5268;margin-top:.5rem";
+					badge.style.cssText =
+						"font-size:.72rem;color:#4a5268;margin-top:.5rem";
 					badge.textContent = "Ultimo aggiornamento: " + latest;
 					heroSub.after(badge);
 				}
@@ -382,7 +426,9 @@ var DB_VERSION = "1.0";
 			ctrl.style.opacity = "0";
 			ctrl.style.transition = "opacity .3s";
 			var obs = new MutationObserver(function () {
-				var cards = document.querySelector("#cards-root .card, #trends-root .card, .tl-item");
+				var cards = document.querySelector(
+					"#cards-root .card, #trends-root .card, .tl-item",
+				);
 				if (cards) {
 					ctrl.style.opacity = "1";
 					obs.disconnect();
@@ -402,9 +448,11 @@ var DB_VERSION = "1.0";
 		var date = params.get("d");
 		var loc = location.pathname.split("/").pop() || "";
 		if (loc === "daily.html" && date) {
-			document.title = "Daily " + date.substring(0, 5) + " | DailyBriefing";
+			document.title =
+				"Daily " + date.substring(0, 5) + " | DailyBriefing";
 		} else if (loc === "stocks.html" && date) {
-			document.title = "Stocks " + date.substring(0, 5) + " | DailyBriefing";
+			document.title =
+				"Stocks " + date.substring(0, 5) + " | DailyBriefing";
 		} else if (loc === "index.html" || loc === "" || loc === "/") {
 			document.title = "DailyBriefing";
 		}
@@ -413,7 +461,8 @@ var DB_VERSION = "1.0";
 	// ── Keyboard Shortcuts ──
 	document.addEventListener("keydown", function (e) {
 		// Ignore if typing in input
-		if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+		if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")
+			return;
 
 		var nav = document.getElementById("db-nav");
 		if (!nav) return;
@@ -548,11 +597,16 @@ var DB_VERSION = "1.0";
 				return r.json();
 			})
 			.then(function (reports) {
-				var dates = (reports[pageType] || []).slice().sort(function (a, b) {
-					var pa = a.split("-").map(Number),
-						pb = b.split("-").map(Number);
-					return new Date(pa[2], pa[1] - 1, pa[0]) - new Date(pb[2], pb[1] - 1, pb[0]);
-				});
+				var dates = (reports[pageType] || [])
+					.slice()
+					.sort(function (a, b) {
+						var pa = a.split("-").map(Number),
+							pb = b.split("-").map(Number);
+						return (
+							new Date(pa[2], pa[1] - 1, pa[0]) -
+							new Date(pb[2], pb[1] - 1, pb[0])
+						);
+					});
 				var idx = dates.indexOf(date);
 				if (idx < 0) return;
 
@@ -560,12 +614,14 @@ var DB_VERSION = "1.0";
 				// Prefetch prev
 				if (idx > 0) {
 					prefetchUrl(prefix + dates[idx - 1] + ".json");
-					if (pageType === "stocks") prefetchUrl(prefix + dates[idx - 1] + "-charts.json");
+					if (pageType === "stocks")
+						prefetchUrl(prefix + dates[idx - 1] + "-charts.json");
 				}
 				// Prefetch next
 				if (idx < dates.length - 1) {
 					prefetchUrl(prefix + dates[idx + 1] + ".json");
-					if (pageType === "stocks") prefetchUrl(prefix + dates[idx + 1] + "-charts.json");
+					if (pageType === "stocks")
+						prefetchUrl(prefix + dates[idx + 1] + "-charts.json");
 				}
 				// Prefetch cross-type for same date
 				var crossType = pageType === "daily" ? "stocks" : "daily";
@@ -580,7 +636,13 @@ var DB_VERSION = "1.0";
 	// ── Reading Progress Bar ──
 	(function () {
 		var loc = location.pathname.split("/").pop() || "";
-		if (loc === "index.html" || loc === "" || loc === "/" || loc === "dashboard.html") return;
+		if (
+			loc === "index.html" ||
+			loc === "" ||
+			loc === "/" ||
+			loc === "dashboard.html"
+		)
+			return;
 		var bar = document.createElement("div");
 		bar.id = "reading-progress";
 		var style = document.createElement("style");
@@ -592,8 +654,13 @@ var DB_VERSION = "1.0";
 		window.addEventListener("scroll", function () {
 			if (!ticking2) {
 				requestAnimationFrame(function () {
-					var h = document.documentElement.scrollHeight - window.innerHeight;
-					bar.style.width = h > 0 ? Math.min(100, (window.scrollY / h) * 100) + "%" : "0";
+					var h =
+						document.documentElement.scrollHeight -
+						window.innerHeight;
+					bar.style.width =
+						h > 0
+							? Math.min(100, (window.scrollY / h) * 100) + "%"
+							: "0";
 					ticking2 = false;
 				});
 				ticking2 = true;
@@ -614,7 +681,9 @@ var DB_VERSION = "1.0";
 
 		function applyFromUrl() {
 			if (applied) return;
-			var input = document.getElementById("q") || document.getElementById("idx-q");
+			var input =
+				document.getElementById("q") ||
+				document.getElementById("idx-q");
 			if (!input) return;
 			applied = true;
 			if (observer) observer.disconnect();
@@ -679,11 +748,14 @@ var DB_VERSION = "1.0";
 					t.classList.toggle("on", t.dataset.tab === urlTab);
 				});
 				// Trigger click on the tab
-				var targetTab = document.querySelector('.tab[data-tab="' + urlTab + '"]');
+				var targetTab = document.querySelector(
+					'.tab[data-tab="' + urlTab + '"]',
+				);
 				if (targetTab) targetTab.click();
 			}
 			// Trigger applyFilters if it exists
-			if (typeof window.applyFilters === "function") window.applyFilters();
+			if (typeof window.applyFilters === "function")
+				window.applyFilters();
 
 			// Attach permalink updater to all controls
 			input.addEventListener("input", updatePermalink);
@@ -717,7 +789,9 @@ var DB_VERSION = "1.0";
 			var origD = new URLSearchParams(location.search).get("d");
 			if (origD) p.set("d", origD);
 			// Search
-			var input = document.getElementById("q") || document.getElementById("idx-q");
+			var input =
+				document.getElementById("q") ||
+				document.getElementById("idx-q");
 			if (input && input.value.trim()) p.set("q", input.value.trim());
 			// Financial
 			var finCb = document.getElementById("fin-only");
@@ -741,13 +815,16 @@ var DB_VERSION = "1.0";
 				sentC.querySelectorAll(".fb.on").forEach(function (b) {
 					if (b.dataset.v !== "all") activeSents.push(b.dataset.v);
 				});
-				if (activeSents.length > 0) p.set("sent", activeSents.join(","));
+				if (activeSents.length > 0)
+					p.set("sent", activeSents.join(","));
 			}
 			// Tab
 			var activeTab = document.querySelector(".tab.on");
-			if (activeTab && activeTab.dataset.tab !== "all") p.set("tab", activeTab.dataset.tab);
+			if (activeTab && activeTab.dataset.tab !== "all")
+				p.set("tab", activeTab.dataset.tab);
 
-			var newUrl = location.pathname + (p.toString() ? "?" + p.toString() : "");
+			var newUrl =
+				location.pathname + (p.toString() ? "?" + p.toString() : "");
 			history.replaceState(null, "", newUrl);
 		}
 
