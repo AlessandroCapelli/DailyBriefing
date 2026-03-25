@@ -1,1 +1,718 @@
-{"meta":{"date":"24-03-2026","dayOfWeek":"Martedi","fullDate":"24 marzo 2026","time":"10:30","categoryCount":5,"sourceCount":5,"articleCount":34,"deepDiveCount":26,"availableReports":{"daily":["19-03-2026","20-03-2026","21-03-2026","22-03-2026","23-03-2026","24-03-2026"],"stocks":["19-03-2026","20-03-2026","21-03-2026","22-03-2026","23-03-2026"]}},"categories":[{"id":"politica","emoji":"&#x1F5F3;&#xFE0F;","name":"Politica","isYoutube":false,"isOther":false,"evolution":"continuation","newThemes":["Elezioni Danimarca Frederiksen","Dimissioni presidente ANM","Pentagono chiude spazio stampa"],"continuingThemes":["Referendum giustizia risultati","Elezioni locali Francia Socialisti","Elezioni Slovenia pareggio"],"summary":"La giornata politica e dominata dalle conseguenze del referendum sulla giustizia, che si e concluso con la vittoria del No al 53,74% contro il 46,26% del Si, con un'affluenza del 58,93% (55,7% includendo l'estero), significativamente superiore ai precedenti referendum costituzionali su due giorni. Il dato politico piu rilevante e il voto dei giovani: secondo il sondaggio Opinio per la Rai, il 61,1% dei 18-34enni ha votato No, e il No ha prevalso anche nella fascia 35-54 con il 53,3%. Solo gli over 55 hanno votato Si, con una risicata maggioranza del 50,7%. La segretaria PD Elly Schlein ha sottolineato il ruolo dei giovani, denunciando la mancata previsione del voto fuori sede da parte della maggioranza. Il No ha vinto in 17 regioni su 20, con il Si che ha prevalso solo in Lombardia, Veneto e Friuli Venezia Giulia.\n\nGiorgia Meloni ha reagito con un videomessaggio in cui ha dichiarato che non si dimettera, pur riconoscendo la delusione per un'occasione mancata di modernizzare la giustizia italiana. Il referendum rappresentava l'unica grande iniziativa legislativa realizzabile prima delle elezioni 2027, dato che la riforma dell'autonomia e stata smantellata dalla Corte Costituzionale e il premierato resta bloccato in parlamento. In parallelo, Cesare Parodi si e dimesso dalla presidenza dell'Associazione Nazionale Magistrati per ragioni personali, una decisione presa prima dell'esito referendario.\n\nA livello europeo, la Francia ha visto la vittoria dei Socialisti nelle quattro principali citta (Parigi, Marsiglia, Lilla, Lione) alle elezioni locali di secondo turno, con la strategia vincente di non allearsi con La France Insoumise. A Parigi Emmanuel Gregoire ha battuto Rachida Dati con il 50,5%. Il Rassemblement National ha deluso, conquistando solo comuni minori ma nessuna citta media o grande tranne Perpignan gia governata dal 2020. In Slovenia le parlamentari si sono chiuse con un quasi pareggio tra il centrosinistra di Golob (28,6%, 29 seggi) e la destra di Jansa (28%, 28 seggi), aprendo una fase di incertezza sulla formazione del governo.\n\nMartedi 24 marzo si vota in Danimarca per le elezioni anticipate convocate dalla premier socialdemocratica Mette Frederiksen, che ha sfruttato il consenso sulla questione Groenlandia per capitalizzare in anticipo di sette mesi. La campagna e dominata per la prima volta dalla sicurezza nazionale e dalla politica estera, in seguito alle minacce di Trump sulla Groenlandia. Frederiksen propone tra l'altro una patrimoniale del 5% su patrimoni oltre 2,3 milioni di euro, che coinvolgerebbe circa 22.000 persone generando 800 milioni annui per l'istruzione. L'esito e incerto: i Socialdemocratici restano in testa nei sondaggi ma indeboliti rispetto alle comunali di novembre.\n\nIl Dipartimento della Difesa statunitense ha annunciato la chiusura del Correspondents' Corridor al Pentagono, trasferendo i giornalisti in una struttura esterna, in una mossa interpretata come ritorsione dopo la sentenza di un tribunale che ha dichiarato incostituzionali alcune restrizioni alla stampa. Il segretario alla Difesa Pete Hegseth mantiene una postura ostile verso i media fin dal suo insediamento. Alle elezioni suppletive in Veneto, i due candidati del centrodestra hanno vinto con ampi margini nei collegi di Rovigo (57,43%) e Padova (59,44%).\n\nScomparso dalla cronaca odierna il tema dei funerali di Bossi e le proteste a Praga contro Babis, presenti ieri.","articles":[{"title":"Il No ha vinto al referendum costituzionale sulla giustizia","url":"https://www.ilpost.it/2026/03/23/referendum-costituzionale-giustizia-chi-ha-vinto-no/","source":"Il Post","financial":false,"deepDived":true,"impact":"high","sentiment":"neutral","extract":{"text":"Il No ha vinto il referendum sulla riforma della giustizia con il 53,74% contro il 46,26% del Si. Affluenza al 58,93% (55,7% con estero), superiore ai referendum 2020 (51,2%) e 2006 (52,6%). Il No ha prevalso in 17 regioni su 20, con il Si vincente solo in Lombardia, Veneto e Friuli. Per fascia di eta, il Si ha prevalso solo tra i 50-64enni (53%), mentre il No ha dominato tra i 35-49enni con il 60%.","dataPoints":["No 53,74%","Si 46,26%","Affluenza 58,93%","No prevalente in 17/20 regioni"],"entities":["Giorgia Meloni","CSM"],"tickers":[]}},{"title":"Giorgia Meloni non si dimette","url":"https://www.ilpost.it/2026/03/23/meloni-non-si-dimette-reazione-referendum/","source":"Il Post","financial":false,"deepDived":true,"impact":"high","sentiment":"negative","extract":{"text":"Dopo la vittoria del No al referendum, Meloni ha dichiarato in un videomessaggio che non si dimettera, pur esprimendo delusione. Il referendum era l'unica grande iniziativa legislativa realizzabile prima delle elezioni 2027. La riforma dell'autonomia e stata smantellata dalla Corte Costituzionale, il premierato resta bloccato in parlamento.","dataPoints":[],"entities":["Giorgia Meloni","Corte Costituzionale"],"tickers":[]}},{"title":"Al referendum il No e andato bene soprattutto tra i giovani","url":"https://www.ilpost.it/2026/03/24/referendum-riforma-giustizia-risultati-dati-giovani/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"neutral","extract":{"text":"Secondo Opinio/Rai, il 61,1% dei 18-34enni ha votato No al referendum. Nella fascia 35-54 il No prevale con 53,3%. Solo gli over 55 hanno votato Si con il 50,7%. La segretaria PD Schlein ha sottolineato il ruolo dei giovani nonostante la mancata previsione del voto fuori sede.","dataPoints":["No 61,1% tra 18-34enni","No 53,3% tra 35-54","Si 50,7% tra over 55"],"entities":["Elly Schlein","Giorgia Meloni","PD"],"tickers":[]}},{"title":"L'affluenza al referendum sulla giustizia e stata del 59 per cento","url":"https://www.ilpost.it/2026/03/23/affluenza-definitiva-referendum-giustizia/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"neutral","extract":{"text":"Affluenza definitiva al referendum: 58,93% escludendo l'estero, 55,7% complessivo. Superiore ai referendum 2020 (51,2%) e 2006 (52,6%), inferiore al 2016 (65,47% su un giorno). Le regioni con piu affluenza: Emilia-Romagna, Toscana, Umbria.","dataPoints":["Affluenza 58,93%","Confronto 2020: 51,2%","Confronto 2006: 52,6%","Confronto 2016: 65,47%"],"entities":["Ministero dell'Interno"],"tickers":[]}},{"title":"Il secondo turno delle elezioni locali in Francia e stato una vittoria per i Socialisti","url":"https://www.ilpost.it/2026/03/23/secondo-turno-elezioni-locali-francesi-vittoria-socialisti-repubblicani/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"positive","extract":{"text":"I Socialisti hanno vinto nelle quattro principali citta francesi: Parigi (Gregoire 50,5% vs Dati), Marsiglia (Payan 54% vs RN), Lilla e Lione. Strategia vincente: nessuna alleanza con La France Insoumise. Dove la sinistra si e alleata con LFI ha perso. Il RN ha deluso al secondo turno.","dataPoints":["Gregoire 50,5% a Parigi","Payan 54% a Marsiglia"],"entities":["Emmanuel Gregoire","Rachida Dati","Benoit Payan","Rassemblement National","Parti Socialiste"],"tickers":[]}},{"title":"Alle parlamentari in Slovenia il centrosinistra e la destra hanno preso quasi gli stessi voti","url":"https://www.ilpost.it/2026/03/23/risultati-elezioni-parlamentari-slovenia-pareggio/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"neutral","extract":{"text":"In Slovenia il Movimento per la Liberta di Golob ha ottenuto il 28,6% (29 seggi su 90), quasi appaiato dalla SDS di Jansa con il 28% (28 seggi). Golob in forte calo rispetto al 2022 (41 seggi). PIL sloveno +1,1% nel 2025.","dataPoints":["Golob 28,6% - 29 seggi","Jansa 28% - 28 seggi","PIL Slovenia +1,1% nel 2025"],"entities":["Robert Golob","Janez Jansa","SDS"],"tickers":[]}},{"title":"La scommessa di Mette Frederiksen alle elezioni anticipate in Danimarca","url":"https://www.ilpost.it/2026/03/24/guida-elezioni-danimarca/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","sentiment":"neutral","extract":{"text":"Elezioni anticipate in Danimarca il 24 marzo. Frederiksen propone patrimoniale del 5% su patrimoni oltre 2,3 milioni EUR per 22.000 persone, gettito 800 milioni EUR annui. Maersk e imprenditori contrari.","dataPoints":["Patrimoniale 5% sopra 2,3M EUR","Gettito 800M EUR/anno","22.000 contribuenti"],"entities":["Mette Frederiksen","Troels Lund Poulsen","Alex Vanopslagh","Maersk"],"tickers":["MAERSK-B.CO"]}},{"title":"Il Pentagono chiudera l'area dedicata alla stampa","url":"https://www.ilpost.it/2026/03/24/pentagono-chiude-spazio-giornalisti/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Il Dipartimento della Difesa USA chiudera il Correspondents' Corridor, trasferendo i giornalisti in struttura esterna. Segue sentenza federale che ha dichiarato incostituzionali alcune restrizioni alla stampa.","dataPoints":[],"entities":["Pete Hegseth","Sean Parnell","New York Times","Pentagono"],"tickers":["NYT"]}},{"title":"Cesare Parodi si e dimesso da presidente dell'ANM","url":"https://www.ilpost.it/2026/03/23/cesare-parodi-dimissioni-associazione-nazionale-magistrati/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"neutral","extract":{"text":"Cesare Parodi si e dimesso dalla presidenza dell'ANM per ragioni personali. In carica da febbraio 2025.","dataPoints":[],"entities":["Cesare Parodi","ANM"],"tickers":[]}},{"title":"Alle suppletive in Veneto hanno vinto i candidati del centrodestra","url":"https://www.ilpost.it/2026/03/24/elezioni-suppletive-veneto-eletti-camera-candidati-centrodestra/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"neutral","extract":{"text":"Elezioni suppletive Veneto: centrodestra vince entrambi i collegi. Di Rubba 57,43% a Rovigo, Centenaro 59,44% a Padova.","dataPoints":["Di Rubba 57,43% a Rovigo","Centenaro 59,44% a Padova"],"entities":["Alberto Di Rubba","Giulio Centenaro","Matteo Salvini"],"tickers":[]}}]},{"id":"attualita","emoji":"&#x1F30D;","name":"Attualita","isYoutube":false,"isOther":false,"evolution":"continuation","newThemes":["Incidente aereo Colombia 66 morti","Proteste Albania Tirana","Hong Kong password polizia","Accordo UE-Mercosur 1 maggio"],"continuingThemes":["Guerra Medio Oriente Iran escalation","Incidente aereo LaGuardia"],"summary":"La guerra in Medio Oriente entra nel ventiquattresimo giorno con un colpo di scena: Trump ha rinviato di cinque giorni l'ultimatum all'Iran per la riapertura dello Stretto di Hormuz, dichiarando che ci sarebbero conversazioni buone e produttive in corso. L'Iran ha pero smentito categoricamente: il presidente del parlamento Ghalibaf ha definito le dichiarazioni di Trump fake news finalizzate a manipolare i mercati finanziari e a uscire dal pantano in cui gli USA si sono infilati. Lo Stretto resta sostanzialmente chiuso alla maggior parte del traffico navale, con eccezioni per navi iraniane dirette in Asia e per paesi non ostili come India, Cina e Pakistan. Il prezzo del Brent e sceso intorno ai 96 dollari al barile dopo le dichiarazioni di Trump, in calo dai recenti massimi sopra i 110 dollari. Il direttore dell'IEA Fatih Birol ha dichiarato da Canberra che questa crisi energetica supera in gravita la combinazione delle crisi del 1973 e 1979. I combattimenti proseguono con bombardamenti israeliani su installazioni dei Pasdaran in Iran e su ponti sul fiume Litani in Libano.\n\nUn grave incidente aereo in Colombia ha causato almeno 66 morti: un Hercules C-130 militare costruito nel 1983 e precipitato poco dopo il decollo da Puerto Leguizamo, vicino al confine con il Peru, con 128 persone a bordo. Lo schianto ha causato un incendio e l'esplosione di munizioni. Le strutture sanitarie locali sono andate in sovraffollamento. Il presidente Petro ha accusato le opposizioni di non aver approvato fondi adeguati per la difesa, definendo l'aereo pura spazzatura corrotta. A fine febbraio un analogo C-130 boliviano si era schiantato vicino a La Paz con 20 morti.\n\nAll'aeroporto LaGuardia di New York un aereo Air Canada si e scontrato con un veicolo dei vigili del fuoco in pista dopo l'atterraggio: il capitano e il primo ufficiale sono morti, 41 persone sono state portate in ospedale. L'aereo viaggiava a circa 200 km/h quando ha colpito il mezzo antincendio che si stava dirigendo verso un altro velivolo. Quasi meta dei circa 1.000 voli giornalieri di LaGuardia sono stati cancellati.\n\nA Tirana migliaia di persone hanno manifestato contro il governo di Edi Rama, con lancio di molotov e risposta della polizia con lacrimogeni e idranti. Le proteste nascono da uno scandalo di corruzione che coinvolge l'ex vicepremier Belinda Balluku, accusata di aver favorito aziende private con fondi pubblici. A Hong Kong una nuova legge consente alla polizia di ottenere le password dei telefoni dei sospettati di violazioni della legge sulla sicurezza nazionale, con pene fino a un anno di carcere per chi rifiuta e tre anni per informazioni false.\n\nL'accordo commerciale UE-Mercosur entrera provvisoriamente in vigore dal 1 maggio, il piu grande mai concluso dall'UE per popolazione e volume commerciale. Il Parlamento Europeo deve ancora ratificarlo. L'accordo UE-Australia e stato formalizzato con concessioni controverse: ai produttori australiani sara permesso usare il nome Prosecco per il mercato interno per 10 anni, eliminate le tariffe su litio, idrogeno e auto europee.\n\nScomparsi dalla cronaca odierna i temi di Cuba senza elettricita e del Sudan.","articles":[{"title":"Cos'e successo nel ventiquattresimo giorno di guerra","url":"https://www.ilpost.it/2026/03/23/riassunto-guerra-medio-oriente-iran-giorno-24/","source":"Il Post","financial":true,"deepDived":true,"impact":"high","sentiment":"negative","extract":{"text":"Trump ha rinviato di 5 giorni l'ultimatum all'Iran sullo Stretto di Hormuz. L'Iran smentisce: Ghalibaf definisce le dichiarazioni fake news per manipolare i mercati. Brent sceso a 96 USD/barile dai massimi sopra 110. IEA: crisi peggiore di 1973+1979 combinate.","dataPoints":["Brent ~96 USD/barile","Ultimatum rinviato di 5 giorni","Crisi peggiore di 1973+1979 secondo IEA"],"entities":["Donald Trump","Mohammad Bagher Ghalibaf","Fatih Birol","IEA","Hezbollah","Pasdaran"],"tickers":["CL=F","BZ=F","XLE"]}},{"title":"Nel grave incidente aereo in Colombia sono morte almeno 66 persone","url":"https://www.ilpost.it/2026/03/24/incidente-aereo-militare-colombia/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Un Hercules C-130 militare colombiano del 1983 precipitato dopo il decollo da Puerto Leguizamo con 128 persone a bordo, causando almeno 66 morti. Il presidente Petro ha accusato le opposizioni per mancati fondi alla difesa.","dataPoints":["66 morti","128 persone a bordo","Aereo del 1983"],"entities":["Gustavo Petro","Carlos Fernando Silva Rueda"],"tickers":[]}},{"title":"Un aereo si e scontrato con un veicolo dei vigili del fuoco all'aeroporto LaGuardia","url":"https://www.ilpost.it/2026/03/23/air-canada-incidente-aereo-aeroporto-laguardia/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Un aereo Air Canada/Jazz Aviation si e scontrato con un mezzo dei vigili del fuoco sulla pista di LaGuardia. Pilota e copilota morti, 41 persone in ospedale. Quasi meta dei 1.000 voli giornalieri cancellati.","dataPoints":["2 morti (piloti)","41 feriti","72 passeggeri","~500 voli cancellati"],"entities":["Air Canada","Jazz Aviation"],"tickers":[]}},{"title":"A Tirana ci sono state nuove proteste antigovernative","url":"https://www.ilpost.it/2026/03/23/proteste-antigoverantive-albania-tirana/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Migliaia di persone hanno manifestato a Tirana contro il governo Rama con lancio di molotov. Lo scandalo corruzione dell'ex vicepremier Balluku e alla base delle proteste.","dataPoints":[],"entities":["Edi Rama","Belinda Balluku"],"tickers":[]}},{"title":"A Hong Kong la polizia potra avere le password dei telefoni dei sospettati","url":"https://www.ilpost.it/2026/03/23/hong-kong-modifica-legge-sicurezza-nazionale/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Hong Kong ha introdotto una legge che consente alla polizia di ottenere password dei telefoni dei sospettati. Rifiuto: fino a 1 anno di carcere. Informazioni false: fino a 3 anni.","dataPoints":["Fino a 1 anno carcere per rifiuto","Fino a 3 anni per false info"],"entities":["Hong Kong","Cina"],"tickers":[]}},{"title":"L'accordo UE-Mercosur entrera in vigore dal 1 maggio","url":"https://www.ilpost.it/2026/03/23/accordo-ue-mercosur-entrata-in-vigore-1-maggio-in-via-provvisoria/","source":"Il Post","financial":true,"deepDived":true,"impact":"high","sentiment":"positive","extract":{"text":"L'accordo commerciale UE-Mercosur entrera provvisoriamente in vigore il 1 maggio 2026. E il piu grande accordo mai concluso dall'UE. Il Parlamento Europeo deve ancora ratificarlo.","dataPoints":["Entrata in vigore 1 maggio 2026","20 anni di negoziati"],"entities":["Commissione Europea","Parlamento Europeo","Mercosur"],"tickers":["EZU"]}},{"title":"L'UE ha permesso ai produttori australiani di usare il nome Prosecco","url":"https://www.ilpost.it/2026/03/24/accordo-commerciale-unione-europea-australia-prosecco/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","sentiment":"neutral","extract":{"text":"L'accordo UE-Australia consente l'uso del nome Prosecco per 10 anni sul mercato interno australiano. Eliminate tariffe su litio, idrogeno e auto europee.","dataPoints":["Prosecco: uso consentito per 10 anni","Rimozione tariffe su litio e idrogeno"],"entities":["Ursula von der Leyen","Commissione Europea"],"tickers":[]}}]},{"id":"finanza","emoji":"&#x1F4B0;","name":"Finanza","isYoutube":false,"isOther":false,"evolution":"continuation","newThemes":["GEDI venduto ad Antenna","Hybe/BTS crollo azioni","British Council chiude in Italia"],"continuingThemes":["Crisi energetica Medio Oriente"],"summary":"La giornata finanziaria e segnata da tre notizie di rilievo nel settore media e corporate. Il gruppo GEDI, editore di Repubblica, La Stampa, HuffPost e delle radio Deejay, Capital e m2o, e stato venduto da Exor (holding della famiglia Agnelli-Elkann) al conglomerato greco Antenna, controllato dalla famiglia Kyriakou. La cessione riguarda il 100% del capitale. La Stampa sara ceduta separatamente all'editore italiano SAE. Antenna opera 37 canali televisivi, due servizi streaming e due radio, ma ha esperienza limitata con i giornali. La nuova CEO sara Mirja Cartia d'Asero, ex Sole 24 Ore. I dettagli finanziari non sono stati resi noti, ma le trattative sono state complicate da divergenze sul prezzo, con Antenna che offriva una cifra ritenuta troppo bassa da Exor.\n\nSul fronte dei mercati asiatici, le azioni Hybe, la societa che gestisce i BTS, sono crollate del 15,5% dopo che il primo concerto del gruppo dal 2022 ha attirato solo 100.000 spettatori contro i 250.000 previsti a Gwanghwamun Plaza a Seul. Il concerto gratuito ha inaugurato un tour mondiale di 82 date sold out, e il nuovo album Arirang ha venduto 3,98 milioni di copie nel primo giorno. Il calo potrebbe riflettere piu la concorrenza crescente nel K-pop (Blackpink, Seventeen, Stray Kids) e la distribuzione Netflix che una reale perdita di popolarita. Netflix ha trasmesso in streaming il concerto in oltre 190 paesi.\n\nIl British Council ha annunciato la chiusura dei corsi di lingua inglese in Italia, con il licenziamento previsto di oltre 100 dei 140 dipendenti nelle sedi di Milano, Napoli e Roma. La decisione rientra in un piano di risparmi da 420 milioni di sterline imposto dal debito di 197 milioni di sterline con il governo britannico da rimborsare entro settembre 2026. Il personale complessivo sara ridotto del 26% a livello globale, con vendita di immobili per 90 milioni di sterline. L'Italia e il paese piu colpito in Europa: seguono Spagna (60 posti), Francia (52), Portogallo (25) e Germania (23). Il finanziamento statale britannico, attualmente 160 milioni di sterline annui, sara ulteriormente ridotto di 50 milioni. Secondo Politico, questa scelta indebolisce il soft power britannico proprio mentre Russia e Cina rafforzano i loro programmi culturali.\n\nSul fronte energetico, il Brent si e attestato intorno ai 96 dollari al barile dopo il rinvio dell'ultimatum di Trump all'Iran, in calo rispetto ai recenti massimi sopra 110 dollari. La crisi energetica resta il fattore dominante dei mercati globali.","articles":[{"title":"Il gruppo GEDI e stato venduto","url":"https://www.ilpost.it/2026/03/23/gedi-cessione-antenna-la-stampa-gruppo-sae/","source":"Il Post","financial":true,"deepDived":true,"impact":"high","sentiment":"neutral","extract":{"text":"Il gruppo GEDI (Repubblica, La Stampa, HuffPost, radio Deejay/Capital/m2o) venduto da Exor al conglomerato greco Antenna. 100% del capitale ceduto. La Stampa a SAE separatamente. Nuova CEO: Mirja Cartia d'Asero.","dataPoints":["100% capitale ceduto","37 canali TV di Antenna"],"entities":["GEDI","Exor","Antenna","SAE","Mirja Cartia d'Asero","Mario Orfeo","Repubblica","La Stampa"],"tickers":["EXO.MI"]}},{"title":"Le azioni legate ai BTS sono diminuite dopo il concerto meno partecipato","url":"https://www.ilpost.it/2026/03/23/azioni-hybe-bts-calo-primo-concerto/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Azioni Hybe -15,5% dopo il concerto BTS con 100.000 spettatori vs 250.000 attesi. Tour di 82 date sold out. Album Arirang: 3,98 milioni di copie giorno 1. Netflix ha trasmesso in 190+ paesi.","dataPoints":["Hybe -15,5%","100K vs 250K spettatori","Album 3,98M copie giorno 1","Tour 82 date sold out"],"entities":["Hybe","BTS","Netflix"],"tickers":["NFLX"]}},{"title":"Il British Council non insegnera piu l'inglese in Italia","url":"https://www.ilpost.it/2026/03/23/british-council-tagli-corsi-lingua-inglese-italia-licenziamenti/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"British Council chiude corsi inglese in Italia. Licenziati oltre 100 su 140 dipendenti. Piano risparmi 420M GBP per debito 197M GBP. Personale globale -26%. Finanziamento statale 160M GBP/anno sara tagliato di 50M.","dataPoints":["120 licenziamenti su 140","Debito 197M GBP","Piano risparmi 420M GBP","Taglio -50M GBP/anno"],"entities":["British Council","Scott McDonald","Foreign Office","Keir Starmer"],"tickers":[]}}]},{"id":"altro","emoji":"&#x1F4CC;","name":"Altro","isYoutube":false,"isOther":true,"evolution":null,"newThemes":[],"continuingThemes":[],"summary":"Zaynab Dosso ha vinto l'oro mondiale nei 60 metri indoor a Torun, diventando la prima italiana a conquistare un titolo mondiale nella velocita. L'Italia e arrivata terza nel medagliere con 3 ori e 2 argenti. E morto a 88 anni Lionel Jospin, ex primo ministro francese. In Grecia e iniziato il processo per il disastro ferroviario di Tempi del 2023 (57 morti). Bill Cosby dovra pagare 19,25 milioni di dollari per violenza sessuale. A Igbo-Ora, Nigeria, nascono gemelli con frequenza quadrupla rispetto alla media mondiale. E morto a 43 anni Leonid Radvinsky, proprietario di OnlyFans, patrimonio 4,7 miliardi USD.","articles":[{"title":"La prima italiana a vincere un oro mondiale nella velocita","url":"https://www.ilpost.it/2026/03/23/zaynab-dosso-oro-mondiali-chi-e/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"positive","extract":{"text":"Zaynab Dosso oro nei 60m ai Mondiali indoor di Torun con 7.00s. Prima italiana a vincere un titolo mondiale nella velocita. Italia terza nel medagliere con 3 ori e 2 argenti.","dataPoints":["Tempo 7.00s","Record 6.99 (miglior tempo 2026)","Italia 3 ori, 2 argenti"],"entities":["Zaynab Dosso","Nadia Battocletti","Andy Diaz"],"tickers":[]}},{"title":"E morto Lionel Jospin, ex primo ministro francese","url":"https://www.ilpost.it/2026/03/23/lionel-jospin-morte-politica-francese/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"neutral","extract":{"text":"Morto a 88 anni Lionel Jospin, ex primo ministro francese (1997-2002). Ricordato per le 35 ore settimanali.","dataPoints":["88 anni","Premier 1997-2002"],"entities":["Lionel Jospin","Jacques Chirac"],"tickers":[]}},{"title":"In Grecia e cominciato il processo sull'incidente ferroviario del 2023","url":"https://www.ilpost.it/2026/03/23/processo-incidente-ferroviario-grecia-2023/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Iniziato il processo per il disastro ferroviario di Tempi 2023: 57 morti. 36 imputati, 350+ testimoni.","dataPoints":["57 morti","36 imputati","350+ testimoni"],"entities":["Kyriakos Mitsotakis"],"tickers":[]}},{"title":"Bill Cosby dovra pagare 19 milioni di dollari","url":"https://www.ilpost.it/2026/03/23/bill-cosby-risarcimento-aggressione-violenze-sessuali/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Giuria di Los Angeles condanna Cosby a 19,25M USD per violenza sessuale nel 1972. Accusato da oltre 60 donne.","dataPoints":["19,25M USD","60+ accusatrici"],"entities":["Bill Cosby","Donna Motsinger"],"tickers":[]}},{"title":"La citta dei gemelli","url":"https://www.ilpost.it/2026/03/24/gemelli-igbo-ora-nigeria/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","sentiment":"positive","extract":{"text":"Igbo-Ora in Nigeria: tasso gemelli 45 per 1.000 nascite vs 12 media mondiale. Studio 2020 attribuisce il fenomeno a tratti genetici Yoruba.","dataPoints":["45 gemelli per 1.000 nascite vs 12 media"],"entities":["Igbo-Ora","Yoruba"],"tickers":[]}},{"title":"E morto a 43 anni il proprietario di OnlyFans","url":"https://www.ilpost.it/2026/03/23/morto-proprietario-onlyfans-leonid-radvinsky/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","sentiment":"negative","extract":{"text":"Morto a 43 anni Leonid Radvinsky, 75% di OnlyFans dal 2018. Patrimonio 4,7 miliardi USD secondo Forbes.","dataPoints":["43 anni","Patrimonio 4,7B USD","75% OnlyFans dal 2018"],"entities":["Leonid Radvinsky","OnlyFans","Forbes"],"tickers":[]}}]},{"id":"youtube","emoji":"&#x1F4FA;","name":"YouTube","isYoutube":true,"isOther":false,"evolution":null,"newThemes":[],"continuingThemes":[],"summary":null,"articles":[{"title":"Spaceships Powered by Nukes","url":"https://www.youtube.com/shorts/MX_r0KsMpho","source":"Kurzgesagt","financial":false,"deepDived":false,"impact":"normal","sentiment":"neutral","extract":null},{"title":"Non credere ai tuoi occhi: riflessioni su deepfake e propaganda","url":"https://www.youtube.com/watch?v=gYLt6jNTSlc","source":"Enkk","financial":false,"deepDived":false,"impact":"normal","sentiment":"neutral","extract":null},{"title":"Il nuovo paper del team di Kimi: Attention Residuals","url":"https://www.youtube.com/watch?v=S8iuzrkYpIk","source":"Salvatore Sanfilippo","financial":false,"deepDived":false,"impact":"normal","sentiment":"neutral","extract":null},{"title":"La strategia di Trump sull'Iran e come il meteo","url":"https://www.youtube.com/watch?v=ATuxpIlBLiI","source":"Stories","financial":false,"deepDived":false,"impact":"normal","sentiment":"neutral","extract":null},{"title":"E sempre piu comune scommettere su guerre e grandi eventi politici: l'effetto PolyMarket","url":"https://www.youtube.com/shorts/DfGM3PvOcao","source":"Breaking Italy","financial":false,"deepDived":false,"impact":"normal","sentiment":"neutral","extract":null},{"title":"Dobbiamo parlare di PolyMarket, che sta diventando un fenomeno culturale","url":"https://www.youtube.com/watch?v=MTL8Wuz1BII","source":"Breaking Italy","financial":false,"deepDived":false,"impact":"normal","sentiment":"neutral","extract":null},{"title":"Perche la Russia ha paura di un cartone animato per bambini?","url":"https://www.youtube.com/shorts/Ml-wf387Ceo","source":"Breaking Italy","financial":false,"deepDived":false,"impact":"normal","sentiment":"neutral","extract":null},{"title":"Giovanni Floris: perche DiMartedi funziona","url":"https://www.youtube.com/shorts/jXjLyg5dqxU","source":"Breaking Italy","financial":false,"deepDived":false,"impact":"normal","sentiment":"neutral","extract":null}]}]}
+{
+	"meta": {
+		"date": "24-03-2026",
+		"dayOfWeek": "Martedì",
+		"fullDate": "24 marzo 2026",
+		"time": "10:30",
+		"categoryCount": 5,
+		"sourceCount": 5,
+		"articleCount": 34,
+		"deepDiveCount": 26,
+		"availableReports": {
+			"daily": [
+				"19-03-2026",
+				"20-03-2026",
+				"21-03-2026",
+				"22-03-2026",
+				"23-03-2026",
+				"24-03-2026"
+			],
+			"stocks": [
+				"19-03-2026",
+				"20-03-2026",
+				"21-03-2026",
+				"22-03-2026",
+				"23-03-2026"
+			]
+		}
+	},
+	"categories": [
+		{
+			"id": "politica",
+			"emoji": "&#x1F5F3;&#xFE0F;",
+			"name": "Politica",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"Elezioni Danimarca Frederiksen",
+				"Dimissioni presidente ANM",
+				"Pentagono chiude spazio stampa"
+			],
+			"continuingThemes": [
+				"Referendum giustizia risultati",
+				"Elezioni locali Francia Socialisti",
+				"Elezioni Slovenia pareggio"
+			],
+			"summary": "La giornata politica è dominata dalle conseguenze del referendum sulla giustizia, che si è concluso con la vittoria del No al 53,74% contro il 46,26% del Si, con un'affluenza del 58,93% (55,7% includendo l'estero), significativamente superiore ai precedenti referendum costituzionali su due giorni. Il dato politico più rilevante e il voto dei giovani: secondo il sondaggio Opinio per la Rai, il 61,1% dei 18-34enni ha votato No, e il No ha prevalso anche nella fascia 35-54 con il 53,3%. Solo gli over 55 hanno votato Si, con una risicata maggioranza del 50,7%. La segretaria PD Elly Schlein ha sottolineato il ruolo dei giovani, denunciando la mancata previsione del voto fuori sede da parte della maggioranza. Il No ha vinto in 17 regioni su 20, con il Si che ha prevalso solo in Lombardia, Veneto e Friuli Venezia Giulia.\n\nGiorgia Meloni ha reagito con un videomessaggio in cui ha dichiarato che non si dimetterà, pur riconoscendo la delusione per un'occasione mancata di modernizzare la giustizia italiana. Il referendum rappresentava l'unica grande iniziativa legislativa realizzabile prima delle elezioni 2027, dato che la riforma dell'autonomia è stata smantellata dalla Corte Costituzionale e il premierato resta bloccato in parlamento. In parallelo, Cesare Parodi si è dimesso dalla presidenza dell'Associazione Nazionale Magistrati per ragioni personali, una decisione presa prima dell'esito referendario.\n\nA livello europeo, la Francia ha visto la vittoria dei Socialisti nelle quattro principali città (Parigi, Marsiglia, Lilla, Lione) alle elezioni locali di secondo turno, con la strategia vincente di non allearsi con La France Insoumise. A Parigi Emmanuel Gregoire ha battuto Rachida Dati con il 50,5%. Il Rassemblement National ha deluso, conquistando solo comuni minori ma nessuna città media o grande tranne Perpignan già governata dal 2020. In Slovenia le parlamentari si sono chiuse con un quasi pareggio tra il centrosinistra di Golob (28,6%, 29 seggi) e la destra di Jansa (28%, 28 seggi), aprendo una fase di incertezza sulla formazione del governo.\n\nMartedì 24 marzo si vota in Danimarca per le elezioni anticipate convocate dalla premier socialdemocratica Mette Frederiksen, che ha sfruttato il consenso sulla questione Groenlandia per capitalizzare in anticipo di sette mesi. La campagna è dominata per la prima volta dalla sicurezza nazionale e dalla politica estera, in seguito alle minacce di Trump sulla Groenlandia. Frederiksen propone tra l'altro una patrimoniale del 5% su patrimoni oltre 2,3 milioni di euro, che coinvolgerebbe circa 22.000 persone generando 800 milioni annui per l'istruzione. L'esito è incerto: i Socialdemocratici restano in testa nei sondaggi ma indeboliti rispetto alle comunali di novembre.\n\nIl Dipartimento della Difesa statunitense ha annunciato la chiusura del Correspondents' Corridor al Pentagono, trasferendo i giornalisti in una struttura esterna, in una mossa interpretata come ritorsione dopo la sentenza di un tribunale che ha dichiarato incostituzionali alcune restrizioni alla stampa. Il segretario alla Difesa Pete Hegseth mantiene una postura ostile verso i media fin dal suo insediamento. Alle elezioni suppletive in Veneto, i due candidati del centrodestra hanno vinto con ampi margini nei collegi di Rovigo (57,43%) e Padova (59,44%).\n\nScomparso dalla cronaca odierna il tema dei funerali di Bossi e le proteste a Praga contro Babis, presenti ieri.",
+			"articles": [
+				{
+					"title": "Il No ha vinto al referendum costituzionale sulla giustizia",
+					"url": "https://www.ilpost.it/2026/03/23/referendum-costituzionale-giustizia-chi-ha-vinto-no/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Il No ha vinto il referendum sulla riforma della giustizia con il 53,74% contro il 46,26% del Si. Affluenza al 58,93% (55,7% con estero), superiore ai referendum 2020 (51,2%) e 2006 (52,6%). Il No ha prevalso in 17 regioni su 20, con il Si vincente solo in Lombardia, Veneto e Friuli. Per fascia di eta, il Si ha prevalso solo tra i 50-64enni (53%), mentre il No ha dominato tra i 35-49enni con il 60%.",
+						"dataPoints": [
+							"No 53,74%",
+							"Si 46,26%",
+							"Affluenza 58,93%",
+							"No prevalente in 17/20 regioni"
+						],
+						"entities": ["Giorgia Meloni", "CSM"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Giorgia Meloni non si dimette",
+					"url": "https://www.ilpost.it/2026/03/23/meloni-non-si-dimette-reazione-referendum/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Dopo la vittoria del No al referendum, Meloni ha dichiarato in un videomessaggio che non si dimetterà, pur esprimendo delusione. Il referendum era l'unica grande iniziativa legislativa realizzabile prima delle elezioni 2027. La riforma dell'autonomia è stata smantellata dalla Corte Costituzionale, il premierato resta bloccato in parlamento.",
+						"dataPoints": [],
+						"entities": ["Giorgia Meloni", "Corte Costituzionale"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Al referendum il No è andato bene soprattutto tra i giovani",
+					"url": "https://www.ilpost.it/2026/03/24/referendum-riforma-giustizia-risultati-dati-giovani/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Secondo Opinio/Rai, il 61,1% dei 18-34enni ha votato No al referendum. Nella fascia 35-54 il No prevale con 53,3%. Solo gli over 55 hanno votato Si con il 50,7%. La segretaria PD Schlein ha sottolineato il ruolo dei giovani nonostante la mancata previsione del voto fuori sede.",
+						"dataPoints": [
+							"No 61,1% tra 18-34enni",
+							"No 53,3% tra 35-54",
+							"Si 50,7% tra over 55"
+						],
+						"entities": ["Elly Schlein", "Giorgia Meloni", "PD"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "L'affluenza al referendum sulla giustizia è stata del 59 per cento",
+					"url": "https://www.ilpost.it/2026/03/23/affluenza-definitiva-referendum-giustizia/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Affluenza definitiva al referendum: 58,93% escludendo l'estero, 55,7% complessivo. Superiore ai referendum 2020 (51,2%) e 2006 (52,6%), inferiore al 2016 (65,47% su un giorno). Le regioni con più affluenza: Emilia-Romagna, Toscana, Umbria.",
+						"dataPoints": [
+							"Affluenza 58,93%",
+							"Confronto 2020: 51,2%",
+							"Confronto 2006: 52,6%",
+							"Confronto 2016: 65,47%"
+						],
+						"entities": ["Ministero dell'Interno"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Il secondo turno delle elezioni locali in Francia è stato una vittoria per i Socialisti",
+					"url": "https://www.ilpost.it/2026/03/23/secondo-turno-elezioni-locali-francesi-vittoria-socialisti-repubblicani/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "I Socialisti hanno vinto nelle quattro principali città francesi: Parigi (Gregoire 50,5% vs Dati), Marsiglia (Payan 54% vs RN), Lilla e Lione. Strategia vincente: nessuna alleanza con La France Insoumise. Dove la sinistra si è alleata con LFI ha perso. Il RN ha deluso al secondo turno.",
+						"dataPoints": [
+							"Gregoire 50,5% a Parigi",
+							"Payan 54% a Marsiglia"
+						],
+						"entities": [
+							"Emmanuel Gregoire",
+							"Rachida Dati",
+							"Benoit Payan",
+							"Rassemblement National",
+							"Parti Socialiste"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Alle parlamentari in Slovenia il centrosinistra e la destra hanno preso quasi gli stessi voti",
+					"url": "https://www.ilpost.it/2026/03/23/risultati-elezioni-parlamentari-slovenia-pareggio/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "In Slovenia il Movimento per la Libertà di Golob ha ottenuto il 28,6% (29 seggi su 90), quasi appaiato dalla SDS di Jansa con il 28% (28 seggi). Golob in forte calo rispetto al 2022 (41 seggi). PIL sloveno +1,1% nel 2025.",
+						"dataPoints": [
+							"Golob 28,6% - 29 seggi",
+							"Jansa 28% - 28 seggi",
+							"PIL Slovenia +1,1% nel 2025"
+						],
+						"entities": ["Robert Golob", "Janez Jansa", "SDS"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "La scommessa di Mette Frederiksen alle elezioni anticipate in Danimarca",
+					"url": "https://www.ilpost.it/2026/03/24/guida-elezioni-danimarca/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Elezioni anticipate in Danimarca il 24 marzo. Frederiksen propone patrimoniale del 5% su patrimoni oltre 2,3 milioni EUR per 22.000 persone, gettito 800 milioni EUR annui. Maersk e imprenditori contrari.",
+						"dataPoints": [
+							"Patrimoniale 5% sopra 2,3M EUR",
+							"Gettito 800M EUR/anno",
+							"22.000 contribuenti"
+						],
+						"entities": [
+							"Mette Frederiksen",
+							"Troels Lund Poulsen",
+							"Alex Vanopslagh",
+							"Maersk"
+						],
+						"tickers": ["MAERSK-B.CO"]
+					}
+				},
+				{
+					"title": "Il Pentagono chiuderà l'area dedicata alla stampa",
+					"url": "https://www.ilpost.it/2026/03/24/pentagono-chiude-spazio-giornalisti/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Il Dipartimento della Difesa USA chiuderà il Correspondents' Corridor, trasferendo i giornalisti in struttura esterna. Segue sentenza federale che ha dichiarato incostituzionali alcune restrizioni alla stampa.",
+						"dataPoints": [],
+						"entities": [
+							"Pete Hegseth",
+							"Sean Parnell",
+							"New York Times",
+							"Pentagono"
+						],
+						"tickers": ["NYT"]
+					}
+				},
+				{
+					"title": "Cesare Parodi si è dimesso da presidente dell'ANM",
+					"url": "https://www.ilpost.it/2026/03/23/cesare-parodi-dimissioni-associazione-nazionale-magistrati/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Cesare Parodi si è dimesso dalla presidenza dell'ANM per ragioni personali. In carica da febbraio 2025.",
+						"dataPoints": [],
+						"entities": ["Cesare Parodi", "ANM"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Alle suppletive in Veneto hanno vinto i candidati del centrodestra",
+					"url": "https://www.ilpost.it/2026/03/24/elezioni-suppletive-veneto-eletti-camera-candidati-centrodestra/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Elezioni suppletive Veneto: centrodestra vince entrambi i collegi. Di Rubba 57,43% a Rovigo, Centenaro 59,44% a Padova.",
+						"dataPoints": [
+							"Di Rubba 57,43% a Rovigo",
+							"Centenaro 59,44% a Padova"
+						],
+						"entities": [
+							"Alberto Di Rubba",
+							"Giulio Centenaro",
+							"Matteo Salvini"
+						],
+						"tickers": []
+					}
+				}
+			]
+		},
+		{
+			"id": "attualita",
+			"emoji": "&#x1F30D;",
+			"name": "Attualità",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"Incidente aereo Colombia 66 morti",
+				"Proteste Albania Tirana",
+				"Hong Kong password polizia",
+				"Accordo UE-Mercosur 1 maggio"
+			],
+			"continuingThemes": [
+				"Guerra Medio Oriente Iran escalation",
+				"Incidente aereo LaGuardia"
+			],
+			"summary": "La guerra in Medio Oriente entra nel ventiquattresimo giorno con un colpo di scena: Trump ha rinviato di cinque giorni l'ultimatum all'Iran per la riapertura dello Stretto di Hormuz, dichiarando che ci sarebbero conversazioni buone e produttive in corso. L'Iran ha però smentito categoricamente: il presidente del parlamento Ghalibaf ha definito le dichiarazioni di Trump fake news finalizzate a manipolare i mercati finanziari e a uscire dal pantano in cui gli USA si sono infilati. Lo Stretto resta sostanzialmente chiuso alla maggior parte del traffico navale, con eccezioni per navi iraniane dirette in Asia e per paesi non ostili come India, Cina e Pakistan. Il prezzo del Brent è sceso intorno ai 96 dollari al barile dopo le dichiarazioni di Trump, in calo dai recenti massimi sopra i 110 dollari. Il direttore dell'IEA Fatih Birol ha dichiarato da Canberra che questa crisi energetica supera in gravità la combinazione delle crisi del 1973 e 1979. I combattimenti proseguono con bombardamenti israeliani su installazioni dei Pasdaran in Iran e su ponti sul fiume Litani in Libano.\n\nUn grave incidente aereo in Colombia ha causato almeno 66 morti: un Hercules C-130 militare costruito nel 1983 è precipitato poco dopo il decollo da Puerto Leguizamo, vicino al confine con il Peru, con 128 persone a bordo. Lo schianto ha causato un incendio e l'esplosione di munizioni. Le strutture sanitarie locali sono andate in sovraffollamento. Il presidente Petro ha accusato le opposizioni di non aver approvato fondi adeguati per la difesa, definendo l'aereo pura spazzatura corrotta. A fine febbraio un analogo C-130 boliviano si era schiantato vicino a La Paz con 20 morti.\n\nAll'aeroporto LaGuardia di New York un aereo Air Canada si è scontrato con un veicolo dei vigili del fuoco in pista dopo l'atterraggio: il capitano e il primo ufficiale sono morti, 41 persone sono state portate in ospedale. L'aereo viaggiava a circa 200 km/h quando ha colpito il mezzo antincendio che si stava dirigendo verso un altro velivolo. Quasi metà dei circa 1.000 voli giornalieri di LaGuardia sono stati cancellati.\n\nA Tirana migliaia di persone hanno manifestato contro il governo di Edi Rama, con lancio di molotov e risposta della polizia con lacrimogeni e idranti. Le proteste nascono da uno scandalo di corruzione che coinvolge l'ex vicepremier Belinda Balluku, accusata di aver favorito aziende private con fondi pubblici. A Hong Kong una nuova legge consente alla polizia di ottenere le password dei telefoni dei sospettati di violazioni della legge sulla sicurezza nazionale, con pene fino a un anno di carcere per chi rifiuta e tre anni per informazioni false.\n\nL'accordo commerciale UE-Mercosur entrerà provvisoriamente in vigore dal 1 maggio, il più grande mai concluso dall'UE per popolazione e volume commerciale. Il Parlamento Europeo deve ancora ratificarlo. L'accordo UE-Australia è stato formalizzato con concessioni controverse: ai produttori australiani sarà permesso usare il nome Prosecco per il mercato interno per 10 anni, eliminate le tariffe su litio, idrogeno e auto europee.\n\nScomparsi dalla cronaca odierna i temi di Cuba senza elettricita e del Sudan.",
+			"articles": [
+				{
+					"title": "Cos'è successo nel ventiquattresimo giorno di guerra",
+					"url": "https://www.ilpost.it/2026/03/23/riassunto-guerra-medio-oriente-iran-giorno-24/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Trump ha rinviato di 5 giorni l'ultimatum all'Iran sullo Stretto di Hormuz. L'Iran smentisce: Ghalibaf definisce le dichiarazioni fake news per manipolare i mercati. Brent sceso a 96 USD/barile dai massimi sopra 110. IEA: crisi peggiore di 1973+1979 combinate.",
+						"dataPoints": [
+							"Brent ~96 USD/barile",
+							"Ultimatum rinviato di 5 giorni",
+							"Crisi peggiore di 1973+1979 secondo IEA"
+						],
+						"entities": [
+							"Donald Trump",
+							"Mohammad Bagher Ghalibaf",
+							"Fatih Birol",
+							"IEA",
+							"Hezbollah",
+							"Pasdaran"
+						],
+						"tickers": ["CL=F", "BZ=F", "XLE"]
+					}
+				},
+				{
+					"title": "Nel grave incidente aereo in Colombia sono morte almeno 66 persone",
+					"url": "https://www.ilpost.it/2026/03/24/incidente-aereo-militare-colombia/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Un Hercules C-130 militare colombiano del 1983 precipitato dopo il decollo da Puerto Leguizamo con 128 persone a bordo, causando almeno 66 morti. Il presidente Petro ha accusato le opposizioni per mancati fondi alla difesa.",
+						"dataPoints": [
+							"66 morti",
+							"128 persone a bordo",
+							"Aereo del 1983"
+						],
+						"entities": [
+							"Gustavo Petro",
+							"Carlos Fernando Silva Rueda"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Un aereo si è scontrato con un veicolo dei vigili del fuoco all'aeroporto LaGuardia",
+					"url": "https://www.ilpost.it/2026/03/23/air-canada-incidente-aereo-aeroporto-laguardia/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Un aereo Air Canada/Jazz Aviation si è scontrato con un mezzo dei vigili del fuoco sulla pista di LaGuardia. Pilota e copilota morti, 41 persone in ospedale. Quasi metà dei 1.000 voli giornalieri cancellati.",
+						"dataPoints": [
+							"2 morti (piloti)",
+							"41 feriti",
+							"72 passeggeri",
+							"~500 voli cancellati"
+						],
+						"entities": ["Air Canada", "Jazz Aviation"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "A Tirana ci sono state nuove proteste antigovernative",
+					"url": "https://www.ilpost.it/2026/03/23/proteste-antigoverantive-albania-tirana/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Migliaia di persone hanno manifestato a Tirana contro il governo Rama con lancio di molotov. Lo scandalo corruzione dell'ex vicepremier Balluku e alla base delle proteste.",
+						"dataPoints": [],
+						"entities": ["Edi Rama", "Belinda Balluku"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "A Hong Kong la polizia potrà avere le password dei telefoni dei sospettati",
+					"url": "https://www.ilpost.it/2026/03/23/hong-kong-modifica-legge-sicurezza-nazionale/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Hong Kong ha introdotto una legge che consente alla polizia di ottenere password dei telefoni dei sospettati. Rifiuto: fino a 1 anno di carcere. Informazioni false: fino a 3 anni.",
+						"dataPoints": [
+							"Fino a 1 anno carcere per rifiuto",
+							"Fino a 3 anni per false info"
+						],
+						"entities": ["Hong Kong", "Cina"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "L'accordo UE-Mercosur entrerà in vigore dal 1 maggio",
+					"url": "https://www.ilpost.it/2026/03/23/accordo-ue-mercosur-entrata-in-vigore-1-maggio-in-via-provvisoria/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "positive",
+					"extract": {
+						"text": "L'accordo commerciale UE-Mercosur entrerà provvisoriamente in vigore il 1 maggio 2026. E il più grande accordo mai concluso dall'UE. Il Parlamento Europeo deve ancora ratificarlo.",
+						"dataPoints": [
+							"Entrata in vigore 1 maggio 2026",
+							"20 anni di negoziati"
+						],
+						"entities": [
+							"Commissione Europea",
+							"Parlamento Europeo",
+							"Mercosur"
+						],
+						"tickers": ["EZU"]
+					}
+				},
+				{
+					"title": "L'UE ha permesso ai produttori australiani di usare il nome Prosecco",
+					"url": "https://www.ilpost.it/2026/03/24/accordo-commerciale-unione-europea-australia-prosecco/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "L'accordo UE-Australia consente l'uso del nome Prosecco per 10 anni sul mercato interno australiano. Eliminate tariffe su litio, idrogeno e auto europee.",
+						"dataPoints": [
+							"Prosecco: uso consentito per 10 anni",
+							"Rimozione tariffe su litio e idrogeno"
+						],
+						"entities": [
+							"Ursula von der Leyen",
+							"Commissione Europea"
+						],
+						"tickers": []
+					}
+				}
+			]
+		},
+		{
+			"id": "finanza",
+			"emoji": "&#x1F4B0;",
+			"name": "Finanza",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"GEDI venduto ad Antenna",
+				"Hybe/BTS crollo azioni",
+				"British Council chiude in Italia"
+			],
+			"continuingThemes": ["Crisi energetica Medio Oriente"],
+			"summary": "La giornata finanziaria è segnata da tre notizie di rilievo nel settore media e corporate. Il gruppo GEDI, editore di Repubblica, La Stampa, HuffPost e delle radio Deejay, Capital e m2o, è stato venduto da Exor (holding della famiglia Agnelli-Elkann) al conglomerato greco Antenna, controllato dalla famiglia Kyriakou. La cessione riguarda il 100% del capitale. La Stampa sarà ceduta separatamente all'editore italiano SAE. Antenna opera 37 canali televisivi, due servizi streaming e due radio, ma ha esperienza limitata con i giornali. La nuova CEO sarà Mirja Cartia d'Asero, ex Sole 24 Ore. I dettagli finanziari non sono stati resi noti, ma le trattative sono state complicate da divergenze sul prezzo, con Antenna che offriva una cifra ritenuta troppo bassa da Exor.\n\nSul fronte dei mercati asiatici, le azioni Hybe, la società che gestisce i BTS, sono crollate del 15,5% dopo che il primo concerto del gruppo dal 2022 ha attirato solo 100.000 spettatori contro i 250.000 previsti a Gwanghwamun Plaza a Seul. Il concerto gratuito ha inaugurato un tour mondiale di 82 date sold out, e il nuovo album Arirang ha venduto 3,98 milioni di copie nel primo giorno. Il calo potrebbe riflettere più la concorrenza crescente nel K-pop (Blackpink, Seventeen, Stray Kids) e la distribuzione Netflix che una reale perdita di popolarità. Netflix ha trasmesso in streaming il concerto in oltre 190 paesi.\n\nIl British Council ha annunciato la chiusura dei corsi di lingua inglese in Italia, con il licenziamento previsto di oltre 100 dei 140 dipendenti nelle sedi di Milano, Napoli e Roma. La decisione rientra in un piano di risparmi da 420 milioni di sterline imposto dal debito di 197 milioni di sterline con il governo britannico da rimborsare entro settembre 2026. Il personale complessivo sarà ridotto del 26% a livello globale, con vendita di immobili per 90 milioni di sterline. L'Italia è il paese più colpito in Europa: seguono Spagna (60 posti), Francia (52), Portogallo (25) e Germania (23). Il finanziamento statale britannico, attualmente 160 milioni di sterline annui, sarà ulteriormente ridotto di 50 milioni. Secondo Politico, questa scelta indebolisce il soft power britannico proprio mentre Russia e Cina rafforzano i loro programmi culturali.\n\nSul fronte energetico, il Brent si è attestato intorno ai 96 dollari al barile dopo il rinvio dell'ultimatum di Trump all'Iran, in calo rispetto ai recenti massimi sopra 110 dollari. La crisi energetica resta il fattore dominante dei mercati globali.",
+			"articles": [
+				{
+					"title": "Il gruppo GEDI è stato venduto",
+					"url": "https://www.ilpost.it/2026/03/23/gedi-cessione-antenna-la-stampa-gruppo-sae/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Il gruppo GEDI (Repubblica, La Stampa, HuffPost, radio Deejay/Capital/m2o) venduto da Exor al conglomerato greco Antenna. 100% del capitale ceduto. La Stampa a SAE separatamente. Nuova CEO: Mirja Cartia d'Asero.",
+						"dataPoints": [
+							"100% capitale ceduto",
+							"37 canali TV di Antenna"
+						],
+						"entities": [
+							"GEDI",
+							"Exor",
+							"Antenna",
+							"SAE",
+							"Mirja Cartia d'Asero",
+							"Mario Orfeo",
+							"Repubblica",
+							"La Stampa"
+						],
+						"tickers": ["EXO.MI"]
+					}
+				},
+				{
+					"title": "Le azioni legate ai BTS sono diminuite dopo il concerto meno partecipato",
+					"url": "https://www.ilpost.it/2026/03/23/azioni-hybe-bts-calo-primo-concerto/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Azioni Hybe -15,5% dopo il concerto BTS con 100.000 spettatori vs 250.000 attesi. Tour di 82 date sold out. Album Arirang: 3,98 milioni di copie giorno 1. Netflix ha trasmesso in 190+ paesi.",
+						"dataPoints": [
+							"Hybe -15,5%",
+							"100K vs 250K spettatori",
+							"Album 3,98M copie giorno 1",
+							"Tour 82 date sold out"
+						],
+						"entities": ["Hybe", "BTS", "Netflix"],
+						"tickers": ["NFLX"]
+					}
+				},
+				{
+					"title": "Il British Council non insegnerà più l'inglese in Italia",
+					"url": "https://www.ilpost.it/2026/03/23/british-council-tagli-corsi-lingua-inglese-italia-licenziamenti/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "British Council chiude corsi inglese in Italia. Licenziati oltre 100 su 140 dipendenti. Piano risparmi 420M GBP per debito 197M GBP. Personale globale -26%. Finanziamento statale 160M GBP/anno sarà tagliato di 50M.",
+						"dataPoints": [
+							"120 licenziamenti su 140",
+							"Debito 197M GBP",
+							"Piano risparmi 420M GBP",
+							"Taglio -50M GBP/anno"
+						],
+						"entities": [
+							"British Council",
+							"Scott McDonald",
+							"Foreign Office",
+							"Keir Starmer"
+						],
+						"tickers": []
+					}
+				}
+			]
+		},
+		{
+			"id": "altro",
+			"emoji": "&#x1F4CC;",
+			"name": "Altro",
+			"isYoutube": false,
+			"isOther": true,
+			"evolution": null,
+			"newThemes": [],
+			"continuingThemes": [],
+			"summary": "Zaynab Dosso ha vinto l'oro mondiale nei 60 metri indoor a Torun, diventando la prima italiana a conquistare un titolo mondiale nella velocità. L'Italia è arrivata terza nel medagliere con 3 ori e 2 argenti. È morto a 88 anni Lionel Jospin, ex primo ministro francese. In Grecia è iniziato il processo per il disastro ferroviario di Tempi del 2023 (57 morti). Bill Cosby dovrà pagare 19,25 milioni di dollari per violenza sessuale. A Igbo-Ora, Nigeria, nascono gemelli con frequenza quadrupla rispetto alla media mondiale. È morto a 43 anni Leonid Radvinsky, proprietario di OnlyFans, patrimonio 4,7 miliardi USD.",
+			"articles": [
+				{
+					"title": "La prima italiana a vincere un oro mondiale nella velocità",
+					"url": "https://www.ilpost.it/2026/03/23/zaynab-dosso-oro-mondiali-chi-e/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "Zaynab Dosso oro nei 60m ai Mondiali indoor di Torun con 7.00s. Prima italiana a vincere un titolo mondiale nella velocità. Italia terza nel medagliere con 3 ori e 2 argenti.",
+						"dataPoints": [
+							"Tempo 7.00s",
+							"Record 6.99 (miglior tempo 2026)",
+							"Italia 3 ori, 2 argenti"
+						],
+						"entities": [
+							"Zaynab Dosso",
+							"Nadia Battocletti",
+							"Andy Diaz"
+						],
+						"tickers": []
+					}
+				},
+				{
+					"title": "È morto Lionel Jospin, ex primo ministro francese",
+					"url": "https://www.ilpost.it/2026/03/23/lionel-jospin-morte-politica-francese/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Morto a 88 anni Lionel Jospin, ex primo ministro francese (1997-2002). Ricordato per le 35 ore settimanali.",
+						"dataPoints": ["88 anni", "Premier 1997-2002"],
+						"entities": ["Lionel Jospin", "Jacques Chirac"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "In Grecia è cominciato il processo sull'incidente ferroviario del 2023",
+					"url": "https://www.ilpost.it/2026/03/23/processo-incidente-ferroviario-grecia-2023/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Iniziato il processo per il disastro ferroviario di Tempi 2023: 57 morti. 36 imputati, 350+ testimoni.",
+						"dataPoints": [
+							"57 morti",
+							"36 imputati",
+							"350+ testimoni"
+						],
+						"entities": ["Kyriakos Mitsotakis"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "Bill Cosby dovrà pagare 19 milioni di dollari",
+					"url": "https://www.ilpost.it/2026/03/23/bill-cosby-risarcimento-aggressione-violenze-sessuali/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Giuria di Los Angeles condanna Cosby a 19,25M USD per violenza sessuale nel 1972. Accusato da oltre 60 donne.",
+						"dataPoints": ["19,25M USD", "60+ accusatrici"],
+						"entities": ["Bill Cosby", "Donna Motsinger"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "La città dei gemelli",
+					"url": "https://www.ilpost.it/2026/03/24/gemelli-igbo-ora-nigeria/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "Igbo-Ora in Nigeria: tasso gemelli 45 per 1.000 nascite vs 12 media mondiale. Studio 2020 attribuisce il fenomeno a tratti genetici Yoruba.",
+						"dataPoints": [
+							"45 gemelli per 1.000 nascite vs 12 media"
+						],
+						"entities": ["Igbo-Ora", "Yoruba"],
+						"tickers": []
+					}
+				},
+				{
+					"title": "È morto a 43 anni il proprietario di OnlyFans",
+					"url": "https://www.ilpost.it/2026/03/23/morto-proprietario-onlyfans-leonid-radvinsky/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Morto a 43 anni Leonid Radvinsky, 75% di OnlyFans dal 2018. Patrimonio 4,7 miliardi USD secondo Forbes.",
+						"dataPoints": [
+							"43 anni",
+							"Patrimonio 4,7B USD",
+							"75% OnlyFans dal 2018"
+						],
+						"entities": ["Leonid Radvinsky", "OnlyFans", "Forbes"],
+						"tickers": []
+					}
+				}
+			]
+		},
+		{
+			"id": "youtube",
+			"emoji": "&#x1F4FA;",
+			"name": "YouTube",
+			"isYoutube": true,
+			"isOther": false,
+			"evolution": null,
+			"newThemes": [],
+			"continuingThemes": [],
+			"summary": null,
+			"articles": [
+				{
+					"title": "Spaceships Powered by Nukes",
+					"url": "https://www.youtube.com/shorts/MX_r0KsMpho",
+					"source": "Kurzgesagt",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Non credere ai tuoi occhi: riflessioni su deepfake e propaganda",
+					"url": "https://www.youtube.com/watch?v=gYLt6jNTSlc",
+					"source": "Enkk",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Il nuovo paper del team di Kimi: Attention Residuals",
+					"url": "https://www.youtube.com/watch?v=S8iuzrkYpIk",
+					"source": "Salvatore Sanfilippo",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "La strategia di Trump sull'Iran è come il meteo",
+					"url": "https://www.youtube.com/watch?v=ATuxpIlBLiI",
+					"source": "Stories",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "È sempre più comune scommettere su guerre e grandi eventi politici: l'effetto PolyMarket",
+					"url": "https://www.youtube.com/shorts/DfGM3PvOcao",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Dobbiamo parlare di PolyMarket, che sta diventando un fenomeno culturale",
+					"url": "https://www.youtube.com/watch?v=MTL8Wuz1BII",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Perché la Russia ha paura di un cartone animato per bambini?",
+					"url": "https://www.youtube.com/shorts/Ml-wf387Ceo",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Giovanni Floris: perché DiMartedi funziona",
+					"url": "https://www.youtube.com/shorts/jXjLyg5dqxU",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				}
+			]
+		}
+	]
+}

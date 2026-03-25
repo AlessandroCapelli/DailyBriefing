@@ -260,7 +260,7 @@ var DB_VERSION = "1.0";
 			wrap.appendChild(footer);
 		}
 		footer.style.cssText =
-			"position:fixed;bottom:0;left:0;right:0;text-align:center;padding:.5rem 1rem;font-size:.7rem;background:#0f1117;z-index:50;border-top:1px solid #2d3148";
+			"position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:.5rem 1rem;font-size:.7rem;background:#0f1117;z-index:50;border-top:1px solid #2d3148";
 		document.body.style.paddingBottom = "2.5rem";
 		footer.innerHTML =
 			'<a href="https://github.com/AlessandroCapelli/DailyBriefing" target="_blank" rel="noopener noreferrer" style="color:#94a3b8;text-decoration:none;font-size:.7rem">GitHub</a> <span style="color:#2d3148;font-size:.55rem;margin-left:.5rem">v' +

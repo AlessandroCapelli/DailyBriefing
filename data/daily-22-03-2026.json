@@ -30,10 +30,10 @@
 				"Delmastro e legami mafiosi",
 				"Indagine USA su Petro"
 			],
-			"summary": "La giornata politica e dominata dal referendum sulla riforma della giustizia, che si tiene oggi (domenica 22 marzo) e domani (lunedi 23 marzo). Il quesito piu controverso resta il sorteggio dei membri del CSM in sostituzione delle elezioni interne alla magistratura, un meccanismo che eliminerebbe le correnti ma solleva interrogativi sulla meritocrazia e sulla competenza dei selezionati. L'unico precedente europeo e la Grecia, modello che paradossalmente i riformatori dichiarano di voler evitare. Le incognite operative -- criteri di selezione, modalita di estrazione, garanzie di competenza -- restano irrisolte nel testo costituzionale.<br><br>Prosegue la copertura sullo scandalo del sottosegretario alla Giustizia Andrea Delmastro, che risulta aver fondato una societa con la figlia di un criminale condannato per intestazione fittizia di beni con aggravante mafiosa. La cessione delle quote, avvenuta in due fasi tra novembre 2025 e febbraio 2026, coincide sospettosamente con la condanna definitiva del padre. L'opposizione chiede le dimissioni, ma Giorgia Meloni le esclude. Il tema si intreccia con il referendum: Delmastro e sottosegretario alla Giustizia proprio nel momento in cui si vota per riformare il sistema giudiziario.<br><br>Emerge oggi la notizia della morte di Robert Mueller, ex direttore dell'FBI ed ex procuratore speciale che indago sull'interferenza russa nelle elezioni americane del 2016, scomparso a 81 anni. Mueller diresse l'FBI per 12 anni attraverso le amministrazioni Bush e Obama, diventando poi procuratore speciale nel maggio 2017 dopo che Trump licenzio James Comey. La sua indagine biennale produsse un rapporto di 400 pagine, 34 incriminazioni e stabili che la Russia aveva interferito in modo radicale e sistematico, pur senza prove sufficienti per accuse di cospirazione diretta. Trump ha commentato la morte con approvazione su Truth Social, definendola implicitamente la fine di un capitolo della sua narrativa sul deep state.<br><br>Sul fronte del voto all'estero, emerge un problema strutturale: molte donne italiane residenti all'estero ricevono i documenti elettorali con il cognome del marito aggiunto al proprio, sulla base di una legge elettorale del 1947 mai aggiornata per il voto estero. In Svezia una elettrice non ha potuto ritirare la scheda perche il nome sulla busta non corrispondeva ai suoi documenti. La Cassazione ha definito la pratica discriminatoria, ma il problema persiste soprattutto in Germania e Francia. Prosegue l'indagine USA su Petro in Colombia per presunti legami con il narcotraffico, con due procure di New York attive.",
+			"summary": "La giornata politica è dominata dal referendum sulla riforma della giustizia, che si tiene oggi (domenica 22 marzo) e domani (lunedì 23 marzo). Il quesito più controverso resta il sorteggio dei membri del CSM in sostituzione delle elezioni interne alla magistratura, un meccanismo che eliminerebbe le correnti ma solleva interrogativi sulla meritocrazia e sulla competenza dei selezionati. L'unico precedente europeo e la Grecia, modello che paradossalmente i riformatori dichiarano di voler evitare. Le incognite operative -- criteri di selezione, modalita di estrazione, garanzie di competenza -- restano irrisolte nel testo costituzionale.<br><br>Prosegue la copertura sullo scandalo del sottosegretario alla Giustizia Andrea Delmastro, che risulta aver fondato una società con la figlia di un criminale condannato per intestazione fittizia di beni con aggravante mafiosa. La cessione delle quote, avvenuta in due fasi tra novembre 2025 e febbraio 2026, coincide sospettosamente con la condanna definitiva del padre. L'opposizione chiede le dimissioni, ma Giorgia Meloni le esclude. Il tema si intreccia con il referendum: Delmastro e sottosegretario alla Giustizia proprio nel momento in cui si vota per riformare il sistema giudiziario.<br><br>Emerge oggi la notizia della morte di Robert Mueller, ex direttore dell'FBI ed ex procuratore speciale che indago sull'interferenza russa nelle elezioni americane del 2016, scomparso a 81 anni. Mueller diresse l'FBI per 12 anni attraverso le amministrazioni Bush e Obama, diventando poi procuratore speciale nel maggio 2017 dopo che Trump licenzio James Comey. La sua indagine biennale produsse un rapporto di 400 pagine, 34 incriminazioni e stabili che la Russia aveva interferito in modo radicale e sistematico, pur senza prove sufficienti per accuse di cospirazione diretta. Trump ha commentato la morte con approvazione su Truth Social, definendola implicitamente la fine di un capitolo della sua narrativa sul deep state.<br><br>Sul fronte del voto all'estero, emerge un problema strutturale: molte donne italiane residenti all'estero ricevono i documenti elettorali con il cognome del marito aggiunto al proprio, sulla base di una legge elettorale del 1947 mai aggiornata per il voto estero. In Svezia una elettrice non ha potuto ritirare la scheda perché il nome sulla busta non corrispondeva ai suoi documenti. La Cassazione ha definito la pratica discriminatoria, ma il problema persiste soprattutto in Germania e Francia. Prosegue l'indagine USA su Petro in Colombia per presunti legami con il narcotraffico, con due procure di New York attive.",
 			"articles": [
 				{
-					"title": "Il punto piu discusso della riforma della giustizia",
+					"title": "Il punto più discusso della riforma della giustizia",
 					"url": "https://www.ilpost.it/2026/03/21/sorteggio-csm-riforma-magistratura-referendum-22-23-marzo/",
 					"source": "Il Post",
 					"financial": false,
@@ -56,7 +56,7 @@
 					"impact": "normal",
 					"sentiment": "negative",
 					"extract": {
-						"text": "Delmastro ha fondato societa con figlia di criminale condannato con aggravante mafiosa. Cessione quote tra novembre 2025 e febbraio 2026, coincidente con condanna definitiva del padre. L'opposizione chiede dimissioni, Meloni le esclude.",
+						"text": "Delmastro ha fondato società con figlia di criminale condannato con aggravante mafiosa. Cessione quote tra novembre 2025 e febbraio 2026, coincidente con condanna definitiva del padre. L'opposizione chiede dimissioni, Meloni le esclude.",
 						"dataPoints": [
 							"Condanna a 4 anni con aggravante mafiosa"
 						],
@@ -70,7 +70,7 @@
 					}
 				},
 				{
-					"title": "E morto Robert Mueller",
+					"title": "È morto Robert Mueller",
 					"url": "https://www.ilpost.it/2026/03/21/morto-robert-mueller/",
 					"source": "Il Post",
 					"financial": false,
@@ -78,7 +78,7 @@
 					"impact": "normal",
 					"sentiment": "neutral",
 					"extract": {
-						"text": "Robert Mueller, ex direttore FBI e procuratore speciale per il Russiagate, e morto a 81 anni. Diresse l'FBI per 12 anni dal 2001. La sua indagine biennale produsse 400 pagine, 34 incriminazioni, stabilendo interferenza russa sistematica nelle elezioni 2016 ma senza prove di cospirazione diretta Trump-Russia. Trump ha commentato con approvazione su Truth Social.",
+						"text": "Robert Mueller, ex direttore FBI e procuratore speciale per il Russiagate, è morto a 81 anni. Diresse l'FBI per 12 anni dal 2001. La sua indagine biennale produsse 400 pagine, 34 incriminazioni, stabilendo interferenza russa sistematica nelle elezioni 2016 ma senza prove di cospirazione diretta Trump-Russia. Trump ha commentato con approvazione su Truth Social.",
 						"dataPoints": [
 							"81 anni",
 							"12 anni alla guida FBI",
@@ -130,7 +130,7 @@
 		{
 			"id": "attualita",
 			"emoji": "&#x1F30D;",
-			"name": "Attualita",
+			"name": "Attualità",
 			"isYoutube": false,
 			"isOther": false,
 			"evolution": "acceleration",
@@ -144,10 +144,10 @@
 				"Esplosione anarchici Roma",
 				"Alluvioni Hawaii"
 			],
-			"summary": "La guerra in Medio Oriente segna un'escalation significativa nel ventiduesimo giorno di conflitto. L'Iran ha lanciato due missili contro la base militare di Diego Garcia, gestita da Stati Uniti e Regno Unito nell'Oceano Indiano, a quasi 4.000 km dall'Iran. Nessuno dei due ha colpito il bersaglio, ma la dimostrazione di una gittata molto superiore a quanto ipotizzato ha implicazioni strategiche dirette per l'Europa, inclusa l'Italia. Due ulteriori missili iraniani hanno superato le difese israeliane colpendo Dimona e Arad nel deserto del Negev, ferendo circa cento persone. Le citta sono vicine al centro di ricerca nucleare Shimon Peres, dove si ritiene Israele abbia sviluppato le testate nucleari, anche se il centro non ha subito danni.<br><br>Gli attacchi su Dimona appaiono come ritorsione per i bombardamenti israeliani sul sito nucleare iraniano di Natanz, senza fuoriuscite radioattive. Il conflitto si allarga geograficamente: l'Iran ha attaccato anche Arabia Saudita, Kuwait ed Emirati Arabi Uniti, mentre Israele prosegue le operazioni in Libano uccidendo quattro miliziani di Hezbollah. La nuova Guida suprema iraniana Mojtaba Khamenei resta irreperibile nonostante il Nowruz, primo giorno di primavera e capodanno persiano, mentre le agenzie di intelligence cercano di localizzarlo ed eliminarlo.<br><br>Sul piano economico-energetico, il petrolio Brent ha raggiunto i 112 dollari al barile, livello che conferma l'impatto crescente del conflitto sui mercati energetici globali. Gli USA hanno rimosso parte delle sanzioni sul petrolio iraniano nel tentativo di contenere i prezzi, una mossa che rivela la tensione tra obiettivi militari e stabilita economica. Trump continua con dichiarazioni contraddittorie: da un lato afferma di stare annientando l'Iran e rifiuta di negoziare un cessate il fuoco, dall'altro suggerisce che le operazioni potrebbero rallentare. Il dispiegamento di 2.200-2.500 marines aggiuntivi e due navi d'assalto anfibio contraddice la de-escalation verbale.<br><br>La Cassazione ha confermato le condanne definitive contro Francesco Bidognetti, boss dei Casalesi, e il suo ex avvocato Michele Santonastaso per minacce aggravate con metodo mafioso contro Roberto Saviano e Rosaria Capacchione durante il processo Spartacus del 2008. A Roma, la procura prosegue l'inchiesta sull'esplosione nel casale abbandonato al Parco degli Acquedotti che ha ucciso due membri di gruppi anarchici. Alle Hawaii, le alluvioni piu gravi degli ultimi vent'anni hanno causato danni per un miliardo di dollari con 5.500 evacuati a Oahu. In Corea del Sud, l'incendio nella fabbrica di componenti auto a Daejeon ha ucciso almeno 11 persone.",
+			"summary": "La guerra in Medio Oriente segna un'escalation significativa nel ventiduesimo giorno di conflitto. L'Iran ha lanciato due missili contro la base militare di Diego Garcia, gestita da Stati Uniti e Regno Unito nell'Oceano Indiano, a quasi 4.000 km dall'Iran. Nessuno dei due ha colpito il bersaglio, ma la dimostrazione di una gittata molto superiore a quanto ipotizzato ha implicazioni strategiche dirette per l'Europa, inclusa l'Italia. Due ulteriori missili iraniani hanno superato le difese israeliane colpendo Dimona e Arad nel deserto del Negev, ferendo circa cento persone. Le città sono vicine al centro di ricerca nucleare Shimon Peres, dove si ritiene Israele abbia sviluppato le testate nucleari, anche se il centro non ha subito danni.<br><br>Gli attacchi su Dimona appaiono come ritorsione per i bombardamenti israeliani sul sito nucleare iraniano di Natanz, senza fuoriuscite radioattive. Il conflitto si allarga geograficamente: l'Iran ha attaccato anche Arabia Saudita, Kuwait ed Emirati Arabi Uniti, mentre Israele prosegue le operazioni in Libano uccidendo quattro miliziani di Hezbollah. La nuova Guida suprema iraniana Mojtaba Khamenei resta irreperibile nonostante il Nowruz, primo giorno di primavera e capodanno persiano, mentre le agenzie di intelligence cercano di localizzarlo ed eliminarlo.<br><br>Sul piano economico-energetico, il petrolio Brent ha raggiunto i 112 dollari al barile, livello che conferma l'impatto crescente del conflitto sui mercati energetici globali. Gli USA hanno rimosso parte delle sanzioni sul petrolio iraniano nel tentativo di contenere i prezzi, una mossa che rivela la tensione tra obiettivi militari e stabilità economica. Trump continua con dichiarazioni contraddittorie: da un lato afferma di stare annientando l'Iran e rifiuta di negoziare un cessate il fuoco, dall'altro suggerisce che le operazioni potrebbero rallentare. Il dispiegamento di 2.200-2.500 marines aggiuntivi e due navi d'assalto anfibio contraddice la de-escalation verbale.<br><br>La Cassazione ha confermato le condanne definitive contro Francesco Bidognetti, boss dei Casalesi, e il suo ex avvocato Michele Santonastaso per minacce aggravate con metodo mafioso contro Roberto Saviano e Rosaria Capacchione durante il processo Spartacus del 2008. A Roma, la procura prosegue l'inchiesta sull'esplosione nel casale abbandonato al Parco degli Acquedotti che ha ucciso due membri di gruppi anarchici. Alle Hawaii, le alluvioni più gravi degli ultimi vent'anni hanno causato danni per un miliardo di dollari con 5.500 evacuati a Oahu. In Corea del Sud, l'incendio nella fabbrica di componenti auto a Daejeon ha ucciso almeno 11 persone.",
 			"articles": [
 				{
-					"title": "Cos'e successo nel ventiduesimo giorno di guerra",
+					"title": "Cos'è successo nel ventiduesimo giorno di guerra",
 					"url": "https://www.ilpost.it/2026/03/21/riassunto-guerra-medio-oriente-21-marzo/",
 					"source": "Il Post",
 					"financial": true,
@@ -196,9 +196,9 @@
 					"impact": "high",
 					"sentiment": "negative",
 					"extract": {
-						"text": "Iran ha attaccato Ras Laffan eliminando 17% capacita export gas Qatar. Perdite 20 miliardi/anno. Italia importa 11% gas dal Qatar. BCE prevede inflazione 6,3% nello scenario peggiore.",
+						"text": "Iran ha attaccato Ras Laffan eliminando 17% capacità export gas Qatar. Perdite 20 miliardi/anno. Italia importa 11% gas dal Qatar. BCE prevede inflazione 6,3% nello scenario peggiore.",
 						"dataPoints": [
-							"17% capacita export eliminata",
+							"17% capacità export eliminata",
 							"20 miliardi USD perdite annue",
 							"11% import gas Italia dal Qatar",
 							"6,3% inflazione BCE worst case"
@@ -216,7 +216,7 @@
 					"impact": "normal",
 					"sentiment": "neutral",
 					"extract": {
-						"text": "Svizzera blocca export armi verso USA dal 28 febbraio per rispettare neutralita nel conflitto mediorientale. USA erano secondo mercato per armi svizzere con circa 100 milioni EUR nel 2025.",
+						"text": "Svizzera blocca export armi verso USA dal 28 febbraio per rispettare neutralità nel conflitto mediorientale. USA erano secondo mercato per armi svizzere con circa 100 milioni EUR nel 2025.",
 						"dataPoints": ["100 milioni EUR export armi 2025"],
 						"entities": ["Svizzera", "SIG Sauer"],
 						"tickers": []
@@ -254,10 +254,10 @@
 					"impact": "normal",
 					"sentiment": "negative",
 					"extract": {
-						"text": "Due anarchici morti in esplosione casale Roma al Parco degli Acquedotti. Sara Ardizzone (36 anni) e Alessandro Mercogliano (53 anni). Bomba artigianale esplosa accidentalmente. Convocato Comitato sicurezza dal ministero dell'Interno.",
+						"text": "Due anarchici morti in esplosione casale Roma al Parco degli Acquedotti. Sarà Ardizzone (36 anni) e Alessandro Mercogliano (53 anni). Bomba artigianale esplosa accidentalmente. Convocato Comitato sicurezza dal ministero dell'Interno.",
 						"dataPoints": [],
 						"entities": [
-							"Sara Ardizzone",
+							"Sarà Ardizzone",
 							"Alessandro Mercogliano",
 							"FAI"
 						],
@@ -265,7 +265,7 @@
 					}
 				},
 				{
-					"title": "Le Hawaii sono alle prese con le alluvioni piu gravi degli ultimi venti anni",
+					"title": "Le Hawaii sono alle prese con le alluvioni più gravi degli ultimi venti anni",
 					"url": "https://www.ilpost.it/2026/03/21/hawaii-alluvioni-oahu-honolulu/",
 					"source": "Il Post",
 					"financial": false,
@@ -314,10 +314,10 @@
 				"Taglio accise carburanti",
 				"Meta metaverso"
 			],
-			"summary": "La giornata finanziaria resta dominata dalle conseguenze economiche del conflitto mediorientale. Il petrolio Brent ha raggiunto i 112 dollari al barile, confermando la traiettoria rialzista che accompagna l'escalation militare. L'attacco iraniano all'impianto di Ras Laffan in Qatar, che ha eliminato il 17% della capacita di esportazione del gas qatariota, continua a pesare sui mercati energetici con perdite stimate di 20 miliardi di dollari annui e riparazioni che richiederanno 3-5 anni. L'Italia e particolarmente esposta, importando l'11% del suo gas dal Qatar contro il 3,8% medio europeo, e la BCE mantiene lo scenario peggiore di inflazione al 6,3% nell'Eurozona.<br><br>Prosegue la copertura sul taglio delle accise sui carburanti da parte del governo italiano, con una riduzione di 25 centesimi al litro. La benzina e scesa a 1,714 euro/litro e il gasolio a 1,966 euro/litro. Le variazioni regionali restano significative e il margine dei distributori di circa 3 centesimi spiega la gradualita dell'adeguamento. La misura ha durata limitata di 20 giorni e la sua efficacia dipende interamente dall'evoluzione del conflitto e dal prezzo del Brent.<br><br>Rispetto a ieri, l'operazione MSC-Sinokor resta rilevante: l'acquisizione del 50% della flotta petroliera sudcoreana per circa 5 miliardi di dollari darebbe a MSC il controllo potenziale del 20% delle navi VLCC mondiali non sanzionate, ciascuna capace di trasportare oltre 200.000 tonnellate di greggio. In un contesto di guerra e sanzioni, il controllo delle rotte petrolifere ha un valore strategico senza precedenti.<br><br>Sul fronte farmaceutico, il brevetto di Ozempic e scaduto il 21 marzo in sei paesi che ospitano il 40% della popolazione mondiale: Cina, India, Brasile, Turchia, Sudafrica e Canada. Dieci aziende cinesi sono gia in fase avanzata di approvazione. L'impatto su Novo Nordisk e significativo: l'azienda danese, che a meta 2024 era la societa europea con il maggior valore in borsa, ha gia subito un forte crollo per la competizione di Eli Lilly con Mounjaro e Zepbound. I brevetti scadono dopo il 2030 in USA e Europa. Meta continua il disimpegno dal metaverso dopo aver investito oltre 70 miliardi di dollari con risultati deludenti: Horizon Worlds conta solo 900 utenti e Reality Labs ha ridotto il personale del 10%.<br><br>Non piu presente oggi: contributi pubblici alla stampa italiana.",
+			"summary": "La giornata finanziaria resta dominata dalle conseguenze economiche del conflitto mediorientale. Il petrolio Brent ha raggiunto i 112 dollari al barile, confermando la traiettoria rialzista che accompagna l'escalation militare. L'attacco iraniano all'impianto di Ras Laffan in Qatar, che ha eliminato il 17% della capacità di esportazione del gas qatariota, continua a pesare sui mercati energetici con perdite stimate di 20 miliardi di dollari annui e riparazioni che richiederanno 3-5 anni. L'Italia è particolarmente esposta, importando l'11% del suo gas dal Qatar contro il 3,8% medio europeo, e la BCE mantiene lo scenario peggiore di inflazione al 6,3% nell'Eurozona.<br><br>Prosegue la copertura sul taglio delle accise sui carburanti da parte del governo italiano, con una riduzione di 25 centesimi al litro. La benzina è scesa a 1,714 euro/litro e il gasolio a 1,966 euro/litro. Le variazioni regionali restano significative e il margine dei distributori di circa 3 centesimi spiega la gradualita dell'adeguamento. La misura ha durata limitata di 20 giorni e la sua efficacia dipende interamente dall'evoluzione del conflitto e dal prezzo del Brent.<br><br>Rispetto a ieri, l'operazione MSC-Sinokor resta rilevante: l'acquisizione del 50% della flotta petroliera sudcoreana per circa 5 miliardi di dollari darebbe a MSC il controllo potenziale del 20% delle navi VLCC mondiali non sanzionate, ciascuna capace di trasportare oltre 200.000 tonnellate di greggio. In un contesto di guerra è sanzioni, il controllo delle rotte petrolifere ha un valore strategico senza precedenti.<br><br>Sul fronte farmaceutico, il brevetto di Ozempic e scaduto il 21 marzo in sei paesi che ospitano il 40% della popolazione mondiale: Cina, India, Brasile, Turchia, Sudafrica e Canada. Dieci aziende cinesi sono già in fase avanzata di approvazione. L'impatto su Novo Nordisk è significativo: l'azienda danese, che a metà 2024 era la società europea con il maggior valore in borsa, ha già subito un forte crollo per la competizione di Eli Lilly con Mounjaro e Zepbound. I brevetti scadono dopo il 2030 in USA e Europa. Meta continua il disimpegno dal metaverso dopo aver investito oltre 70 miliardi di dollari con risultati deludenti: Horizon Worlds conta solo 900 utenti e Reality Labs ha ridotto il personale del 10%.<br><br>Non più presente oggi: contributi pubblici alla stampa italiana.",
 			"articles": [
 				{
-					"title": "Msc comprera il 50 per cento di una delle flotte di navi petroliere piu grandi al mondo",
+					"title": "Msc comprerà il 50 per cento di una delle flotte di navi petroliere più grandi al mondo",
 					"url": "https://www.ilpost.it/2026/03/20/msc-sinokor-navi-petroliere/",
 					"source": "Il Post",
 					"financial": true,
@@ -363,7 +363,7 @@
 					"impact": "high",
 					"sentiment": "negative",
 					"extract": {
-						"text": "Brevetto Ozempic scaduto il 21 marzo in 6 paesi (40% pop mondiale): Cina, India, Brasile, Turchia, Sudafrica, Canada. 10 aziende cinesi in approvazione. Prezzi da centinaia a decine di euro/mese. Novo Nordisk gia in crollo per competizione Eli Lilly.",
+						"text": "Brevetto Ozempic scaduto il 21 marzo in 6 paesi (40% pop mondiale): Cina, India, Brasile, Turchia, Sudafrica, Canada. 10 aziende cinesi in approvazione. Prezzi da centinaia a decine di euro/mese. Novo Nordisk già in crollo per competizione Eli Lilly.",
 						"dataPoints": [
 							"6 paesi",
 							"40% pop mondiale",
@@ -374,7 +374,7 @@
 					}
 				},
 				{
-					"title": "Nel metaverso c'e aria di sbaracco",
+					"title": "Nel metaverso c'è aria di sbaracco",
 					"url": "https://www.ilpost.it/2026/03/20/metaverso-meta-fine/",
 					"source": "Il Post",
 					"financial": true,
@@ -403,7 +403,7 @@
 			"evolution": "continuation",
 			"newThemes": ["Claude e Bernie Sanders su AI e democrazia"],
 			"continuingThemes": ["20 anni Twitter/X"],
-			"summary": "La giornata tech e segnata dal dibattito sull'intelligenza artificiale e la democrazia, dopo che un video virale del senatore statunitense Bernie Sanders in conversazione con Claude, il chatbot di Anthropic, ha raggiunto 750.000 visualizzazioni in poche ore. Nel dialogo, Claude ha descritto in dettaglio come le aziende tech creino profili utente estremamente dettagliati raccogliendo dati da cronologia di ricerca, acquisti e tempo trascorso su pagine web, definendo la profilazione AI una vera minaccia per la democrazia per la capacita di raggiungere milioni di persone e sfruttarne le vulnerabilita. Sanders e Claude hanno concordato che una moratoria sulla costruzione di nuovi data center sia l'unica opzione praticabile per contenere i rischi. Il video evidenzia la posizione peculiare di Anthropic nel settore: l'azienda si distingue per l'enfasi sulla protezione dei dati e cautela nello sviluppo, un approccio differente da Meta, Alphabet e OpenAI.<br><br>Prosegue la riflessione sui 20 anni di Twitter, che compie l'anniversario dal primo tweet di Jack Dorsey. Rispetto a ieri, l'analisi resta centrata sulla trasformazione della piattaforma sotto Elon Musk: eliminazione dell'80% dei dipendenti, calo del 15% degli utenti attivi tra 2024 e 2025, e il sorpasso di Threads (Meta) che ha raggiunto 141 milioni di utenti attivi giornalieri contro i 125 milioni di X. La piattaforma e diventata sussidiaria SpaceX, con i dati utilizzati per addestrare xAI, e gli inserzionisti si sono largamente ritirati per la ridotta moderazione e le posizioni politiche di Musk.<br><br>Non piu presente oggi: OpenAI Superapp, Cursor Composer 2, fondo Bezos da 100 miliardi (temi TLDR di ieri, la newsletter non pubblica nel weekend).",
+			"summary": "La giornata tech è segnata dal dibattito sull'intelligenza artificiale e la democrazia, dopo che un video virale del senatore statunitense Bernie Sanders in conversazione con Claude, il chatbot di Anthropic, ha raggiunto 750.000 visualizzazioni in poche ore. Nel dialogo, Claude ha descritto in dettaglio come le aziende tech creino profili utente estremamente dettagliati raccogliendo dati da cronologia di ricerca, acquisti e tempo trascorso su pagine web, definendo la profilazione AI una vera minaccia per la democrazia per la capacità di raggiungere milioni di persone e sfruttarne le vulnerabilità. Sanders e Claude hanno concordato che una moratoria sulla costruzione di nuovi data center sia l'unica opzione praticabile per contenere i rischi. Il video evidenzia la posizione peculiare di Anthropic nel settore: l'azienda si distingue per l'enfasi sulla protezione dei dati e cautela nello sviluppo, un approccio differente da Meta, Alphabet e OpenAI.<br><br>Prosegue la riflessione sui 20 anni di Twitter, che compie l'anniversario dal primo tweet di Jack Dorsey. Rispetto a ieri, l'analisi resta centrata sulla trasformazione della piattaforma sotto Elon Musk: eliminazione dell'80% dei dipendenti, calo del 15% degli utenti attivi tra 2024 e 2025, e il sorpasso di Threads (Meta) che ha raggiunto 141 milioni di utenti attivi giornalieri contro i 125 milioni di X. La piattaforma è diventata sussidiaria SpaceX, con i dati utilizzati per addestrare xAI, e gli inserzionisti si sono largamente ritirati per la ridotta moderazione e le posizioni politiche di Musk.<br><br>Non più presente oggi: OpenAI Superapp, Cursor Composer 2, fondo Bezos da 100 miliardi (temi TLDR di ieri, la newsletter non pubblica nel weekend).",
 			"articles": [
 				{
 					"title": "Il chatbot Claude che dice a Bernie Sanders che l'IA e una minaccia",
@@ -421,7 +421,7 @@
 					}
 				},
 				{
-					"title": "Cos'e rimasto di Twitter a 20 anni dalla fondazione",
+					"title": "Cos'è rimasto di Twitter a 20 anni dalla fondazione",
 					"url": "https://www.ilpost.it/2026/03/21/20-anni-twitter-x/",
 					"source": "Il Post",
 					"financial": true,
@@ -589,7 +589,7 @@
 			"summary": null,
 			"articles": [
 				{
-					"title": "Perche tutti sbagliano la comunicazione? Non se ne puo piu",
+					"title": "Perché tutti sbagliano la comunicazione? Non se ne può più",
 					"url": "https://www.youtube.com/watch?v=zu1WQKOjbNs",
 					"source": "Salvatore Sanfilippo",
 					"financial": false,
@@ -609,7 +609,7 @@
 					"extract": null
 				},
 				{
-					"title": "Riaprire Hormuz e complicato, ma finche e bloccato Trump non puo cantare vittoria",
+					"title": "Riaprire Hormuz è complicato, ma finché è bloccato Trump non può cantare vittoria",
 					"url": "https://www.youtube.com/watch?v=rN7OAx9U9Kg",
 					"source": "Stories",
 					"financial": false,

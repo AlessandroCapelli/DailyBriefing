@@ -1,1 +1,661 @@
-{"meta":{"date":"21-03-2026","dayOfWeek":"Sabato","fullDate":"21 marzo 2026","time":"18:00","categoryCount":6,"sourceCount":5,"articleCount":37,"deepDiveCount":25,"availableReports":{"daily":["21-03-2026"],"stocks":["21-03-2026"]}},"categories":[{"id":"politica","emoji":"&#x1F5F3;&#xFE0F;","name":"Politica","isYoutube":false,"isOther":false,"evolution":"continuation","newThemes":["Delmastro e legami mafiosi","Trump vs Harvard","Groenlandia piano militare danese"],"continuingThemes":["Referendum giustizia CSM","Indagine USA su Petro","Pressione Trump su Cuba"],"summary":"La giornata politica resta dominata dal referendum sulla riforma della giustizia, in programma domani e lunedi 22-23 marzo. Il punto piu discusso e il sorteggio dei membri del CSM, che sostituirebbe le elezioni interne alla magistratura eliminando le correnti ma sollevando forti dubbi sulla meritocrazia. L'unico precedente europeo e la Grecia, modello che paradossalmente i riformatori dichiarano di voler evitare. Le incognite operative restano irrisolte: criteri di selezione, modalita di estrazione e garanzie di competenza non sono ancora definiti nel testo costituzionale.<br><br>A complicare il clima pre-referendario interviene l'ennesimo scandalo del sottosegretario alla Giustizia Andrea Delmastro, che risulta aver fondato una societa con la figlia di un criminale condannato per intestazione fittizia di beni con aggravante mafiosa. La cessione delle quote, avvenuta in due fasi tra novembre 2025 e febbraio 2026, coincide sospettosamente con la condanna definitiva del padre. L'opposizione chiede le dimissioni, ma Giorgia Meloni le esclude.<br><br>Sul fronte internazionale, l'amministrazione Trump ha fatto causa a Harvard per presunto mancato contrasto all'antisemitismo, nell'ambito di una campagna piu ampia contro le universita progressiste: nel 2025 erano gia stati sospesi 2,2 miliardi di dollari in finanziamenti all'ateneo. Prosegue anche l'indagine USA su Petro in Colombia per presunti legami con il narcotraffico, con due procure di New York attive, in un contesto di pressione diplomatica crescente.<br><br>Emerge oggi il piano militare danese per la Groenlandia: secondo l'emittente pubblica DR, i soldati danesi dispiegati a gennaio erano pronti a distruggere le piste aeroportuali per impedire un'eventuale invasione americana, con tanto di sacche di sangue inviate per trattare possibili feriti. La Rivista Domino segnala inoltre l'intensificarsi della pressione USA su Cuba dopo la perdita del fornitore venezuelano di petrolio, con ordini esecutivi che sanzionano chiunque fornisca energia all'isola. La Cina ha promulgato una legge sull'unita etnica che, pur senza nominarla esplicitamente, rafforza il quadro giuridico per la riunificazione con Taiwan, rendendo potenzialmente perseguibile chiunque non promuova attivamente l'appartenenza allo zhonghua minzu.","articles":[{"title":"Il punto piu discusso della riforma della giustizia","url":"https://www.ilpost.it/2026/03/21/sorteggio-csm-riforma-magistratura-referendum-22-23-marzo/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Il referendum sulla riforma della giustizia del 22-23 marzo 2026 prevede il sorteggio casuale dei membri del CSM in sostituzione delle elezioni interne alla magistratura. I sostenitori ritengono che eliminerebbe le correnti e il clientelismo, gli oppositori temono la perdita della meritocrazia. L'unico precedente europeo e la Grecia.","dataPoints":[],"entities":["CSM"],"tickers":[]},"sentiment":"neutral"},{"title":"L'ennesima grana per il sottosegretario alla Giustizia Andrea Delmastro","url":"https://www.ilpost.it/2026/03/20/andrea-delmastro-societa-mauro-caroccia-roma/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Delmastro ha fondato societa con figlia di criminale condannato con aggravante mafiosa. Cessione quote coincide con condanna definitiva.","dataPoints":["Condanna a 4 anni con aggravante mafiosa"],"entities":["Andrea Delmastro","Mauro Caroccia","Fratelli d'Italia"],"tickers":[]},"sentiment":"neutral"},{"title":"Gli Stati Uniti hanno messo sotto indagine il presidente colombiano Gustavo Petro","url":"https://www.ilpost.it/2026/03/21/stati-uniti-indagine-gustavo-petro-narcotraffico/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Due procure di New York conducono indagini preliminari su Petro per presunti legami con il narcotraffico.","dataPoints":[],"entities":["Gustavo Petro","Donald Trump"],"tickers":[]},"sentiment":"neutral"},{"title":"L'amministrazione Trump ha fatto causa all'Universita di Harvard","url":"https://www.ilpost.it/2026/03/20/amministrazione-trump-causa-harvard/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Il DOJ accusa Harvard di non aver contrastato l'antisemitismo. Nel 2025 sospesi 2,2 miliardi in finanziamenti.","dataPoints":["2,2 miliardi USD finanziamenti sospesi"],"entities":["Harvard","Trump"],"tickers":[]},"sentiment":"neutral"},{"title":"I soldati danesi erano pronti a far saltare in aria le piste degli aeroporti in Groenlandia","url":"https://www.ilpost.it/2026/03/20/danimarca-soldati-groenlandia-piano-invasione-esercito-usa/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Soldati danesi in Groenlandia pronti a distruggere piste aeroportuali per impedire invasione USA.","dataPoints":[],"entities":["Danimarca","Groenlandia","Trump"],"tickers":[]},"sentiment":"neutral"},{"title":"La settimana di Domino #24 - Cuba, Cina e Taiwan","url":"https://settimanadidomino.substack.com/p/la-settimana-di-domino-24","source":"Rivista Domino","financial":true,"deepDived":true,"impact":"normal","extract":{"text":"Cuba sotto pressione USA. Cina promulga legge unita etnica con implicazioni Taiwan. Pechino non pronta per invasione militare.","dataPoints":["30% forniture energetiche Taiwan via Hormuz"],"entities":["Cuba","Cina","Taiwan"],"tickers":[]},"sentiment":"neutral"}]},{"id":"attualita","emoji":"&#x1F30D;","name":"Attualita","isYoutube":false,"isOther":false,"evolution":"continuation","newThemes":["Esplosione anarchici Roma","Alluvioni Hawaii","Valanga Alto Adige"],"continuingThemes":["Guerra Medio Oriente Iran","Milizie curde Iraq-Iran"],"summary":"La guerra in Medio Oriente continua a dominare l'attualita con segnali contraddittori. Trump ha prima dichiarato di non voler negoziare un cessate il fuoco perche gli USA stanno annientando la parte avversa, poi ha scritto su Truth Social di considerare il rallentamento delle operazioni. La realta sul campo contraddice la de-escalation: gli USA inviano 2.200-2.500 marines aggiuntivi e due navi d'assalto anfibio, mentre il ministro della Difesa israeliano annuncia che i bombardamenti aumenteranno significativamente la prossima settimana. Netanyahu persegue l'obiettivo di abbattere il regime iraniano, prolungando il conflitto per massimizzare il danno, divergendo da Trump che vorrebbe una guerra rapida.<br><br>L'attacco iraniano all'impianto di gas di Ras Laffan in Qatar ha eliminato il 17% della capacita di esportazione del gas qatariota, con perdite stimate di 20 miliardi di dollari annui e riparazioni che richiederanno 3-5 anni. L'Italia e particolarmente vulnerabile, importando l'11% del suo gas dal Qatar contro il 3,8% medio europeo. La BCE prevede inflazione potenzialmente al 6,3% nell'Eurozona nello scenario peggiore. La Svizzera ha bloccato le esportazioni di armi verso gli USA dal 28 febbraio, rispettando la propria neutralita: gli USA erano il secondo mercato per armi svizzere con circa 100 milioni di euro nel 2025. La Francia ha sequestrato la petroliera Deyna, terzo sequestro di una nave della flotta fantasma russa.<br><br>Sul territorio italiano, un'esplosione in un casale abbandonato a Roma ha ucciso due membri di gruppi anarchici, Sara Ardizzone (36 anni) e Alessandro Mercogliano (53 anni), probabilmente per lo scoppio accidentale di una bomba artigianale. Il ministero dell'Interno ha convocato il Comitato di sicurezza. In Alto Adige, una valanga sul Tallone Grande a 2.450 metri ha causato 2 morti e 5 feriti tra una decina di scialpinisti. Alle Hawaii, le peggiori alluvioni in vent'anni hanno colpito Oahu con danni stimati in un miliardo di dollari e 5.500 persone evacuate. In Corea del Sud, un incendio in una fabbrica di componenti auto a Daejeon ha ucciso almeno 11 persone con 4 dispersi e 59 feriti.","articles":[{"title":"Ma quindi davvero Trump vuole rallentare la guerra?","url":"https://www.ilpost.it/2026/03/21/trump-rallentare-guerra-iran/","source":"Il Post","financial":true,"deepDived":true,"impact":"high","extract":{"text":"Trump ha fatto dichiarazioni contraddittorie sulla guerra. 2.200-2.500 marines aggiuntivi inviati. Israele annuncia intensificazione bombardamenti.","dataPoints":["2.200-2.500 marines aggiuntivi"],"entities":["Trump","Iran","Israele"],"tickers":["CL=F","BZ=F","NG=F","XLE"]},"sentiment":"neutral"},{"title":"Netanyahu sta ottenendo quello che voleva","url":"https://www.ilpost.it/2026/03/20/netanyahu-guerra-iran/","source":"Il Post","financial":true,"deepDived":true,"impact":"high","extract":{"text":"Netanyahu persegue abbattimento regime iraniano. Eliminato Khamenei. Divergenza con Trump su durata guerra.","dataPoints":[],"entities":["Netanyahu","Trump","Iran"],"tickers":[]},"sentiment":"neutral"},{"title":"L'attacco all'impianto di gas in Qatar e un grosso guaio","url":"https://www.ilpost.it/2026/03/20/attacco-qatar-gas/","source":"Il Post","financial":true,"deepDived":true,"impact":"high","extract":{"text":"Iran ha attaccato Ras Laffan eliminando 17% capacita export gas Qatar. Perdite 20 miliardi/anno. Italia importa 11% gas dal Qatar. BCE prevede inflazione 6,3%.","dataPoints":["17% capacita export eliminata","20 miliardi USD perdite annue","6,3% inflazione BCE worst case"],"entities":["QatarEnergy","BCE","Edison"],"tickers":["NG=F","ENEL.MI","ENI.MI"]},"sentiment":"neutral"},{"title":"Con queste milizie non si rovescia il regime iraniano","url":"https://www.ilpost.it/2026/03/21/milizie-curde-iraq-iran/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Milizie curde in Kurdistan iracheno con capacita limitate. Stima 10.000 combattenti non verificata.","dataPoints":["10.000 combattenti stimati"],"entities":["Komala","Kurdistan"],"tickers":[]},"sentiment":"neutral"},{"title":"La Svizzera ha interrotto la vendita di armi agli Stati Uniti","url":"https://www.ilpost.it/2026/03/21/svizzera-blocco-esportazioni-armi-stati-uniti/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","extract":{"text":"Svizzera blocca export armi verso USA dal 28 febbraio. USA secondo mercato, circa 100 milioni EUR nel 2025.","dataPoints":["100 milioni EUR export armi 2025"],"entities":["Svizzera","SIG Sauer"],"tickers":[]},"sentiment":"neutral"},{"title":"Cosa sappiamo dell'esplosione in cui sono morti due anarchici a Roma","url":"https://www.ilpost.it/2026/03/21/esplosione-casale-roma-parco-acquedotti-anarchici-bomba/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Due anarchici morti in esplosione casale Roma. Bomba artigianale esplosa per errore. Convocato Comitato sicurezza.","dataPoints":[],"entities":["Sara Ardizzone","Alessandro Mercogliano","FAI"],"tickers":[]},"sentiment":"neutral"},{"title":"La Francia ha sequestrato una petroliera della flotta fantasma russa","url":"https://www.ilpost.it/2026/03/20/francia-sequestro-nave-russa-flotta-fantasma/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","extract":{"text":"Marina francese sequestra petroliera Deyna. Terzo sequestro flotta fantasma russa. Supporto britannico.","dataPoints":["3 sequestri totali"],"entities":["Macron","Francia"],"tickers":["BZ=F"]},"sentiment":"neutral"},{"title":"Le Hawaii sono alle prese con le alluvioni piu gravi degli ultimi venti anni","url":"https://www.ilpost.it/2026/03/21/hawaii-alluvioni-oahu-honolulu/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Peggiori alluvioni in 20 anni a Oahu. Danni stimati 1 miliardo USD. 5.500 evacuati a Honolulu.","dataPoints":["1 miliardo USD danni","5.500 evacuati"],"entities":["Hawaii","Honolulu"],"tickers":[]},"sentiment":"neutral"},{"title":"Due scialpinisti sono morti a causa di una valanga in Alto Adige","url":"https://www.ilpost.it/2026/03/21/valanga-scialpinisti-tallone-grande-alto-adige/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Valanga sul Tallone Grande a 2.450 m. 2 morti, 5 feriti di cui 3 gravi.","dataPoints":["2 morti","5 feriti"],"entities":["Val Ridanna","Alto Adige"],"tickers":[]},"sentiment":"neutral"},{"title":"Almeno 11 persone sono morte in un incendio in una fabbrica in Corea del Sud","url":"https://www.ilpost.it/2026/03/21/incendio-corea-del-sud-fabbrica-auto/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Incendio fabbrica componenti auto a Daejeon. 11 morti, 4 dispersi, 59 feriti.","dataPoints":["11 morti","59 feriti"],"entities":["Daejeon","Corea del Sud"],"tickers":[]},"sentiment":"neutral"}]},{"id":"finanza","emoji":"&#x1F4B0;","name":"Finanza","isYoutube":false,"isOther":false,"evolution":"continuation","newThemes":["Ozempic generico","MSC acquisizione Sinokor","Taglio accise carburanti"],"continuingThemes":["Crisi energetica Medio Oriente","Meta ristrutturazione"],"summary":"La giornata finanziaria e segnata da movimenti significativi nel settore energetico e farmaceutico. MSC, la piu grande compagnia di navigazione al mondo, acquisisce il 50% di Sinokor per circa 5 miliardi di dollari, entrando nel mercato del trasporto petrolifero con il controllo potenziale del 20% delle navi VLCC mondiali non sanzionate, ciascuna capace di trasportare oltre 200.000 tonnellate di greggio. L'operazione arriva in un momento di estrema tensione sui mercati energetici.<br><br>In Italia, il governo ha tagliato le accise sui carburanti di 25 centesimi al litro per compensare i rincari da guerra. La benzina e scesa da 1,89 a 1,714 euro/litro in tre giorni (-17,4 centesimi), il gasolio da 2,125 a 1,966 (-15,8 centesimi). Le variazioni regionali sono significative: dal -19,7 centesimi della Valle d'Aosta al minore calo della Basilicata. Il margine dei distributori e di circa 3 centesimi al litro, il che spiega la gradualita dell'adeguamento.<br><br>Sul fronte farmaceutico, il brevetto di Ozempic scade oggi (21 marzo 2026) in sei paesi che ospitano il 40% della popolazione mondiale: Cina, India, Brasile, Turchia, Sudafrica e Canada. Dieci aziende cinesi sono gia in fase avanzata di approvazione. I prezzi potrebbero scendere da centinaia di euro al mese a poche decine. Novo Nordisk, che a meta 2024 era la societa europea con il maggior valore in borsa, ha subito un crollo azionario per la competizione di Eli Lilly con Mounjaro e Zepbound. Brevetti scadono dopo il 2030 in USA e Europa.<br><br>Meta ha investito oltre 70 miliardi di dollari nel metaverso con risultati deludenti: Horizon Worlds conta solo 900 utenti collegati. Reality Labs ha ridotto il personale del 10% a gennaio 2026. L'azienda si riorienta verso AI e wearable. Nel 2024 sono stati erogati 104,8 milioni di euro in contributi diretti alla stampa italiana, in aumento dai 95,6 milioni del 2023, distribuiti tra 153 testate.","articles":[{"title":"Msc comprera il 50 per cento di una delle flotte di navi petroliere piu grandi al mondo","url":"https://www.ilpost.it/2026/03/20/msc-sinokor-navi-petroliere/","source":"Il Post","financial":true,"deepDived":true,"impact":"high","extract":{"text":"MSC acquisisce 50% Sinokor per circa 5 miliardi USD. 78 navi VLCC, potenziale 20% VLCC mondiali.","dataPoints":["5 miliardi USD","78 navi VLCC","20% VLCC mondiali"],"entities":["MSC","Sinokor"],"tickers":[]},"sentiment":"neutral"},{"title":"Si comincia a vedere il primo calo dei prezzi dei carburanti","url":"https://www.ilpost.it/2026/03/21/riduzione-prezzi-carburanti-taglio-accise-governo-speculazione/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","extract":{"text":"Taglio accise 25 centesimi/litro. Benzina scesa a 1,714 EUR/litro. Gasolio a 1,966.","dataPoints":["25 cent taglio accise","Benzina 1,714 EUR/l"],"entities":["Governo italiano"],"tickers":["ENI.MI","CL=F"]},"sentiment":"neutral"},{"title":"In molti paesi sta arrivando la versione generica dell'Ozempic","url":"https://www.ilpost.it/2026/03/20/ozempic-diventa-generico/","source":"Il Post","financial":true,"deepDived":true,"impact":"high","extract":{"text":"Brevetto Ozempic scade in 6 paesi (40% pop mondiale). 10 aziende cinesi in approvazione. Prezzi da centinaia a decine di euro.","dataPoints":["6 paesi","40% pop mondiale"],"entities":["Novo Nordisk","Eli Lilly"],"tickers":["NVO","LLY"]},"sentiment":"neutral"},{"title":"Nel metaverso c'e aria di sbaracco","url":"https://www.ilpost.it/2026/03/20/metaverso-meta-fine/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","extract":{"text":"Meta ha investito 70+ miliardi USD nel metaverso. Horizon Worlds ha 900 utenti. Reality Labs -10% personale.","dataPoints":["70+ miliardi USD","900 utenti","-10% personale"],"entities":["Meta","Zuckerberg"],"tickers":["META"]},"sentiment":"neutral"},{"title":"I giornali che ricevono i contributi pubblici (seconda rata del 2024)","url":"https://www.ilpost.it/2026/03/21/contributi-pubblici-giornali-seconda-rata-2024-stato-governo/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","extract":{"text":"Nel 2024 erogati 104,8 milioni EUR in contributi stampa (vs 95,6M nel 2023). 153 testate.","dataPoints":["104,8 milioni EUR","153 testate"],"entities":["Dolomiten","Avvenire","Libero"],"tickers":[]},"sentiment":"neutral"}]},{"id":"tech","emoji":"&#x1F916;","name":"Tech","isYoutube":false,"isOther":false,"evolution":"new","newThemes":["OpenAI Superapp","Cursor Composer 2","20 anni Twitter/X"],"continuingThemes":[],"summary":"La newsletter TLDR segnala sviluppi significativi. OpenAI pianifica il lancio di una Superapp desktop che unifichera ChatGPT, Codex e browser in un'unica applicazione con capacita agentiche, segnando un cambio strategico verso un'esperienza desktop integrata. Jeff Bezos e in trattative per raccogliere 100 miliardi di dollari per acquisire e automatizzare aziende manifatturiere in chipmaking, difesa e aerospazio.<br><br>Cursor ha rilasciato Composer 2 con miglioramenti significativi su tutti i benchmark, consolidando la posizione dell'editor AI nel mercato. Xiaomi ha lanciato la nuova SU7 con 902 km di autonomia e LiDAR di serie a 33.000 dollari, sottoquotando Tesla. La Cina mobilita migliaia di startup AI individuali offrendo appartamenti, uffici e computing scontato.<br><br>Twitter compie 20 anni dal primo tweet di Jack Dorsey. Dopo l'acquisizione di Musk, oltre l'80% dei dipendenti eliminato, utenti attivi calati del 15% tra 2024 e 2025. Threads (Meta) ha superato X con 141 milioni di utenti attivi giornalieri contro 125 milioni. La piattaforma e diventata sussidiaria SpaceX, dati usati per addestrare xAI. Gli inserzionisti si sono largamente ritirati per la ridotta moderazione e le posizioni politiche di Musk.","articles":[{"title":"TLDR Tech - Bezos $100B, OpenAI Superapp, Cursor Composer 2","url":"https://tldr.tech/tech/2026-03-20","source":"TLDR","financial":true,"deepDived":true,"impact":"normal","extract":{"text":"OpenAI lancera Superapp desktop. Bezos fondo 100 miliardi USD per manifattura AI. Cursor Composer 2. Xiaomi SU7 a 33.000 USD.","dataPoints":["100 miliardi USD fondo Bezos","902 km autonomia SU7","33.000 USD prezzo SU7"],"entities":["OpenAI","Jeff Bezos","Cursor","Xiaomi"],"tickers":["AMZN","NVDA","TSLA"]},"sentiment":"neutral"},{"title":"Cos'e rimasto di Twitter a 20 anni dalla fondazione","url":"https://www.ilpost.it/2026/03/21/20-anni-twitter-x/","source":"Il Post","financial":true,"deepDived":true,"impact":"normal","extract":{"text":"Twitter compie 20 anni. Dopo acquisizione Musk: -80% dipendenti, -15% utenti 2024-2025. Threads supera X: 141M vs 125M utenti giornalieri.","dataPoints":["-15% utenti 2024-2025","141M Threads vs 125M X"],"entities":["Twitter","X","Elon Musk","Meta"],"tickers":["META"]},"sentiment":"neutral"}]},{"id":"altro","emoji":"&#x1F4CC;","name":"Altro","isYoutube":false,"isOther":true,"evolution":null,"newThemes":[],"continuingThemes":[],"summary":"Tra le notizie minori della giornata: e morto a 86 anni Paolo Cirino Pomicino, storico esponente DC soprannominato o'ministro a Napoli, coinvolto in 42 processi durante Tangentopoli e condannato per finanziamento illecito. Nel ciclismo, Tadej Pogacar ha vinto la Milano-Sanremo al fotofinish su Pidcock, conquistando la quarta delle cinque classiche monumento. Laura Pirovano ha vinto la Coppa del Mondo di discesa libera. Sono deceduti l'attore Nicholas Brendon (Buffy) e Chuck Norris.","articles":[{"title":"E morto Paolo Cirino Pomicino","url":"https://www.ilpost.it/2026/03/21/morto-paolo-cirino-pomicino/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Paolo Cirino Pomicino morto a 86 anni. Esponente DC, ministro del Bilancio. 42 processi.","dataPoints":["86 anni","42 processi"],"entities":["Paolo Cirino Pomicino","DC"],"tickers":[]},"sentiment":"neutral"},{"title":"Ha vinto anche la Milano-Sanremo","url":"https://www.ilpost.it/2026/03/21/milano-sanremo-tadej-pogacar/","source":"Il Post","financial":false,"deepDived":true,"impact":"normal","extract":{"text":"Pogacar vince Milano-Sanremo al fotofinish su Pidcock. 4 su 5 classiche monumento.","dataPoints":["4 su 5 classiche monumento"],"entities":["Tadej Pogacar","Thomas Pidcock"],"tickers":[]},"sentiment":"neutral"},{"title":"Laura Pirovano ha vinto la Coppa del Mondo di discesa libera","url":"https://www.ilpost.it/2026/03/21/laura-pirovano-vittoria-coppa-del-mondo-discesa-libera/","source":"Il Post","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"E morto Nicholas Brendon","url":"https://www.ilpost.it/2026/03/21/nicholas-brendon-morto-buffy-l-ammazzavampiri/","source":"Il Post","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"E morto Chuck Norris","url":"https://www.ilpost.it/2026/03/20/chuck-norris-morto/","source":"Il Post","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"Le foto e i video dell'imponente concerto dei BTS a Seul","url":"https://www.ilpost.it/2026/03/21/bts-concerto-seul-foto-video/","source":"Il Post","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"Dieci posti da visitare nelle Giornate FAI di Primavera","url":"https://www.ilpost.it/2026/03/21/giornate-fai-primavera-cosa-vedere-2/","source":"Il Post","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"Armand Duplantis e gli altri campioni del salto con l'asta","url":"https://www.ilpost.it/2026/03/21/duplantis-record-avversari-salto-con-l-asta-karalis/","source":"Il Post","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"}]},{"id":"youtube","emoji":"&#x1F4FA;","name":"YouTube","isYoutube":true,"isOther":false,"evolution":null,"newThemes":[],"continuingThemes":[],"summary":null,"articles":[{"title":"Perche tutti sbagliano la comunicazione? Non se ne puo piu","url":"https://www.youtube.com/watch?v=zu1WQKOjbNs","source":"Salvatore Sanfilippo","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"I test nel software: le tecniche che uso","url":"https://www.youtube.com/watch?v=521V3S3QmnQ","source":"Salvatore Sanfilippo","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"Riaprire Hormuz e complicato, ma finche e bloccato Trump non puo cantare vittoria","url":"https://www.youtube.com/watch?v=rN7OAx9U9Kg","source":"Stories","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"Live del venerdi, commentiamo gli avvenimenti della settimana!","url":"https://www.youtube.com/watch?v=AedlCVwXeOA","source":"Breaking Italy","financial":false,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"Il governo riduce le accise sui carburanti per 20 giorni","url":"https://www.youtube.com/shorts/SRkj4JQUXDw","source":"Breaking Italy","financial":true,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"},{"title":"Quattro chiacchiere di fine quarter","url":"https://www.youtube.com/watch?v=7HrhR37LiVE","source":"Mr. RIP","financial":true,"deepDived":false,"impact":"normal","extract":null,"sentiment":"neutral"}]}]}
+{
+	"meta": {
+		"date": "21-03-2026",
+		"dayOfWeek": "Sabato",
+		"fullDate": "21 marzo 2026",
+		"time": "18:00",
+		"categoryCount": 6,
+		"sourceCount": 5,
+		"articleCount": 37,
+		"deepDiveCount": 25,
+		"availableReports": {
+			"daily": ["21-03-2026"],
+			"stocks": ["21-03-2026"]
+		}
+	},
+	"categories": [
+		{
+			"id": "politica",
+			"emoji": "&#x1F5F3;&#xFE0F;",
+			"name": "Politica",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"Delmastro e legami mafiosi",
+				"Trump vs Harvard",
+				"Groenlandia piano militare danese"
+			],
+			"continuingThemes": [
+				"Referendum giustizia CSM",
+				"Indagine USA su Petro",
+				"Pressione Trump su Cuba"
+			],
+			"summary": "La giornata politica resta dominata dal referendum sulla riforma della giustizia, in programma domani e lunedì 22-23 marzo. Il punto più discusso e il sorteggio dei membri del CSM, che sostituirebbe le elezioni interne alla magistratura eliminando le correnti ma sollevando forti dubbi sulla meritocrazia. L'unico precedente europeo e la Grecia, modello che paradossalmente i riformatori dichiarano di voler evitare. Le incognite operative restano irrisolte: criteri di selezione, modalita di estrazione e garanzie di competenza non sono ancora definiti nel testo costituzionale.<br><br>A complicare il clima pre-referendario interviene l'ennesimo scandalo del sottosegretario alla Giustizia Andrea Delmastro, che risulta aver fondato una società con la figlia di un criminale condannato per intestazione fittizia di beni con aggravante mafiosa. La cessione delle quote, avvenuta in due fasi tra novembre 2025 e febbraio 2026, coincide sospettosamente con la condanna definitiva del padre. L'opposizione chiede le dimissioni, ma Giorgia Meloni le esclude.<br><br>Sul fronte internazionale, l'amministrazione Trump ha fatto causa a Harvard per presunto mancato contrasto all'antisemitismo, nell'ambito di una campagna più ampia contro le università progressiste: nel 2025 erano già stati sospesi 2,2 miliardi di dollari in finanziamenti all'ateneo. Prosegue anche l'indagine USA su Petro in Colombia per presunti legami con il narcotraffico, con due procure di New York attive, in un contesto di pressione diplomatica crescente.<br><br>Emerge oggi il piano militare danese per la Groenlandia: secondo l'emittente pubblica DR, i soldati danesi dispiegati a gennaio erano pronti a distruggere le piste aeroportuali per impedire un'eventuale invasione americana, con tanto di sacche di sangue inviate per trattare possibili feriti. La Rivista Domino segnala inoltre l'intensificarsi della pressione USA su Cuba dopo la perdita del fornitore venezuelano di petrolio, con ordini esecutivi che sanzionano chiunque fornisca energia all'isola. La Cina ha promulgato una legge sull'unita etnica che, pur senza nominarla esplicitamente, rafforza il quadro giuridico per la riunificazione con Taiwan, rendendo potenzialmente perseguibile chiunque non promuova attivamente l'appartenenza allo zhonghua minzu.",
+			"articles": [
+				{
+					"title": "Il punto più discusso della riforma della giustizia",
+					"url": "https://www.ilpost.it/2026/03/21/sorteggio-csm-riforma-magistratura-referendum-22-23-marzo/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Il referendum sulla riforma della giustizia del 22-23 marzo 2026 prevede il sorteggio casuale dei membri del CSM in sostituzione delle elezioni interne alla magistratura. I sostenitori ritengono che eliminerebbe le correnti e il clientelismo, gli oppositori temono la perdita della meritocrazia. L'unico precedente europeo e la Grecia.",
+						"dataPoints": [],
+						"entities": ["CSM"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "L'ennesima grana per il sottosegretario alla Giustizia Andrea Delmastro",
+					"url": "https://www.ilpost.it/2026/03/20/andrea-delmastro-societa-mauro-caroccia-roma/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Delmastro ha fondato società con figlia di criminale condannato con aggravante mafiosa. Cessione quote coincide con condanna definitiva.",
+						"dataPoints": [
+							"Condanna a 4 anni con aggravante mafiosa"
+						],
+						"entities": [
+							"Andrea Delmastro",
+							"Mauro Caroccia",
+							"Fratelli d'Italia"
+						],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Gli Stati Uniti hanno messo sotto indagine il presidente colombiano Gustavo Petro",
+					"url": "https://www.ilpost.it/2026/03/21/stati-uniti-indagine-gustavo-petro-narcotraffico/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Due procure di New York conducono indagini preliminari su Petro per presunti legami con il narcotraffico.",
+						"dataPoints": [],
+						"entities": ["Gustavo Petro", "Donald Trump"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "L'amministrazione Trump ha fatto causa all'Università di Harvard",
+					"url": "https://www.ilpost.it/2026/03/20/amministrazione-trump-causa-harvard/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Il DOJ accusa Harvard di non aver contrastato l'antisemitismo. Nel 2025 sospesi 2,2 miliardi in finanziamenti.",
+						"dataPoints": [
+							"2,2 miliardi USD finanziamenti sospesi"
+						],
+						"entities": ["Harvard", "Trump"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "I soldati danesi erano pronti a far saltare in aria le piste degli aeroporti in Groenlandia",
+					"url": "https://www.ilpost.it/2026/03/20/danimarca-soldati-groenlandia-piano-invasione-esercito-usa/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Soldati danesi in Groenlandia pronti a distruggere piste aeroportuali per impedire invasione USA.",
+						"dataPoints": [],
+						"entities": ["Danimarca", "Groenlandia", "Trump"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "La settimana di Domino #24 - Cuba, Cina e Taiwan",
+					"url": "https://settimanadidomino.substack.com/p/la-settimana-di-domino-24",
+					"source": "Rivista Domino",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Cuba sotto pressione USA. Cina promulga legge unita etnica con implicazioni Taiwan. Pechino non pronta per invasione militare.",
+						"dataPoints": [
+							"30% forniture energetiche Taiwan via Hormuz"
+						],
+						"entities": ["Cuba", "Cina", "Taiwan"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				}
+			]
+		},
+		{
+			"id": "attualita",
+			"emoji": "&#x1F30D;",
+			"name": "Attualità",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"Esplosione anarchici Roma",
+				"Alluvioni Hawaii",
+				"Valanga Alto Adige"
+			],
+			"continuingThemes": [
+				"Guerra Medio Oriente Iran",
+				"Milizie curde Iraq-Iran"
+			],
+			"summary": "La guerra in Medio Oriente continua a dominare l'attualita con segnali contraddittori. Trump ha prima dichiarato di non voler negoziare un cessate il fuoco perché gli USA stanno annientando la parte avversa, poi ha scritto su Truth Social di considerare il rallentamento delle operazioni. La realtà sul campo contraddice la de-escalation: gli USA inviano 2.200-2.500 marines aggiuntivi e due navi d'assalto anfibio, mentre il ministro della Difesa israeliano annuncia che i bombardamenti aumenteranno significativamente la prossima settimana. Netanyahu persegue l'obiettivo di abbattere il regime iraniano, prolungando il conflitto per massimizzare il danno, divergendo da Trump che vorrebbe una guerra rapida.<br><br>L'attacco iraniano all'impianto di gas di Ras Laffan in Qatar ha eliminato il 17% della capacità di esportazione del gas qatariota, con perdite stimate di 20 miliardi di dollari annui e riparazioni che richiederanno 3-5 anni. L'Italia è particolarmente vulnerabile, importando l'11% del suo gas dal Qatar contro il 3,8% medio europeo. La BCE prevede inflazione potenzialmente al 6,3% nell'Eurozona nello scenario peggiore. La Svizzera ha bloccato le esportazioni di armi verso gli USA dal 28 febbraio, rispettando la propria neutralità: gli USA erano il secondo mercato per armi svizzere con circa 100 milioni di euro nel 2025. La Francia ha sequestrato la petroliera Deyna, terzo sequestro di una nave della flotta fantasma russa.<br><br>Sul territorio italiano, un'esplosione in un casale abbandonato a Roma ha ucciso due membri di gruppi anarchici, Sarà Ardizzone (36 anni) e Alessandro Mercogliano (53 anni), probabilmente per lo scoppio accidentale di una bomba artigianale. Il ministero dell'Interno ha convocato il Comitato di sicurezza. In Alto Adige, una valanga sul Tallone Grande a 2.450 metri ha causato 2 morti e 5 feriti tra una decina di scialpinisti. Alle Hawaii, le peggiori alluvioni in vent'anni hanno colpito Oahu con danni stimati in un miliardo di dollari e 5.500 persone evacuate. In Corea del Sud, un incendio in una fabbrica di componenti auto a Daejeon ha ucciso almeno 11 persone con 4 dispersi e 59 feriti.",
+			"articles": [
+				{
+					"title": "Ma quindi davvero Trump vuole rallentare la guerra?",
+					"url": "https://www.ilpost.it/2026/03/21/trump-rallentare-guerra-iran/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"extract": {
+						"text": "Trump ha fatto dichiarazioni contraddittorie sulla guerra. 2.200-2.500 marines aggiuntivi inviati. Israele annuncia intensificazione bombardamenti.",
+						"dataPoints": ["2.200-2.500 marines aggiuntivi"],
+						"entities": ["Trump", "Iran", "Israele"],
+						"tickers": ["CL=F", "BZ=F", "NG=F", "XLE"]
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Netanyahu sta ottenendo quello che voleva",
+					"url": "https://www.ilpost.it/2026/03/20/netanyahu-guerra-iran/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"extract": {
+						"text": "Netanyahu persegue abbattimento regime iraniano. Eliminato Khamenei. Divergenza con Trump su durata guerra.",
+						"dataPoints": [],
+						"entities": ["Netanyahu", "Trump", "Iran"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "L'attacco all'impianto di gas in Qatar e un grosso guaio",
+					"url": "https://www.ilpost.it/2026/03/20/attacco-qatar-gas/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"extract": {
+						"text": "Iran ha attaccato Ras Laffan eliminando 17% capacità export gas Qatar. Perdite 20 miliardi/anno. Italia importa 11% gas dal Qatar. BCE prevede inflazione 6,3%.",
+						"dataPoints": [
+							"17% capacità export eliminata",
+							"20 miliardi USD perdite annue",
+							"6,3% inflazione BCE worst case"
+						],
+						"entities": ["QatarEnergy", "BCE", "Edison"],
+						"tickers": ["NG=F", "ENEL.MI", "ENI.MI"]
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Con queste milizie non si rovescia il regime iraniano",
+					"url": "https://www.ilpost.it/2026/03/21/milizie-curde-iraq-iran/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Milizie curde in Kurdistan iracheno con capacità limitate. Stima 10.000 combattenti non verificata.",
+						"dataPoints": ["10.000 combattenti stimati"],
+						"entities": ["Komala", "Kurdistan"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "La Svizzera ha interrotto la vendita di armi agli Stati Uniti",
+					"url": "https://www.ilpost.it/2026/03/21/svizzera-blocco-esportazioni-armi-stati-uniti/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Svizzera blocca export armi verso USA dal 28 febbraio. USA secondo mercato, circa 100 milioni EUR nel 2025.",
+						"dataPoints": ["100 milioni EUR export armi 2025"],
+						"entities": ["Svizzera", "SIG Sauer"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Cosa sappiamo dell'esplosione in cui sono morti due anarchici a Roma",
+					"url": "https://www.ilpost.it/2026/03/21/esplosione-casale-roma-parco-acquedotti-anarchici-bomba/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Due anarchici morti in esplosione casale Roma. Bomba artigianale esplosa per errore. Convocato Comitato sicurezza.",
+						"dataPoints": [],
+						"entities": [
+							"Sarà Ardizzone",
+							"Alessandro Mercogliano",
+							"FAI"
+						],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "La Francia ha sequestrato una petroliera della flotta fantasma russa",
+					"url": "https://www.ilpost.it/2026/03/20/francia-sequestro-nave-russa-flotta-fantasma/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Marina francese sequestra petroliera Deyna. Terzo sequestro flotta fantasma russa. Supporto britannico.",
+						"dataPoints": ["3 sequestri totali"],
+						"entities": ["Macron", "Francia"],
+						"tickers": ["BZ=F"]
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Le Hawaii sono alle prese con le alluvioni più gravi degli ultimi venti anni",
+					"url": "https://www.ilpost.it/2026/03/21/hawaii-alluvioni-oahu-honolulu/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Peggiori alluvioni in 20 anni a Oahu. Danni stimati 1 miliardo USD. 5.500 evacuati a Honolulu.",
+						"dataPoints": [
+							"1 miliardo USD danni",
+							"5.500 evacuati"
+						],
+						"entities": ["Hawaii", "Honolulu"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Due scialpinisti sono morti a causa di una valanga in Alto Adige",
+					"url": "https://www.ilpost.it/2026/03/21/valanga-scialpinisti-tallone-grande-alto-adige/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Valanga sul Tallone Grande a 2.450 m. 2 morti, 5 feriti di cui 3 gravi.",
+						"dataPoints": ["2 morti", "5 feriti"],
+						"entities": ["Val Ridanna", "Alto Adige"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Almeno 11 persone sono morte in un incendio in una fabbrica in Corea del Sud",
+					"url": "https://www.ilpost.it/2026/03/21/incendio-corea-del-sud-fabbrica-auto/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Incendio fabbrica componenti auto a Daejeon. 11 morti, 4 dispersi, 59 feriti.",
+						"dataPoints": ["11 morti", "59 feriti"],
+						"entities": ["Daejeon", "Corea del Sud"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				}
+			]
+		},
+		{
+			"id": "finanza",
+			"emoji": "&#x1F4B0;",
+			"name": "Finanza",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"Ozempic generico",
+				"MSC acquisizione Sinokor",
+				"Taglio accise carburanti"
+			],
+			"continuingThemes": [
+				"Crisi energetica Medio Oriente",
+				"Meta ristrutturazione"
+			],
+			"summary": "La giornata finanziaria è segnata da movimenti significativi nel settore energetico e farmaceutico. MSC, la più grande compagnia di navigazione al mondo, acquisisce il 50% di Sinokor per circa 5 miliardi di dollari, entrando nel mercato del trasporto petrolifero con il controllo potenziale del 20% delle navi VLCC mondiali non sanzionate, ciascuna capace di trasportare oltre 200.000 tonnellate di greggio. L'operazione arriva in un momento di estrema tensione sui mercati energetici.<br><br>In Italia, il governo ha tagliato le accise sui carburanti di 25 centesimi al litro per compensare i rincari da guerra. La benzina è scesa da 1,89 a 1,714 euro/litro in tre giorni (-17,4 centesimi), il gasolio da 2,125 a 1,966 (-15,8 centesimi). Le variazioni regionali sono significative: dal -19,7 centesimi della Valle d'Aosta al minore calo della Basilicata. Il margine dei distributori e di circa 3 centesimi al litro, il che spiega la gradualita dell'adeguamento.<br><br>Sul fronte farmaceutico, il brevetto di Ozempic scade oggi (21 marzo 2026) in sei paesi che ospitano il 40% della popolazione mondiale: Cina, India, Brasile, Turchia, Sudafrica e Canada. Dieci aziende cinesi sono già in fase avanzata di approvazione. I prezzi potrebbero scendere da centinaia di euro al mese a poche decine. Novo Nordisk, che a metà 2024 era la società europea con il maggior valore in borsa, ha subito un crollo azionario per la competizione di Eli Lilly con Mounjaro e Zepbound. Brevetti scadono dopo il 2030 in USA e Europa.<br><br>Meta ha investito oltre 70 miliardi di dollari nel metaverso con risultati deludenti: Horizon Worlds conta solo 900 utenti collegati. Reality Labs ha ridotto il personale del 10% a gennaio 2026. L'azienda si riorienta verso AI e wearable. Nel 2024 sono stati erogati 104,8 milioni di euro in contributi diretti alla stampa italiana, in aumento dai 95,6 milioni del 2023, distribuiti tra 153 testate.",
+			"articles": [
+				{
+					"title": "Msc comprerà il 50 per cento di una delle flotte di navi petroliere più grandi al mondo",
+					"url": "https://www.ilpost.it/2026/03/20/msc-sinokor-navi-petroliere/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"extract": {
+						"text": "MSC acquisisce 50% Sinokor per circa 5 miliardi USD. 78 navi VLCC, potenziale 20% VLCC mondiali.",
+						"dataPoints": [
+							"5 miliardi USD",
+							"78 navi VLCC",
+							"20% VLCC mondiali"
+						],
+						"entities": ["MSC", "Sinokor"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Si comincia a vedere il primo calo dei prezzi dei carburanti",
+					"url": "https://www.ilpost.it/2026/03/21/riduzione-prezzi-carburanti-taglio-accise-governo-speculazione/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Taglio accise 25 centesimi/litro. Benzina scesa a 1,714 EUR/litro. Gasolio a 1,966.",
+						"dataPoints": [
+							"25 cent taglio accise",
+							"Benzina 1,714 EUR/l"
+						],
+						"entities": ["Governo italiano"],
+						"tickers": ["ENI.MI", "CL=F"]
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "In molti paesi sta arrivando la versione generica dell'Ozempic",
+					"url": "https://www.ilpost.it/2026/03/20/ozempic-diventa-generico/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"extract": {
+						"text": "Brevetto Ozempic scade in 6 paesi (40% pop mondiale). 10 aziende cinesi in approvazione. Prezzi da centinaia a decine di euro.",
+						"dataPoints": ["6 paesi", "40% pop mondiale"],
+						"entities": ["Novo Nordisk", "Eli Lilly"],
+						"tickers": ["NVO", "LLY"]
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Nel metaverso c'è aria di sbaracco",
+					"url": "https://www.ilpost.it/2026/03/20/metaverso-meta-fine/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Meta ha investito 70+ miliardi USD nel metaverso. Horizon Worlds ha 900 utenti. Reality Labs -10% personale.",
+						"dataPoints": [
+							"70+ miliardi USD",
+							"900 utenti",
+							"-10% personale"
+						],
+						"entities": ["Meta", "Zuckerberg"],
+						"tickers": ["META"]
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "I giornali che ricevono i contributi pubblici (seconda rata del 2024)",
+					"url": "https://www.ilpost.it/2026/03/21/contributi-pubblici-giornali-seconda-rata-2024-stato-governo/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Nel 2024 erogati 104,8 milioni EUR in contributi stampa (vs 95,6M nel 2023). 153 testate.",
+						"dataPoints": ["104,8 milioni EUR", "153 testate"],
+						"entities": ["Dolomiten", "Avvenire", "Libero"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				}
+			]
+		},
+		{
+			"id": "tech",
+			"emoji": "&#x1F916;",
+			"name": "Tech",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "new",
+			"newThemes": [
+				"OpenAI Superapp",
+				"Cursor Composer 2",
+				"20 anni Twitter/X"
+			],
+			"continuingThemes": [],
+			"summary": "La newsletter TLDR segnala sviluppi significativi. OpenAI pianifica il lancio di una Superapp desktop che unificherà ChatGPT, Codex e browser in un'unica applicazione con capacità agentiche, segnando un cambio strategico verso un'esperienza desktop integrata. Jeff Bezos e in trattative per raccogliere 100 miliardi di dollari per acquisire e automatizzare aziende manifatturiere in chipmaking, difesa e aerospazio.<br><br>Cursor ha rilasciato Composer 2 con miglioramenti significativi su tutti i benchmark, consolidando la posizione dell'editor AI nel mercato. Xiaomi ha lanciato la nuova SU7 con 902 km di autonomia e LiDAR di serie a 33.000 dollari, sottoquotando Tesla. La Cina mobilita migliaia di startup AI individuali offrendo appartamenti, uffici e computing scontato.<br><br>Twitter compie 20 anni dal primo tweet di Jack Dorsey. Dopo l'acquisizione di Musk, oltre l'80% dei dipendenti eliminato, utenti attivi calati del 15% tra 2024 e 2025. Threads (Meta) ha superato X con 141 milioni di utenti attivi giornalieri contro 125 milioni. La piattaforma è diventata sussidiaria SpaceX, dati usati per addestrare xAI. Gli inserzionisti si sono largamente ritirati per la ridotta moderazione e le posizioni politiche di Musk.",
+			"articles": [
+				{
+					"title": "TLDR Tech - Bezos $100B, OpenAI Superapp, Cursor Composer 2",
+					"url": "https://tldr.tech/tech/2026-03-20",
+					"source": "TLDR",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "OpenAI lancerà Superapp desktop. Bezos fondo 100 miliardi USD per manifattura AI. Cursor Composer 2. Xiaomi SU7 a 33.000 USD.",
+						"dataPoints": [
+							"100 miliardi USD fondo Bezos",
+							"902 km autonomia SU7",
+							"33.000 USD prezzo SU7"
+						],
+						"entities": [
+							"OpenAI",
+							"Jeff Bezos",
+							"Cursor",
+							"Xiaomi"
+						],
+						"tickers": ["AMZN", "NVDA", "TSLA"]
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Cos'è rimasto di Twitter a 20 anni dalla fondazione",
+					"url": "https://www.ilpost.it/2026/03/21/20-anni-twitter-x/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Twitter compie 20 anni. Dopo acquisizione Musk: -80% dipendenti, -15% utenti 2024-2025. Threads supera X: 141M vs 125M utenti giornalieri.",
+						"dataPoints": [
+							"-15% utenti 2024-2025",
+							"141M Threads vs 125M X"
+						],
+						"entities": ["Twitter", "X", "Elon Musk", "Meta"],
+						"tickers": ["META"]
+					},
+					"sentiment": "neutral"
+				}
+			]
+		},
+		{
+			"id": "altro",
+			"emoji": "&#x1F4CC;",
+			"name": "Altro",
+			"isYoutube": false,
+			"isOther": true,
+			"evolution": null,
+			"newThemes": [],
+			"continuingThemes": [],
+			"summary": "Tra le notizie minori della giornata: è morto a 86 anni Paolo Cirino Pomicino, storico esponente DC soprannominato o'ministro a Napoli, coinvolto in 42 processi durante Tangentopoli e condannato per finanziamento illecito. Nel ciclismo, Tadej Pogacar ha vinto la Milano-Sanremo al fotofinish su Pidcock, conquistando la quarta delle cinque classiche monumento. Laura Pirovano ha vinto la Coppa del Mondo di discesa libera. Sono deceduti l'attore Nicholas Brendon (Buffy) e Chuck Norris.",
+			"articles": [
+				{
+					"title": "È morto Paolo Cirino Pomicino",
+					"url": "https://www.ilpost.it/2026/03/21/morto-paolo-cirino-pomicino/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Paolo Cirino Pomicino morto a 86 anni. Esponente DC, ministro del Bilancio. 42 processi.",
+						"dataPoints": ["86 anni", "42 processi"],
+						"entities": ["Paolo Cirino Pomicino", "DC"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Ha vinto anche la Milano-Sanremo",
+					"url": "https://www.ilpost.it/2026/03/21/milano-sanremo-tadej-pogacar/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"extract": {
+						"text": "Pogacar vince Milano-Sanremo al fotofinish su Pidcock. 4 su 5 classiche monumento.",
+						"dataPoints": ["4 su 5 classiche monumento"],
+						"entities": ["Tadej Pogacar", "Thomas Pidcock"],
+						"tickers": []
+					},
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Laura Pirovano ha vinto la Coppa del Mondo di discesa libera",
+					"url": "https://www.ilpost.it/2026/03/21/laura-pirovano-vittoria-coppa-del-mondo-discesa-libera/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "È morto Nicholas Brendon",
+					"url": "https://www.ilpost.it/2026/03/21/nicholas-brendon-morto-buffy-l-ammazzavampiri/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "È morto Chuck Norris",
+					"url": "https://www.ilpost.it/2026/03/20/chuck-norris-morto/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Le foto e i video dell'imponente concerto dei BTS a Seul",
+					"url": "https://www.ilpost.it/2026/03/21/bts-concerto-seul-foto-video/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Dieci posti da visitare nelle Giornate FAI di Primavera",
+					"url": "https://www.ilpost.it/2026/03/21/giornate-fai-primavera-cosa-vedere-2/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Armand Duplantis e gli altri campioni del salto con l'asta",
+					"url": "https://www.ilpost.it/2026/03/21/duplantis-record-avversari-salto-con-l-asta-karalis/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				}
+			]
+		},
+		{
+			"id": "youtube",
+			"emoji": "&#x1F4FA;",
+			"name": "YouTube",
+			"isYoutube": true,
+			"isOther": false,
+			"evolution": null,
+			"newThemes": [],
+			"continuingThemes": [],
+			"summary": null,
+			"articles": [
+				{
+					"title": "Perché tutti sbagliano la comunicazione? Non se ne può più",
+					"url": "https://www.youtube.com/watch?v=zu1WQKOjbNs",
+					"source": "Salvatore Sanfilippo",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "I test nel software: le tecniche che uso",
+					"url": "https://www.youtube.com/watch?v=521V3S3QmnQ",
+					"source": "Salvatore Sanfilippo",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Riaprire Hormuz è complicato, ma finché è bloccato Trump non può cantare vittoria",
+					"url": "https://www.youtube.com/watch?v=rN7OAx9U9Kg",
+					"source": "Stories",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Live del venerdì, commentiamo gli avvenimenti della settimana!",
+					"url": "https://www.youtube.com/watch?v=AedlCVwXeOA",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Il governo riduce le accise sui carburanti per 20 giorni",
+					"url": "https://www.youtube.com/shorts/SRkj4JQUXDw",
+					"source": "Breaking Italy",
+					"financial": true,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				},
+				{
+					"title": "Quattro chiacchiere di fine quarter",
+					"url": "https://www.youtube.com/watch?v=7HrhR37LiVE",
+					"source": "Mr. RIP",
+					"financial": true,
+					"deepDived": false,
+					"impact": "normal",
+					"extract": null,
+					"sentiment": "neutral"
+				}
+			]
+		}
+	]
+}

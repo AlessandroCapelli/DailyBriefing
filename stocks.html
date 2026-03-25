@@ -792,10 +792,6 @@
 						/\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{2,4}$/i, "");
 			});
 			const PERIODS = [{
-					k: "1d",
-					l: "1G",
-				},
-				{
 					k: "5d",
 					l: "5G",
 				},
@@ -1203,10 +1199,6 @@
 
 			function fmtDates(dates, period) {
 				return dates.map((d) => {
-					if (period === "1d") {
-						var t = d.split(" ")[1];
-						return t ? t.slice(0, 5) : d;
-					}
 					var p = d.split("-");
 					var mm = parseInt(p[1]) - 1;
 					if (period === "5y") return MESI[mm] + " " + p[0].slice(2);
