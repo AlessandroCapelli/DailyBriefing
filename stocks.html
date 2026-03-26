@@ -847,6 +847,17 @@
 
 			// ── Build filter buttons ──
 			const cats = [...new Set(T.map((t) => t.category))];
+				const catEmoji = {
+					energia: "&#x26A1;",
+					difesa: "&#x1F6E1;&#xFE0F;",
+					corporate: "&#x1F3E2;",
+					"ai-tech": "&#x1F916;",
+					pharma: "&#x1F48A;",
+					"macro-eu": "&#x1F1EA;&#x1F1FA;",
+					"macro-usa": "&#x1F1FA;&#x1F1F8;",
+					finanza: "&#x1F4B0;",
+					tech: "&#x1F4BB;",
+				};
 			const sents = [...new Set(T.map((t) => t.sentiment))];
 			const dates = M.dates || [];
 			const sentEmoji = {
@@ -891,7 +902,11 @@
 				"cat-filters",
 				cats,
 				function(v) {
+					// Find emoji from trend data or fallback map
+					var trWithCat = T.find(function(t) { return t.category === v; });
+					var em = (trWithCat && trWithCat.emoji ? trWithCat.emoji : catEmoji[v] || "&#x1F4CA;") + " ";
 					return (
+						em +
 						escapeHtml(v.charAt(0).toUpperCase() + v.slice(1)) +
 						' <span style="opacity:.5;font-size:.65rem">' +
 						(catCounts[v] || 0) +
@@ -980,7 +995,8 @@
 				}
 
 				const tEmoji = sentEmoji[tr.sentiment] || "";
-				sec.innerHTML = `<div class="ch"><span class="senti">${tEmoji}</span><h2>${escapeHtml(tr.title)}</h2>${evoHtml}</div>
+				const cEmoji = tr.emoji || catEmoji[tr.category] || "&#x1F4CA;";
+				sec.innerHTML = `<div class="ch"><span class="senti">${cEmoji} ${tEmoji}</span><h2>${escapeHtml(tr.title)}</h2>${evoHtml}</div>
     <div class="cperiod">${escapeHtml(tr.period)}</div>
     <div style="font-size:.68rem;color:#4a5268;margin-bottom:.6rem">~${Math.max(1, Math.round((tr.narrative || "").split(/\s+/).length / 200))} min lettura · ${tr.tickers.length} ticker</div>
     <div class="collapsible">
@@ -1443,7 +1459,7 @@
 					});
 					var a = document.createElement("a");
 					a.href = URL.createObjectURL(b);
-					a.download = "stocks-" + (M.generatedAt || "").split(" ")[0] + ".json";
+					a.download = "stocks-" + (new URLSearchParams(location.search).get("d") || (M.generatedAt || "").split(" ")[0]) + ".json";
 					a.click();
 				});
 			}
