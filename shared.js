@@ -179,13 +179,27 @@ function escapeHtml(str) {
 					btn.title = "Comprimi";
 					btn.addEventListener("click", function (e) {
 						e.stopPropagation();
-						var collapsed = content.classList.toggle("collapsed");
-						btn.innerHTML = collapsed ? "&#9660;" : "&#9650;";
-						btn.title = collapsed ? "Espandi" : "Comprimi";
+						var isCollapsed = content.classList.contains("collapsed");
+						if (isCollapsed) {
+							// Expand: set scrollHeight then remove after transition
+							content.style.maxHeight = content.scrollHeight + "px";
+							content.classList.remove("collapsed");
+							setTimeout(function () {
+								content.style.maxHeight = "none";
+							}, 350);
+						} else {
+							// Collapse: set current height first, then 0
+							content.style.maxHeight = content.scrollHeight + "px";
+							content.offsetHeight; // force reflow
+							content.style.maxHeight = "0";
+							content.classList.add("collapsed");
+						}
+						btn.innerHTML = isCollapsed ? "&#9650;" : "&#9660;";
+						btn.title = isCollapsed ? "Comprimi" : "Espandi";
 					});
 					hdr.appendChild(btn);
-					// Set max-height for animation
-					content.style.maxHeight = content.scrollHeight + "px";
+					// Start expanded with no max-height constraint
+					content.style.maxHeight = "none";
 				});
 		}
 		var obs = new MutationObserver(addCollapseButtons);
