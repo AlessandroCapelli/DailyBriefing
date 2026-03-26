@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src * data:; frame-ancestors 'none'" />
 	<meta name="theme-color" content="#0d0f15" />
 	<link rel="manifest" href="manifest.json" />
 	<link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -945,7 +946,7 @@
 								'class="km-delta" style="color:var(--dn)"' :
 								'class="km-delta"' :
 								'class="km-delta"';
-							return `<div class="km"><div class="km-label">${m.label}</div><div class="km-val">${m.value}</div>${m.delta ? `<div ${dc}>${m.delta}</div>` : ""}</div>`;
+							return `<div class="km"><div class="km-label">${escapeHtml(m.label)}</div><div class="km-val">${escapeHtml(m.value)}</div>${m.delta ? `<div ${dc}>${escapeHtml(m.delta)}</div>` : ""}</div>`;
 						})
 						.join("") +
 						"</div>";
@@ -955,16 +956,16 @@
 					.map((sym) => {
 						const tk = TK[sym];
 						if (!tk)
-							return `<div class="tc" data-sym="${sym}"><div class="tt"><span class="tsym">${sym}</span></div><div class="tnm">Dati non disponibili</div></div>`;
+							return `<div class="tc" data-sym="${escapeHtml(sym)}"><div class="tt"><span class="tsym">${escapeHtml(sym)}</span></div><div class="tnm">Dati non disponibili</div></div>`;
 						const cur = tk.currency === "EUR" ? "€" : "$";
 						const cpct = tk.change_pct || 0;
 						const cc = cpct >= 0 ? "var(--up)" : "var(--dn)";
 						const cid = "ch-" + ti + "-" + sym.replace(/[^a-zA-Z0-9]/g, "");
 						const rangeHtml = "";
-						return `<div class="tc" data-sym="${sym}">
-      <div class="tt"><span class="tsym">${sym}</span><span class="tprc" style="color:${cc}">${cur}${tk.price}</span></div>
-      <div class="tnm">${tk.name}</div>
-      <div class="tmeta"><span style="color:${cc}">${cpct >= 0 ? "+" : ""}${cpct.toFixed(2)}% oggi</span><span>${tk.sector || ""}</span><span>Vol: ${formatVol(tk.avg_volume)}</span></div>
+						return `<div class="tc" data-sym="${escapeHtml(sym)}">
+      <div class="tt"><span class="tsym">${escapeHtml(sym)}</span><span class="tprc" style="color:${cc}">${cur}${tk.price}</span></div>
+      <div class="tnm">${escapeHtml(tk.name)}</div>
+      <div class="tmeta"><span style="color:${cc}">${cpct >= 0 ? "+" : ""}${cpct.toFixed(2)}% oggi</span><span>${escapeHtml(tk.sector || "")}</span><span>Vol: ${formatVol(tk.avg_volume)}</span></div>
       <div class="trng" data-chart="${cid}">${rangeHtml}</div>
       <div class="cc"><canvas id="${cid}"></canvas></div>
       <button class="cmpbtn" data-sym="${sym}">&#x1F4CA; Confronta</button>
@@ -980,7 +981,7 @@
 
 				const tEmoji = sentEmoji[tr.sentiment] || "";
 				sec.innerHTML = `<div class="ch"><span class="senti">${tEmoji}</span><h2>${escapeHtml(tr.title)}</h2>${evoHtml}</div>
-    <div class="cperiod">${tr.period}</div>
+    <div class="cperiod">${escapeHtml(tr.period)}</div>
     <div style="font-size:.68rem;color:#4a5268;margin-bottom:.6rem">~${Math.max(1, Math.round((tr.narrative || "").split(/\s+/).length / 200))} min lettura · ${tr.tickers.length} ticker</div>
     <div class="collapsible">
     <div class="narr">${(tr.narrative || "").split(/\n\n+/).filter(function(p){return p.trim();}).map(function(p){return '<p>' + escapeHtml(p.trim()) + '</p>';}).join("")}</div>
