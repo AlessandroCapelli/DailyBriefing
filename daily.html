@@ -407,7 +407,6 @@
 		}
 
 		.collapsible {
-			overflow: hidden;
 			transition:
 				max-height 0.3s ease,
 				opacity 0.2s ease;
@@ -416,6 +415,7 @@
 		.collapsible.collapsed {
 			max-height: 0 !important;
 			opacity: 0;
+			overflow: hidden;
 			margin: 0;
 			padding: 0;
 		}
