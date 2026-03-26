@@ -190,29 +190,29 @@
 			display: none;
 		}
 
-		.ch {
+		.card-hdr {
 			display: flex;
 			align-items: center;
 			gap: 0.5rem;
-			margin-bottom: 0.15rem;
+			margin-bottom: 0.75rem;
 		}
 
-		.senti {
+		.emoji {
 			font-size: 1.25rem;
 		}
 
-		.ch h2 {
+		.card-hdr h2 {
 			font-size: 1.1rem;
 			font-weight: 700;
 			flex: 1;
 		}
 
-		.evo {
-			font-size: 0.7rem;
+		.evo-badge {
+			font-size: 0.65rem;
 			font-weight: 600;
-			padding: 0.15rem 0.55rem;
+			padding: 0.15rem 0.5rem;
 			border-radius: 5px;
-			white-space: nowrap;
+			margin-left: 0.5rem;
 		}
 
 		.evo-new {
@@ -225,12 +225,12 @@
 			color: var(--t2);
 		}
 
-		.evo-acc {
+		.evo-exp {
 			background: rgba(74, 222, 128, 0.12);
 			color: var(--up);
 		}
 
-		.evo-rev {
+		.evo-red {
 			background: rgba(248, 113, 113, 0.12);
 			color: var(--dn);
 		}
@@ -444,7 +444,7 @@
 
 		.src {
 			color: var(--t2);
-			font-size: 0.73rem;
+			font-size: 0.75rem;
 		}
 
 		/* COMPARISON PANEL */
@@ -549,6 +549,14 @@
 			color: #7c9ef8;
 		}
 
+		.no-res {
+			display: none;
+			text-align: center;
+			color: var(--t2);
+			padding: 3rem 1rem;
+			font-size: 0.95rem;
+		}
+
 		.collapsible {
 			transition:
 				max-height 0.3s ease,
@@ -647,7 +655,7 @@
 			<div class="sk sk-card" style="height: 250px"></div>
 			<div class="sk sk-card" style="height: 280px"></div>
 		</div>
-		<div id="no-results" class="card hide" style="text-align: center; color: var(--t2); padding: 3rem">
+		<div id="no-results" class="no-res">
 			Nessun risultato.
 		</div>
 		<div style="text-align: right; margin-bottom: 1rem; display: flex; gap: 0.5rem; justify-content: flex-end">
@@ -828,10 +836,10 @@
 				neutral: "#facc15",
 			};
 			const EVO_MAP = {
-				continuation: ["&#x1F504; Continuazione", "evo-cont"],
-				acceleration: ["&#x1F4C8; Accelerazione", "evo-acc"],
-				reversal: ["&#x1F4C9; Inversione", "evo-rev"],
-				new: ["&#x1F195; Nuovo", "evo-new"],
+				continuation: ["Continua", "evo-cont"],
+				acceleration: ["In espansione", "evo-exp"],
+				reversal: ["In calo", "evo-red"],
+				new: ["Novità", "evo-new"],
 			};
 			const charts = {};
 			let cmpTickers = [],
@@ -943,7 +951,7 @@
 				let evoHtml = "";
 				if (tr.evolution && EVO_MAP[tr.evolution]) {
 					const [label, cls] = EVO_MAP[tr.evolution];
-					evoHtml = `<span class="evo ${cls}">${label}</span>`;
+					evoHtml = `<span class="evo-badge ${cls}">${label}</span>`;
 				}
 
 				let metricsHtml = "";
@@ -994,7 +1002,7 @@
 
 				const tEmoji = sentEmoji[tr.sentiment] || "";
 				const cEmoji = tr.emoji || catEmoji[tr.category] || "&#x1F4CA;";
-				sec.innerHTML = `<div class="ch"><span class="senti">${cEmoji} ${tEmoji}</span><h2>${escapeHtml(tr.title)}</h2>${evoHtml}</div>
+				sec.innerHTML = `<div class="card-hdr"><span class="emoji">${cEmoji} ${tEmoji}</span><h2>${escapeHtml(tr.title)}</h2>${evoHtml}</div>
     <div style="font-size:.68rem;color:#4a5268;margin-bottom:.6rem">~${Math.max(1, Math.round((tr.narrative || "").split(/\s+/).length / 200))} min lettura · ${tr.tickers.length} ticker · ${(tr.sources || []).length} fonti</div>
     <div class="collapsible">
     <div class="narr">${(tr.narrative || "").split(/\n\n+/).filter(function(p){return p.trim();}).map(function(p){return '<p>' + escapeHtml(p.trim()) + '</p>';}).join("")}</div>

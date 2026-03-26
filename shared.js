@@ -171,7 +171,7 @@ function escapeHtml(str) {
 					var content = card.querySelector(".collapsible");
 					if (!content) return;
 					card.setAttribute("data-collapse", "1");
-					var hdr = card.querySelector(".card-hdr, .ch");
+					var hdr = card.querySelector(".card-hdr");
 					if (!hdr) return;
 					var btn = document.createElement("button");
 					btn.className = "collapse-btn";
