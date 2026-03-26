@@ -528,7 +528,7 @@
 					.then((t) => {
 						if (!t) return;
 						try {
-							const data = new Function("return " + t)();
+							const data = JSON.parse(t);
 							const kw = [];
 							if (data.categories)
 								data.categories.forEach((c) => {
@@ -558,7 +558,7 @@
 					.then((t) => {
 						if (!t) return;
 						try {
-							const data = new Function("return " + t)();
+							const data = JSON.parse(t);
 							const kw = [];
 							if (data.trends)
 								data.trends.forEach((tr) => {

@@ -288,6 +288,18 @@
 			margin-bottom: 1rem;
 		}
 
+		.summary p {
+			margin-bottom: 0.8rem;
+			padding-bottom: 0.8rem;
+			border-bottom: 1px solid var(--brd);
+		}
+
+		.summary p:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
 		.links {
 			list-style: none;
 			display: flex;
@@ -564,8 +576,7 @@
 					return r.text();
 				})
 				.then(function(text) {
-					// Parse as JS object (may have unquoted keys, trailing commas)
-					var DAILY_DATA = new Function("return " + text)();
+					var DAILY_DATA = JSON.parse(text);
 					window.DAILY_DATA = DAILY_DATA;
 					document.getElementById("loading").style.display = "none";
 					try {
@@ -609,7 +620,7 @@
 				b.className = "fb";
 				b.dataset.v = c.id;
 				b.innerHTML =
-					c.emoji + " " + c.name + ' <span style="opacity:.5;font-size:.65rem">' + c.articles.length +
+					c.emoji + " " + escapeHtml(c.name) + ' <span style="opacity:.5;font-size:.65rem">' + c.articles.length +
 					"</span>";
 				catC.appendChild(b);
 			});
@@ -661,7 +672,7 @@
 					'<div class="card-hdr"><span class="emoji">' +
 					cat.emoji +
 					"</span><h2>" +
-					cat.name +
+					escapeHtml(cat.name) +
 					"</h2>" +
 					evoBadge +
 					badge +
@@ -683,7 +694,13 @@
 					cat.articles.length +
 					" articoli</div>" :
 					"";
-				let summ = cat.summary ? '<p class="summary">' + cat.summary + "</p>" : "";
+				let summ = "";
+				if (cat.summary) {
+					var paragraphs = cat.summary.split(/\n\n+/).filter(function(p) { return p.trim(); });
+					summ = '<div class="summary">' + paragraphs.map(function(p) {
+						return '<p>' + escapeHtml(p.trim()) + '</p>';
+					}).join("") + '</div>';
+				}
 				let links =
 					'<ul class="links">' +
 					cat.articles
@@ -691,6 +708,7 @@
 						const finCls = a.financial ? " fin" : "";
 						const finTag = a.financial ? '<span class="fin-tag">Fin</span>' : "";
 						const hiTag = a.impact === "high" ? '<span class="hi-alert">ALERT</span>' : "";
+						var safeUrl = (a.url || "").match(/^https?:\/\//) ? a.url : "#";
 						return (
 							'<li class="' +
 							finCls +
@@ -699,13 +717,13 @@
 							'" data-impact="' +
 							(a.impact || "normal") +
 							'" data-kw="' +
-							(a.title + " " + a.source).toLowerCase() +
+							escapeHtml((a.title + " " + a.source).toLowerCase()) +
 							'"><a href="' +
-							a.url +
+							escapeHtml(safeUrl) +
 							'" target="_blank" rel="noopener noreferrer">' +
-							a.title +
+							escapeHtml(a.title) +
 							'</a> <span class="src">(' +
-							a.source +
+							escapeHtml(a.source) +
 							")</span>" +
 							finTag +
 							hiTag +
@@ -778,8 +796,21 @@
 			var eb = document.getElementById("export-btn");
 			if (eb) {
 				eb.addEventListener("click", function() {
-					var b = new Blob([JSON.stringify(DAILY_DATA, null, 2)], {
-						type: "application/json"
+					var clean = {
+						meta: {date: M.date, fullDate: M.fullDate, dayOfWeek: M.dayOfWeek, categoryCount: M.categoryCount, articleCount: M.articleCount},
+						categories: C.map(function(cat) {
+							return {
+								id: cat.id, name: cat.name, summary: cat.summary,
+								articles: cat.articles.map(function(a) {
+									var o = {title: a.title, url: a.url, source: a.source, financial: a.financial, sentiment: a.sentiment, impact: a.impact};
+									if (a.extract) o.extract = {text: a.extract.text, dataPoints: a.extract.dataPoints, entities: a.extract.entities, tickers: a.extract.tickers};
+									return o;
+								}),
+							};
+						}),
+					};
+					var b = new Blob([JSON.stringify(clean, null, 2)], {
+						type: "application/json;charset=utf-8"
 					});
 					var a = document.createElement("a");
 					a.href = URL.createObjectURL(b);

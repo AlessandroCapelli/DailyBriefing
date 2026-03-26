@@ -3,6 +3,17 @@
  * Include after nav.js on every page.
  */
 var DB_VERSION = "1.0";
+
+/** Escape HTML special characters to prevent XSS when inserting user content via innerHTML. */
+function escapeHtml(str) {
+	if (!str) return "";
+	return String(str)
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#39;");
+}
 (function () {
 	"use strict";
 

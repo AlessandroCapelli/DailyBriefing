@@ -350,7 +350,7 @@
 									{
 										type: "daily",
 										date: d,
-										data: new Function("return " + t)(),
+										data: JSON.parse(t),
 									} :
 									null;
 							})
@@ -368,7 +368,7 @@
 									{
 										type: "stocks",
 										date: d,
-										data: new Function("return " + t)(),
+										data: JSON.parse(t),
 									} :
 									null;
 							})
@@ -432,8 +432,8 @@
 					if (data.trends) {
 						totalTrends += data.trends.length;
 						data.trends.forEach(function(tr) {
-							if (tr.sentiment) sentiments[tr.sentiment] = (sentiments[tr.sentiment] || 0) +
-								1;
+							var s = tr.sentiment || "neutral";
+							sentiments[s] = (sentiments[s] || 0) + 1;
 							if (tr.tickers) totalTickers += tr.tickers.length;
 							if (tr.tickers) {
 								tr.tickers.forEach(function(t) {
@@ -514,7 +514,7 @@
 						var pct = Math.round((categories[name] / maxCat) * 100);
 						cb.innerHTML +=
 							'<div class="cat-bar"><span class="cat-name">' +
-							name +
+							escapeHtml(name) +
 							'</span><div style="flex:1;background:var(--chbg);border-radius:3px;height:6px"><div class="cat-fill" style="width:' +
 							pct +
 							'%"></div></div><span class="cat-count">' +
@@ -534,7 +534,7 @@
 							'<div class="top-item"><span class="top-rank">#' +
 							(i + 1) +
 							'</span><span class="top-name">' +
-							t +
+							escapeHtml(t) +
 							'</span><span class="top-val">' +
 							tickers[t] +
 							"x</span></div>";
@@ -552,7 +552,7 @@
 							'<div class="top-item"><span class="top-rank">#' +
 							(i + 1) +
 							'</span><span class="top-name">' +
-							s +
+							escapeHtml(s) +
 							'</span><span class="top-val">' +
 							sources[s] +
 							"x</span></div>";
@@ -653,12 +653,16 @@
 									currency: tk.currency || "USD",
 									price: tk.price || 0,
 									change_pct: tk.change_pct || 0,
+									priceDate: s.date,
 									mentions: tickers[sym] || 0,
 									trends: [],
 								};
 							}
-							if (tk.price) tickerDetails[sym].price = tk.price;
-							if (tk.change_pct) tickerDetails[sym].change_pct = tk.change_pct;
+							if (tk.price) {
+								tickerDetails[sym].price = tk.price;
+								tickerDetails[sym].change_pct = tk.change_pct || 0;
+								tickerDetails[sym].priceDate = s.date;
+							}
 						});
 					}
 					if (data.trends) {
@@ -865,22 +869,39 @@
 
 				// Export JSON
 				document.getElementById("export-json").addEventListener("click", function() {
+					// Clean export: remove internal fields not useful to end user
+					function cleanArticle(a) {
+						var c = {title: a.title, url: a.url, source: a.source, financial: a.financial, sentiment: a.sentiment, impact: a.impact};
+						if (a.extract) {
+							c.extract = {text: a.extract.text, dataPoints: a.extract.dataPoints, entities: a.extract.entities, tickers: a.extract.tickers};
+						}
+						return c;
+					}
 					var exportData = {
 						dailies: dailies.map(function(d) {
+							var data = d.data;
 							return {
 								date: d.date,
-								data: d.data,
+								meta: {date: data.meta.date, fullDate: data.meta.fullDate, categoryCount: data.meta.categoryCount, articleCount: data.meta.articleCount},
+								categories: (data.categories || []).map(function(cat) {
+									return {id: cat.id, name: cat.name, summary: cat.summary, articles: cat.articles.map(cleanArticle)};
+								}),
 							};
 						}),
 						stocks: stocks.map(function(s) {
+							var data = s.data;
 							return {
 								date: s.date,
-								data: s.data,
+								meta: data.meta,
+								trends: (data.trends || []).map(function(tr) {
+									return {title: tr.title, category: tr.category, sentiment: tr.sentiment, narrative: tr.narrative, metrics: tr.metrics, tickers: tr.tickers, sources: tr.sources};
+								}),
+								tickers: data.tickers,
 							};
 						}),
 					};
 					var blob = new Blob([JSON.stringify(exportData, null, 2)], {
-						type: "application/json",
+						type: "application/json;charset=utf-8",
 					});
 					var a = document.createElement("a");
 					a.href = URL.createObjectURL(blob);
@@ -894,7 +915,7 @@
 					return '"' + (s || "").toString().replace(/"/g, '""') + '"';
 				}
 				document.getElementById("export-csv").addEventListener("click", function() {
-					var rows = ["Ticker,Nome,Settore,Valuta,Prezzo,Variazione %,Menzioni,Trend associati"];
+					var rows = ["Ticker,Nome,Settore,Valuta,Prezzo,Variazione %,Data prezzo,Menzioni,Trend associati"];
 					Object.keys(tickerDetails)
 						.sort(function(a, b) {
 							return (tickers[b] || 0) - (tickers[a] || 0);
@@ -907,20 +928,16 @@
 									csvQ(d.name),
 									csvQ(d.sector),
 									csvQ(d.currency),
-									d.price,
-									d.change_pct,
-									d.mentions,
+									csvQ(String(d.price)),
+									csvQ(String(d.change_pct)),
+									csvQ(d.priceDate || ""),
+									csvQ(String(d.mentions)),
 									csvQ(d.trends.join("; ")),
 								].join(","),
 							);
 						});
-					Object.keys(tickers).forEach(function(sym) {
-						if (!tickerDetails[sym]) {
-							rows.push([csvQ(sym), "", "", "", "", "", tickers[sym], ""].join(","));
-						}
-					});
-					var blob = new Blob([rows.join("\n")], {
-						type: "text/csv"
+					var blob = new Blob(["\uFEFF" + rows.join("\n")], {
+						type: "text/csv;charset=utf-8"
 					});
 					var a = document.createElement("a");
 					a.href = URL.createObjectURL(blob);

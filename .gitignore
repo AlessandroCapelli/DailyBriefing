@@ -1,6 +1,9 @@
 ## Scripts
 scripts/
 
+## Agent definitions
+agents/
+
 ## Visual Studio
 .vs/
 *.suo
@@ -18,6 +21,9 @@ ehthumbs.db
 Desktop.ini
 .DS_Store
 .DS_Store?
+
+## Cache
+data/cache/
 
 ## Build output
 dist/
