@@ -413,38 +413,36 @@
 		}
 
 		/* SOURCES */
-		.slbl {
-			font-size: 0.73rem;
-			font-weight: 600;
-			text-transform: uppercase;
-			letter-spacing: 0.07em;
-			color: var(--t2);
-			margin-bottom: 0.4rem;
-		}
-
-		.slist {
+		.links {
 			list-style: none;
 			display: flex;
 			flex-direction: column;
-			gap: 0.3rem;
+			gap: 0.4rem;
 		}
 
-		.slist li {
-			font-size: 0.82rem;
-			line-height: 1.5;
+		.links li {
+			font-size: 0.85rem;
+			line-height: 1.55;
+			padding: 0.3rem 0.5rem;
+			border-radius: 6px;
+			transition: background 0.12s;
 		}
 
-		.slist a {
+		.links li:hover {
+			background: rgba(124, 158, 248, 0.06);
+		}
+
+		.links a {
 			color: var(--acc);
 			text-decoration: none;
 		}
 
-		.slist a:hover {
+		.links a:hover {
 			color: var(--acc2);
 			text-decoration: underline;
 		}
 
-		.sdom {
+		.src {
 			color: var(--t2);
 			font-size: 0.73rem;
 		}
@@ -991,14 +989,14 @@
 				let srcHtml = "";
 				if (tr.sources && tr.sources.length) {
 					srcHtml =
-						`<div class="slbl">Fonti (${tr.sources.length})</div><ul class="slist">${tr.sources.map((s) => {var su=(s.url||"").match(/^https?:\/\//)?s.url:"#";return `<li><a href="${escapeHtml(su)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title)}</a> <span class="sdom">(${escapeHtml(s.domain)})</span></li>`;}).join("")}</ul>`;
+						`<ul class="links">${tr.sources.map((s) => {var su=(s.url||"").match(/^https?:\/\//)?s.url:"#";return `<li><a href="${escapeHtml(su)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title)}</a> <span class="src">(${escapeHtml(s.domain)})</span></li>`;}).join("")}</ul>`;
 				}
 
 				const tEmoji = sentEmoji[tr.sentiment] || "";
 				const cEmoji = tr.emoji || catEmoji[tr.category] || "&#x1F4CA;";
 				sec.innerHTML = `<div class="ch"><span class="senti">${cEmoji} ${tEmoji}</span><h2>${escapeHtml(tr.title)}</h2>${evoHtml}</div>
     <div class="cperiod">${escapeHtml(tr.period)}</div>
-    <div style="font-size:.68rem;color:#4a5268;margin-bottom:.6rem">~${Math.max(1, Math.round((tr.narrative || "").split(/\s+/).length / 200))} min lettura · ${tr.tickers.length} ticker</div>
+    <div style="font-size:.68rem;color:#4a5268;margin-bottom:.6rem">~${Math.max(1, Math.round((tr.narrative || "").split(/\s+/).length / 200))} min lettura · ${tr.tickers.length} ticker · ${(tr.sources || []).length} fonti</div>
     <div class="collapsible">
     <div class="narr">${(tr.narrative || "").split(/\n\n+/).filter(function(p){return p.trim();}).map(function(p){return '<p>' + escapeHtml(p.trim()) + '</p>';}).join("")}</div>
     ${metricsHtml}
