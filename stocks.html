@@ -1001,8 +1001,8 @@
     <div class="narr">${(tr.narrative || "").split(/\n\n+/).filter(function(p){return p.trim();}).map(function(p){return '<p>' + escapeHtml(p.trim()) + '</p>';}).join("")}</div>
     ${metricsHtml}
     <div class="tg">${tickerCards}</div>
-    ${srcHtml}
-    </div>`;
+    </div>
+    ${srcHtml}`;
 				root.appendChild(sec);
 
 				// Charts created lazily via initCharts()

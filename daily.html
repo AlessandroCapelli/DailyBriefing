@@ -362,12 +362,6 @@
 			border-radius: 6px;
 		}
 
-		.sent-dot {
-			font-size: 0.5rem;
-			margin-left: 0.4rem;
-			vertical-align: middle;
-		}
-
 		.hi-alert {
 			font-size: 0.6rem;
 			font-weight: 700;
@@ -715,7 +709,6 @@
 						const finCls = a.financial ? " fin" : "";
 						const finTag = a.financial ? '<span class="fin-tag">Fin</span>' : "";
 						const hiTag = a.impact === "high" ? '<span class="hi-alert">ALERT</span>' : "";
-						const sentDot = a.sentiment === "positive" ? '<span class="sent-dot" style="color:var(--up)" title="Positivo">&#x25CF;</span>' : a.sentiment === "negative" ? '<span class="sent-dot" style="color:var(--dn)" title="Negativo">&#x25CF;</span>' : "";
 						var safeUrl = (a.url || "").match(/^https?:\/\//) ? a.url : "#";
 						return (
 							'<li class="' +
@@ -733,7 +726,6 @@
 							'</a> <span class="src">(' +
 							escapeHtml(a.source) +
 							")</span>" +
-							sentDot +
 							finTag +
 							hiTag +
 							"</li>"
