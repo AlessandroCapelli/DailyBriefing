@@ -77,20 +77,35 @@ The system separates **data acquisition** (deterministic, retriable scripts) fro
 
 ```
 DailyBriefing/
-├── index.html          Landing page with timeline and search
-├── daily.html          Daily briefing template
-├── stocks.html         Stock trend report template
-├── dashboard.html      Aggregate stats, charts, export
-├── nav.js              Global navigation bar
-├── shared.js           PWA, TTS, animations, keyboard shortcuts, security
-├── chart.min.js        Chart.js v4.5 (local, no CDN dependency)
-├── sw.js               Service worker for offline support
-├── manifest.json       PWA manifest
-└── data/
-    ├── reports.json    Index of available report dates
-    ├── daily-*.json    Daily briefing data (one per day)
-    ├── stocks-*.json   Stock trend data (main + lazy-loaded charts)
-    └── cache/          Pre-fetched raw data (not committed)
+│
+│  Pages
+├── index.html              Landing page with timeline and search
+├── daily.html              Daily briefing template
+├── stocks.html             Stock trend report template
+├── dashboard.html          Aggregate stats, charts, export
+├── 404.html                Error page
+│
+│  Scripts
+├── nav.js                  Global navigation bar
+├── shared.js               PWA, TTS, animations, keyboard shortcuts, security
+├── chart.min.js            Chart.js v4.5 (local, no CDN)
+├── sw.js                   Service worker for offline support
+│
+│  Assets
+├── manifest.json           PWA manifest
+├── favicon.svg             App icon
+├── apple-touch-icon.png    iOS icon
+│
+│  Data (generated, committed)
+├── data/
+│   ├── reports.json        Index of available report dates
+│   ├── daily-*.json        Daily briefing data (one per day)
+│   └── stocks-*.json       Stock trend data (main + charts)
+│
+│  Not committed (.gitignore)
+├── scripts/                Fetch scripts, feed config, runner .bat
+├── agents/                 Agent definition backups
+└── data/cache/             Pre-fetched raw article/stock data
 ```
 
 All pages are static HTML templates that load JSON data via `fetch()` and render client-side. No backend, no database, no build step. Hosted entirely on GitHub Pages.
