@@ -995,7 +995,6 @@
 				const tEmoji = sentEmoji[tr.sentiment] || "";
 				const cEmoji = tr.emoji || catEmoji[tr.category] || "&#x1F4CA;";
 				sec.innerHTML = `<div class="ch"><span class="senti">${cEmoji} ${tEmoji}</span><h2>${escapeHtml(tr.title)}</h2>${evoHtml}</div>
-    <div class="cperiod">${escapeHtml(tr.period)}</div>
     <div style="font-size:.68rem;color:#4a5268;margin-bottom:.6rem">~${Math.max(1, Math.round((tr.narrative || "").split(/\s+/).length / 200))} min lettura · ${tr.tickers.length} ticker · ${(tr.sources || []).length} fonti</div>
     <div class="collapsible">
     <div class="narr">${(tr.narrative || "").split(/\n\n+/).filter(function(p){return p.trim();}).map(function(p){return '<p>' + escapeHtml(p.trim()) + '</p>';}).join("")}</div>
