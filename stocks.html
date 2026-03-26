@@ -841,7 +841,7 @@
 			// ── Header ──
 			document.getElementById("rpt-title").textContent = M.title;
 			document.getElementById("rpt-meta").textContent =
-				M.trendCount + " trend · " + M.tickerCount + " ticker · " + M.articleCount + " articoli analizzati";
+				M.trendCount + " trend · " + M.tickerCount + " ticker · " + M.articleCount + " articoli · " + T.reduce(function(s, t) { return s + (t.sources || []).length; }, 0) + " fonti";
 
 			// ── Build filter buttons ──
 			const cats = [...new Set(T.map((t) => t.category))];
