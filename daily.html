@@ -644,6 +644,11 @@
 					'Nessun contenuto disponibile per questa data.' +
 					'</div>';
 				document.querySelector(".ctrl").style.display = "none";
+				var actions = root.nextElementSibling;
+				while (actions && actions.tagName !== "FOOTER") {
+					actions.style.display = "none";
+					actions = actions.nextElementSibling;
+				}
 				return;
 			}
 			C.forEach((cat) => {
