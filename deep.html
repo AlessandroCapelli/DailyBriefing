@@ -178,8 +178,8 @@ table td.r{text-align:right}
 <div class="ind-grid" id="ind-root"></div>
 <div style="margin-top:1.25rem">
 <div class="two-col">
-<div><div class="subtag" style="margin-bottom:.4rem">RSI 14 (1 anno)</div><div class="cc"><canvas id="rsi-chart"></canvas></div></div>
-<div><div class="subtag" style="margin-bottom:.4rem">MACD 12/26/9 (1 anno)</div><div class="cc"><canvas id="macd-chart"></canvas></div></div>
+<div><div class="subtag" style="margin-bottom:.4rem">RSI 14</div><div class="trng" id="rsi-trng"></div><div class="cc"><canvas id="rsi-chart"></canvas></div></div>
+<div><div class="subtag" style="margin-bottom:.4rem">MACD 12/26/9</div><div class="trng" id="macd-trng"></div><div class="cc"><canvas id="macd-chart"></canvas></div></div>
 </div>
 </div>
 </section>
@@ -203,16 +203,19 @@ table td.r{text-align:right}
 <div style="margin-top:1.5rem">
 <h3 style="font-size:1rem;margin-bottom:.3rem">Ricavi e utili - Ultimi esercizi</h3>
 <div class="desc" style="font-size:.82rem">Il <strong>conto economico</strong> e come un estratto conto annuale dell'azienda: parte dai <strong>ricavi</strong> (tutto ciò che l'azienda incassa vendendo i suoi prodotti), sottrae i <strong>costi diretti</strong> (materie prime, produzione) per ottenere il <strong>Gross Profit</strong> (utile lordo), poi sottrae tutti i costi operativi (stipendi, marketing, ricerca) per ottenere l'<strong>Operating Income</strong> (utile operativo) e infine sottrae interessi sul debito e tasse per arrivare al <strong>Net Income</strong> (utile netto). Vuoi vedere quattro linee tendenzialmente parallele in salita: significa che l'azienda cresce e i margini tengono. Ricavi che salgono ma utile che scende = segnale di pressione sui costi.</div>
+<div class="trng" id="income-trng"></div>
 <div class="cc cc-big"><canvas id="income-chart"></canvas></div>
 </div>
 <div style="margin-top:1.5rem">
 <h3 style="font-size:1rem;margin-bottom:.3rem">Bilancio - Asset, debito, equity</h3>
 <div class="desc" style="font-size:.82rem">Lo <strong>stato patrimoniale</strong> è la "fotografia" del patrimonio dell'azienda in un giorno preciso (fine esercizio). <strong>Total Assets</strong> = tutto ciò che l'azienda possiede (immobili, impianti, cassa, crediti, magazzino). <strong>Total Liabilities</strong> = tutto ciò che deve (debiti, fornitori da pagare, imposte). <strong>Equity</strong> = la differenza, cioè la parte che appartiene davvero agli azionisti. <strong>Total Debt</strong> e <strong>Cash</strong> sono le due voci chiave per capire la solidita: un'azienda con molta cassa e poco debito resiste anche a crisi severe; un'azienda con poca cassa e molto debito e fragile. La regola: la cassa dovrebbe essere almeno il 20-30% del debito per essere "tranquilli".</div>
+<div class="trng" id="bs-trng"></div>
 <div class="cc cc-big"><canvas id="bs-chart"></canvas></div>
 </div>
 <div style="margin-top:1.5rem">
 <h3 style="font-size:1rem;margin-bottom:.3rem">Cash Flow - Dove va davvero il cash</h3>
 <div class="desc" style="font-size:.82rem">Il <strong>rendiconto finanziario</strong> mostra i movimenti di <strong>cash vero</strong>, non utili contabili. <strong>Operating Cash Flow (OCF)</strong> = cash generato dal business ordinario, deve essere positivo e in crescita. <strong>Investing Cash Flow (ICF)</strong> = cash speso in investimenti (macchinari, acquisizioni), tipicamente negativo per aziende sane. <strong>Free Cash Flow (FCF)</strong> = OCF meno CapEx, e il cash "libero" disponibile per pagare dividendi, ricomprare azioni, ridurre il debito o fare M&amp;A. <strong>CapEx</strong> (Capital Expenditure) = spese in impianti e attrezzature. Il Free Cash Flow è considerato il numero più affidabile per valutare la qualità di un business: molti investitori value si basano solo su questo.</div>
+<div class="trng" id="cf-trng"></div>
 <div class="cc cc-big"><canvas id="cf-chart"></canvas></div>
 </div>
 </section>
@@ -494,9 +497,41 @@ function renderIndicators(){
     {h:'Perf 12 mesi',k:null,v:perf1y==null?'-':fmt.pct(perf1y,2),r:'Variazione YoY. Metrica principale che il mercato usa per giudicare la forza relativa del titolo.'},
   ];
   document.getElementById('ind-root').innerHTML=tiles.map(t=>'<div class="ind"><h3>'+t.h+(t.k?tip(t.k):'')+'</h3><div class="val">'+t.v+'</div><div class="read">'+t.r+'</div></div>').join('');
+}
 
-  new Chart(document.getElementById('rsi-chart'),{type:'line',data:{labels:h.dates,datasets:[{label:'RSI 14',data:rsiArr,borderColor:'#a5b9ff',fill:false,borderWidth:1.5},{label:'Ipercomprato 70',data:h.dates.map(()=>70),borderColor:'rgba(248,113,113,.4)',borderDash:[3,3],borderWidth:1,pointRadius:0},{label:'Ipervenduto 30',data:h.dates.map(()=>30),borderColor:'rgba(74,222,128,.4)',borderDash:[3,3],borderWidth:1,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:8}},y:{min:0,max:100,position:'right'}},plugins:{legend:{display:false}}}});
-  new Chart(document.getElementById('macd-chart'),{data:{labels:h.dates,datasets:[{type:'bar',label:'Hist',data:macdObj.hist,backgroundColor:macdObj.hist.map(v=>v==null?'transparent':v>=0?'rgba(74,222,128,.5)':'rgba(248,113,113,.5)'),borderWidth:0},{type:'line',label:'MACD',data:macdObj.macd,borderColor:'#7c9ef8',fill:false,borderWidth:1.4},{type:'line',label:'Signal',data:macdObj.signal,borderColor:'#facc15',fill:false,borderWidth:1.2}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:8}},y:{position:'right'}},plugins:{legend:{position:'top'}}}});
+let rsiChart=null,macdChart=null;
+function renderRSIChart(period){
+  const h=DEEP_DATA.ticker_data.history[period];
+  if(!h)return;
+  const rsiArr=rsi(h.prices,14);
+  if(rsiChart)rsiChart.destroy();
+  rsiChart=new Chart(document.getElementById('rsi-chart'),{type:'line',data:{labels:h.dates,datasets:[{label:'RSI 14',data:rsiArr,borderColor:'#a5b9ff',fill:false,borderWidth:1.5},{label:'Ipercomprato 70',data:h.dates.map(()=>70),borderColor:'rgba(248,113,113,.4)',borderDash:[3,3],borderWidth:1,pointRadius:0},{label:'Ipervenduto 30',data:h.dates.map(()=>30),borderColor:'rgba(74,222,128,.4)',borderDash:[3,3],borderWidth:1,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:8}},y:{min:0,max:100,position:'right'}},plugins:{legend:{display:false}}}});
+}
+function renderMACDChart(period){
+  const h=DEEP_DATA.ticker_data.history[period];
+  if(!h)return;
+  const macdObj=macd(h.prices);
+  if(macdChart)macdChart.destroy();
+  macdChart=new Chart(document.getElementById('macd-chart'),{data:{labels:h.dates,datasets:[{type:'bar',label:'Hist',data:macdObj.hist,backgroundColor:macdObj.hist.map(v=>v==null?'transparent':v>=0?'rgba(74,222,128,.5)':'rgba(248,113,113,.5)'),borderWidth:0},{type:'line',label:'MACD',data:macdObj.macd,borderColor:'#7c9ef8',fill:false,borderWidth:1.4},{type:'line',label:'Signal',data:macdObj.signal,borderColor:'#facc15',fill:false,borderWidth:1.2}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:8}},y:{position:'right'}},plugins:{legend:{position:'top'}}}});
+}
+function setupIndicatorControls(){
+  const periods=['6mo','1y','5y'];
+  const labels={'6mo':'6M','1y':'1A','5y':'5A'};
+  const avail=Object.keys(DEEP_DATA.ticker_data.history);
+  const defaultP=avail.includes('1y')?'1y':(avail.includes('6mo')?'6mo':avail[avail.length-1]);
+  [['rsi',renderRSIChart],['macd',renderMACDChart]].forEach(([kind,fn])=>{
+    const trng=document.getElementById(kind+'-trng');
+    if(!trng)return;
+    trng.innerHTML='';
+    periods.filter(p=>avail.includes(p)).forEach(p=>{
+      const b=document.createElement('button');
+      b.textContent=labels[p];b.dataset.p=p;
+      if(p===defaultP)b.classList.add('on');
+      b.onclick=()=>{trng.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');fn(p);};
+      trng.appendChild(b);
+    });
+    fn(defaultP);
+  });
 }
 
 let peersChart=null;
@@ -571,11 +606,16 @@ function renderFundamentalMetrics(){
   document.getElementById('fund-metrics').innerHTML=tiles.map(t=>'<div class="ind"><h3>'+t.h+tip(t.k)+'</h3><div class="val">'+t.v+'</div><div class="read">'+t.r+'</div></div>').join('');
 }
 
-function renderIncomeChart(){
+function sliceYears(years,n){return (n==='all'||!n)?years:years.slice(-n);}
+
+let incomeChart=null,bsChart=null,cfChart=null;
+function renderIncomeChart(n){
   const inc=DEEP_DATA.fundamentals.income_stmt;
-  const years=Object.keys(inc).sort();
+  let years=Object.keys(inc).sort();
   if(years.length===0)return;
-  new Chart(document.getElementById('income-chart'),{type:'bar',data:{labels:years,datasets:[
+  years=sliceYears(years,n);
+  if(incomeChart)incomeChart.destroy();
+  incomeChart=new Chart(document.getElementById('income-chart'),{type:'bar',data:{labels:years,datasets:[
     {label:'Ricavi',data:years.map(y=>inc[y]['Total Revenue']||null),backgroundColor:'rgba(124,158,248,.6)'},
     {label:'Gross Profit',data:years.map(y=>inc[y]['Gross Profit']||null),backgroundColor:'rgba(74,222,128,.55)'},
     {label:'Op Income',data:years.map(y=>inc[y]['Operating Income']||null),backgroundColor:'rgba(250,204,21,.55)'},
@@ -583,11 +623,13 @@ function renderIncomeChart(){
   ]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>fmt.big(v)}}},plugins:{tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt.big(ctx.raw)}}}}});
 }
 
-function renderBSChart(){
+function renderBSChart(n){
   const bs=DEEP_DATA.fundamentals.balance_sheet;
-  const years=Object.keys(bs).sort();
+  let years=Object.keys(bs).sort();
   if(years.length===0)return;
-  new Chart(document.getElementById('bs-chart'),{type:'bar',data:{labels:years,datasets:[
+  years=sliceYears(years,n);
+  if(bsChart)bsChart.destroy();
+  bsChart=new Chart(document.getElementById('bs-chart'),{type:'bar',data:{labels:years,datasets:[
     {label:'Total Assets',data:years.map(y=>bs[y]['Total Assets']||null),backgroundColor:'rgba(124,158,248,.6)'},
     {label:'Total Liab',data:years.map(y=>bs[y]['Total Liabilities Net Minority Interest']||null),backgroundColor:'rgba(248,113,113,.55)'},
     {label:'Equity',data:years.map(y=>bs[y]['Stockholders Equity']||null),backgroundColor:'rgba(74,222,128,.55)'},
@@ -596,16 +638,44 @@ function renderBSChart(){
   ]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>fmt.big(v)}}},plugins:{tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt.big(ctx.raw)}}}}});
 }
 
-function renderCFChart(){
+function renderCFChart(n){
   const cf=DEEP_DATA.fundamentals.cashflow;
-  const years=Object.keys(cf).sort();
+  let years=Object.keys(cf).sort();
   if(years.length===0)return;
-  new Chart(document.getElementById('cf-chart'),{type:'bar',data:{labels:years,datasets:[
+  years=sliceYears(years,n);
+  if(cfChart)cfChart.destroy();
+  cfChart=new Chart(document.getElementById('cf-chart'),{type:'bar',data:{labels:years,datasets:[
     {label:'Operating CF',data:years.map(y=>cf[y]['Operating Cash Flow']||null),backgroundColor:'rgba(74,222,128,.6)'},
     {label:'Investing CF',data:years.map(y=>cf[y]['Investing Cash Flow']||null),backgroundColor:'rgba(248,113,113,.55)'},
     {label:'Free CF',data:years.map(y=>cf[y]['Free Cash Flow']||null),backgroundColor:'rgba(124,158,248,.6)'},
     {label:'CapEx',data:years.map(y=>cf[y]['Capital Expenditure']||null),backgroundColor:'rgba(250,204,21,.55)'}
   ]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>fmt.big(v)}}},plugins:{tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt.big(ctx.raw)}}}}});
+}
+
+function setupFundControls(){
+  const opts=[{n:3,l:'3A'},{n:5,l:'5A'},{n:'all',l:'Tutti'}];
+  const setups=[
+    {id:'income-trng',render:renderIncomeChart,data:DEEP_DATA.fundamentals.income_stmt},
+    {id:'bs-trng',render:renderBSChart,data:DEEP_DATA.fundamentals.balance_sheet},
+    {id:'cf-trng',render:renderCFChart,data:DEEP_DATA.fundamentals.cashflow}
+  ];
+  setups.forEach(s=>{
+    const trng=document.getElementById(s.id);
+    if(!trng)return;
+    const yrs=Object.keys(s.data||{}).length;
+    if(yrs===0)return;
+    trng.innerHTML='';
+    const avail=opts.filter(o=>o.n==='all'||yrs>o.n);
+    if(avail.length===0)avail.push({n:'all',l:'Tutti'});
+    avail.forEach(o=>{
+      const b=document.createElement('button');
+      b.textContent=o.l;b.dataset.n=o.n;
+      b.onclick=()=>{trng.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');s.render(o.n==='all'?'all':parseInt(o.n,10));};
+      trng.appendChild(b);
+    });
+    const def=trng.querySelector('button[data-n="5"]')||trng.querySelector('button[data-n="all"]')||trng.querySelector('button');
+    if(def){def.classList.add('on');s.render(def.dataset.n==='all'?'all':parseInt(def.dataset.n,10));}
+  });
 }
 
 function renderOptions(){
@@ -733,12 +803,11 @@ function renderAll(reports){
   renderKM();
   setupPriceControls();
   renderIndicators();
+  setupIndicatorControls();
   setupPeersControls();
   renderPeersTable();
   renderFundamentalMetrics();
-  renderIncomeChart();
-  renderBSChart();
-  renderCFChart();
+  setupFundControls();
   renderOptions();
   renderAnalysts();
   renderHolders();
