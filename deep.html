@@ -70,10 +70,16 @@ header h1 .tck{color:var(--acc2);font-family:ui-monospace,Menlo,monospace;font-s
 .tag-bu{background:rgba(74,222,128,.15);color:var(--up)}
 .tag-be{background:rgba(248,113,113,.15);color:var(--dn)}
 table{width:100%;border-collapse:collapse;font-size:.82rem;font-family:ui-monospace,Menlo,monospace}
-table th{text-align:left;padding:.55rem .6rem;background:var(--chbg);color:var(--t2);font-weight:700;border-bottom:1px solid var(--brd);text-transform:uppercase;font-size:.66rem;letter-spacing:.05em}
-table td{padding:.5rem .6rem;border-bottom:1px solid var(--brd);color:var(--t1)}
+table th{text-align:left;padding:.55rem .6rem;background:var(--chbg);color:var(--t2);font-weight:700;border-bottom:1px solid var(--brd);text-transform:uppercase;font-size:.66rem;letter-spacing:.05em;white-space:nowrap}
+table td{padding:.5rem .6rem;border-bottom:1px solid var(--brd);color:var(--t1);white-space:nowrap}
 table tr:hover td{background:rgba(124,158,248,.04)}
 table td.r{text-align:right}
+.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:6px;position:relative}
+.table-scroll::after{content:"";position:absolute;top:0;bottom:0;right:0;width:24px;background:linear-gradient(to right,transparent,rgba(26,29,39,.85));pointer-events:none;opacity:0;transition:opacity .2s}
+.table-scroll.scrollable::after{opacity:1}
+.table-scroll table{min-width:max-content}
+.table-scroll table td:first-child,.table-scroll table th:first-child{position:sticky;left:0;background:var(--card);z-index:1}
+.table-scroll table thead th:first-child{background:var(--chbg);z-index:2}
 .opt-tabs{display:flex;gap:.4rem;margin-bottom:.8rem;flex-wrap:wrap}
 .opt-tabs button{padding:.35rem .75rem;border-radius:6px;border:1px solid var(--brd);background:var(--chbg);color:var(--t2);font-size:.75rem;font-weight:600;cursor:pointer}
 .opt-tabs button.on{background:var(--acc);border-color:var(--acc);color:#0f1117}
@@ -102,7 +108,7 @@ table td.r{text-align:right}
 .bull h4{color:var(--up)}
 .neu-acc{border-left-color:var(--nt)}
 .neu-acc h4{color:var(--nt)}
-@media (max-width:500px){.wrap{padding:1rem .75rem 3rem}.card{padding:1.2rem 1rem}header h1{font-size:1.3rem}.price-big{font-size:1.8rem}}
+@media (max-width:500px){.wrap{padding:1rem .75rem 3rem}.card{padding:1.2rem .9rem}header h1{font-size:1.3rem}.price-big{font-size:1.8rem}table{font-size:.74rem}table th,table td{padding:.4rem .5rem}.table-scroll table td:first-child,.table-scroll table th:first-child{max-width:140px;overflow:hidden;text-overflow:ellipsis}}
 @keyframes sk-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .sk{background:linear-gradient(90deg,#1a1d27 0%,#252838 30%,#2d3148 50%,#252838 70%,#1a1d27 100%);background-size:200% 100%;animation:sk-shimmer 1.8s ease-in-out infinite;border-radius:var(--r)}
 .sk-card{height:260px;margin-bottom:1.25rem}
@@ -181,7 +187,7 @@ table td.r{text-align:right}
 <div class="desc" style="font-size:.82rem;font-style:italic;color:#94a3b8">Un <strong>peer</strong> in finanza e un'azienda concorrente che opera nello stesso settore, cioe "nella stessa categoria". Confrontare un titolo con i suoi peer serve per capire se la sua performance e dovuta a un problema <strong>specifico</strong> dell'azienda o a un problema <strong>generale</strong> del settore. Esempio: se tutte le aziende MedTech sono scese del 15% in un anno e questa e scesa del 30%, c'e un problema specifico; se sono tutte scese del 30% insieme, e un problema di settore. Il grafico qui sotto normalizza tutti i titoli a base 100 all'inizio del periodo, cosi puoi vedere chi ha fatto meglio o peggio in modo confrontabile.</div>
 <div class="trng" id="peers-trng"></div>
 <div class="cc cc-big"><canvas id="peers-chart"></canvas></div>
-<div style="margin-top:1rem">
+<div class="table-scroll" style="margin-top:1rem">
 <table><thead><tr><th>Ticker</th><th>Nome</th><th class="r">Prezzo</th><th class="r">Var. oggi</th><th class="r">Perf 5 anni</th><th class="r">Perf 12 mesi</th><th class="r">Perf 6 mesi</th></tr></thead>
 <tbody id="peers-table"></tbody></table>
 </div>
@@ -215,9 +221,9 @@ table td.r{text-align:right}
 <div id="opt-maxpain" class="desc"></div>
 <div class="two-col">
 <div><h3 style="font-size:.9rem;margin-bottom:.4rem;color:var(--up)">&#x1F4C8; Calls</h3>
-<div style="overflow-x:auto"><table><thead><tr><th>Strike</th><th class="r">Last</th><th class="r">Bid</th><th class="r">Ask</th><th class="r">Vol</th><th class="r">OI</th><th class="r">IV</th><th>ITM</th></tr></thead><tbody id="opt-calls"></tbody></table></div></div>
+<div class="table-scroll"><table><thead><tr><th>Strike</th><th class="r">Last</th><th class="r">Bid</th><th class="r">Ask</th><th class="r">Vol</th><th class="r">OI</th><th class="r">IV</th><th>ITM</th></tr></thead><tbody id="opt-calls"></tbody></table></div></div>
 <div><h3 style="font-size:.9rem;margin-bottom:.4rem;color:var(--dn)">&#x1F4C9; Puts</h3>
-<div style="overflow-x:auto"><table><thead><tr><th>Strike</th><th class="r">Last</th><th class="r">Bid</th><th class="r">Ask</th><th class="r">Vol</th><th class="r">OI</th><th class="r">IV</th><th>ITM</th></tr></thead><tbody id="opt-puts"></tbody></table></div></div>
+<div class="table-scroll"><table><thead><tr><th>Strike</th><th class="r">Last</th><th class="r">Bid</th><th class="r">Ask</th><th class="r">Vol</th><th class="r">OI</th><th class="r">IV</th><th>ITM</th></tr></thead><tbody id="opt-puts"></tbody></table></div></div>
 </div>
 </section>
 
@@ -231,7 +237,7 @@ table td.r{text-align:right}
 <section class="card" id="holders">
 <div class="card-hdr"><span class="emoji">&#x1F3E6;</span><h2>Chi possiede l'azienda (istituzionali)</h2></div>
 <div class="desc">Le azioni di una grande societa quotata sono possedute da decine di migliaia di investitori, ma la maggioranza e tipicamente in mano a <strong>grandi investitori istituzionali</strong>: fondi pensione, asset manager giganti (BlackRock, Vanguard, State Street), hedge fund, fondi sovrani di paesi. Questi "big money" sono tenuti per legge a dichiarare le loro posizioni ogni trimestre alla SEC (l'autorita di vigilanza USA) tramite un documento chiamato <strong>13F</strong>. La tabella qui sotto ti mostra i <strong>12 maggiori azionisti istituzionali</strong> con numero di azioni, valore e percentuale del flottante posseduta.<br><br>Perche importa sapere chi possiede: <strong>(1)</strong> se un grande fondo riduce drasticamente la sua posizione, e un segnale di perdita di fiducia; <strong>(2)</strong> se molti fondi stanno accumulando, c'e interesse istituzionale; <strong>(3)</strong> una base azionaria molto concentrata (pochi fondi detengono tanto) significa che un loro cambio di strategia puo spostare molto il prezzo.</div>
-<div style="overflow-x:auto"><table><thead><tr><th>Holder</th><th class="r">Shares</th><th class="r">Value</th><th class="r">% Out</th><th>Data</th></tr></thead><tbody id="holders-root"></tbody></table></div>
+<div class="table-scroll"><table><thead><tr><th>Holder</th><th class="r">Shares</th><th class="r">Value</th><th class="r">% Out</th><th>Data</th></tr></thead><tbody id="holders-root"></tbody></table></div>
 </section>
 
 <section class="card" id="news">
@@ -697,6 +703,13 @@ function renderThesis(){
   root.innerHTML=html||'<div class="desc">Nessuna tesi disponibile.</div>';
 }
 
+function refreshScrollables(){
+  document.querySelectorAll('.table-scroll').forEach(w=>{
+    const overflow=w.scrollWidth>w.clientWidth+2;
+    w.classList.toggle('scrollable',overflow);
+  });
+}
+
 function renderAll(reports){
   renderHeader();
   renderKM();
@@ -713,6 +726,9 @@ function renderAll(reports){
   renderHolders();
   renderNews();
   renderThesis();
+  // After all tables are rendered, detect which overflow and show scroll hint
+  setTimeout(refreshScrollables,50);
+  window.addEventListener('resize',refreshScrollables);
 }
 </script>
 <script src="nav.js"></script>
