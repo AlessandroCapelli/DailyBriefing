@@ -114,6 +114,10 @@ table td.r{text-align:right}
 .sk-card{height:260px;margin-bottom:1.25rem}
 #loading{padding:2rem 1rem}
 #error{text-align:center;padding:4rem 1rem;color:#f87171;font-size:.9rem}
+#deep-top{position:fixed;bottom:3.5rem;right:1rem;width:44px;height:44px;border-radius:10px;background:#1a1d27;border:1px solid #2d3148;color:#94a3b8;font-size:1.25rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s,background .15s,border-color .15s;z-index:600;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+#deep-top.show{opacity:1;pointer-events:auto}
+#deep-top:hover{background:#7c9ef8;color:#0f1117;border-color:#7c9ef8}
+@media(min-width:501px){#deep-top{bottom:3.5rem;right:1.5rem;width:42px;height:42px}}
 </style>
 </head>
 <body>
@@ -257,6 +261,30 @@ table td.r{text-align:right}
 </div>
 
 <script>
+// ── Scroll-to-top button (dedicated for deep.html) ──
+(function(){
+  if(document.getElementById('deep-top'))return;
+  var b=document.createElement('button');
+  b.id='deep-top';
+  b.innerHTML='\u2191';
+  b.setAttribute('aria-label','Torna su');
+  b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};
+  function mount(){
+    if(!document.body){document.addEventListener('DOMContentLoaded',mount);return;}
+    document.body.appendChild(b);
+  }
+  mount();
+  var t=false;
+  function onScroll(){
+    if(t)return;t=true;
+    requestAnimationFrame(function(){
+      b.classList.toggle('show',(window.scrollY||document.documentElement.scrollTop)>300);
+      t=false;
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+})();
+
 let DEEP_DATA=null;
 
 function showError(msg){
