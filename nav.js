@@ -130,8 +130,6 @@
 				var uniqueTickers = Object.keys(latestByTicker).sort();
 				var idxT = uniqueTickers.indexOf(pageTicker);
 
-				addEl("span", "db-s", "/");
-				addEl("span", "db-a", pageTicker);
 				addEl("span", "db-sp");
 
 				// Ticker navigation arrows
