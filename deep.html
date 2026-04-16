@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0d0f15" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<title>Deep Stock Analysis</title>
+<script src="chart.min.js"></script>
+<script src="tooltips.js" defer></script>
+<style>
+:root{--bg:#0f1117;--card:#1a1d27;--t1:#e2e8f0;--t2:#94a3b8;--acc:#7c9ef8;--acc2:#a5b9ff;--brd:#2d3148;--r:12px;--up:#4ade80;--dn:#f87171;--nt:#facc15;--chbg:#141720;--chbrd:#2d3748}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--t1);font-family:system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:1320px;margin:0 auto;padding:2rem 1.5rem 4rem}
+header{margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--brd)}
+.hlbl{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:.4rem}
+header h1{font-size:1.85rem;font-weight:700;margin-bottom:.3rem}
+header h1 .tck{color:var(--acc2);font-family:ui-monospace,Menlo,monospace;font-size:.9em;margin-left:.5rem}
+.hmeta{font-size:.82rem;color:var(--t2)}
+.price-row{display:flex;align-items:baseline;gap:.6rem;margin:.6rem 0 .3rem;flex-wrap:wrap}
+.price-big{font-size:2.4rem;font-weight:800;font-family:ui-monospace,Menlo,monospace}
+.price-delta{font-size:1rem;font-weight:700;padding:.25rem .6rem;border-radius:6px}
+.d-up{background:rgba(74,222,128,.14);color:var(--up)}
+.d-dn{background:rgba(248,113,113,.14);color:var(--dn)}
+.d-nt{background:rgba(148,163,184,.12);color:var(--t2)}
+.subtag{font-size:.78rem;color:var(--t2);text-transform:uppercase;letter-spacing:.06em}
+.anchor-nav{display:flex;gap:.4rem;flex-wrap:wrap;margin:1rem 0 1.5rem;padding:.6rem;background:var(--card);border:1px solid var(--brd);border-radius:var(--r)}
+.anchor-nav a{padding:.3rem .75rem;border-radius:6px;border:1px solid var(--brd);background:var(--chbg);color:var(--t2);font-size:.73rem;font-weight:600;text-decoration:none;transition:all .15s}
+.anchor-nav a:hover{border-color:var(--acc);color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:1.75rem 2rem;margin-bottom:1.5rem}
+.card-hdr{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--brd)}
+.card-hdr h2{font-size:1.2rem;font-weight:700;flex:1}
+.card-hdr .emoji{font-size:1.3rem}
+.desc{font-size:.88rem;color:var(--t2);line-height:1.75;margin-bottom:1.1rem}
+.desc strong{color:var(--t1)}
+.kms{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:.55rem;margin-bottom:1rem}
+.km{padding:.6rem .85rem;background:var(--chbg);border:1px solid var(--chbrd);border-radius:8px}
+.km-label{font-size:.66rem;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem;display:inline-flex;align-items:center}
+.km-val{font-size:1.05rem;font-weight:700;font-family:ui-monospace,Menlo,monospace}
+.km-delta{font-size:.72rem;font-weight:600;margin-top:.1rem}
+.km-period{font-size:.6rem;color:#64748b;margin-top:.2rem;text-transform:lowercase;font-weight:500;font-style:italic;letter-spacing:.02em}
+.up{color:var(--up)}
+.dn{color:var(--dn)}
+.nt{color:var(--t2)}
+.trng{display:flex;gap:.25rem;margin:.5rem 0 .75rem;flex-wrap:wrap}
+.trng button{padding:.25rem .7rem;border-radius:5px;border:1px solid var(--brd);background:transparent;color:var(--t2);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .12s}
+.trng button:hover{border-color:var(--acc);color:var(--acc)}
+.trng button.on{background:var(--acc);border-color:var(--acc);color:#0f1117}
+.cc{position:relative;height:380px;margin-bottom:1rem}
+.cc-small{position:relative;height:260px}
+.cc-big{position:relative;height:460px}
+.ov-toggle{display:flex;gap:.35rem;flex-wrap:wrap;font-size:.72rem;color:var(--t2);margin-bottom:.6rem}
+.ov-toggle label{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .5rem;background:var(--chbg);border:1px solid var(--chbrd);border-radius:5px;cursor:pointer;user-select:none}
+.ov-toggle input{accent-color:var(--acc)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media (max-width:860px){.two-col{grid-template-columns:1fr}}
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.ind{background:var(--chbg);border:1px solid var(--chbrd);border-radius:10px;padding:1rem 1.1rem}
+.ind h3{font-size:.92rem;font-weight:700;margin-bottom:.35rem;color:var(--acc2)}
+.ind .val{font-size:1.4rem;font-weight:800;font-family:ui-monospace,Menlo,monospace;margin-bottom:.3rem}
+.ind .read{font-size:.78rem;color:var(--t2);line-height:1.55}
+.ind .read b{color:var(--t1)}
+.tag{display:inline-block;padding:.1rem .45rem;border-radius:4px;font-size:.64rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-right:.3rem}
+.tag-ob{background:rgba(248,113,113,.15);color:var(--dn)}
+.tag-os{background:rgba(74,222,128,.15);color:var(--up)}
+.tag-nt{background:rgba(250,204,21,.15);color:var(--nt)}
+.tag-bu{background:rgba(74,222,128,.15);color:var(--up)}
+.tag-be{background:rgba(248,113,113,.15);color:var(--dn)}
+table{width:100%;border-collapse:collapse;font-size:.82rem;font-family:ui-monospace,Menlo,monospace}
+table th{text-align:left;padding:.55rem .6rem;background:var(--chbg);color:var(--t2);font-weight:700;border-bottom:1px solid var(--brd);text-transform:uppercase;font-size:.66rem;letter-spacing:.05em}
+table td{padding:.5rem .6rem;border-bottom:1px solid var(--brd);color:var(--t1)}
+table tr:hover td{background:rgba(124,158,248,.04)}
+table td.r{text-align:right}
+.opt-tabs{display:flex;gap:.4rem;margin-bottom:.8rem;flex-wrap:wrap}
+.opt-tabs button{padding:.35rem .75rem;border-radius:6px;border:1px solid var(--brd);background:var(--chbg);color:var(--t2);font-size:.75rem;font-weight:600;cursor:pointer}
+.opt-tabs button.on{background:var(--acc);border-color:var(--acc);color:#0f1117}
+.itm{color:var(--up)}
+.otm{color:var(--t2)}
+.news-list{display:flex;flex-direction:column;gap:.8rem}
+.news-item{padding:.85rem 1rem;background:var(--chbg);border:1px solid var(--chbrd);border-radius:8px;transition:border-color .15s}
+.news-item:hover{border-color:var(--acc)}
+.news-item .t{font-size:.92rem;font-weight:700;margin-bottom:.3rem;line-height:1.4}
+.news-item .t a{color:var(--t1);text-decoration:none}
+.news-item .t a:hover{color:var(--acc)}
+.news-item .m{font-size:.72rem;color:var(--t2);display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.35rem}
+.news-item .m .src{color:var(--acc2);font-weight:600}
+.news-item .s{font-size:.82rem;color:var(--t2);line-height:1.6}
+.sent-pos{border-left:3px solid var(--up)}
+.sent-neg{border-left:3px solid var(--dn)}
+.sent-neu{border-left:3px solid var(--nt)}
+.sent-badge{display:inline-block;padding:.1rem .45rem;border-radius:4px;font-size:.62rem;font-weight:700;text-transform:uppercase}
+.sent-badge.pos{background:rgba(74,222,128,.15);color:var(--up)}
+.sent-badge.neg{background:rgba(248,113,113,.15);color:var(--dn)}
+.sent-badge.neu{background:rgba(250,204,21,.15);color:var(--nt)}
+.risk{padding:.9rem 1.1rem;background:var(--chbg);border-left:3px solid var(--dn);border-radius:6px;margin-bottom:.6rem}
+.risk h4{font-size:.92rem;font-weight:700;color:var(--dn);margin-bottom:.3rem}
+.risk p{font-size:.82rem;color:var(--t2);line-height:1.6}
+.bull{border-left-color:var(--up)}
+.bull h4{color:var(--up)}
+.neu-acc{border-left-color:var(--nt)}
+.neu-acc h4{color:var(--nt)}
+@media (max-width:500px){.wrap{padding:1rem .75rem 3rem}.card{padding:1.2rem 1rem}header h1{font-size:1.3rem}.price-big{font-size:1.8rem}}
+@keyframes sk-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk{background:linear-gradient(90deg,#1a1d27 0%,#252838 30%,#2d3148 50%,#252838 70%,#1a1d27 100%);background-size:200% 100%;animation:sk-shimmer 1.8s ease-in-out infinite;border-radius:var(--r)}
+.sk-card{height:260px;margin-bottom:1.25rem}
+#loading{padding:2rem 1rem}
+#error{text-align:center;padding:4rem 1rem;color:#f87171;font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div id="loading">
+<div class="sk sk-card"></div><div class="sk sk-card"></div><div class="sk sk-card"></div>
+</div>
+<div id="root" style="display:none">
+<header>
+<div class="hlbl">Deep Stock Analysis</div>
+<h1 id="h-title"></h1>
+<div class="price-row">
+<span class="price-big" id="price-big"></span>
+<span class="price-delta" id="price-delta"></span>
+<span class="subtag" id="subtag"></span>
+</div>
+<div class="hmeta" id="hmeta"></div>
+</header>
+
+<nav class="anchor-nav">
+<a href="#overview">Overview</a>
+<a href="#price">Prezzo</a>
+<a href="#indicators">Indicatori tecnici</a>
+<a href="#peers">Peers</a>
+<a href="#fundamentals">Fondamentali</a>
+<a href="#options">Opzioni</a>
+<a href="#analysts">Analisti</a>
+<a href="#holders">Istituzionali</a>
+<a href="#news">Notizie</a>
+<a href="#thesis">Tesi &amp; Rischi</a>
+</nav>
+
+<section class="card" id="overview">
+<div class="card-hdr"><span class="emoji">&#x1F4CA;</span><h2>Overview &amp; Metriche chiave</h2></div>
+<div class="desc" id="company-desc"></div>
+<div class="desc" style="font-size:.82rem;font-style:italic;color:#94a3b8">Qui sotto trovi le <strong>statistiche essenziali</strong> del titolo: quanto vale, quanto guadagna, quanto crescono i ricavi, che target danno gli analisti. Clicca il <strong>punto interrogativo</strong> accanto a ogni etichetta per una spiegazione semplice con esempio pratico. Se sei nuovo alla finanza, inizia leggendo i tooltip di "Prezzo", "Market Cap" e "P/E trailing": sono i tre concetti base da cui dipende tutto il resto.</div>
+<div class="kms" id="km-root"></div>
+</section>
+
+<section class="card" id="price">
+<div class="card-hdr"><span class="emoji">&#x1F4C8;</span><h2>Prezzo nel tempo</h2></div>
+<div class="desc">Questo grafico mostra <strong>come si e mosso il prezzo</strong> del titolo nei periodi selezionabili con i pulsanti (5 giorni fino a "Max", cioe dall'IPO a oggi). La linea bianca e il prezzo giornaliero di chiusura. Le linee colorate sovrapposte sono <strong>medie mobili</strong>: calcolano la media dei prezzi degli ultimi N giorni per filtrare il "rumore" e mostrarti la direzione di fondo. Immagina di fotografare l'andamento: il prezzo vero e spigoloso, la media e una linea morbida che ti dice dove sta andando davvero il trend. Sotto c'e il grafico dei <strong>volumi</strong>, cioe quante azioni sono state scambiate ogni giorno: giornate con volumi alti = tanto interesse; volumi bassi = mercato indifferente.<br><br>Le tre medie principali sono SMA 20 (breve termine, 1 mese circa), SMA 50 (medio, 2-3 mesi) e SMA 200 (lungo, 10 mesi). Clicca le icone <strong>?</strong> nelle card degli indicatori qui sotto per capire come si leggono.</div>
+<div class="trng" id="price-trng"></div>
+<div class="ov-toggle">
+<label><input type="checkbox" id="ov-sma20" checked>SMA 20</label>
+<label><input type="checkbox" id="ov-sma50" checked>SMA 50</label>
+<label><input type="checkbox" id="ov-sma200" checked>SMA 200</label>
+<label><input type="checkbox" id="ov-ema12">EMA 12</label>
+<label><input type="checkbox" id="ov-ema26">EMA 26</label>
+<label><input type="checkbox" id="ov-bb">Bande Bollinger</label>
+</div>
+<div class="cc cc-big"><canvas id="price-chart"></canvas></div>
+<div class="cc cc-small"><canvas id="volume-chart"></canvas></div>
+</section>
+
+<section class="card" id="indicators">
+<div class="card-hdr"><span class="emoji">&#x1F3AF;</span><h2>Indicatori tecnici</h2></div>
+<div class="desc">Gli <strong>indicatori tecnici</strong> sono formule matematiche calcolate sui prezzi storici degli ultimi 12 mesi. Servono per capire se il titolo e in una fase di <strong>forza</strong> o di <strong>debolezza</strong>, e per individuare possibili punti di ingresso/uscita. Non sono magici: sono solo trasformazioni matematiche del prezzo. Vanno interpretati insieme al contesto (news, fondamentali) e non presi come "segnali di compravendita" alla cieca.<br><br>Qui sotto trovi 10 indicatori ciascuno con un valore attuale, una classificazione a colori (verde = positivo, rosso = negativo, giallo = neutro) e una spiegazione. Clicca le icone <strong>?</strong> dei piu importanti: RSI (misura la "febbre" del titolo), MACD (misura la direzione del momento) e le medie SMA 50/200 (misurano il trend).</div>
+<div class="ind-grid" id="ind-root"></div>
+<div style="margin-top:1.25rem">
+<div class="two-col">
+<div><div class="subtag" style="margin-bottom:.4rem">RSI 14 (1 anno)</div><div class="cc"><canvas id="rsi-chart"></canvas></div></div>
+<div><div class="subtag" style="margin-bottom:.4rem">MACD 12/26/9 (1 anno)</div><div class="cc"><canvas id="macd-chart"></canvas></div></div>
+</div>
+</div>
+</section>
+
+<section class="card" id="peers">
+<div class="card-hdr"><span class="emoji">&#x1F465;</span><h2>Confronto con i concorrenti (peers)</h2></div>
+<div class="desc" id="peers-desc"></div>
+<div class="desc" style="font-size:.82rem;font-style:italic;color:#94a3b8">Un <strong>peer</strong> in finanza e un'azienda concorrente che opera nello stesso settore, cioe "nella stessa categoria". Confrontare un titolo con i suoi peer serve per capire se la sua performance e dovuta a un problema <strong>specifico</strong> dell'azienda o a un problema <strong>generale</strong> del settore. Esempio: se tutte le aziende MedTech sono scese del 15% in un anno e questa e scesa del 30%, c'e un problema specifico; se sono tutte scese del 30% insieme, e un problema di settore. Il grafico qui sotto normalizza tutti i titoli a base 100 all'inizio del periodo, cosi puoi vedere chi ha fatto meglio o peggio in modo confrontabile.</div>
+<div class="trng" id="peers-trng"></div>
+<div class="cc cc-big"><canvas id="peers-chart"></canvas></div>
+<div style="margin-top:1rem">
+<table><thead><tr><th>Ticker</th><th>Nome</th><th class="r">Prezzo</th><th class="r">Var. oggi</th><th class="r">Perf 5 anni</th><th class="r">Perf 12 mesi</th><th class="r">Perf 6 mesi</th></tr></thead>
+<tbody id="peers-table"></tbody></table>
+</div>
+</section>
+
+<section class="card" id="fundamentals">
+<div class="card-hdr"><span class="emoji">&#x1F4B0;</span><h2>Fondamentali (come sta economicamente l'azienda)</h2></div>
+<div class="desc">I <strong>fondamentali</strong> sono i numeri del bilancio dell'azienda: <strong>quanto vende, quanto guadagna, quanto deve di debito, quanta cassa genera</strong>. Sono la fotografia "reale" della salute economica, indipendente dall'andamento del titolo in borsa. Un'azienda puo avere un prezzo in calo per motivi temporanei (news negative, sentiment) ma fondamentali solidi: in quel caso molti investitori la considerano un'occasione. Viceversa, un titolo che sale ma con fondamentali in peggioramento e una bolla che prima o poi si sgonfia.<br><br>Questa sezione ti mostra 12 metriche chiave in card cliccabili (con tooltip <strong>?</strong> per spiegazioni estese), seguite da tre grafici: <strong>conto economico</strong> (ricavi e utili di 5 anni), <strong>stato patrimoniale</strong> (asset, debito, equity), <strong>rendiconto finanziario</strong> (il cash che entra ed esce davvero).</div>
+<div class="ind-grid" id="fund-metrics"></div>
+<div style="margin-top:1.5rem">
+<h3 style="font-size:1rem;margin-bottom:.3rem">Ricavi e utili - Ultimi esercizi</h3>
+<div class="desc" style="font-size:.82rem">Il <strong>conto economico</strong> e come un estratto conto annuale dell'azienda: parte dai <strong>ricavi</strong> (tutto cio che l'azienda incassa vendendo i suoi prodotti), sottrae i <strong>costi diretti</strong> (materie prime, produzione) per ottenere il <strong>Gross Profit</strong> (utile lordo), poi sottrae tutti i costi operativi (stipendi, marketing, ricerca) per ottenere l'<strong>Operating Income</strong> (utile operativo) e infine sottrae interessi sul debito e tasse per arrivare al <strong>Net Income</strong> (utile netto). Vuoi vedere quattro linee tendenzialmente parallele in salita: significa che l'azienda cresce e i margini tengono. Ricavi che salgono ma utile che scende = segnale di pressione sui costi.</div>
+<div class="cc cc-big"><canvas id="income-chart"></canvas></div>
+</div>
+<div style="margin-top:1.5rem">
+<h3 style="font-size:1rem;margin-bottom:.3rem">Bilancio - Asset, debito, equity</h3>
+<div class="desc" style="font-size:.82rem">Lo <strong>stato patrimoniale</strong> e la "fotografia" del patrimonio dell'azienda in un giorno preciso (fine esercizio). <strong>Total Assets</strong> = tutto cio che l'azienda possiede (immobili, impianti, cassa, crediti, magazzino). <strong>Total Liabilities</strong> = tutto cio che deve (debiti, fornitori da pagare, imposte). <strong>Equity</strong> = la differenza, cioe la parte che appartiene davvero agli azionisti. <strong>Total Debt</strong> e <strong>Cash</strong> sono le due voci chiave per capire la solidita: un'azienda con molta cassa e poco debito resiste anche a crisi severe; un'azienda con poca cassa e molto debito e fragile. La regola: la cassa dovrebbe essere almeno il 20-30% del debito per essere "tranquilli".</div>
+<div class="cc cc-big"><canvas id="bs-chart"></canvas></div>
+</div>
+<div style="margin-top:1.5rem">
+<h3 style="font-size:1rem;margin-bottom:.3rem">Cash Flow - Dove va davvero il cash</h3>
+<div class="desc" style="font-size:.82rem">Il <strong>rendiconto finanziario</strong> mostra i movimenti di <strong>cash vero</strong>, non utili contabili. <strong>Operating Cash Flow (OCF)</strong> = cash generato dal business ordinario, deve essere positivo e in crescita. <strong>Investing Cash Flow (ICF)</strong> = cash speso in investimenti (macchinari, acquisizioni), tipicamente negativo per aziende sane. <strong>Free Cash Flow (FCF)</strong> = OCF meno CapEx, e il cash "libero" disponibile per pagare dividendi, ricomprare azioni, ridurre il debito o fare M&amp;A. <strong>CapEx</strong> (Capital Expenditure) = spese in impianti e attrezzature. Il Free Cash Flow e considerato il numero piu affidabile per valutare la qualita di un business: molti investitori value si basano solo su questo.</div>
+<div class="cc cc-big"><canvas id="cf-chart"></canvas></div>
+</div>
+</section>
+
+<section class="card" id="options">
+<div class="card-hdr"><span class="emoji">&#x1F4DC;</span><h2>Opzioni (contratti derivati)</h2></div>
+<div class="desc"><strong>Cosa sono le opzioni, in parole semplici.</strong> Un'opzione e un contratto che ti da un <strong>diritto</strong> (ma non l'obbligo) di comprare o vendere un'azione a un prezzo fissato entro una certa data. Paghi un "premio" per questo diritto. Se il mercato si muove nella direzione che speravi, l'opzione vale molto; se si muove contro, perdi solo il premio pagato (perdita limitata).<br><br>Esiste perche ti permette due cose: <strong>(1)</strong> scommettere su un movimento del titolo con meno capitale (leva finanziaria); <strong>(2)</strong> proteggerti da cali (come un'assicurazione). Esempio: hai 100 azioni di un titolo a $65 e temi un crollo. Compri una <strong>put</strong> strike $60 pagando $1.50 per azione ($150 totali). Se il titolo crolla a $50, la put ti garantisce di venderle a $60: perdi solo $5+1.50 = $6.50/azione invece di $15. Se il titolo sale, perdi solo i $150 del premio.<br><br>Qui sotto vedi la <strong>options chain</strong>: la tabella di tutte le call (opzioni di acquisto) e put (opzioni di vendita) disponibili per una data scadenza, filtrate ai prezzi piu vicini a quello attuale. Ogni riga ha lo <strong>strike</strong> (prezzo fissato), il prezzo del contratto, la <strong>volatilita implicita</strong> (quanto il mercato si aspetta che il titolo "balli"), e l'<strong>open interest</strong> (quanti contratti sono aperti). Clicca le icone <strong>?</strong> per capire ogni campo.</div>
+<div class="opt-tabs" id="opt-tabs"></div>
+<div id="opt-maxpain" class="desc"></div>
+<div class="two-col">
+<div><h3 style="font-size:.9rem;margin-bottom:.4rem;color:var(--up)">&#x1F4C8; Calls</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>Strike</th><th class="r">Last</th><th class="r">Bid</th><th class="r">Ask</th><th class="r">Vol</th><th class="r">OI</th><th class="r">IV</th><th>ITM</th></tr></thead><tbody id="opt-calls"></tbody></table></div></div>
+<div><h3 style="font-size:.9rem;margin-bottom:.4rem;color:var(--dn)">&#x1F4C9; Puts</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>Strike</th><th class="r">Last</th><th class="r">Bid</th><th class="r">Ask</th><th class="r">Vol</th><th class="r">OI</th><th class="r">IV</th><th>ITM</th></tr></thead><tbody id="opt-puts"></tbody></table></div></div>
+</div>
+</section>
+
+<section class="card" id="analysts">
+<div class="card-hdr"><span class="emoji">&#x1F9D1;&#x200D;&#x1F4BC;</span><h2>Cosa dicono gli analisti</h2></div>
+<div class="desc">Gli <strong>analisti finanziari</strong> sono professionisti che lavorano per banche d'investimento (Goldman Sachs, JPMorgan, Morgan Stanley, Citi, ecc) e passano le giornate a studiare singole aziende per pubblicare report e <strong>raccomandazioni</strong>. Ogni analista pubblica tre cose principali: <strong>un target price a 12 mesi</strong> (quanto pensa che varra l'azione tra un anno), <strong>una raccomandazione</strong> (compra / mantieni / vendi) e <strong>stime di ricavi e utili futuri</strong>. Aggregando le opinioni di decine di analisti si ottiene il <strong>consensus</strong>, che e il numero piu seguito dai gestori di fondi.<br><br>Importante saperlo: gli analisti <strong>non sono infallibili</strong>. Tendono a essere ottimisti (mettono raramente "Sell"), reagiscono spesso in ritardo alle news e rivedono i target dopo i movimenti del prezzo. Vanno interpretati come un <strong>punto di riferimento</strong>, non come un oracolo. Il grafico a barre qui sotto mostra il target medio, mediano, alto e basso confrontati con il prezzo attuale (giallo).</div>
+<div class="kms" id="analyst-root"></div>
+<div class="cc cc-small"><canvas id="analyst-chart"></canvas></div>
+</section>
+
+<section class="card" id="holders">
+<div class="card-hdr"><span class="emoji">&#x1F3E6;</span><h2>Chi possiede l'azienda (istituzionali)</h2></div>
+<div class="desc">Le azioni di una grande societa quotata sono possedute da decine di migliaia di investitori, ma la maggioranza e tipicamente in mano a <strong>grandi investitori istituzionali</strong>: fondi pensione, asset manager giganti (BlackRock, Vanguard, State Street), hedge fund, fondi sovrani di paesi. Questi "big money" sono tenuti per legge a dichiarare le loro posizioni ogni trimestre alla SEC (l'autorita di vigilanza USA) tramite un documento chiamato <strong>13F</strong>. La tabella qui sotto ti mostra i <strong>12 maggiori azionisti istituzionali</strong> con numero di azioni, valore e percentuale del flottante posseduta.<br><br>Perche importa sapere chi possiede: <strong>(1)</strong> se un grande fondo riduce drasticamente la sua posizione, e un segnale di perdita di fiducia; <strong>(2)</strong> se molti fondi stanno accumulando, c'e interesse istituzionale; <strong>(3)</strong> una base azionaria molto concentrata (pochi fondi detengono tanto) significa che un loro cambio di strategia puo spostare molto il prezzo.</div>
+<div style="overflow-x:auto"><table><thead><tr><th>Holder</th><th class="r">Shares</th><th class="r">Value</th><th class="r">% Out</th><th>Data</th></tr></thead><tbody id="holders-root"></tbody></table></div>
+</section>
+
+<section class="card" id="news">
+<div class="card-hdr"><span class="emoji">&#x1F4F0;</span><h2>Notizie recenti e "umore" di mercato</h2></div>
+<div class="desc">Qui trovi gli <strong>articoli piu recenti</strong> sul titolo, raccolti da aggregatori di news. Ogni articolo e classificato con un <strong>sentiment</strong> (cioe l'"umore" generale del pezzo): <span class="sent-badge pos">positivo</span> = buone notizie (utili sopra le attese, approvazioni, upgrade), <span class="sent-badge neg">negativo</span> = cattive notizie (cause legali, downgrade, guidance taglienti), <span class="sent-badge neu">neutro</span> = informativo senza chiara direzione. Il sentiment delle news guida molto il comportamento degli investitori retail e anticipa spesso i movimenti di prezzo di breve termine. Un accumulo di news negative porta pressione ribassista anche se i fondamentali non sono cambiati. Leggi qualche articolo completo cliccando il titolo: il riassunto sotto e una sintesi veloce ma la fonte originale e sempre piu ricca.</div>
+<div class="news-list" id="news-root"></div>
+</section>
+
+<section class="card" id="thesis">
+<div class="card-hdr"><span class="emoji">&#x2696;&#xFE0F;</span><h2>Tesi &amp; Rischi</h2></div>
+<div class="desc">Questa sezione raccoglie i <strong>motivi per cui un investitore potrebbe essere ottimista</strong> (in verde, "bullish") o <strong>preoccupato</strong> (in rosso, "bearish") su questo titolo, con alcuni fattori neutri da tenere d'occhio. Ogni punto e corredato da numeri concreti presi dal bilancio o dalle notizie recenti. Serve per farti un quadro d'insieme senza dover leggere decine di articoli. <strong>Non e un consiglio di investimento</strong>: e un riassunto di fattori oggettivi che ogni investitore dovrebbe pesare con il proprio profilo di rischio.</div>
+<div id="thesis-root"></div>
+</section>
+
+</div>
+<div id="error" style="display:none"></div>
+</div>
+
+<script>
+let DEEP_DATA=null;
+
+function showError(msg){
+  document.getElementById('loading').style.display='none';
+  document.getElementById('root').style.display='none';
+  const e=document.getElementById('error');
+  e.style.display='block';
+  e.innerHTML='<h2 style="margin-bottom:1rem">Errore</h2><p>'+msg+'</p><p style="margin-top:1rem"><a href="index.html" style="color:var(--acc)">&larr; Torna alla home</a></p>';
+}
+
+(function(){
+  const params=new URLSearchParams(location.search);
+  let ticker=(params.get('t')||'').toUpperCase();
+  let date=params.get('d');
+
+  fetch('data/reports.json').then(r=>r.json()).then(reports=>{
+    const deepList=reports.deep||[];
+    if(deepList.length===0){showError('Nessun deep report disponibile.');return;}
+    let target=null;
+    if(ticker&&date){
+      target=deepList.find(e=>e.ticker===ticker&&e.date===date);
+    }else if(ticker){
+      target=deepList.find(e=>e.ticker===ticker);
+    }else{
+      target=deepList[0];
+    }
+    if(!target){showError('Report non trovato per '+(ticker||'')+' '+(date||''));return;}
+    loadReport(target,reports);
+  }).catch(e=>showError('Impossibile caricare reports.json: '+e.message));
+})();
+
+function loadReport(target,reports){
+  const url='data/deep-'+target.ticker+'-'+target.date+'.json';
+  fetch(url).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(data=>{
+    DEEP_DATA=data;
+    document.title='Deep - '+target.label+' ('+target.ticker+')';
+    document.getElementById('loading').style.display='none';
+    document.getElementById('root').style.display='block';
+    renderAll(reports);
+  }).catch(e=>showError('Impossibile caricare '+url+': '+e.message));
+}
+
+const fmt={
+  n:(v,d=2)=>v==null||isNaN(v)?'-':Number(v).toLocaleString('it-IT',{maximumFractionDigits:d,minimumFractionDigits:d>=2?2:0}),
+  pct:(v,d=2)=>v==null||isNaN(v)?'-':(v>0?'+':'')+Number(v).toLocaleString('it-IT',{maximumFractionDigits:d,minimumFractionDigits:Math.min(d,2)})+'%',
+  cur:(v,c='USD')=>{if(v==null||isNaN(v))return'-';const s=c==='USD'?'$':c==='EUR'?'\u20AC':c+' ';return s+Number(v).toLocaleString('it-IT',{maximumFractionDigits:2,minimumFractionDigits:2});},
+  big:(v)=>{if(v==null||isNaN(v))return'-';const a=Math.abs(v);if(a>=1e12)return(v/1e12).toFixed(2)+'T';if(a>=1e9)return(v/1e9).toFixed(2)+'B';if(a>=1e6)return(v/1e6).toFixed(2)+'M';if(a>=1e3)return(v/1e3).toFixed(2)+'K';return v.toFixed(0);},
+  date:(s)=>{try{const d=new Date(s);return d.toLocaleDateString('it-IT',{day:'2-digit',month:'short',year:'2-digit'});}catch(e){return s;}}
+};
+
+function sma(arr,n){const o=[];for(let i=0;i<arr.length;i++){if(i<n-1){o.push(null);continue;}let s=0;for(let j=i-n+1;j<=i;j++)s+=arr[j];o.push(s/n);}return o;}
+function ema(arr,n){const o=[];const k=2/(n+1);let prev=null;for(let i=0;i<arr.length;i++){if(arr[i]==null){o.push(null);continue;}if(prev==null){prev=arr[i];o.push(prev);continue;}prev=arr[i]*k+prev*(1-k);o.push(prev);}return o;}
+function rsi(arr,n=14){const o=new Array(arr.length).fill(null);let gains=0,losses=0;for(let i=1;i<=n;i++){const d=arr[i]-arr[i-1];if(d>=0)gains+=d;else losses-=d;}gains/=n;losses/=n;o[n]=100-100/(1+gains/(losses||1e-9));for(let i=n+1;i<arr.length;i++){const d=arr[i]-arr[i-1];const g=d>0?d:0;const l=d<0?-d:0;gains=(gains*(n-1)+g)/n;losses=(losses*(n-1)+l)/n;o[i]=100-100/(1+gains/(losses||1e-9));}return o;}
+function macd(arr){const e12=ema(arr,12);const e26=ema(arr,26);const m=arr.map((_,i)=>e12[i]!=null&&e26[i]!=null?e12[i]-e26[i]:null);const sig=ema(m.map(v=>v==null?0:v),9).map((v,i)=>m[i]==null?null:v);const hist=m.map((v,i)=>v!=null&&sig[i]!=null?v-sig[i]:null);return{macd:m,signal:sig,hist};}
+function bollinger(arr,n=20,k=2){const m=sma(arr,n);const u=[];const d=[];for(let i=0;i<arr.length;i++){if(i<n-1){u.push(null);d.push(null);continue;}let s=0;for(let j=i-n+1;j<=i;j++)s+=(arr[j]-m[i])**2;const sd=Math.sqrt(s/n);u.push(m[i]+k*sd);d.push(m[i]-k*sd);}return{middle:m,upper:u,lower:d};}
+
+if(window.Chart){
+  Chart.defaults.color='#94a3b8';
+  Chart.defaults.borderColor='#2d3148';
+  Chart.defaults.font.family="system-ui,-apple-system,sans-serif";
+  Chart.defaults.font.size=11;
+  Chart.defaults.plugins.legend.labels.boxWidth=12;
+  Chart.defaults.plugins.legend.labels.boxHeight=2;
+  Chart.defaults.plugins.legend.labels.font={size:10};
+  Chart.defaults.elements.point.radius=0;
+  Chart.defaults.elements.line.borderWidth=1.5;
+  Chart.defaults.animation.duration=400;
+}
+
+function renderHeader(){
+  const d=DEEP_DATA;
+  const i=d.fundamentals.info;
+  const cur=i.currency||'USD';
+  document.getElementById('h-title').innerHTML=d.label+' <span class="tck">'+d.ticker+'</span>';
+  document.getElementById('price-big').textContent=fmt.cur(d.ticker_data.price,cur);
+  const delta=i.regularMarketChangePercent||d.ticker_data.change_pct||0;
+  const dEl=document.getElementById('price-delta');
+  dEl.innerHTML=(delta>0?'+':'')+delta.toFixed(2)+'% <span style="font-size:.7em;font-weight:500;opacity:.75">oggi</span>';
+  dEl.className='price-delta '+(delta>0?'d-up':delta<0?'d-dn':'d-nt');
+  document.getElementById('subtag').textContent=[cur,i.sector||'-',i.industry||'-'].join(' \u00B7 ');
+  document.getElementById('hmeta').textContent='Generato il '+d.generatedAt+' \u00B7 snapshot del '+d.date;
+  document.getElementById('company-desc').innerHTML=d.companyDesc||'';
+}
+
+// Helper: tooltip icon
+function tip(key){return '<span class="tip" data-tip="'+key+'">?</span>';}
+
+function renderKM(){
+  const i=DEEP_DATA.fundamentals.info;
+  const k=DEEP_DATA.ticker_data;
+  const cur=i.currency||'USD';
+  // Items: [label, tooltip_key, value, delta_pct_or_empty, period_label]
+  const items=[
+    ['Prezzo','prezzo',fmt.cur(k.price,cur),i.regularMarketChangePercent?fmt.pct(i.regularMarketChangePercent):'','variazione oggi'],
+    ['Market Cap','market_cap',fmt.big(i.marketCap),'','oggi'],
+    ['Enterprise Value','enterprise_value',fmt.big(i.enterpriseValue),'','oggi'],
+    ['52W High','w52_high',fmt.cur(i.fiftyTwoWeekHigh,cur),i.fiftyTwoWeekHigh?fmt.pct(((k.price/i.fiftyTwoWeekHigh)-1)*100):'','prezzo vs max 12m'],
+    ['52W Low','w52_low',fmt.cur(i.fiftyTwoWeekLow,cur),i.fiftyTwoWeekLow?fmt.pct(((k.price/i.fiftyTwoWeekLow)-1)*100):'','prezzo vs min 12m'],
+    ['SMA 50','sma_50',fmt.cur(i.fiftyDayAverage,cur),'','media 50 giorni'],
+    ['SMA 200','sma_200',fmt.cur(i.twoHundredDayAverage,cur),'','media 200 giorni'],
+    ['P/E trailing','pe_trailing',fmt.n(i.trailingPE,2),'','utili ultimi 12m'],
+    ['P/E forward','pe_forward',fmt.n(i.forwardPE,2),'','utili prossimi 12m'],
+    ['PEG','peg',fmt.n(i.pegRatio,2),'','vs crescita 5a attesa'],
+    ['P/B','pb',fmt.n(i.priceToBook,2),'','ultima chiusura'],
+    ['P/S','ps',fmt.n(i.priceToSalesTrailing12Months,2),'','ricavi ultimi 12m'],
+    ['EPS trailing','eps_trailing',fmt.cur(i.trailingEps,cur),'','ultimi 12m'],
+    ['EPS forward','eps_forward',fmt.cur(i.forwardEps,cur),'','prossimi 12m'],
+    ['Beta','beta',fmt.n(i.beta,2),'','ultimi 5 anni'],
+    ['Dividend Yield','dividend_yield',i.dividendYield?fmt.pct(i.dividendYield*100,2):'0%','','annualizzato'],
+    ['Rev TTM','revenue',fmt.big(i.totalRevenue),i.revenueGrowth?fmt.pct(i.revenueGrowth*100):'','crescita ultimi 12m YoY'],
+    ['Net Inc TTM','net_income',fmt.big(i.netIncomeToCommon),i.earningsGrowth?fmt.pct(i.earningsGrowth*100):'','crescita ultimi 12m YoY'],
+    ['Gross Margin','gross_margin',i.grossMargins?fmt.pct(i.grossMargins*100,1):'-','','ultimi 12m'],
+    ['Op Margin','op_margin',i.operatingMargins?fmt.pct(i.operatingMargins*100,1):'-','','ultimi 12m'],
+    ['Profit Margin','profit_margin',i.profitMargins?fmt.pct(i.profitMargins*100,1):'-','','ultimi 12m'],
+    ['ROE','roe',i.returnOnEquity?fmt.pct(i.returnOnEquity*100,1):'-','','ultimi 12m'],
+    ['ROA','roa',i.returnOnAssets?fmt.pct(i.returnOnAssets*100,1):'-','','ultimi 12m'],
+    ['Debt/Equity','debt_equity',fmt.n(i.debtToEquity,1),'','ultimo bilancio'],
+    ['Current Ratio','current_ratio',fmt.n(i.currentRatio,2),'','ultimo bilancio'],
+    ['FCF','fcf',fmt.big(i.freeCashflow),'','ultimi 12m'],
+    ['Vol medio','volume',fmt.big(i.averageVolume),'','media 3 mesi'],
+    ['Shares Out','shares_out',fmt.big(i.sharesOutstanding),'','ultima comunicazione'],
+    ['% Insiders','pct_insiders',i.heldPercentInsiders?fmt.pct(i.heldPercentInsiders*100,2):'-','','ultimo filing'],
+    ['% Istituzionali','pct_institutional',i.heldPercentInstitutions?fmt.pct(i.heldPercentInstitutions*100,1):'-','','ultimo 13F trimestrale'],
+    ['Short % Float','short_float',i.shortPercentOfFloat?fmt.pct(i.shortPercentOfFloat*100,2):'-','','ultimo report bimestrale'],
+    ['Target mean','target_mean',fmt.cur(i.targetMeanPrice,cur),i.targetMeanPrice&&k.price?fmt.pct(((i.targetMeanPrice/k.price)-1)*100):'','upside a 12 mesi'],
+  ];
+  document.getElementById('km-root').innerHTML=items.map(([l,tk,v,d,period])=>{
+    let cls='';
+    if(d&&d.startsWith('+'))cls='up';else if(d&&d.startsWith('-'))cls='dn';
+    const deltaHtml=d?'<div class="km-delta '+cls+'">'+d+'</div>':'';
+    const periodHtml=period?'<div class="km-period">'+period+'</div>':'';
+    return '<div class="km"><div class="km-label">'+l+tip(tk)+'</div><div class="km-val">'+v+'</div>'+deltaHtml+periodHtml+'</div>';
+  }).join('');
+}
+
+let priceChart=null,volumeChart=null;
+function renderPrice(period){
+  const t=DEEP_DATA.ticker_data;
+  const h=t.history[period];
+  if(!h){document.getElementById('price-chart').parentElement.innerHTML='<div style="padding:2rem;color:var(--t2);text-align:center">Dati non disponibili per questo periodo</div>';return;}
+  const prices=h.prices.slice(),dates=h.dates.slice(),vols=h.volumes.slice();
+  const sma20=sma(prices,20),sma50=sma(prices,50),sma200=sma(prices,200);
+  const ema12=ema(prices,12),ema26=ema(prices,26);
+  const bb=bollinger(prices,20,2);
+  const ds=[{label:'Prezzo',data:prices,borderColor:'#e2e8f0',backgroundColor:'rgba(226,232,240,.06)',fill:true,tension:.15,borderWidth:2}];
+  if(document.getElementById('ov-sma20').checked)ds.push({label:'SMA 20',data:sma20,borderColor:'#7c9ef8',borderWidth:1.2,tension:.1});
+  if(document.getElementById('ov-sma50').checked)ds.push({label:'SMA 50',data:sma50,borderColor:'#facc15',borderWidth:1.2,tension:.1});
+  if(document.getElementById('ov-sma200').checked)ds.push({label:'SMA 200',data:sma200,borderColor:'#f87171',borderWidth:1.4,tension:.1});
+  if(document.getElementById('ov-ema12').checked)ds.push({label:'EMA 12',data:ema12,borderColor:'#4ade80',borderWidth:1,borderDash:[4,3]});
+  if(document.getElementById('ov-ema26').checked)ds.push({label:'EMA 26',data:ema26,borderColor:'#a5b9ff',borderWidth:1,borderDash:[4,3]});
+  if(document.getElementById('ov-bb').checked){
+    ds.push({label:'BB upper',data:bb.upper,borderColor:'rgba(124,158,248,.35)',borderWidth:.8,borderDash:[2,2]});
+    ds.push({label:'BB lower',data:bb.lower,borderColor:'rgba(124,158,248,.35)',borderWidth:.8,borderDash:[2,2]});
+  }
+  if(priceChart)priceChart.destroy();
+  priceChart=new Chart(document.getElementById('price-chart'),{type:'line',data:{labels:dates,datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},scales:{x:{ticks:{maxTicksLimit:10,autoSkip:true},grid:{display:false}},y:{position:'right',ticks:{callback:v=>'$'+v.toFixed(0)}}},plugins:{legend:{position:'top',align:'end'},tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+(ctx.raw!=null?'$'+ctx.raw.toFixed(2):'-')}}}}});
+  if(volumeChart)volumeChart.destroy();
+  volumeChart=new Chart(document.getElementById('volume-chart'),{type:'bar',data:{labels:dates,datasets:[{label:'Volume',data:vols,backgroundColor:'rgba(124,158,248,.35)',borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:10,autoSkip:true},grid:{display:false}},y:{position:'right',ticks:{callback:v=>fmt.big(v)}}},plugins:{legend:{display:false}}}});
+}
+
+function setupPriceControls(){
+  const periods=['5d','1mo','6mo','1y','5y','max'];
+  const labels={'5d':'5G','1mo':'1M','6mo':'6M','1y':'1A','5y':'5A','max':'Max'};
+  const trng=document.getElementById('price-trng');
+  trng.innerHTML='';
+  const avail=Object.keys(DEEP_DATA.ticker_data.history);
+  const defaultP=avail.includes('1y')?'1y':avail[avail.length-1];
+  periods.filter(p=>avail.includes(p)).forEach(p=>{
+    const b=document.createElement('button');
+    b.textContent=labels[p];b.dataset.p=p;
+    if(p===defaultP)b.classList.add('on');
+    b.onclick=()=>{trng.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderPrice(p);};
+    trng.appendChild(b);
+  });
+  ['sma20','sma50','sma200','ema12','ema26','bb'].forEach(k=>{
+    document.getElementById('ov-'+k).addEventListener('change',()=>{
+      const active=trng.querySelector('button.on');
+      renderPrice(active?active.dataset.p:defaultP);
+    });
+  });
+  renderPrice(defaultP);
+}
+
+function renderIndicators(){
+  const h=DEEP_DATA.ticker_data.history['1y']||DEEP_DATA.ticker_data.history['6mo'];
+  if(!h){document.getElementById('ind-root').innerHTML='<div class="desc">Dati non disponibili</div>';return;}
+  const prices=h.prices;
+  const last=prices[prices.length-1];
+  const rsiArr=rsi(prices,14);const rsiLast=rsiArr[rsiArr.length-1];
+  const macdObj=macd(prices);const macdLast=macdObj.macd[macdObj.macd.length-1];const histLast=macdObj.hist[macdObj.hist.length-1];
+  const bb=bollinger(prices,20,2);const bbU=bb.upper[bb.upper.length-1],bbL=bb.lower[bb.lower.length-1],bbM=bb.middle[bb.middle.length-1];
+  const bbWidth=bbU&&bbL&&bbM?((bbU-bbL)/bbM)*100:null;
+  const pos=bbU&&bbL?((last-bbL)/(bbU-bbL))*100:null;
+  const sma50L=sma(prices,50).slice(-1)[0];
+  const sma200L=sma(prices,200).slice(-1)[0];
+  const vs50=sma50L?((last/sma50L)-1)*100:null;
+  const vs200=sma200L?((last/sma200L)-1)*100:null;
+  const perf1m=prices.length>=22?((last/prices[prices.length-22])-1)*100:null;
+  const perf3m=prices.length>=66?((last/prices[prices.length-66])-1)*100:null;
+  const perf6m=prices.length>=132?((last/prices[prices.length-132])-1)*100:null;
+  const perf1y=prices.length>=252?((last/prices[prices.length-252])-1)*100:null;
+  const rsiTag=rsiLast==null?'':(rsiLast>70?'<span class="tag tag-ob">IPERCOMPRATO</span>':rsiLast<30?'<span class="tag tag-os">IPERVENDUTO</span>':'<span class="tag tag-nt">NEUTRO</span>');
+  const macdTag=histLast==null?'':(histLast>0?'<span class="tag tag-bu">BULLISH</span>':'<span class="tag tag-be">BEARISH</span>');
+  const bbTag=pos==null?'':(pos>80?'<span class="tag tag-ob">FASCIA ALTA</span>':pos<20?'<span class="tag tag-os">FASCIA BASSA</span>':'<span class="tag tag-nt">CENTRO</span>');
+  const s50Tag=vs50==null?'':(vs50>0?'<span class="tag tag-bu">SOPRA</span>':'<span class="tag tag-be">SOTTO</span>');
+  const s200Tag=vs200==null?'':(vs200>0?'<span class="tag tag-bu">SOPRA</span>':'<span class="tag tag-be">SOTTO</span>');
+  const tiles=[
+    {h:'RSI 14',k:'rsi_14',v:fmt.n(rsiLast,1),r:rsiTag+'<br>Oscillatore di momentum su 14 periodi. Sopra 70 <b>ipercomprato</b> (correzione probabile), sotto 30 <b>ipervenduto</b> (rimbalzo probabile). Tra 40 e 60 in trend laterale = consolidamento.'},
+    {h:'MACD (12/26/9)',k:'macd',v:fmt.n(macdLast,2),r:macdTag+'<br>Differenza tra EMA 12 e EMA 26 con signal line a 9. Istogramma = MACD - Signal. <b>Istogramma positivo e crescente</b> = momentum rialzista. I crossover sono segnali classici di ingresso / uscita.'},
+    {h:'Bollinger %B',k:'bollinger_pb',v:pos==null?'-':fmt.n(pos,0)+'%',r:bbTag+'<br>Posizione del prezzo nella fascia Bollinger (0% = banda inferiore, 100% = banda superiore). Vicino alla banda superiore con volumi in calo = esaurimento; vicino alla inferiore con volumi crescenti = accumulo.'},
+    {h:'BB Width',k:'bollinger_width',v:bbWidth==null?'-':fmt.n(bbWidth,1)+'%',r:'Larghezza normalizzata delle bande (volatilita). <b>Compressione</b> (width basso) anticipa spesso un breakout; <b>espansione</b> indica regime di alta volatilita.'},
+    {h:'vs SMA 50',k:'sma_50',v:vs50==null?'-':fmt.pct(vs50,1),r:s50Tag+'<br>Posizione del prezzo vs media 50 giorni. Sopra = trend medio-breve positivo; sotto = pressione ribassista. La pendenza conta piu del valore stesso.'},
+    {h:'vs SMA 200',k:'sma_200',v:vs200==null?'-':fmt.pct(vs200,1),r:s200Tag+'<br>Posizione vs media 200 giorni (trend lungo). Prezzo sotto SMA 200 in discesa = classico <b>mercato orso</b>. Il ritorno sopra conferma l\'inversione strutturale.'},
+    {h:'Perf 1 mese',k:null,v:perf1m==null?'-':fmt.pct(perf1m,2),r:'Variazione sull\'ultimo mese borsistico (~22 sedute). Misura reattivita recente a news / risultati.'},
+    {h:'Perf 3 mesi',k:null,v:perf3m==null?'-':fmt.pct(perf3m,2),r:'Variazione sull\'ultimo trimestre. Cattura l\'effetto del ciclo earnings piu recente.'},
+    {h:'Perf 6 mesi',k:null,v:perf6m==null?'-':fmt.pct(perf6m,2),r:'Variazione sul semestre. Utile per confronto con settore e ETF di riferimento.'},
+    {h:'Perf 12 mesi',k:null,v:perf1y==null?'-':fmt.pct(perf1y,2),r:'Variazione YoY. Metrica principale che il mercato usa per giudicare la forza relativa del titolo.'},
+  ];
+  document.getElementById('ind-root').innerHTML=tiles.map(t=>'<div class="ind"><h3>'+t.h+(t.k?tip(t.k):'')+'</h3><div class="val">'+t.v+'</div><div class="read">'+t.r+'</div></div>').join('');
+
+  new Chart(document.getElementById('rsi-chart'),{type:'line',data:{labels:h.dates,datasets:[{label:'RSI 14',data:rsiArr,borderColor:'#a5b9ff',fill:false,borderWidth:1.5},{label:'Ipercomprato 70',data:h.dates.map(()=>70),borderColor:'rgba(248,113,113,.4)',borderDash:[3,3],borderWidth:1,pointRadius:0},{label:'Ipervenduto 30',data:h.dates.map(()=>30),borderColor:'rgba(74,222,128,.4)',borderDash:[3,3],borderWidth:1,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:8}},y:{min:0,max:100,position:'right'}},plugins:{legend:{display:false}}}});
+  new Chart(document.getElementById('macd-chart'),{data:{labels:h.dates,datasets:[{type:'bar',label:'Hist',data:macdObj.hist,backgroundColor:macdObj.hist.map(v=>v==null?'transparent':v>=0?'rgba(74,222,128,.5)':'rgba(248,113,113,.5)'),borderWidth:0},{type:'line',label:'MACD',data:macdObj.macd,borderColor:'#7c9ef8',fill:false,borderWidth:1.4},{type:'line',label:'Signal',data:macdObj.signal,borderColor:'#facc15',fill:false,borderWidth:1.2}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:8}},y:{position:'right'}},plugins:{legend:{position:'top'}}}});
+}
+
+let peersChart=null;
+function renderPeers(period){
+  const peers=DEEP_DATA.peers;
+  const colors=['#e2e8f0','#7c9ef8','#4ade80','#f87171','#facc15','#a5b9ff','#fb923c','#22d3ee','#c084fc','#f472b6','#34d399','#fbbf24','#60a5fa'];
+  const datasets=[];
+  const sortedSyms=Object.keys(peers).sort((a,b)=>a===DEEP_DATA.ticker?-1:b===DEEP_DATA.ticker?1:0);
+  let labels=[];
+  sortedSyms.forEach((sym,idx)=>{
+    const pd=peers[sym];
+    const h=pd.history[period];
+    if(!h||!h.prices.length)return;
+    const base=h.prices.find(p=>p!=null);
+    if(base==null)return;
+    const norm=h.prices.map(p=>p==null?null:(p/base)*100);
+    if(labels.length===0)labels=h.dates;
+    const isMain=sym===DEEP_DATA.ticker;
+    datasets.push({label:sym,data:norm,borderColor:colors[idx%colors.length],borderWidth:isMain?2.5:1,tension:.15,fill:false});
+  });
+  if(peersChart)peersChart.destroy();
+  peersChart=new Chart(document.getElementById('peers-chart'),{type:'line',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:10}},y:{position:'right',ticks:{callback:v=>v.toFixed(0)}}},plugins:{legend:{position:'top'},tooltip:{mode:'index',intersect:false}}}});
+}
+
+function setupPeersControls(){
+  const periods=['1mo','6mo','1y','5y'];
+  const labels={'1mo':'1M','6mo':'6M','1y':'1A','5y':'5A'};
+  const trng=document.getElementById('peers-trng');
+  trng.innerHTML='';
+  periods.forEach(p=>{
+    const b=document.createElement('button');
+    b.textContent=labels[p];b.dataset.p=p;
+    if(p==='1y')b.classList.add('on');
+    b.onclick=()=>{trng.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderPeers(p);};
+    trng.appendChild(b);
+  });
+  document.getElementById('peers-desc').innerHTML='<strong>Lettura.</strong> Il grafico mostra la performance normalizzata (base 100) di '+DEEP_DATA.ticker+' rispetto ai peer e agli ETF settoriali di riferimento. Un titolo che sottoperforma sia i peer che gli ETF segnala idiosincrasia negativa: il mercato sta prezzando un problema specifico, non una debolezza di settore.';
+  renderPeers('1y');
+}
+
+function renderPeersTable(){
+  const peers=DEEP_DATA.peers;
+  const tb=document.getElementById('peers-table');
+  const rows=Object.entries(peers).map(([sym,pd])=>{
+    const lastH=(p)=>pd.history[p]?pd.history[p].prices.filter(x=>x!=null):[];
+    const calcPerf=(p)=>{const a=lastH(p);if(a.length<2)return null;return((a[a.length-1]/a[0])-1)*100;};
+    return {sym,name:pd.name,price:pd.price,chg:pd.change_pct,p5y:calcPerf('5y'),p1y:calcPerf('1y'),p6m:calcPerf('6mo')};
+  }).sort((a,b)=>a.sym===DEEP_DATA.ticker?-1:b.sym===DEEP_DATA.ticker?1:(b.p1y||-999)-(a.p1y||-999));
+  tb.innerHTML=rows.map(r=>{
+    const main=r.sym===DEEP_DATA.ticker?'style="background:rgba(124,158,248,.08);font-weight:700"':'';
+    const cls=v=>v==null?'nt':v>=0?'up':'dn';
+    return '<tr '+main+'><td><b>'+r.sym+'</b></td><td style="font-family:system-ui;font-size:.78rem">'+r.name+'</td><td class="r">'+fmt.cur(r.price)+'</td><td class="r '+cls(r.chg)+'">'+fmt.pct(r.chg,2)+'</td><td class="r '+cls(r.p5y)+'">'+(r.p5y==null?'-':fmt.pct(r.p5y,1))+'</td><td class="r '+cls(r.p1y)+'">'+(r.p1y==null?'-':fmt.pct(r.p1y,1))+'</td><td class="r '+cls(r.p6m)+'">'+(r.p6m==null?'-':fmt.pct(r.p6m,1))+'</td></tr>';
+  }).join('');
+}
+
+function renderFundamentalMetrics(){
+  const i=DEEP_DATA.fundamentals.info;
+  const tiles=[
+    {h:'Margine lordo',k:'gross_margin',v:i.grossMargins?fmt.pct(i.grossMargins*100,1):'-',r:'Quanto rimane dei ricavi dopo aver pagato solo i costi di produzione. Piu alto = prodotto premium e potere di prezzo.'},
+    {h:'Margine operativo',k:'op_margin',v:i.operatingMargins?fmt.pct(i.operatingMargins*100,1):'-',r:'Margine lordo meno costi di funzionamento (R&D, marketing, amministrazione). Misura l\'efficienza operativa del business.'},
+    {h:'Profit margin',k:'profit_margin',v:i.profitMargins?fmt.pct(i.profitMargins*100,1):'-',r:'Utile netto / Ricavi. Il margine "finale", dopo tutte le spese, imposte e oneri finanziari.'},
+    {h:'ROE',k:'roe',v:i.returnOnEquity?fmt.pct(i.returnOnEquity*100,1):'-',r:'Quanto rende il capitale degli azionisti. Sopra 15% e considerato solido per il settore.'},
+    {h:'ROA',k:'roa',v:i.returnOnAssets?fmt.pct(i.returnOnAssets*100,1):'-',r:'Quanto rende il totale degli asset. Se e alto insieme al ROE, l\'azienda e genuinamente efficiente.'},
+    {h:'Debt/Equity',k:'debt_equity',v:fmt.n(i.debtToEquity,1),r:'Rapporto debito / equity. Sotto 50 = conservativo, sopra 200 = leva aggressiva.'},
+    {h:'Current Ratio',k:'current_ratio',v:fmt.n(i.currentRatio,2),r:'Capacita di coprire i debiti a breve. Sopra 1.5 e confortevole; sotto 1 segnala stress di liquidita.'},
+    {h:'FCF',k:'fcf',v:fmt.big(i.freeCashflow),r:'Free Cash Flow: il cash "libero" disponibile per dividendi, buyback, riduzione debito.'},
+    {h:'EV / EBITDA',k:'ev_ebitda',v:i.enterpriseValue&&i.ebitda?fmt.n(i.enterpriseValue/i.ebitda,1):'-',r:'Multiplo di valutazione debt-adjusted. Per aziende mature 10-15x e normale, sopra 20x e caro.'},
+    {h:'P/S TTM',k:'ps',v:fmt.n(i.priceToSalesTrailing12Months,2),r:'Price / Sales. Utile quando gli utili sono volatili o negativi.'},
+    {h:'PEG',k:'peg',v:fmt.n(i.pegRatio,2),r:'P/E corretto per la crescita attesa. Sotto 1 = a sconto rispetto alla crescita, sopra 2 = caro.'},
+    {h:'Div Yield',k:'dividend_yield',v:i.dividendYield?fmt.pct(i.dividendYield*100,2):'0%',r:'Rendimento da dividendo annuo. Aziende growth spesso non pagano dividendi.'},
+  ];
+  document.getElementById('fund-metrics').innerHTML=tiles.map(t=>'<div class="ind"><h3>'+t.h+tip(t.k)+'</h3><div class="val">'+t.v+'</div><div class="read">'+t.r+'</div></div>').join('');
+}
+
+function renderIncomeChart(){
+  const inc=DEEP_DATA.fundamentals.income_stmt;
+  const years=Object.keys(inc).sort();
+  if(years.length===0)return;
+  new Chart(document.getElementById('income-chart'),{type:'bar',data:{labels:years,datasets:[
+    {label:'Ricavi',data:years.map(y=>inc[y]['Total Revenue']||null),backgroundColor:'rgba(124,158,248,.6)'},
+    {label:'Gross Profit',data:years.map(y=>inc[y]['Gross Profit']||null),backgroundColor:'rgba(74,222,128,.55)'},
+    {label:'Op Income',data:years.map(y=>inc[y]['Operating Income']||null),backgroundColor:'rgba(250,204,21,.55)'},
+    {label:'Net Income',data:years.map(y=>inc[y]['Net Income']||null),backgroundColor:'rgba(165,185,255,.55)'}
+  ]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>fmt.big(v)}}},plugins:{tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt.big(ctx.raw)}}}}});
+}
+
+function renderBSChart(){
+  const bs=DEEP_DATA.fundamentals.balance_sheet;
+  const years=Object.keys(bs).sort();
+  if(years.length===0)return;
+  new Chart(document.getElementById('bs-chart'),{type:'bar',data:{labels:years,datasets:[
+    {label:'Total Assets',data:years.map(y=>bs[y]['Total Assets']||null),backgroundColor:'rgba(124,158,248,.6)'},
+    {label:'Total Liab',data:years.map(y=>bs[y]['Total Liabilities Net Minority Interest']||null),backgroundColor:'rgba(248,113,113,.55)'},
+    {label:'Equity',data:years.map(y=>bs[y]['Stockholders Equity']||null),backgroundColor:'rgba(74,222,128,.55)'},
+    {label:'Total Debt',data:years.map(y=>bs[y]['Total Debt']||null),backgroundColor:'rgba(250,204,21,.5)'},
+    {label:'Cash',data:years.map(y=>bs[y]['Cash And Cash Equivalents']||null),backgroundColor:'rgba(34,211,238,.55)'}
+  ]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>fmt.big(v)}}},plugins:{tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt.big(ctx.raw)}}}}});
+}
+
+function renderCFChart(){
+  const cf=DEEP_DATA.fundamentals.cashflow;
+  const years=Object.keys(cf).sort();
+  if(years.length===0)return;
+  new Chart(document.getElementById('cf-chart'),{type:'bar',data:{labels:years,datasets:[
+    {label:'Operating CF',data:years.map(y=>cf[y]['Operating Cash Flow']||null),backgroundColor:'rgba(74,222,128,.6)'},
+    {label:'Investing CF',data:years.map(y=>cf[y]['Investing Cash Flow']||null),backgroundColor:'rgba(248,113,113,.55)'},
+    {label:'Free CF',data:years.map(y=>cf[y]['Free Cash Flow']||null),backgroundColor:'rgba(124,158,248,.6)'},
+    {label:'CapEx',data:years.map(y=>cf[y]['Capital Expenditure']||null),backgroundColor:'rgba(250,204,21,.55)'}
+  ]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>fmt.big(v)}}},plugins:{tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt.big(ctx.raw)}}}}});
+}
+
+function renderOptions(){
+  const opts=DEEP_DATA.options||{};
+  const exps=Object.keys(opts);
+  if(exps.length===0){
+    document.getElementById('opt-tabs').innerHTML='<span class="desc">Nessun dato opzioni disponibile per questo ticker.</span>';
+    return;
+  }
+  const tabs=document.getElementById('opt-tabs');
+  tabs.innerHTML='';
+  exps.forEach((exp,i)=>{
+    const b=document.createElement('button');
+    b.textContent='Scad. '+fmt.date(exp);b.dataset.exp=exp;
+    if(i===0)b.classList.add('on');
+    b.onclick=()=>{tabs.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderOptChain(exp);};
+    tabs.appendChild(b);
+  });
+  renderOptChain(exps[0]);
+}
+
+function renderOptChain(exp){
+  const chain=DEEP_DATA.options[exp];
+  const spot=DEEP_DATA.ticker_data.price;
+  const lo=spot*.75,hi=spot*1.25;
+  const calls=(chain.calls||[]).filter(o=>o.strike>=lo&&o.strike<=hi).sort((a,b)=>a.strike-b.strike);
+  const puts=(chain.puts||[]).filter(o=>o.strike>=lo&&o.strike<=hi).sort((a,b)=>a.strike-b.strike);
+  const cur=DEEP_DATA.fundamentals.info.currency||'USD';
+  const row=(o,isCall)=>{
+    const itm=isCall?o.strike<spot:o.strike>spot;
+    const itmCls=itm?'itm':'otm';
+    const hl=Math.abs(o.strike-spot)<spot*.025?'style="background:rgba(124,158,248,.1);font-weight:700"':'';
+    return '<tr '+hl+'><td class="'+itmCls+'">'+fmt.cur(o.strike,cur)+'</td><td class="r">'+fmt.cur(o.lastPrice,cur)+'</td><td class="r">'+fmt.cur(o.bid,cur)+'</td><td class="r">'+fmt.cur(o.ask,cur)+'</td><td class="r">'+(o.volume==null?'-':fmt.big(o.volume))+'</td><td class="r">'+(o.openInterest==null?'-':fmt.big(o.openInterest))+'</td><td class="r">'+(o.impliedVolatility==null?'-':fmt.pct(o.impliedVolatility*100,1))+'</td><td>'+(itm?'<span class="itm">ITM</span>':'<span class="otm">OTM</span>')+'</td></tr>';
+  };
+  document.getElementById('opt-calls').innerHTML=calls.map(o=>row(o,true)).join('');
+  document.getElementById('opt-puts').innerHTML=puts.map(o=>row(o,false)).join('');
+  const allStrikes=[...new Set([...(chain.calls||[]),...(chain.puts||[])].map(o=>o.strike))].sort((a,b)=>a-b);
+  let minPain=Infinity,maxPainStrike=null;
+  allStrikes.forEach(K=>{
+    let pain=0;
+    (chain.calls||[]).forEach(c=>{if(c.openInterest&&c.strike<K)pain+=(K-c.strike)*c.openInterest*100;});
+    (chain.puts||[]).forEach(p=>{if(p.openInterest&&p.strike>K)pain+=(p.strike-K)*p.openInterest*100;});
+    if(pain<minPain){minPain=pain;maxPainStrike=K;}
+  });
+  const callsOI=(chain.calls||[]).reduce((s,c)=>s+(c.openInterest||0),0);
+  const putsOI=(chain.puts||[]).reduce((s,p)=>s+(p.openInterest||0),0);
+  const pcr=callsOI?(putsOI/callsOI):null;
+  const atmCall=(chain.calls||[]).reduce((best,c)=>!best||Math.abs(c.strike-spot)<Math.abs(best.strike-spot)?c:best,null);
+  const atmPut=(chain.puts||[]).reduce((best,p)=>!best||Math.abs(p.strike-spot)<Math.abs(best.strike-spot)?p:best,null);
+  const ivAvg=atmCall&&atmPut?((atmCall.impliedVolatility||0)+(atmPut.impliedVolatility||0))/2:null;
+  document.getElementById('opt-maxpain').innerHTML='<strong>Max Pain:</strong> '+(maxPainStrike?fmt.cur(maxPainStrike,cur):'-')+' (spot '+fmt.cur(spot,cur)+') \u00B7 <strong>Put/Call ratio (OI):</strong> '+(pcr?fmt.n(pcr,2):'-')+' '+(pcr&&pcr>1?'<span class="sent-badge neg">Ribassista</span>':pcr?'<span class="sent-badge pos">Rialzista</span>':'')+' \u00B7 <strong>IV ATM media:</strong> '+(ivAvg?fmt.pct(ivAvg*100,1):'-');
+}
+
+function renderAnalysts(){
+  const i=DEEP_DATA.fundamentals.info;
+  const cur=i.currency||'USD';
+  const spot=DEEP_DATA.ticker_data.price;
+  // [label, tooltip_key, value, delta, period]
+  const items=[
+    ['Target mean','target_mean',fmt.cur(i.targetMeanPrice,cur),i.targetMeanPrice?fmt.pct(((i.targetMeanPrice/spot)-1)*100):'','upside a 12 mesi'],
+    ['Target median','target_median',fmt.cur(i.targetMedianPrice,cur),i.targetMedianPrice?fmt.pct(((i.targetMedianPrice/spot)-1)*100):'','upside a 12 mesi'],
+    ['Target high','target_high_low',fmt.cur(i.targetHighPrice,cur),i.targetHighPrice?fmt.pct(((i.targetHighPrice/spot)-1)*100):'','upside a 12 mesi'],
+    ['Target low','target_high_low',fmt.cur(i.targetLowPrice,cur),i.targetLowPrice?fmt.pct(((i.targetLowPrice/spot)-1)*100):'','upside a 12 mesi'],
+    ['Consensus','consensus',(i.recommendationKey||'-').toUpperCase(),'','raccomandazione attuale'],
+    ['Rec mean','rec_mean',fmt.n(i.recommendationMean,2),'','1 = Strong Buy, 5 = Sell'],
+    ['# analisti','num_analysts',i.numberOfAnalystOpinions||'-','','coverage attuale'],
+    ['Upside vs mean','upside',i.targetMeanPrice?fmt.pct(((i.targetMeanPrice/spot)-1)*100):'-','','crescita implicita a 12 mesi'],
+  ];
+  document.getElementById('analyst-root').innerHTML=items.map(([l,tk,v,d,period])=>{
+    let cls='';
+    if(d&&d.startsWith('+'))cls='up';else if(d&&d.startsWith('-'))cls='dn';
+    const deltaHtml=d?'<div class="km-delta '+cls+'">'+d+'</div>':'';
+    const periodHtml=period?'<div class="km-period">'+period+'</div>':'';
+    return '<div class="km"><div class="km-label">'+l+tip(tk)+'</div><div class="km-val">'+v+'</div>'+deltaHtml+periodHtml+'</div>';
+  }).join('');
+  const data=[['Low',i.targetLowPrice],['Mean',i.targetMeanPrice],['Median',i.targetMedianPrice],['High',i.targetHighPrice],['Spot',spot]];
+  new Chart(document.getElementById('analyst-chart'),{type:'bar',data:{labels:data.map(d=>d[0]),datasets:[{label:'Prezzo',data:data.map(d=>d[1]),backgroundColor:data.map(d=>d[0]==='Spot'?'#facc15':'#7c9ef8')}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{callback:v=>'$'+v.toFixed(0)}}},plugins:{legend:{display:false}}}});
+}
+
+function renderHolders(){
+  const h=DEEP_DATA.fundamentals.institutional_holders||[];
+  const tb=document.getElementById('holders-root');
+  if(h.length===0){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--t2)">Dati non disponibili</td></tr>';return;}
+  tb.innerHTML=h.map(r=>{
+    const holder=r.Holder||r.holder||'-';
+    const shares=r.Shares||r.shares||null;
+    const value=r.Value||r.value||null;
+    const pct=r['% Out']||r.pctHeld||null;
+    const date=r['Date Reported']||r.dateReported||'-';
+    return '<tr><td style="font-family:system-ui;font-size:.82rem">'+holder+'</td><td class="r">'+(shares?fmt.big(shares):'-')+'</td><td class="r">'+(value?'$'+fmt.big(value):'-')+'</td><td class="r">'+(pct==null?'-':(typeof pct==='number'?fmt.pct(pct*100,2):pct))+'</td><td>'+(typeof date==='string'?date.slice(0,10):'-')+'</td></tr>';
+  }).join('');
+}
+
+function renderNews(){
+  const root=document.getElementById('news-root');
+  const news=DEEP_DATA.news||[];
+  if(news.length===0){root.innerHTML='<div class="desc">Nessuna notizia disponibile.</div>';return;}
+  root.innerHTML=news.map(n=>{
+    const cls='sent-'+(n.sentiment==='positive'?'pos':n.sentiment==='negative'?'neg':'neu');
+    const badge='<span class="sent-badge '+(n.sentiment==='positive'?'pos':n.sentiment==='negative'?'neg':'neu')+'">'+(n.sentiment||'neutro')+'</span>';
+    const date=n.date?fmt.date(n.date):'';
+    return '<div class="news-item '+cls+'"><div class="t"><a href="'+n.url+'" target="_blank" rel="noopener noreferrer">'+n.title+'</a></div><div class="m"><span class="src">'+(n.source||'')+'</span><span>'+date+'</span>'+badge+'</div><div class="s">'+(n.summary||'')+'</div></div>';
+  }).join('');
+}
+
+function renderThesis(){
+  const t=DEEP_DATA.thesis||{bull:[],bear:[],neutral:[]};
+  const root=document.getElementById('thesis-root');
+  let html='';
+  if(t.bull.length){html+='<h3 style="font-size:1rem;color:var(--up);margin-bottom:.6rem">&#x1F7E2; Driver bullish</h3>';t.bull.forEach(b=>html+='<div class="risk bull"><h4>'+b.title+'</h4><p>'+b.text+'</p></div>');}
+  if(t.bear.length){html+='<h3 style="font-size:1rem;color:var(--dn);margin:1rem 0 .6rem">&#x1F534; Rischi bearish</h3>';t.bear.forEach(b=>html+='<div class="risk"><h4>'+b.title+'</h4><p>'+b.text+'</p></div>');}
+  if(t.neutral.length){html+='<h3 style="font-size:1rem;color:var(--nt);margin:1rem 0 .6rem">&#x26AA; Fattori neutri / da monitorare</h3>';t.neutral.forEach(b=>html+='<div class="risk neu-acc"><h4>'+b.title+'</h4><p>'+b.text+'</p></div>');}
+  root.innerHTML=html||'<div class="desc">Nessuna tesi disponibile.</div>';
+}
+
+function renderAll(reports){
+  renderHeader();
+  renderKM();
+  setupPriceControls();
+  renderIndicators();
+  setupPeersControls();
+  renderPeersTable();
+  renderFundamentalMetrics();
+  renderIncomeChart();
+  renderBSChart();
+  renderCFChart();
+  renderOptions();
+  renderAnalysts();
+  renderHolders();
+  renderNews();
+  renderThesis();
+}
+</script>
+<script src="nav.js"></script>
+<script src="shared.js"></script>
+</body>
+</html>

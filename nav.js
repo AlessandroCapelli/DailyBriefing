@@ -11,9 +11,11 @@
 
 	// Detect page type from filename
 	var pageType = null,
-		pageDate = null;
+		pageDate = null,
+		pageTicker = null;
 	if (loc === "daily.html") pageType = "daily";
 	else if (loc === "stocks.html") pageType = "stocks";
+	else if (loc === "deep.html") pageType = "deep";
 	// Also support old format Daily-XX-XX-XXXX.html
 	var oldMatch = loc.match(/^(Daily|Stocks)-(\d{2}-\d{2}-\d{4})\.html$/i);
 	if (oldMatch) {
@@ -21,10 +23,11 @@
 		pageDate = oldMatch[2];
 	}
 
-	// Read date from query param
-	if (!pageDate && pageType) {
+	// Read date / ticker from query param
+	if (pageType) {
 		var params = new URLSearchParams(location.search);
-		pageDate = params.get("d");
+		if (!pageDate) pageDate = params.get("d");
+		if (pageType === "deep") pageTicker = (params.get("t") || "").toUpperCase();
 	}
 
 	function parseDMY(d) {
@@ -50,7 +53,7 @@
 			})
 			.then(cb)
 			.catch(function () {
-				cb({ daily: [], stocks: [] });
+				cb({ daily: [], stocks: [], deep: [] });
 			});
 	}
 
@@ -106,6 +109,73 @@
 		addEl("a", isIndex ? "db-a" : "", "Home", "index.html");
 		addEl("span", "db-s", "/");
 		addEl("a", isDashboard ? "db-a" : "", "Dashboard", "dashboard.html");
+
+		// Deep mode: breadcrumb Home / Deep / <TICKER> with prev/next between tickers
+		if (pageType === "deep") {
+			addEl("span", "db-s", "/");
+			addEl("span", "db-a", "Deep");
+
+			var deepList = reports.deep || [];
+			if (deepList.length > 0 && pageTicker) {
+				// Unique tickers, latest date per ticker, sorted alphabetically
+				var latestByTicker = {};
+				deepList.forEach(function (e) {
+					if (
+						!latestByTicker[e.ticker] ||
+						parseDMY(e.date) > parseDMY(latestByTicker[e.ticker].date)
+					) {
+						latestByTicker[e.ticker] = e;
+					}
+				});
+				var uniqueTickers = Object.keys(latestByTicker).sort();
+				var idxT = uniqueTickers.indexOf(pageTicker);
+
+				addEl("span", "db-s", "/");
+				addEl("span", "db-a", pageTicker);
+				addEl("span", "db-sp");
+
+				// Ticker navigation arrows
+				var dgT = document.createElement("div");
+				dgT.className = "db-dg";
+
+				var prevTicker = idxT > 0 ? uniqueTickers[idxT - 1] : null;
+				var prevElT = document.createElement(prevTicker ? "a" : "span");
+				prevElT.className = "db-ar" + (prevTicker ? "" : " off");
+				prevElT.innerHTML = "\u2190";
+				if (prevTicker)
+					prevElT.href =
+						"deep.html?t=" +
+						prevTicker +
+						"&d=" +
+						latestByTicker[prevTicker].date;
+				dgT.appendChild(prevElT);
+
+				var curT = document.createElement("span");
+				curT.className = "db-dt";
+				curT.textContent = pageTicker;
+				dgT.appendChild(curT);
+
+				var nextTicker =
+					idxT >= 0 && idxT < uniqueTickers.length - 1
+						? uniqueTickers[idxT + 1]
+						: null;
+				var nextElT = document.createElement(nextTicker ? "a" : "span");
+				nextElT.className = "db-ar" + (nextTicker ? "" : " off");
+				nextElT.innerHTML = "\u2192";
+				if (nextTicker)
+					nextElT.href =
+						"deep.html?t=" +
+						nextTicker +
+						"&d=" +
+						latestByTicker[nextTicker].date;
+				dgT.appendChild(nextElT);
+
+				inner.appendChild(dgT);
+			}
+
+			document.body.insertBefore(bar, document.body.firstChild);
+			return;
+		}
 
 		if (pageType && pageDate) {
 			var dates = sortDates(reports[pageType] || []);

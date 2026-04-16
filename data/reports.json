@@ -37,5 +37,14 @@
     "30-03-2026",
     "07-04-2026",
     "13-04-2026"
+  ],
+  "deep": [
+    {
+      "ticker": "BSX",
+      "date": "16-04-2026",
+      "label": "Boston Scientific",
+      "sector": "Healthcare",
+      "industry": "Medical Devices"
+    }
   ]
 }

@@ -1,10 +1,15 @@
-var CACHE = "db-v7";
+var CACHE = "db-v8";
 
 self.addEventListener("install", function (e) {
-	// Pre-cache only chart.min.js (large, never changes)
+	// Pre-cache chart.min.js best-effort, relative to SW scope.
+	// Using scope makes this work on GitHub Pages (/DailyBriefing/) AND on
+	// localhost / custom deployments without hardcoded paths.
 	e.waitUntil(
 		caches.open(CACHE).then(function (c) {
-			return c.add("/DailyBriefing/chart.min.js");
+			var scope = self.registration.scope;
+			return c.add(scope + "chart.min.js").catch(function () {
+				// Precache failure must not block install
+			});
 		}),
 	);
 	self.skipWaiting();

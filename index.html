@@ -204,6 +204,86 @@
 			background: var(--up);
 		}
 
+		.tl-item.deep::before {
+			background: rgba(192, 132, 252, 0.35);
+		}
+
+		.tl-item:hover.deep::before {
+			background: #c084fc;
+		}
+
+		.tl-badge.deep {
+			background: rgba(192, 132, 252, 0.12);
+			color: #c084fc;
+		}
+
+		/* DEEP TICKER CHIPS */
+		.deep-chips-wrap {
+			max-width: 640px;
+			margin: 0 auto 1.5rem;
+			padding: 0 1.25rem;
+		}
+
+		.deep-chips-head {
+			font-size: 0.65rem;
+			font-weight: 700;
+			color: var(--t2);
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			margin-bottom: 0.55rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.deep-chips-head::before {
+			content: "";
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #c084fc;
+			box-shadow: 0 0 8px rgba(192, 132, 252, 0.6);
+		}
+
+		.deep-chips {
+			display: flex;
+			gap: 0.4rem;
+			flex-wrap: wrap;
+		}
+
+		.deep-chip {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			padding: 0.42rem 0.85rem;
+			background: var(--card);
+			border: 1px solid var(--brd);
+			border-radius: 999px;
+			color: var(--t1);
+			font-size: 0.78rem;
+			font-weight: 600;
+			text-decoration: none;
+			transition: all 0.15s;
+		}
+
+		.deep-chip:hover {
+			border-color: #c084fc;
+			background: rgba(192, 132, 252, 0.08);
+			transform: translateY(-1px);
+		}
+
+		.deep-chip .sym {
+			font-family: ui-monospace, Menlo, monospace;
+			color: #c084fc;
+			font-weight: 700;
+		}
+
+		.deep-chip .lbl {
+			color: var(--t2);
+			font-size: 0.72rem;
+		}
+
 		.tl-date-col {
 			display: flex;
 			flex-direction: column;
@@ -440,6 +520,15 @@
 			<div class="stat-val" id="stat-stocks">0</div>
 			<div class="stat-label">Stocks</div>
 		</div>
+		<div class="stat">
+			<div class="stat-val" id="stat-deep">0</div>
+			<div class="stat-label">Deep</div>
+		</div>
+	</div>
+
+	<div class="deep-chips-wrap" id="deep-chips-wrap" style="display:none">
+		<div class="deep-chips-head">Analisi approfondite</div>
+		<div class="deep-chips" id="deep-chips"></div>
 	</div>
 
 	<div class="idx-search"><input type="text" id="idx-q" placeholder="Cerca nei report..." autocomplete="off" /></div>
@@ -456,6 +545,10 @@
 			<button class="tab" data-tab="stocks">
 				Stocks
 				<span class="tab-count" id="tc-stocks"></span>
+			</button>
+			<button class="tab" data-tab="deep">
+				Deep
+				<span class="tab-count" id="tc-deep"></span>
 			</button>
 		</div>
 		<div class="timeline" id="timeline">
@@ -477,6 +570,7 @@
 		let REPORTS = {
 			daily: [],
 			stocks: [],
+			deep: [],
 		};
 
 		const DOW = [
@@ -507,14 +601,46 @@
 			});
 
 		function initPage() {
+			const deepList = REPORTS.deep || [];
 			const totalD = REPORTS.daily.length,
-				totalS = REPORTS.stocks.length;
-			document.getElementById("stat-total").textContent = totalD + totalS;
+				totalS = REPORTS.stocks.length,
+				totalDeep = deepList.length;
+			document.getElementById("stat-total").textContent = totalD + totalS + totalDeep;
 			document.getElementById("stat-daily").textContent = totalD;
 			document.getElementById("stat-stocks").textContent = totalS;
-			document.getElementById("tc-all").textContent = totalD + totalS;
+			document.getElementById("stat-deep").textContent = totalDeep;
+			document.getElementById("tc-all").textContent = totalD + totalS + totalDeep;
 			document.getElementById("tc-daily").textContent = totalD;
 			document.getElementById("tc-stocks").textContent = totalS;
+			document.getElementById("tc-deep").textContent = totalDeep;
+
+			// Render deep chips (unique tickers, latest per ticker)
+			if (deepList.length > 0) {
+				const latestByTicker = {};
+				deepList.forEach((e) => {
+					if (!latestByTicker[e.ticker]) latestByTicker[e.ticker] = e;
+				});
+				const uniqueTickers = Object.values(latestByTicker);
+				const chipsRoot = document.getElementById("deep-chips");
+				chipsRoot.innerHTML = uniqueTickers
+					.map(function(e) {
+						return (
+							'<a class="deep-chip" href="deep.html?t=' +
+							e.ticker +
+							"&d=" +
+							e.date +
+							'" title="' +
+							(e.sector || "") +
+							'"><span class="sym">' +
+							e.ticker +
+							'</span><span class="lbl">' +
+							(e.label || e.ticker) +
+							"</span></a>"
+						);
+					})
+					.join("");
+				document.getElementById("deep-chips-wrap").style.display = "block";
+			}
 
 			// Build unified timeline with search keywords from JSON
 			const items = [];
@@ -579,6 +705,35 @@
 					badge: "Stocks"
 				});
 			});
+			deepList.forEach((e) => {
+				const kwKey = "deep-" + e.ticker + "-" + e.date;
+				kwPromises.push(
+					fetch("data/deep-" + e.ticker + "-" + e.date + ".json")
+					.then((r) => (r.ok ? r.text() : null))
+					.then((t) => {
+						if (!t) return;
+						try {
+							const data = JSON.parse(t);
+							const kw = [e.ticker, e.label, e.sector, e.industry];
+							if (data.news) data.news.forEach((n) => kw.push(n.title));
+							if (data.thesis) {
+								(data.thesis.bull || []).forEach((b) => kw.push(b.title));
+								(data.thesis.bear || []).forEach((b) => kw.push(b.title));
+							}
+							keywordsCache[kwKey] = kw.join(" ").toLowerCase();
+						} catch (err) {}
+					})
+					.catch(() => {}),
+				);
+				items.push({
+					date: e.date,
+					type: "deep",
+					label: e.label + " (" + e.ticker + ")",
+					badge: "Deep",
+					href: "deep.html?t=" + e.ticker + "&d=" + e.date,
+					kwKey: kwKey,
+				});
+			});
 			items.sort((a, b) => parseDMY(b.date) - parseDMY(a.date));
 
 			// Wait for keywords to load (non-blocking, search works immediately on visible text)
@@ -591,6 +746,7 @@
 
 			const latestDaily = items.find((i) => i.type === "daily");
 			const latestStocks = items.find((i) => i.type === "stocks");
+			const latestDeep = items.find((i) => i.type === "deep");
 
 			function render(filter) {
 				timeline.innerHTML = "";
@@ -607,9 +763,9 @@
 					const month = MONTHS[dt.getMonth()];
 					const a = document.createElement("a");
 					a.className = "tl-item " + item.type;
-					a.href = item.type + ".html?d=" + item.date;
-					a.dataset.kwKey = item.type + "-" + item.date;
-					const isNew = item === latestDaily || item === latestStocks;
+					a.href = item.href || (item.type + ".html?d=" + item.date);
+					a.dataset.kwKey = item.kwKey || (item.type + "-" + item.date);
+					const isNew = item === latestDaily || item === latestStocks || item === latestDeep;
 					const newBadge = isNew ? '<span class="tl-new">Nuovo</span>' : "";
 					a.innerHTML =
 						'<div class="tl-date-col"><span class="tl-day">' +
