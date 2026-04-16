@@ -110,7 +110,7 @@
 		addEl("span", "db-s", "/");
 		addEl("a", isDashboard ? "db-a" : "", "Dashboard", "dashboard.html");
 
-		// Deep mode: breadcrumb Home / Deep / <TICKER> with prev/next between tickers
+		// Deep mode: breadcrumb Home / Deep with prev/next between tickers on the right
 		if (pageType === "deep") {
 			addEl("span", "db-s", "/");
 			addEl("span", "db-a", "Deep");
@@ -130,8 +130,6 @@
 				var uniqueTickers = Object.keys(latestByTicker).sort();
 				var idxT = uniqueTickers.indexOf(pageTicker);
 
-				addEl("span", "db-s", "/");
-				addEl("span", "db-a", pageTicker);
 				addEl("span", "db-sp");
 
 				// Ticker navigation arrows

@@ -340,12 +340,27 @@ function renderHeader(){
   dEl.innerHTML=(delta>0?'+':'')+delta.toFixed(2)+'% <span style="font-size:.7em;font-weight:500;opacity:.75">oggi</span>';
   dEl.className='price-delta '+(delta>0?'d-up':delta<0?'d-dn':'d-nt');
   document.getElementById('subtag').textContent=[cur,i.sector||'-',i.industry||'-'].join(' \u00B7 ');
-  document.getElementById('hmeta').textContent='Generato il '+d.generatedAt+' \u00B7 snapshot del '+d.date;
+  document.getElementById('hmeta').textContent='Dati generati il '+d.generatedAt;
   document.getElementById('company-desc').innerHTML=d.companyDesc||'';
 }
 
 // Helper: tooltip icon
 function tip(key){return '<span class="tip" data-tip="'+key+'">?</span>';}
+
+// Helper: short date (DD/MM/YY) from DEEP_DATA.date (DD-MM-YYYY)
+function shortDate(){
+  const d=DEEP_DATA&&DEEP_DATA.date;
+  if(!d)return '';
+  const p=d.split('-');
+  if(p.length!==3)return d;
+  return p[0]+'/'+p[1]+'/'+p[2].slice(-2);
+}
+// Append "al GG/MM/AA" to a period label
+function withDate(label){
+  const sd=shortDate();
+  if(!sd)return label;
+  return label+' al '+sd;
+}
 
 function renderKM(){
   const i=DEEP_DATA.fundamentals.info;
@@ -353,38 +368,38 @@ function renderKM(){
   const cur=i.currency||'USD';
   // Items: [label, tooltip_key, value, delta_pct_or_empty, period_label]
   const items=[
-    ['Prezzo','prezzo',fmt.cur(k.price,cur),i.regularMarketChangePercent?fmt.pct(i.regularMarketChangePercent):'','variazione oggi'],
-    ['Market Cap','market_cap',fmt.big(i.marketCap),'','oggi'],
-    ['Enterprise Value','enterprise_value',fmt.big(i.enterpriseValue),'','oggi'],
-    ['52W High','w52_high',fmt.cur(i.fiftyTwoWeekHigh,cur),i.fiftyTwoWeekHigh?fmt.pct(((k.price/i.fiftyTwoWeekHigh)-1)*100):'','prezzo vs max 12m'],
-    ['52W Low','w52_low',fmt.cur(i.fiftyTwoWeekLow,cur),i.fiftyTwoWeekLow?fmt.pct(((k.price/i.fiftyTwoWeekLow)-1)*100):'','prezzo vs min 12m'],
-    ['SMA 50','sma_50',fmt.cur(i.fiftyDayAverage,cur),'','media 50 giorni'],
-    ['SMA 200','sma_200',fmt.cur(i.twoHundredDayAverage,cur),'','media 200 giorni'],
-    ['P/E trailing','pe_trailing',fmt.n(i.trailingPE,2),'','utili ultimi 12m'],
-    ['P/E forward','pe_forward',fmt.n(i.forwardPE,2),'','utili prossimi 12m'],
-    ['PEG','peg',fmt.n(i.pegRatio,2),'','vs crescita 5a attesa'],
-    ['P/B','pb',fmt.n(i.priceToBook,2),'','ultima chiusura'],
-    ['P/S','ps',fmt.n(i.priceToSalesTrailing12Months,2),'','ricavi ultimi 12m'],
-    ['EPS trailing','eps_trailing',fmt.cur(i.trailingEps,cur),'','ultimi 12m'],
-    ['EPS forward','eps_forward',fmt.cur(i.forwardEps,cur),'','prossimi 12m'],
-    ['Beta','beta',fmt.n(i.beta,2),'','ultimi 5 anni'],
-    ['Dividend Yield','dividend_yield',i.dividendYield?fmt.pct(i.dividendYield*100,2):'0%','','annualizzato'],
-    ['Rev TTM','revenue',fmt.big(i.totalRevenue),i.revenueGrowth?fmt.pct(i.revenueGrowth*100):'','crescita ultimi 12m YoY'],
-    ['Net Inc TTM','net_income',fmt.big(i.netIncomeToCommon),i.earningsGrowth?fmt.pct(i.earningsGrowth*100):'','crescita ultimi 12m YoY'],
-    ['Gross Margin','gross_margin',i.grossMargins?fmt.pct(i.grossMargins*100,1):'-','','ultimi 12m'],
-    ['Op Margin','op_margin',i.operatingMargins?fmt.pct(i.operatingMargins*100,1):'-','','ultimi 12m'],
-    ['Profit Margin','profit_margin',i.profitMargins?fmt.pct(i.profitMargins*100,1):'-','','ultimi 12m'],
-    ['ROE','roe',i.returnOnEquity?fmt.pct(i.returnOnEquity*100,1):'-','','ultimi 12m'],
-    ['ROA','roa',i.returnOnAssets?fmt.pct(i.returnOnAssets*100,1):'-','','ultimi 12m'],
-    ['Debt/Equity','debt_equity',fmt.n(i.debtToEquity,1),'','ultimo bilancio'],
-    ['Current Ratio','current_ratio',fmt.n(i.currentRatio,2),'','ultimo bilancio'],
-    ['FCF','fcf',fmt.big(i.freeCashflow),'','ultimi 12m'],
-    ['Vol medio','volume',fmt.big(i.averageVolume),'','media 3 mesi'],
-    ['Shares Out','shares_out',fmt.big(i.sharesOutstanding),'','ultima comunicazione'],
-    ['% Insiders','pct_insiders',i.heldPercentInsiders?fmt.pct(i.heldPercentInsiders*100,2):'-','','ultimo filing'],
-    ['% Istituzionali','pct_institutional',i.heldPercentInstitutions?fmt.pct(i.heldPercentInstitutions*100,1):'-','','ultimo 13F trimestrale'],
-    ['Short % Float','short_float',i.shortPercentOfFloat?fmt.pct(i.shortPercentOfFloat*100,2):'-','','ultimo report bimestrale'],
-    ['Target mean','target_mean',fmt.cur(i.targetMeanPrice,cur),i.targetMeanPrice&&k.price?fmt.pct(((i.targetMeanPrice/k.price)-1)*100):'','upside a 12 mesi'],
+    ['Prezzo','prezzo',fmt.cur(k.price,cur),i.regularMarketChangePercent?fmt.pct(i.regularMarketChangePercent):'',withDate('variazione oggi')],
+    ['Market Cap','market_cap',fmt.big(i.marketCap),'',withDate('chiusura')],
+    ['Enterprise Value','enterprise_value',fmt.big(i.enterpriseValue),'',withDate('chiusura')],
+    ['52W High','w52_high',fmt.cur(i.fiftyTwoWeekHigh,cur),i.fiftyTwoWeekHigh?fmt.pct(((k.price/i.fiftyTwoWeekHigh)-1)*100):'',withDate('max 12m')],
+    ['52W Low','w52_low',fmt.cur(i.fiftyTwoWeekLow,cur),i.fiftyTwoWeekLow?fmt.pct(((k.price/i.fiftyTwoWeekLow)-1)*100):'',withDate('min 12m')],
+    ['SMA 50','sma_50',fmt.cur(i.fiftyDayAverage,cur),'',withDate('media 50 giorni')],
+    ['SMA 200','sma_200',fmt.cur(i.twoHundredDayAverage,cur),'',withDate('media 200 giorni')],
+    ['P/E trailing','pe_trailing',fmt.n(i.trailingPE,2),'',withDate('utili ultimi 12m')],
+    ['P/E forward','pe_forward',fmt.n(i.forwardPE,2),'',withDate('utili stimati 12m')],
+    ['PEG','peg',fmt.n(i.pegRatio,2),'',withDate('vs crescita 5a attesa')],
+    ['P/B','pb',fmt.n(i.priceToBook,2),'',withDate('ultima chiusura')],
+    ['P/S','ps',fmt.n(i.priceToSalesTrailing12Months,2),'',withDate('ricavi 12m')],
+    ['EPS trailing','eps_trailing',fmt.cur(i.trailingEps,cur),'',withDate('ultimi 12m')],
+    ['EPS forward','eps_forward',fmt.cur(i.forwardEps,cur),'',withDate('stime 12m')],
+    ['Beta','beta',fmt.n(i.beta,2),'',withDate('5 anni')],
+    ['Dividend Yield','dividend_yield',i.dividendYield?fmt.pct(i.dividendYield*100,2):'0%','',withDate('annualizzato')],
+    ['Rev TTM','revenue',fmt.big(i.totalRevenue),i.revenueGrowth?fmt.pct(i.revenueGrowth*100):'',withDate('12m YoY')],
+    ['Net Inc TTM','net_income',fmt.big(i.netIncomeToCommon),i.earningsGrowth?fmt.pct(i.earningsGrowth*100):'',withDate('12m YoY')],
+    ['Gross Margin','gross_margin',i.grossMargins?fmt.pct(i.grossMargins*100,1):'-','',withDate('ultimi 12m')],
+    ['Op Margin','op_margin',i.operatingMargins?fmt.pct(i.operatingMargins*100,1):'-','',withDate('ultimi 12m')],
+    ['Profit Margin','profit_margin',i.profitMargins?fmt.pct(i.profitMargins*100,1):'-','',withDate('ultimi 12m')],
+    ['ROE','roe',i.returnOnEquity?fmt.pct(i.returnOnEquity*100,1):'-','',withDate('ultimi 12m')],
+    ['ROA','roa',i.returnOnAssets?fmt.pct(i.returnOnAssets*100,1):'-','',withDate('ultimi 12m')],
+    ['Debt/Equity','debt_equity',fmt.n(i.debtToEquity,1),'',withDate('ultimo bilancio')],
+    ['Current Ratio','current_ratio',fmt.n(i.currentRatio,2),'',withDate('ultimo bilancio')],
+    ['FCF','fcf',fmt.big(i.freeCashflow),'',withDate('ultimi 12m')],
+    ['Vol medio','volume',fmt.big(i.averageVolume),'',withDate('media 3 mesi')],
+    ['Shares Out','shares_out',fmt.big(i.sharesOutstanding),'',withDate('ultimo filing')],
+    ['% Insiders','pct_insiders',i.heldPercentInsiders?fmt.pct(i.heldPercentInsiders*100,2):'-','',withDate('ultimo filing')],
+    ['% Istituzionali','pct_institutional',i.heldPercentInstitutions?fmt.pct(i.heldPercentInstitutions*100,1):'-','',withDate('ultimo 13F')],
+    ['Short % Float','short_float',i.shortPercentOfFloat?fmt.pct(i.shortPercentOfFloat*100,2):'-','',withDate('ultimo report bimestrale')],
+    ['Target mean','target_mean',fmt.cur(i.targetMeanPrice,cur),i.targetMeanPrice&&k.price?fmt.pct(((i.targetMeanPrice/k.price)-1)*100):'',withDate('target 12m')],
   ];
   document.getElementById('km-root').innerHTML=items.map(([l,tk,v,d,period])=>{
     let cls='';
@@ -650,14 +665,14 @@ function renderAnalysts(){
   const spot=DEEP_DATA.ticker_data.price;
   // [label, tooltip_key, value, delta, period]
   const items=[
-    ['Target mean','target_mean',fmt.cur(i.targetMeanPrice,cur),i.targetMeanPrice?fmt.pct(((i.targetMeanPrice/spot)-1)*100):'','upside a 12 mesi'],
-    ['Target median','target_median',fmt.cur(i.targetMedianPrice,cur),i.targetMedianPrice?fmt.pct(((i.targetMedianPrice/spot)-1)*100):'','upside a 12 mesi'],
-    ['Target high','target_high_low',fmt.cur(i.targetHighPrice,cur),i.targetHighPrice?fmt.pct(((i.targetHighPrice/spot)-1)*100):'','upside a 12 mesi'],
-    ['Target low','target_high_low',fmt.cur(i.targetLowPrice,cur),i.targetLowPrice?fmt.pct(((i.targetLowPrice/spot)-1)*100):'','upside a 12 mesi'],
-    ['Consensus','consensus',(i.recommendationKey||'-').toUpperCase(),'','raccomandazione attuale'],
-    ['Rec mean','rec_mean',fmt.n(i.recommendationMean,2),'','1 = Strong Buy, 5 = Sell'],
-    ['# analisti','num_analysts',i.numberOfAnalystOpinions||'-','','coverage attuale'],
-    ['Upside vs mean','upside',i.targetMeanPrice?fmt.pct(((i.targetMeanPrice/spot)-1)*100):'-','','crescita implicita a 12 mesi'],
+    ['Target mean','target_mean',fmt.cur(i.targetMeanPrice,cur),i.targetMeanPrice?fmt.pct(((i.targetMeanPrice/spot)-1)*100):'',withDate('target 12m')],
+    ['Target median','target_median',fmt.cur(i.targetMedianPrice,cur),i.targetMedianPrice?fmt.pct(((i.targetMedianPrice/spot)-1)*100):'',withDate('target 12m')],
+    ['Target high','target_high_low',fmt.cur(i.targetHighPrice,cur),i.targetHighPrice?fmt.pct(((i.targetHighPrice/spot)-1)*100):'',withDate('target 12m')],
+    ['Target low','target_high_low',fmt.cur(i.targetLowPrice,cur),i.targetLowPrice?fmt.pct(((i.targetLowPrice/spot)-1)*100):'',withDate('target 12m')],
+    ['Consensus','consensus',(i.recommendationKey||'-').toUpperCase(),'',withDate('raccomandazione')],
+    ['Rec mean','rec_mean',fmt.n(i.recommendationMean,2),'','1=Strong Buy, 5=Sell'],
+    ['# analisti','num_analysts',i.numberOfAnalystOpinions||'-','',withDate('coverage')],
+    ['Upside vs mean','upside',i.targetMeanPrice?fmt.pct(((i.targetMeanPrice/spot)-1)*100):'-','',withDate('implicita a 12m')],
   ];
   document.getElementById('analyst-root').innerHTML=items.map(([l,tk,v,d,period])=>{
     let cls='';
