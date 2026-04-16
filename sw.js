@@ -1,4 +1,4 @@
-var CACHE = "db-v8";
+var CACHE = "db-v9";
 
 self.addEventListener("install", function (e) {
 	// Pre-cache chart.min.js best-effort, relative to SW scope.
