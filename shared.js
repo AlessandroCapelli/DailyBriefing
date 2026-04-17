@@ -4,10 +4,13 @@
  */
 var DB_VERSION = "1.0";
 
-/** Escape HTML special characters to prevent XSS when inserting user content via innerHTML. */
+/** Escape HTML special characters to prevent XSS when inserting user content via innerHTML.
+ *  Also strips zero-width / bidi-override characters that can be used for spoofing.
+ */
 function escapeHtml(str) {
 	if (!str) return "";
 	return String(str)
+		.replace(/[\u200B-\u200F\u202A-\u202E\u2060\uFEFF\u180E]/g, "")
 		.replace(/&/g, "&amp;")
 		.replace(/</g, "&lt;")
 		.replace(/>/g, "&gt;")

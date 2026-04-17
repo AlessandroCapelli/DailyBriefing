@@ -165,12 +165,12 @@ thesis:         {bull: [{title,text}], bear: [...], neutral: [...]}
 
 ## Security
 
-- `JSON.parse()` for all data loading (no eval/Function constructor)
-- `escapeHtml()` on all externally-sourced content rendered via innerHTML
-- URL validation (only `https://` allowed in href attributes)
-- Content Security Policy: `script-src 'self'`, `frame-ancestors 'none'`
-- Content sanitization: HTML stripping, zero-width character removal, `javascript:` URI blocking
-- Prompt injection defense in AI agent pipeline
+- `JSON.parse()` for all data loading (no `eval` / `new Function` / `setTimeout(string)` / `document.write`)
+- `escapeHtml()` on all externally-sourced content rendered via `innerHTML`; strips zero-width and bidi-override characters (U+200B-200F, U+202A-202E, U+2060, U+FEFF, U+180E) before HTML-encoding
+- `safeUrl()` / `^https?://` regex on every `href` built from external data; non-http(s) URLs (including `javascript:`, `data:`, `file:`) collapse to `#`
+- Whitelist HTML sanitizer (`sanitizeRichText`) for `companyDesc` allowing only `<strong> <em> <b> <i> <br>`
+- Content Security Policy meta tag on every page: `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`
+- Prompt injection defense in AI agent pipeline (UNTRUSTED rule on scraped content)
 
 ## License
 
