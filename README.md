@@ -45,6 +45,7 @@ The system separates **data acquisition** (deterministic, retriable scripts) fro
 ## Features
 
 ### Content
+
 - 20+ RSS feeds aggregated daily (configurable)
 - Full article deep-dive with content extraction and link following
 - Editorial summaries (15+ lines per category, based on actual article content)
@@ -55,6 +56,7 @@ The system separates **data acquisition** (deterministic, retriable scripts) fro
 - Sentiment analysis per article and per trend
 
 ### Financial Analysis
+
 - Real market data from Yahoo Finance (price, volume, sector)
 - 5 chart periods: 5 days, 1 month, 6 months, 1 year, 5 years
 - Ticker comparison mode (up to 5 tickers, normalized to % change)
@@ -62,6 +64,7 @@ The system separates **data acquisition** (deterministic, retriable scripts) fro
 - Cross-referencing between news events and market movements
 
 ### Deep Stock Dive (single ticker)
+
 - Full max history (IPO -> today) with client-side technicals (SMA 20/50/200, EMA, Bollinger, RSI, MACD)
 - Fundamentals snapshot: P/E, P/B, PEG, margins, ROE, FCF, EBITDA, 52w range, beta
 - Income statement, balance sheet, cashflow (4-5 years)
@@ -72,6 +75,7 @@ The system separates **data acquisition** (deterministic, retriable scripts) fro
 - Top institutional holders + analyst targets
 
 ### Interface
+
 - Dark-mode responsive design with smooth animations
 - Interactive Chart.js charts with crosshair tooltips
 - Category, sentiment, and search filters with permalink support
@@ -80,6 +84,7 @@ The system separates **data acquisition** (deterministic, retriable scripts) fro
 - Print/PDF optimized layout
 
 ### Technical
+
 - Installable as PWA via manifest (browser HTTP cache handles asset caching)
 - Content Security Policy headers on all pages
 - XSS protection via HTML escaping on all user-generated content
@@ -132,6 +137,7 @@ All pages are static HTML templates that load JSON data via `fetch()` and render
 ## Data Format
 
 ### Daily Briefing (`daily-DD-MM-YYYY.json`)
+
 ```
 meta:        date, time, category/article/source counts
 categories:  [{id, name, emoji, summary, evolution, articles: [{
@@ -141,6 +147,7 @@ categories:  [{id, name, emoji, summary, evolution, articles: [{
 ```
 
 ### Stock Report (`stocks-DD-MM-YYYY.json`)
+
 ```
 meta:    title, dates analyzed, trend/ticker/article counts
 trends:  [{title, category, sentiment, narrative, metrics, tickers, sources}]
@@ -150,6 +157,7 @@ tickers: {SYMBOL: {name, sector, price, change_pct, avg_volume}}
 Chart history data is split into a separate `-charts.json` file for lazy loading.
 
 ### Deep Dive (`deep-<TICKER>-DD-MM-YYYY.json`)
+
 ```
 ticker, label, date, generatedAt, companyDesc
 ticker_data:    {name, sector, currency, price, change_pct, avg_volume,
@@ -162,15 +170,6 @@ options:        {EXPIRY: {calls: [...], puts: [...]}}        (may be {})
 news:           [{title, url, source, date, sentiment, summary}]
 thesis:         {bull: [{title,text}], bear: [...], neutral: [...]}
 ```
-
-## Security
-
-- `JSON.parse()` for all data loading (no `eval` / `new Function` / `setTimeout(string)` / `document.write`)
-- `escapeHtml()` on all externally-sourced content rendered via `innerHTML`; strips zero-width and bidi-override characters (U+200B-200F, U+202A-202E, U+2060, U+FEFF, U+180E) before HTML-encoding
-- `safeUrl()` / `^https?://` regex on every `href` built from external data; non-http(s) URLs (including `javascript:`, `data:`, `file:`) collapse to `#`
-- Whitelist HTML sanitizer (`sanitizeRichText`) for `companyDesc` allowing only `<strong> <em> <b> <i> <br>`
-- Content Security Policy meta tag on every page: `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`
-- Prompt injection defense in AI agent pipeline (UNTRUSTED rule on scraped content)
 
 ## License
 
