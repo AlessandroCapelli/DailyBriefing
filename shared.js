@@ -20,6 +20,19 @@ function escapeHtml(str) {
 (function () {
 	"use strict";
 
+	// ── Anti-clickjacking (frame-busting) ──
+	// CSP frame-ancestors is ignored when delivered via <meta>, so enforce
+	// here. Static GitHub Pages cannot send X-Frame-Options either.
+	try {
+		if (window.top !== window.self) {
+			window.top.location = window.self.location;
+		}
+	} catch (e) {
+		// Cross-origin top access throws — definitely framed by attacker.
+		document.body && (document.body.innerHTML = "");
+		window.location = "about:blank";
+	}
+
 	// ── Text-to-Speech (Italian) ──
 	(function () {
 		if (!("speechSynthesis" in window)) return;
