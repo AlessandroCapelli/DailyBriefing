@@ -711,6 +711,7 @@
 
 	<script>
 		function escapeHtml(s){if(!s)return"";return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
+		function curSym(c){return c==="USD"?"$":c==="EUR"?"\u20AC":c==="GBP"?"\u00A3":c==="CHF"?"CHF ":c==="JPY"?"\u00A5":(c||"")+" "}
 		function showError(t, m) {
 			console.error("DailyBriefing error:", t, m);
 			location.replace("404.html");
@@ -979,7 +980,7 @@
 						const tk = TK[sym];
 						if (!tk)
 							return `<div class="tc" data-sym="${escapeHtml(sym)}"><div class="tt"><span class="tsym">${escapeHtml(sym)}</span></div><div class="tnm">Dati non disponibili</div></div>`;
-						const cur = tk.currency === "EUR" ? "€" : "$";
+						const cur = curSym(tk.currency);
 						const cpct = tk.change_pct || 0;
 						const cc = cpct >= 0 ? "var(--up)" : "var(--dn)";
 						const cid = "ch-" + ti + "-" + sym.replace(/[^a-zA-Z0-9]/g, "");
@@ -1156,7 +1157,7 @@
 									},
 									label: (ctx) => {
 										if (ctx.datasetIndex === 0)
-											return " " + (tk.currency === "EUR" ? "€" : "$") + ctx.parsed.y
+											return " " + curSym(tk.currency) + ctx.parsed.y
 												.toFixed(2);
 										return " Vol: " + formatVol(ctx.parsed.y);
 									},
@@ -1187,8 +1188,7 @@
 										size: 9,
 									},
 									maxTicksLimit: 5,
-									callback: (v) => (tk.currency === "EUR" ? "€" : "$") + v.toFixed(v >= 100 ? 0 :
-										2),
+									callback: (v) => curSym(tk.currency) + v.toFixed(v >= 100 ? 0 : 2),
 								},
 								grid: {
 									color: "#1e2235",

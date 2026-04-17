@@ -271,11 +271,8 @@ function sanitizeRichText(s){if(s==null)return"";var esc=escapeHtml(s);return es
 let DEEP_DATA=null;
 
 function showError(msg){
-  document.getElementById('loading').style.display='none';
-  document.getElementById('root').style.display='none';
-  const e=document.getElementById('error');
-  e.style.display='block';
-  e.innerHTML='<h2 style="margin-bottom:1rem">Errore</h2><p>'+escapeHtml(msg)+'</p><p style="margin-top:1rem"><a href="index.html" style="color:var(--acc)">&larr; Torna alla home</a></p>';
+  console.error('DailyBriefing deep error:',msg);
+  location.replace('404.html');
 }
 
 (function(){
@@ -314,6 +311,8 @@ function loadReport(target,reports){
     renderAll(reports);
   }).catch(e=>showError('Impossibile caricare '+url+': '+e.message));
 }
+
+function curSym(c){return c==='USD'?'$':c==='EUR'?'\u20AC':c==='GBP'?'\u00A3':c==='CHF'?'CHF ':c==='JPY'?'\u00A5':(c||'')+' '}
 
 const fmt={
   n:(v,d=2)=>v==null||isNaN(v)?'-':Number(v).toLocaleString('it-IT',{maximumFractionDigits:d,minimumFractionDigits:d>=2?2:0}),
@@ -426,6 +425,8 @@ function renderKM(){
 let priceChart=null,volumeChart=null;
 function renderPrice(period){
   const t=DEEP_DATA.ticker_data;
+  const cur=(DEEP_DATA.fundamentals&&DEEP_DATA.fundamentals.info&&DEEP_DATA.fundamentals.info.currency)||t.currency||'USD';
+  const cs=curSym(cur);
   const h=t.history[period];
   if(!h){document.getElementById('price-chart').parentElement.innerHTML='<div style="padding:2rem;color:var(--t2);text-align:center">Dati non disponibili per questo periodo</div>';return;}
   const prices=h.prices.slice(),dates=h.dates.slice(),vols=h.volumes.slice();
@@ -443,7 +444,7 @@ function renderPrice(period){
     ds.push({label:'BB lower',data:bb.lower,borderColor:'rgba(124,158,248,.35)',borderWidth:.8,borderDash:[2,2]});
   }
   if(priceChart)priceChart.destroy();
-  priceChart=new Chart(document.getElementById('price-chart'),{type:'line',data:{labels:dates,datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},scales:{x:{ticks:{maxTicksLimit:10,autoSkip:true},grid:{display:false}},y:{position:'right',ticks:{callback:v=>'$'+v.toFixed(0)}}},plugins:{legend:{position:'top',align:'end'},tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+(ctx.raw!=null?'$'+ctx.raw.toFixed(2):'-')}}}}});
+  priceChart=new Chart(document.getElementById('price-chart'),{type:'line',data:{labels:dates,datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},scales:{x:{ticks:{maxTicksLimit:10,autoSkip:true},grid:{display:false}},y:{position:'right',ticks:{callback:v=>cs+v.toFixed(0)}}},plugins:{legend:{position:'top',align:'end'},tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+(ctx.raw!=null?cs+ctx.raw.toFixed(2):'-')}}}}});
   if(volumeChart)volumeChart.destroy();
   volumeChart=new Chart(document.getElementById('volume-chart'),{type:'bar',data:{labels:dates,datasets:[{label:'Volume',data:vols,backgroundColor:'rgba(124,158,248,.35)',borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxTicksLimit:10,autoSkip:true},grid:{display:false}},y:{position:'right',ticks:{callback:v=>fmt.big(v)}}},plugins:{legend:{display:false}}}});
 }
@@ -578,7 +579,7 @@ function setupPeersControls(){
     b.onclick=()=>{trng.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderPeers(p);};
     trng.appendChild(b);
   });
-  document.getElementById('peers-desc').innerHTML='<strong>Lettura.</strong> Il grafico mostra la performance normalizzata (base 100) di '+DEEP_DATA.ticker+' rispetto ai peer e agli ETF settoriali di riferimento. Un titolo che sottoperforma sia i peer che gli ETF segnala idiosincrasia negativa: il mercato sta prezzando un problema specifico, non una debolezza di settore.';
+  document.getElementById('peers-desc').innerHTML='<strong>Lettura.</strong> Il grafico mostra la performance normalizzata (base 100) di '+escapeHtml(DEEP_DATA.ticker)+' rispetto ai peer e agli ETF settoriali di riferimento. Un titolo che sottoperforma sia i peer che gli ETF segnala idiosincrasia negativa: il mercato sta prezzando un problema specifico, non una debolezza di settore.';
   renderPeers('1y');
 }
 
@@ -588,12 +589,12 @@ function renderPeersTable(){
   const rows=Object.entries(peers).map(([sym,pd])=>{
     const lastH=(p)=>pd.history[p]?pd.history[p].prices.filter(x=>x!=null):[];
     const calcPerf=(p)=>{const a=lastH(p);if(a.length<2)return null;return((a[a.length-1]/a[0])-1)*100;};
-    return {sym,name:pd.name,price:pd.price,chg:pd.change_pct,p5y:calcPerf('5y'),p1y:calcPerf('1y'),p6m:calcPerf('6mo')};
+    return {sym,name:pd.name,price:pd.price,currency:pd.currency||'USD',chg:pd.change_pct,p5y:calcPerf('5y'),p1y:calcPerf('1y'),p6m:calcPerf('6mo')};
   }).sort((a,b)=>a.sym===DEEP_DATA.ticker?-1:b.sym===DEEP_DATA.ticker?1:(b.p1y||-999)-(a.p1y||-999));
   tb.innerHTML=rows.map(r=>{
     const main=r.sym===DEEP_DATA.ticker?'style="background:rgba(124,158,248,.08);font-weight:700"':'';
     const cls=v=>v==null?'nt':v>=0?'up':'dn';
-    return '<tr '+main+'><td><b>'+escapeHtml(r.sym)+'</b></td><td style="font-family:system-ui;font-size:.78rem">'+escapeHtml(r.name)+'</td><td class="r">'+fmt.cur(r.price)+'</td><td class="r '+cls(r.chg)+'">'+fmt.pct(r.chg,2)+'</td><td class="r '+cls(r.p5y)+'">'+(r.p5y==null?'-':fmt.pct(r.p5y,1))+'</td><td class="r '+cls(r.p1y)+'">'+(r.p1y==null?'-':fmt.pct(r.p1y,1))+'</td><td class="r '+cls(r.p6m)+'">'+(r.p6m==null?'-':fmt.pct(r.p6m,1))+'</td></tr>';
+    return '<tr '+main+'><td><b>'+escapeHtml(r.sym)+'</b></td><td style="font-family:system-ui;font-size:.78rem">'+escapeHtml(r.name)+'</td><td class="r">'+fmt.cur(r.price,r.currency)+'</td><td class="r '+cls(r.chg)+'">'+fmt.pct(r.chg,2)+'</td><td class="r '+cls(r.p5y)+'">'+(r.p5y==null?'-':fmt.pct(r.p5y,1))+'</td><td class="r '+cls(r.p1y)+'">'+(r.p1y==null?'-':fmt.pct(r.p1y,1))+'</td><td class="r '+cls(r.p6m)+'">'+(r.p6m==null?'-':fmt.pct(r.p6m,1))+'</td></tr>';
   }).join('');
 }
 
@@ -762,20 +763,23 @@ function renderAnalysts(){
     return '<div class="km"><div class="km-label">'+l+tip(tk)+'</div><div class="km-val">'+escapeHtml(v)+'</div>'+deltaHtml+periodHtml+'</div>';
   }).join('');
   const data=[['Low',i.targetLowPrice],['Mean',i.targetMeanPrice],['Median',i.targetMedianPrice],['High',i.targetHighPrice],['Spot',spot]];
-  new Chart(document.getElementById('analyst-chart'),{type:'bar',data:{labels:data.map(d=>d[0]),datasets:[{label:'Prezzo',data:data.map(d=>d[1]),backgroundColor:data.map(d=>d[0]==='Spot'?'#facc15':'#7c9ef8')}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{callback:v=>'$'+v.toFixed(0)}}},plugins:{legend:{display:false}}}});
+  const cs=curSym(cur);
+  new Chart(document.getElementById('analyst-chart'),{type:'bar',data:{labels:data.map(d=>d[0]),datasets:[{label:'Prezzo',data:data.map(d=>d[1]),backgroundColor:data.map(d=>d[0]==='Spot'?'#facc15':'#7c9ef8')}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{callback:v=>cs+v.toFixed(0)}}},plugins:{legend:{display:false}}}});
 }
 
 function renderHolders(){
   const h=DEEP_DATA.fundamentals.institutional_holders||[];
   const tb=document.getElementById('holders-root');
   if(h.length===0){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--t2)">Dati non disponibili</td></tr>';return;}
+  const cur=DEEP_DATA.fundamentals.info.currency||'USD';
+  const cs=curSym(cur);
   tb.innerHTML=h.map(r=>{
     const holder=r.Holder||r.holder||'-';
     const shares=r.Shares||r.shares||null;
     const value=r.Value||r.value||null;
     const pct=r['% Out']||r.pctHeld||null;
     const date=r['Date Reported']||r.dateReported||'-';
-    return '<tr><td style="font-family:system-ui;font-size:.82rem">'+escapeHtml(holder)+'</td><td class="r">'+(shares?fmt.big(shares):'-')+'</td><td class="r">'+(value?'$'+fmt.big(value):'-')+'</td><td class="r">'+(pct==null?'-':(typeof pct==='number'?fmt.pct(pct*100,2):escapeHtml(pct)))+'</td><td>'+(typeof date==='string'?escapeHtml(date.slice(0,10)):'-')+'</td></tr>';
+    return '<tr><td style="font-family:system-ui;font-size:.82rem">'+escapeHtml(holder)+'</td><td class="r">'+(shares?fmt.big(shares):'-')+'</td><td class="r">'+(value?cs+fmt.big(value):'-')+'</td><td class="r">'+(pct==null?'-':(typeof pct==='number'?fmt.pct(pct*100,2):escapeHtml(pct)))+'</td><td>'+(typeof date==='string'?escapeHtml(date.slice(0,10)):'-')+'</td></tr>';
   }).join('');
 }
 

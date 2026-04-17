@@ -429,9 +429,9 @@
 						renderDashboard(dailies, stocks, deeps, manifest);
 					});
 				})
-				.catch(function() {
-					document.getElementById("stats-grid").innerHTML =
-						'<div style="grid-column:1/-1;text-align:center;color:#f87171;padding:2rem">Errore caricamento dati</div>';
+				.catch(function(err) {
+					console.error("DailyBriefing dashboard error:", err);
+					location.replace("404.html");
 				});
 
 			function renderDashboard(dailies, stocks, deeps, manifest) {
@@ -932,10 +932,12 @@
 						})
 						.forEach(function(d, i) {
 							var td = d.data.ticker_data || {};
-							var cur = td.currency === "EUR" ? "€" :
-								td.currency === "GBP" ? "£" :
+							var cur = td.currency === "EUR" ? "\u20AC" :
+								td.currency === "GBP" ? "\u00A3" :
 								td.currency === "CHF" ? "CHF " :
-								"$";
+								td.currency === "JPY" ? "\u00A5" :
+								td.currency === "USD" ? "$" :
+								(td.currency || "") + " ";
 							var px = typeof td.price === "number" ? cur + td.price.toFixed(2) : "-";
 							var cp = typeof td.change_pct === "number" ? td.change_pct : null;
 							var cpColor = cp === null ? "var(--t2)" : cp >= 0 ? "var(--up)" : "var(--dn)";
