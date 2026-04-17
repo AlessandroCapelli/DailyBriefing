@@ -483,6 +483,12 @@
 					}
 				});
 
+				// Include deep-analyzed tickers in unique count
+				deeps.forEach(function(dp) {
+					var sym = dp.entry && dp.entry.ticker;
+					if (sym && !tickers[sym]) tickers[sym] = 0;
+				});
+
 				// Stats grid
 				var sg = document.getElementById("stats-grid");
 				[{

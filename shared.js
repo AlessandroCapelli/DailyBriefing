@@ -137,9 +137,9 @@ function escapeHtml(str) {
 				".summary:not([data-tts]), .narr:not([data-tts]), #company-desc:not([data-tts]), .news-item .s:not([data-tts]), .risk > p:not([data-tts])",
 			);
 			targets.forEach(function (el) {
-				el.setAttribute("data-tts", "1");
 				var text = el.textContent.trim();
-				if (text.length < 30) return;
+				if (text.length < 30) return; // Don't tag yet — re-check on next mutation when populated
+				el.setAttribute("data-tts", "1");
 				var btn = document.createElement("button");
 				btn.className = "tts-btn";
 				if (!italianVoice) btn.style.display = "none"; // Hide until voice loads
