@@ -9,7 +9,13 @@
 	<link rel="manifest" href="manifest.json" />
 	<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 	<script src="chart.min.js"></script>
-	<script>function escapeHtml(s){if(!s)return"";return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}</script>
+	<script>
+		function escapeHtml(s) {
+			if (!s) return "";
+			return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+				.replace(/'/g, "&#39;")
+		}
+	</script>
 	<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 	<title>Dashboard | DailyBriefing</title>
 	<style>
@@ -333,6 +339,16 @@
 			<h2>Fonti piu attive</h2>
 			<div class="top-list" id="top-sources"></div>
 		</div>
+
+		<div class="section">
+			<h2>Deep Report</h2>
+			<div class="top-list" id="deep-list"></div>
+		</div>
+
+		<div class="section">
+			<h2>Sentiment news Deep</h2>
+			<div class="sent-row" id="deep-sent-row"></div>
+		</div>
 	</div>
 
 	<script>
@@ -349,8 +365,7 @@
 							fetch("data/daily-" + d + ".json")
 							.then((r) => (r.ok ? r.text() : null))
 							.then(function(t) {
-								return t ?
-									{
+								return t ? {
 										type: "daily",
 										date: d,
 										data: JSON.parse(t),
@@ -367,10 +382,28 @@
 							fetch("data/stocks-" + d + ".json")
 							.then((r) => (r.ok ? r.text() : null))
 							.then(function(t) {
-								return t ?
-									{
+								return t ? {
 										type: "stocks",
 										date: d,
+										data: JSON.parse(t),
+									} :
+									null;
+							})
+							.catch(function() {
+								return null;
+							}),
+						);
+					});
+
+					var deepEntries = manifest.deep || [];
+					deepEntries.forEach(function(de) {
+						promises.push(
+							fetch("data/deep-" + de.ticker + "-" + de.date + ".json")
+							.then((r) => (r.ok ? r.text() : null))
+							.then(function(t) {
+								return t ? {
+										type: "deep",
+										entry: de,
 										data: JSON.parse(t),
 									} :
 									null;
@@ -390,7 +423,10 @@
 						var stocks = results.filter(function(r) {
 							return r && r.type === "stocks";
 						});
-						renderDashboard(dailies, stocks, manifest);
+						var deeps = results.filter(function(r) {
+							return r && r.type === "deep";
+						});
+						renderDashboard(dailies, stocks, deeps, manifest);
 					});
 				})
 				.catch(function() {
@@ -398,7 +434,7 @@
 						'<div style="grid-column:1/-1;text-align:center;color:#f87171;padding:2rem">Errore caricamento dati</div>';
 				});
 
-			function renderDashboard(dailies, stocks, manifest) {
+			function renderDashboard(dailies, stocks, deeps, manifest) {
 				// Stats
 				var totalArticles = 0,
 					totalTrends = 0,
@@ -474,7 +510,12 @@
 						l: "Stocks",
 					},
 					{
-						v: Math.round((JSON.stringify(dailies).length + JSON.stringify(stocks).length) / 1024) + " KB",
+						v: deeps.length,
+						l: "Deep",
+					},
+					{
+						v: Math.round((JSON.stringify(dailies).length + JSON.stringify(stocks).length + JSON.stringify(
+							deeps).length) / 1024) + " KB",
 						l: "Dati totali",
 					},
 				].forEach(function(s) {
@@ -870,13 +911,95 @@
 					});
 				}
 
+				// Deep report list + aggregate news sentiment
+				var deepList = document.getElementById("deep-list");
+				var deepSentRow = document.getElementById("deep-sent-row");
+				var deepSent = {
+					positive: 0,
+					negative: 0,
+					neutral: 0
+				};
+				if (!deeps.length) {
+					deepList.innerHTML =
+						'<div style="color:var(--t2);padding:.8rem;font-size:.82rem">Nessun deep report disponibile.</div>';
+					deepSentRow.parentElement.style.display = "none";
+				} else {
+					deeps.slice()
+						.sort(function(a, b) {
+							var pa = a.entry.date.split("-").map(Number),
+								pb = b.entry.date.split("-").map(Number);
+							return new Date(pb[2], pb[1] - 1, pb[0]) - new Date(pa[2], pa[1] - 1, pa[0]);
+						})
+						.forEach(function(d, i) {
+							var td = d.data.ticker_data || {};
+							var cur = td.currency === "EUR" ? "€" :
+								td.currency === "GBP" ? "£" :
+								td.currency === "CHF" ? "CHF " :
+								"$";
+							var px = typeof td.price === "number" ? cur + td.price.toFixed(2) : "-";
+							var cp = typeof td.change_pct === "number" ? td.change_pct : null;
+							var cpColor = cp === null ? "var(--t2)" : cp >= 0 ? "var(--up)" : "var(--dn)";
+							var cpStr = cp === null ? "" : (cp >= 0 ? "+" : "") + cp.toFixed(2) + "%";
+							var newsCount = (d.data.news || []).length;
+							var th = d.data.thesis || {};
+							var bull = (th.bull || []).length,
+								bear = (th.bear || []).length;
+							(d.data.news || []).forEach(function(n) {
+								var s = n.sentiment || "neutral";
+								if (deepSent[s] !== undefined) deepSent[s]++;
+							});
+							var url = "deep.html?t=" + encodeURIComponent(d.entry.ticker) +
+								"&d=" + encodeURIComponent(d.entry.date);
+							deepList.innerHTML +=
+								'<a href="' + url + '" style="text-decoration:none;color:inherit">' +
+								'<div class="top-item">' +
+								'<span class="top-rank">#' + (i + 1) + '</span>' +
+								'<span class="top-name">' +
+								escapeHtml(d.entry.ticker) + ' · ' + escapeHtml(d.entry.label || d.entry.ticker) +
+								' <span style="color:var(--t2);font-weight:400;font-size:.72rem">(' +
+								escapeHtml(d.entry.sector || "") + ')</span>' +
+								'</span>' +
+								'<span class="top-val" style="display:flex;gap:.6rem;align-items:center">' +
+								'<span>' + px + '</span>' +
+								'<span style="color:' + cpColor + '">' + cpStr + '</span>' +
+								'<span style="color:var(--t2);font-size:.72rem">' + d.entry.date + '</span>' +
+								'<span style="color:var(--t2);font-size:.72rem">' + newsCount + ' news</span>' +
+								'<span style="color:var(--up);font-size:.72rem">&#x25B2;' + bull + '</span>' +
+								'<span style="color:var(--dn);font-size:.72rem">&#x25BC;' + bear + '</span>' +
+								'</span>' +
+								'</div></a>';
+						});
+					["positive", "negative", "neutral"].forEach(function(s) {
+						deepSentRow.innerHTML +=
+							'<div class="sent-item"><div class="sent-emoji">' +
+							semoji[s] +
+							'</div><div class="sent-val">' +
+							deepSent[s] +
+							'</div><div class="sent-label">' +
+							slabel[s] +
+							"</div></div>";
+					});
+				}
+
 				// Export JSON
 				document.getElementById("export-json").addEventListener("click", function() {
 					// Clean export: remove internal fields not useful to end user
 					function cleanArticle(a) {
-						var c = {title: a.title, url: a.url, source: a.source, financial: a.financial, sentiment: a.sentiment, impact: a.impact};
+						var c = {
+							title: a.title,
+							url: a.url,
+							source: a.source,
+							financial: a.financial,
+							sentiment: a.sentiment,
+							impact: a.impact
+						};
 						if (a.extract) {
-							c.extract = {text: a.extract.text, dataPoints: a.extract.dataPoints, entities: a.extract.entities, tickers: a.extract.tickers};
+							c.extract = {
+								text: a.extract.text,
+								dataPoints: a.extract.dataPoints,
+								entities: a.extract.entities,
+								tickers: a.extract.tickers
+							};
 						}
 						return c;
 					}
@@ -885,9 +1008,19 @@
 							var data = d.data;
 							return {
 								date: d.date,
-								meta: {date: data.meta.date, fullDate: data.meta.fullDate, categoryCount: data.meta.categoryCount, articleCount: data.meta.articleCount},
+								meta: {
+									date: data.meta.date,
+									fullDate: data.meta.fullDate,
+									categoryCount: data.meta.categoryCount,
+									articleCount: data.meta.articleCount
+								},
 								categories: (data.categories || []).map(function(cat) {
-									return {id: cat.id, name: cat.name, summary: cat.summary, articles: cat.articles.map(cleanArticle)};
+									return {
+										id: cat.id,
+										name: cat.name,
+										summary: cat.summary,
+										articles: cat.articles.map(cleanArticle)
+									};
 								}),
 							};
 						}),
@@ -897,7 +1030,15 @@
 								date: s.date,
 								meta: data.meta,
 								trends: (data.trends || []).map(function(tr) {
-									return {title: tr.title, category: tr.category, sentiment: tr.sentiment, narrative: tr.narrative, metrics: tr.metrics, tickers: tr.tickers, sources: tr.sources};
+									return {
+										title: tr.title,
+										category: tr.category,
+										sentiment: tr.sentiment,
+										narrative: tr.narrative,
+										metrics: tr.metrics,
+										tickers: tr.tickers,
+										sources: tr.sources
+									};
 								}),
 								tickers: data.tickers,
 							};
@@ -918,7 +1059,9 @@
 					return '"' + (s || "").toString().replace(/"/g, '""') + '"';
 				}
 				document.getElementById("export-csv").addEventListener("click", function() {
-					var rows = ["Ticker,Nome,Settore,Valuta,Prezzo,Variazione %,Data prezzo,Menzioni,Trend associati"];
+					var rows = [
+						"Ticker,Nome,Settore,Valuta,Prezzo,Variazione %,Data prezzo,Menzioni,Trend associati"
+					];
 					Object.keys(tickerDetails)
 						.sort(function(a, b) {
 							return (tickers[b] || 0) - (tickers[a] || 0);

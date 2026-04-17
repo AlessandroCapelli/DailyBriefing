@@ -17,11 +17,6 @@ function escapeHtml(str) {
 (function () {
 	"use strict";
 
-	// ── PWA Registration ──
-	if ("serviceWorker" in navigator) {
-		navigator.serviceWorker.register("sw.js").catch(function () {});
-	}
-
 	// ── Text-to-Speech (Italian) ──
 	(function () {
 		if (!("speechSynthesis" in window)) return;
@@ -139,7 +134,7 @@ function escapeHtml(str) {
 		function addButtons() {
 			if (!italianVoice && voicesReady) return; // No Italian voice available
 			var targets = document.querySelectorAll(
-				".summary:not([data-tts]), .narr:not([data-tts])",
+				".summary:not([data-tts]), .narr:not([data-tts]), #company-desc:not([data-tts]), .news-item .s:not([data-tts]), .risk > p:not([data-tts])",
 			);
 			targets.forEach(function (el) {
 				el.setAttribute("data-tts", "1");
@@ -226,6 +221,7 @@ function escapeHtml(str) {
 	(function () {
 		var params = new URLSearchParams(location.search);
 		var date = params.get("d");
+		var ticker = (params.get("t") || "").toUpperCase();
 		var loc = location.pathname.split("/").pop() || "";
 		var title = "DailyBriefing";
 		var desc = "Briefing quotidiani e analisi finanziarie";
@@ -241,6 +237,12 @@ function escapeHtml(str) {
 				"Analisi trend finanziari del " +
 				date +
 				" — ticker, grafici, dati di mercato";
+		} else if (loc === "deep.html" && ticker) {
+			title = "Deep " + ticker + (date ? " " + date : "");
+			desc =
+				"Analisi approfondita di " +
+				ticker +
+				" — fondamentali, opzioni, peer, news, tesi";
 		} else if (loc === "dashboard.html") {
 			title = "Dashboard | DailyBriefing";
 			desc = "Statistiche aggregate, top ticker, sentiment, fonti";
@@ -469,6 +471,7 @@ function escapeHtml(str) {
 	(function () {
 		var params = new URLSearchParams(location.search);
 		var date = params.get("d");
+		var ticker = (params.get("t") || "").toUpperCase();
 		var loc = location.pathname.split("/").pop() || "";
 		if (loc === "daily.html" && date) {
 			document.title =
@@ -476,6 +479,9 @@ function escapeHtml(str) {
 		} else if (loc === "stocks.html" && date) {
 			document.title =
 				"Stocks " + date.substring(0, 5) + " | DailyBriefing";
+		} else if (loc === "deep.html" && ticker) {
+			document.title =
+				"Deep " + ticker + " | DailyBriefing";
 		} else if (loc === "index.html" || loc === "" || loc === "/") {
 			document.title = "DailyBriefing";
 		}
@@ -599,11 +605,12 @@ function escapeHtml(str) {
 		var pageType = null;
 		if (loc === "daily.html") pageType = "daily";
 		else if (loc === "stocks.html") pageType = "stocks";
+		else if (loc === "deep.html") pageType = "deep";
 		if (!pageType) return;
 
 		var params = new URLSearchParams(location.search);
 		var date = params.get("d");
-		if (!date) return;
+		var ticker = (params.get("t") || "").toUpperCase();
 
 		function prefetchUrl(url) {
 			var link = document.createElement("link");
@@ -614,21 +621,50 @@ function escapeHtml(str) {
 			document.head.appendChild(link);
 		}
 
+		function parseDMY(d) {
+			var p = d.split("-").map(Number);
+			return new Date(p[2], p[1] - 1, p[0]);
+		}
+
 		// Load reports.json to find prev/next dates
 		fetch("data/reports.json")
 			.then(function (r) {
 				return r.json();
 			})
 			.then(function (reports) {
+				if (pageType === "deep") {
+					if (!ticker) return;
+					var deepList = reports.deep || [];
+					if (!deepList.length) return;
+					// Latest entry per ticker, sorted alphabetically (matches nav.js)
+					var latestByTicker = {};
+					deepList.forEach(function (e) {
+						if (
+							!latestByTicker[e.ticker] ||
+							parseDMY(e.date) > parseDMY(latestByTicker[e.ticker].date)
+						) {
+							latestByTicker[e.ticker] = e;
+						}
+					});
+					var uniqueTickers = Object.keys(latestByTicker).sort();
+					var idxT = uniqueTickers.indexOf(ticker);
+					if (idxT < 0) return;
+					if (idxT > 0) {
+						var p = latestByTicker[uniqueTickers[idxT - 1]];
+						prefetchUrl("data/deep-" + p.ticker + "-" + p.date + ".json");
+					}
+					if (idxT < uniqueTickers.length - 1) {
+						var n = latestByTicker[uniqueTickers[idxT + 1]];
+						prefetchUrl("data/deep-" + n.ticker + "-" + n.date + ".json");
+					}
+					return;
+				}
+
+				if (!date) return;
 				var dates = (reports[pageType] || [])
 					.slice()
 					.sort(function (a, b) {
-						var pa = a.split("-").map(Number),
-							pb = b.split("-").map(Number);
-						return (
-							new Date(pa[2], pa[1] - 1, pa[0]) -
-							new Date(pb[2], pb[1] - 1, pb[0])
-						);
+						return parseDMY(a) - parseDMY(b);
 					});
 				var idx = dates.indexOf(date);
 				if (idx < 0) return;

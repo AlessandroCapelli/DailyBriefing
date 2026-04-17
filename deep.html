@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#0d0f15" />
-<link rel="manifest" href="manifest.json" />
-<link rel="icon" href="favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<title>Deep Stock Analysis</title>
-<script src="chart.min.js"></script>
-<script src="tooltips.js" defer></script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="theme-color" content="#0d0f15" />
+	<link rel="manifest" href="manifest.json" />
+	<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+	<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+	<title>Deep Stock Analysis</title>
+	<script src="chart.min.js"></script>
+	<script src="tooltips.js" defer></script>
 <style>
 :root{--bg:#0f1117;--card:#1a1d27;--t1:#e2e8f0;--t2:#94a3b8;--acc:#7c9ef8;--acc2:#a5b9ff;--brd:#2d3148;--r:12px;--up:#4ade80;--dn:#f87171;--nt:#facc15;--chbg:#141720;--chbrd:#2d3748}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -263,6 +265,9 @@ table td.r{text-align:right}
 </div>
 
 <script>
+function escapeHtml(s){if(s==null)return"";return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
+function safeUrl(u){return (u||"").match(/^https?:\/\//)?u:"#"}
+function sanitizeRichText(s){if(s==null)return"";var esc=escapeHtml(s);return esc.replace(/&lt;(\/?(?:strong|em|b|i|br))\s*\/?&gt;/gi,"<$1>")}
 let DEEP_DATA=null;
 
 function showError(msg){
@@ -270,7 +275,7 @@ function showError(msg){
   document.getElementById('root').style.display='none';
   const e=document.getElementById('error');
   e.style.display='block';
-  e.innerHTML='<h2 style="margin-bottom:1rem">Errore</h2><p>'+msg+'</p><p style="margin-top:1rem"><a href="index.html" style="color:var(--acc)">&larr; Torna alla home</a></p>';
+  e.innerHTML='<h2 style="margin-bottom:1rem">Errore</h2><p>'+escapeHtml(msg)+'</p><p style="margin-top:1rem"><a href="index.html" style="color:var(--acc)">&larr; Torna alla home</a></p>';
 }
 
 (function(){
@@ -290,6 +295,11 @@ function showError(msg){
       target=deepList[0];
     }
     if(!target){showError('Report non trovato per '+(ticker||'')+' '+(date||''));return;}
+    // Canonicalize URL so nav.js can render ticker prev/next arrows
+    if(!ticker||!date||ticker!==target.ticker||date!==target.date){
+      location.replace('deep.html?t='+encodeURIComponent(target.ticker)+'&d='+encodeURIComponent(target.date));
+      return;
+    }
     loadReport(target,reports);
   }).catch(e=>showError('Impossibile caricare reports.json: '+e.message));
 })();
@@ -336,7 +346,7 @@ function renderHeader(){
   const d=DEEP_DATA;
   const i=d.fundamentals.info;
   const cur=i.currency||'USD';
-  document.getElementById('h-title').innerHTML=d.label+' <span class="tck">'+d.ticker+'</span>';
+  document.getElementById('h-title').innerHTML=escapeHtml(d.label)+' <span class="tck">'+escapeHtml(d.ticker)+'</span>';
   document.getElementById('price-big').textContent=fmt.cur(d.ticker_data.price,cur);
   const delta=i.regularMarketChangePercent||d.ticker_data.change_pct||0;
   const dEl=document.getElementById('price-delta');
@@ -344,7 +354,7 @@ function renderHeader(){
   dEl.className='price-delta '+(delta>0?'d-up':delta<0?'d-dn':'d-nt');
   document.getElementById('subtag').textContent=[cur,i.sector||'-',i.industry||'-'].join(' \u00B7 ');
   document.getElementById('hmeta').textContent='Dati generati il '+d.generatedAt;
-  document.getElementById('company-desc').innerHTML=d.companyDesc||'';
+  document.getElementById('company-desc').innerHTML=sanitizeRichText(d.companyDesc||'');
 }
 
 // Helper: tooltip icon
@@ -409,7 +419,7 @@ function renderKM(){
     if(d&&d.startsWith('+'))cls='up';else if(d&&d.startsWith('-'))cls='dn';
     const deltaHtml=d?'<div class="km-delta '+cls+'">'+d+'</div>':'';
     const periodHtml=period?'<div class="km-period">'+period+'</div>':'';
-    return '<div class="km"><div class="km-label">'+l+tip(tk)+'</div><div class="km-val">'+v+'</div>'+deltaHtml+periodHtml+'</div>';
+    return '<div class="km"><div class="km-label">'+l+tip(tk)+'</div><div class="km-val">'+escapeHtml(v)+'</div>'+deltaHtml+periodHtml+'</div>';
   }).join('');
 }
 
@@ -583,7 +593,7 @@ function renderPeersTable(){
   tb.innerHTML=rows.map(r=>{
     const main=r.sym===DEEP_DATA.ticker?'style="background:rgba(124,158,248,.08);font-weight:700"':'';
     const cls=v=>v==null?'nt':v>=0?'up':'dn';
-    return '<tr '+main+'><td><b>'+r.sym+'</b></td><td style="font-family:system-ui;font-size:.78rem">'+r.name+'</td><td class="r">'+fmt.cur(r.price)+'</td><td class="r '+cls(r.chg)+'">'+fmt.pct(r.chg,2)+'</td><td class="r '+cls(r.p5y)+'">'+(r.p5y==null?'-':fmt.pct(r.p5y,1))+'</td><td class="r '+cls(r.p1y)+'">'+(r.p1y==null?'-':fmt.pct(r.p1y,1))+'</td><td class="r '+cls(r.p6m)+'">'+(r.p6m==null?'-':fmt.pct(r.p6m,1))+'</td></tr>';
+    return '<tr '+main+'><td><b>'+escapeHtml(r.sym)+'</b></td><td style="font-family:system-ui;font-size:.78rem">'+escapeHtml(r.name)+'</td><td class="r">'+fmt.cur(r.price)+'</td><td class="r '+cls(r.chg)+'">'+fmt.pct(r.chg,2)+'</td><td class="r '+cls(r.p5y)+'">'+(r.p5y==null?'-':fmt.pct(r.p5y,1))+'</td><td class="r '+cls(r.p1y)+'">'+(r.p1y==null?'-':fmt.pct(r.p1y,1))+'</td><td class="r '+cls(r.p6m)+'">'+(r.p6m==null?'-':fmt.pct(r.p6m,1))+'</td></tr>';
   }).join('');
 }
 
@@ -749,7 +759,7 @@ function renderAnalysts(){
     if(d&&d.startsWith('+'))cls='up';else if(d&&d.startsWith('-'))cls='dn';
     const deltaHtml=d?'<div class="km-delta '+cls+'">'+d+'</div>':'';
     const periodHtml=period?'<div class="km-period">'+period+'</div>':'';
-    return '<div class="km"><div class="km-label">'+l+tip(tk)+'</div><div class="km-val">'+v+'</div>'+deltaHtml+periodHtml+'</div>';
+    return '<div class="km"><div class="km-label">'+l+tip(tk)+'</div><div class="km-val">'+escapeHtml(v)+'</div>'+deltaHtml+periodHtml+'</div>';
   }).join('');
   const data=[['Low',i.targetLowPrice],['Mean',i.targetMeanPrice],['Median',i.targetMedianPrice],['High',i.targetHighPrice],['Spot',spot]];
   new Chart(document.getElementById('analyst-chart'),{type:'bar',data:{labels:data.map(d=>d[0]),datasets:[{label:'Prezzo',data:data.map(d=>d[1]),backgroundColor:data.map(d=>d[0]==='Spot'?'#facc15':'#7c9ef8')}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{callback:v=>'$'+v.toFixed(0)}}},plugins:{legend:{display:false}}}});
@@ -765,7 +775,7 @@ function renderHolders(){
     const value=r.Value||r.value||null;
     const pct=r['% Out']||r.pctHeld||null;
     const date=r['Date Reported']||r.dateReported||'-';
-    return '<tr><td style="font-family:system-ui;font-size:.82rem">'+holder+'</td><td class="r">'+(shares?fmt.big(shares):'-')+'</td><td class="r">'+(value?'$'+fmt.big(value):'-')+'</td><td class="r">'+(pct==null?'-':(typeof pct==='number'?fmt.pct(pct*100,2):pct))+'</td><td>'+(typeof date==='string'?date.slice(0,10):'-')+'</td></tr>';
+    return '<tr><td style="font-family:system-ui;font-size:.82rem">'+escapeHtml(holder)+'</td><td class="r">'+(shares?fmt.big(shares):'-')+'</td><td class="r">'+(value?'$'+fmt.big(value):'-')+'</td><td class="r">'+(pct==null?'-':(typeof pct==='number'?fmt.pct(pct*100,2):escapeHtml(pct)))+'</td><td>'+(typeof date==='string'?escapeHtml(date.slice(0,10)):'-')+'</td></tr>';
   }).join('');
 }
 
@@ -775,9 +785,9 @@ function renderNews(){
   if(news.length===0){root.innerHTML='<div class="desc">Nessuna notizia disponibile.</div>';return;}
   root.innerHTML=news.map(n=>{
     const cls='sent-'+(n.sentiment==='positive'?'pos':n.sentiment==='negative'?'neg':'neu');
-    const badge='<span class="sent-badge '+(n.sentiment==='positive'?'pos':n.sentiment==='negative'?'neg':'neu')+'">'+(n.sentiment||'neutro')+'</span>';
-    const date=n.date?fmt.date(n.date):'';
-    return '<div class="news-item '+cls+'"><div class="t"><a href="'+n.url+'" target="_blank" rel="noopener noreferrer">'+n.title+'</a></div><div class="m"><span class="src">'+(n.source||'')+'</span><span>'+date+'</span>'+badge+'</div><div class="s">'+(n.summary||'')+'</div></div>';
+    const badge='<span class="sent-badge '+(n.sentiment==='positive'?'pos':n.sentiment==='negative'?'neg':'neu')+'">'+escapeHtml(n.sentiment||'neutro')+'</span>';
+    const date=n.date?escapeHtml(fmt.date(n.date)):'';
+    return '<div class="news-item '+cls+'"><div class="t"><a href="'+escapeHtml(safeUrl(n.url))+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(n.title)+'</a></div><div class="m"><span class="src">'+escapeHtml(n.source||'')+'</span><span>'+date+'</span>'+badge+'</div><div class="s">'+escapeHtml(n.summary||'')+'</div></div>';
   }).join('');
 }
 
@@ -785,9 +795,9 @@ function renderThesis(){
   const t=DEEP_DATA.thesis||{bull:[],bear:[],neutral:[]};
   const root=document.getElementById('thesis-root');
   let html='';
-  if(t.bull.length){html+='<h3 style="font-size:1rem;color:var(--up);margin-bottom:.6rem">&#x1F7E2; Driver bullish</h3>';t.bull.forEach(b=>html+='<div class="risk bull"><h4>'+b.title+'</h4><p>'+b.text+'</p></div>');}
-  if(t.bear.length){html+='<h3 style="font-size:1rem;color:var(--dn);margin:1rem 0 .6rem">&#x1F534; Rischi bearish</h3>';t.bear.forEach(b=>html+='<div class="risk"><h4>'+b.title+'</h4><p>'+b.text+'</p></div>');}
-  if(t.neutral.length){html+='<h3 style="font-size:1rem;color:var(--nt);margin:1rem 0 .6rem">&#x26AA; Fattori neutri / da monitorare</h3>';t.neutral.forEach(b=>html+='<div class="risk neu-acc"><h4>'+b.title+'</h4><p>'+b.text+'</p></div>');}
+  if(t.bull.length){html+='<h3 style="font-size:1rem;color:var(--up);margin-bottom:.6rem">&#x1F7E2; Driver bullish</h3>';t.bull.forEach(b=>html+='<div class="risk bull"><h4>'+escapeHtml(b.title)+'</h4><p>'+escapeHtml(b.text)+'</p></div>');}
+  if(t.bear.length){html+='<h3 style="font-size:1rem;color:var(--dn);margin:1rem 0 .6rem">&#x1F534; Rischi bearish</h3>';t.bear.forEach(b=>html+='<div class="risk"><h4>'+escapeHtml(b.title)+'</h4><p>'+escapeHtml(b.text)+'</p></div>');}
+  if(t.neutral.length){html+='<h3 style="font-size:1rem;color:var(--nt);margin:1rem 0 .6rem">&#x26AA; Fattori neutri / da monitorare</h3>';t.neutral.forEach(b=>html+='<div class="risk neu-acc"><h4>'+escapeHtml(b.title)+'</h4><p>'+escapeHtml(b.text)+'</p></div>');}
   root.innerHTML=html||'<div class="desc">Nessuna tesi disponibile.</div>';
 }
 
