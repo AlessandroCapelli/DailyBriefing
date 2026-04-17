@@ -589,6 +589,8 @@
 			return new Date(p[2], p[1] - 1, p[0]);
 		}
 
+		function escapeHtml(s){if(s==null)return"";return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
+
 		// Load reports manifest then render
 		fetch("data/reports.json")
 			.then((r) => r.json())
@@ -626,15 +628,15 @@
 					.map(function(e) {
 						return (
 							'<a class="deep-chip" href="deep.html?t=' +
-							e.ticker +
+							encodeURIComponent(e.ticker) +
 							"&d=" +
-							e.date +
+							encodeURIComponent(e.date) +
 							'" title="' +
-							(e.sector || "") +
+							escapeHtml(e.sector || "") +
 							'"><span class="sym">' +
-							e.ticker +
+							escapeHtml(e.ticker) +
 							'</span><span class="lbl">' +
-							(e.label || e.ticker) +
+							escapeHtml(e.label || e.ticker) +
 							"</span></a>"
 						);
 					})
@@ -730,7 +732,7 @@
 					type: "deep",
 					label: e.label + " (" + e.ticker + ")",
 					badge: "Deep",
-					href: "deep.html?t=" + e.ticker + "&d=" + e.date,
+					href: "deep.html?t=" + encodeURIComponent(e.ticker) + "&d=" + encodeURIComponent(e.date),
 					kwKey: kwKey,
 				});
 			});
@@ -769,26 +771,26 @@
 					const newBadge = isNew ? '<span class="tl-new">Nuovo</span>' : "";
 					a.innerHTML =
 						'<div class="tl-date-col"><span class="tl-day">' +
-						parts[0] +
+						escapeHtml(parts[0]) +
 						'</span><span class="tl-month">' +
-						month +
+						escapeHtml(month) +
 						"</span></div>" +
 						'<div class="tl-info"><div class="tl-title">' +
-						item.label +
+						escapeHtml(item.label) +
 						newBadge +
 						'</div><div class="tl-meta">' +
-						dow +
+						escapeHtml(dow) +
 						", " +
-						parts[0] +
+						escapeHtml(parts[0]) +
 						"/" +
-						parts[1] +
+						escapeHtml(parts[1]) +
 						"/" +
-						parts[2] +
+						escapeHtml(parts[2]) +
 						"</div></div>" +
 						'<span class="tl-badge ' +
-						item.type +
+						escapeHtml(item.type) +
 						'">' +
-						item.badge +
+						escapeHtml(item.badge) +
 						"</span>" +
 						'<span class="tl-arrow">\u203A</span>';
 					timeline.appendChild(a);
