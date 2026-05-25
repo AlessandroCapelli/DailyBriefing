@@ -854,6 +854,21 @@
 			document.getElementById("rpt-meta").textContent =
 				M.trendCount + " trend · " + M.tickerCount + " ticker · " + T.reduce(function(s, t) { return s + (t.sources || []).length; }, 0) + " fonti";
 
+			// ── Empty state ──
+			if (!T.length) {
+				const root = document.getElementById("trends-root");
+				root.innerHTML = '<div style="text-align:center;color:var(--t2);padding:4rem 1rem;font-size:1rem;line-height:1.8">' +
+					'Nessun contenuto disponibile per questa data.' +
+					'</div>';
+				document.querySelector(".ctrl").style.display = "none";
+				var actions = root.nextElementSibling;
+				while (actions && actions.tagName !== "FOOTER") {
+					actions.style.display = "none";
+					actions = actions.nextElementSibling;
+				}
+				return;
+			}
+
 			// ── Build filter buttons ──
 			const cats = [...new Set(T.map((t) => t.category))];
 				const catEmoji = {
