@@ -1,0 +1,817 @@
+{
+	"meta": {
+		"date": "09-07-2026",
+		"dayOfWeek": "Giovedì",
+		"fullDate": "9 luglio 2026",
+		"time": "10:04",
+		"categoryCount": 6,
+		"sourceCount": 5,
+		"articleCount": 37,
+		"deepDiveCount": 30
+	},
+	"categories": [
+		{
+			"id": "politica",
+			"emoji": "&#x1F5F3;&#xFE0F;",
+			"name": "Politica",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"Esito del vertice NATO di Ankara",
+				"Ritiro di Graham Platner dalla corsa al Senato USA",
+				"Riforma dei concorsi universitari",
+				"Divieto irlandese alle importazioni dalle colonie israeliane"
+			],
+			"continuingThemes": [
+				"Escalation militare USA-Iran nello stretto di Hormuz",
+				"Spionaggio russo in Italia",
+				"Nigel Farage e le indagini su Reform UK",
+				"Riforma dei media pubblici in Ungheria"
+			],
+			"summary": "La giornata politica è dominata dal precipitare dello scontro militare tra Stati Uniti e Iran, che per il secondo giorno consecutivo hanno bombardato il territorio iraniano. Dopo l'attacco iraniano di martedì contro tre petroliere nello stretto di Hormuz, mercoledì Donald Trump ha dichiarato ufficialmente finito il cessate il fuoco previsto dal pre-accordo di giugno, che fino a quel momento aveva retto. Il CENTCOM ha colpito oltre 90 obiettivi lungo le coste meridionali dell'Iran — sistemi di difesa antiaerea, basi missilistiche e infrastrutture logistiche — con esplosioni segnalate a Bandar Abbas, sull'isola di Qeshm e a Bushehr, dove sorge l'unica centrale nucleare del paese (non colpita). Il ministero della Salute iraniano parla di 14 morti e 78 feriti. I Guardiani della Rivoluzione hanno risposto colpendo basi statunitensi in Bahrein e Kuwait, con danni però molto limitati. Rispetto a ieri l'obiettivo dichiarato di Washington si è fatto più esplicito: rendere più difficile per Teheran il controllo del traffico nello stretto, la principale leva negoziale iraniana e il punto di massima vulnerabilità per i mercati energetici globali.\n\nSi è chiuso ad Ankara il vertice NATO, con un esito migliore di quanto temuto dagli alleati europei. Poche ore prima della dichiarazione finale Trump aveva attaccato duramente Francia, Regno Unito, Germania, Italia e Spagna, rivendicato ancora il controllo della Groenlandia e accusato l'alleanza di non aver aiutato gli Stati Uniti nella guerra in Iran; al termine dei lavori ha però moderato i toni parlando di «unità» e «amore». I leader hanno ribadito l'impegno all'Articolo 5 e annunciato 70 miliardi di euro in attrezzature, assistenza e addestramento militare per l'Ucraina nel 2026-2027, di fatto a carico dei paesi europei e del Canada, dato che dal 2025 gli Stati Uniti hanno sospeso gli aiuti diretti a Kiev. Trump ha inoltre concesso all'Ucraina la licenza per produrre autonomamente i sistemi di difesa Patriot. Sullo sfondo, l'analisi sui ripetuti ritardi istituzionali di Giorgia Meloni, arrivata in ritardo anche ad Ankara: una consuetudine ormai proverbiale, letta più come segnale di irritazione o imbarazzo politico che come semplice disorganizzazione.\n\nIn Italia emergono i dettagli dell'inchiesta sullo spionaggio a favore della Russia: arrestati due ex agenti dell'AISI, Gavino Raoul Piras e Vincenzo Di Pasquale (entrambi 59 anni), ora ai domiciliari, mentre cinque militari ancora in servizio risultano indagati. Il destinatario delle informazioni riservate sarebbe Mikhail Astakhov, ufficiale dell'intelligence militare russa (GRU) ufficialmente in servizio come militare all'ambasciata russa e quindi coperto da immunità diplomatica; i contatti avvenivano anche tramite scambi di foglietti di carta ripresi dai Carabinieri del ROS. Prosegue quindi il tema della guerra ibrida e dell'infiltrazione russa già emerso ieri, ora con contorni più definiti.\n\nSul fronte internazionale, la Camera del parlamento irlandese ha approvato una legge che vieta le importazioni di beni dalle colonie israeliane che occupano illegalmente Gerusalemme Est e la Cisgiordania: un provvedimento dal valore soprattutto simbolico (le importazioni valgono meno di 1 milione di euro tra il 2020 e il 2024) ma fondato sul parere della Corte internazionale di giustizia del 2024. Negli Stati Uniti il candidato Democratico del Maine Graham Platner ha sospeso la campagna per il Senato dopo giorni di pressioni interne per accuse di violenza sessuale che definisce «completamente false»: la sua eventuale vittoria contro la Repubblicana Susan Collins era considerata decisiva per il controllo del Senato, e il partito sceglierà il sostituto il 27 luglio.\n\nIn Italia la Camera ha approvato definitivamente la riforma dei concorsi universitari della ministra Anna Maria Bernini, che sostituisce l'abilitazione scientifica nazionale con un'autocertificazione: pensata per ridurre nepotismo ed eccesso di abilitati, è contestata da sindacati e da 144 società scientifiche, che temono l'effetto opposto e concorsi «su misura». Prosegue infine il quadro europeo già aperto ieri: in Ungheria il nuovo premier Péter Magyar continua a smantellare l'apparato mediatico ereditato da Orbán, con la tv pubblica MTVA che si è scusata per anni di propaganda e ha sospeso i notiziari; e nel Regno Unito Nigel Farage, leader di Reform UK (primo nei sondaggi), tenta la mossa azzardata di dimettersi da parlamentare di Clacton-on-Sea per farsi rieleggere alle suppletive e distogliere l'attenzione da due indagini sui finanziamenti del partito, con gli altri partiti che diserteranno il voto.\n\nNon più in primo piano rispetto a ieri: la condanna a morte del funzionario cinese Yang Youlin, l'attacco della prima notte con le 60 imbarcazioni distrutte a Hormuz e la crisi tra Netanyahu e la Corte Suprema israeliana, che resta sullo sfondo ma senza sviluppi nuovi.",
+			"articles": [
+				{
+					"title": "Gli Stati Uniti hanno attaccato l'Iran per il secondo giorno di fila",
+					"url": "https://www.ilpost.it/2026/07/09/stati-uniti-nuovi-attacchi-iran/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Per il secondo giorno consecutivo gli Stati Uniti hanno bombardato l'Iran in reazione all'attacco iraniano di martedì contro tre petroliere nello stretto di Hormuz. Trump ha dichiarato finito il cessate il fuoco di giugno. Il CENTCOM ha colpito oltre 90 obiettivi (difese antiaeree, basi missilistiche, logistica) sulle coste meridionali, con esplosioni a Bandar Abbas, Qeshm e Bushehr (centrale nucleare non colpita). Il ministero della Salute iraniano riferisce 14 morti e 78 feriti. I Guardiani della Rivoluzione hanno colpito basi USA in Bahrein e Kuwait con danni limitati. Obiettivo dichiarato: ostacolare il controllo iraniano dello stretto.",
+						"dataPoints": [
+							"Oltre 90 obiettivi colpiti in Iran",
+							"14 morti e 78 feriti (dato iraniano)",
+							"Secondo giorno consecutivo di attacchi"
+						],
+						"entities": [
+							"Stati Uniti",
+							"Iran",
+							"CENTCOM",
+							"Guardiani della Rivoluzione",
+							"Donald Trump"
+						],
+						"tickers": ["CL=F", "BZ=F"],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Com'è andato alla fine l'incontro della Nato",
+					"url": "https://www.ilpost.it/2026/07/08/trump-alleati-nato-ankara-critiche/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Dopo due giorni di vertice ad Ankara i leader NATO hanno approvato una dichiarazione che ribadisce l'impegno all'Articolo 5. Poche ore prima Trump aveva attaccato duramente Francia, Regno Unito, Germania, Italia e Spagna e rivendicato la Groenlandia, poi ha moderato i toni parlando di unità. Annunciati 70 miliardi di euro in attrezzature e addestramento per l'Ucraina 2026-2027, finanziati soprattutto da europei e Canada visto che gli USA hanno sospeso gli aiuti dal 2025. Concessa all'Ucraina la licenza per produrre i sistemi Patriot.",
+						"dataPoints": [
+							"70 miliardi di euro per l'Ucraina 2026-2027",
+							"Licenza Patriot all'Ucraina"
+						],
+						"entities": [
+							"NATO",
+							"Donald Trump",
+							"Ucraina",
+							"Groenlandia"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Giorgia Meloni la ritardataria",
+					"url": "https://www.ilpost.it/2026/07/08/giorgia-meloni-ankara-trump-erdogan-ritardo-nato/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Analisi dei ripetuti ritardi di Giorgia Meloni agli appuntamenti istituzionali, dal primo Consiglio europeo del 2022 fino al vertice NATO di Ankara dell'8 luglio 2026. A volte dovuti a disorganizzazione, più spesso letti come segnale politico di irritazione o imbarazzo. Un tratto ormai considerato proverbiale nella comunicazione della presidente del Consiglio.",
+						"dataPoints": [],
+						"entities": [
+							"Giorgia Meloni",
+							"Antonio Tajani",
+							"Guido Crosetto"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Cosa si sa dell'indagine sullo spionaggio a favore della Russia",
+					"url": "https://www.ilpost.it/2026/07/08/indagine-spionaggio-russia-arrestati-ex-agenti-servizi-segreti-italiani/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Due ex agenti dell'AISI, Gavino Raoul Piras e Vincenzo Di Pasquale (59 anni), sono agli arresti domiciliari con l'accusa di spionaggio a favore della Russia e accesso abusivo a sistemi informatici. Cinque militari ancora in servizio sono indagati per procacciamento di notizie sulla sicurezza dello Stato e rivelazione di segreti. Il destinatario delle informazioni sarebbe Mikhail Astakhov, ufficiale del GRU coperto da immunità diplomatica come militare all'ambasciata russa. I contatti avvenivano tramite scambi di foglietti ripresi dai Carabinieri del ROS.",
+						"dataPoints": [
+							"2 ex agenti AISI arrestati",
+							"5 militari in servizio indagati"
+						],
+						"entities": [
+							"AISI",
+							"GRU",
+							"Mikhail Astakhov",
+							"Carabinieri ROS",
+							"Russia"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "In Irlanda la Camera ha approvato un divieto alle importazioni di beni dai territori palestinesi illegalmente occupati da Israele",
+					"url": "https://www.ilpost.it/2026/07/08/parlamento-irlandese-divieto-importazioni-beni-territori-palestinesi-illegalmente-occupati-israele/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "La Camera del parlamento irlandese ha approvato una legge che vieta le importazioni di beni dalle colonie israeliane che occupano illegalmente Gerusalemme Est e la Cisgiordania. Il valore è soprattutto simbolico: le importazioni (frutta, verdura, legname) valgono meno di 1 milione di euro tra il 2020 e il 2024. La legge, basata sul parere della Corte internazionale di giustizia del 2024, dovrà passare al Senato ed essere firmata dalla presidente Catherine Connolly, con entrata in vigore attesa entro l'estate.",
+						"dataPoints": [
+							"Importazioni sotto 1 milione di euro (2020-2024)"
+						],
+						"entities": [
+							"Irlanda",
+							"Israele",
+							"Corte internazionale di giustizia",
+							"Catherine Connolly"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Graham Platner ha sospeso la sua campagna per il Senato degli Stati Uniti",
+					"url": "https://www.ilpost.it/2026/07/09/graham-platner-maine-sospesa-campagna-accuse-violenza-sessuale/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Graham Platner, candidato Democratico del Maine al Senato USA, ha sospeso la campagna dopo giorni di pressioni del suo partito per accuse di violenza sessuale che definisce completamente false. Non ha ancora ritirato formalmente la candidatura. La sua vittoria contro la Repubblicana Susan Collins era considerata fondamentale per il controllo Democratico del Senato in funzione anti-Trump. Il partito sceglierà il sostituto il 27 luglio. Le accuse sono state presentate da Jenny Racicot.",
+						"dataPoints": [
+							"Assemblea Democratica per il sostituto il 27 luglio"
+						],
+						"entities": [
+							"Graham Platner",
+							"Susan Collins",
+							"Partito Democratico",
+							"Maine"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "È stata approvata la riforma dei concorsi universitari proposta dal governo",
+					"url": "https://www.ilpost.it/2026/07/08/approvata-riforma-concorsi-universita-bernini/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "La Camera ha approvato definitivamente la riforma dei concorsi universitari della ministra Anna Maria Bernini, già approvata dal Senato a dicembre. Sostituisce l'abilitazione scientifica nazionale (ASN) con un'autocertificazione, con l'obiettivo di ridurre nepotismo ed eccesso di abilitati. È contestata da sindacati, movimenti universitari e 144 società scientifiche, che temono l'effetto opposto e concorsi su misura, giudicando il testo troppo vago e poco trasparente.",
+						"dataPoints": [
+							"144 società scientifiche critiche",
+							"ASN sostituita da autocertificazione"
+						],
+						"entities": [
+							"Anna Maria Bernini",
+							"Camera dei deputati"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "La televisione pubblica ungherese si è scusata con i telespettatori",
+					"url": "https://www.ilpost.it/2026/07/08/riforma-servizio-pubblico-ungheria/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Sul primo canale della tv pubblica ungherese MTVA è apparso il messaggio: «Il servizio pubblico non dovrebbe mentire. Ci scusiamo per averlo fatto così a lungo». Le trasmissioni sono state sospese per consentire le riforme del nuovo premier Péter Magyar, in carica da maggio, che sta smantellando l'apparato mediatico semi-autoritario di Viktor Orbán. Sospesa anche la radio Kossuth, che ha trasmesso musica di Béla Bartók. I notiziari riprenderanno dopo la ristrutturazione.",
+						"dataPoints": [],
+						"entities": [
+							"MTVA",
+							"Péter Magyar",
+							"Viktor Orbán",
+							"radio Kossuth"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Nigel Farage sta tentando una mossa azzardata",
+					"url": "https://www.ilpost.it/2026/07/08/nigel-farage-elezione-suppletiva-indagini/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Nigel Farage, leader di Reform UK (primo nei sondaggi), si è dimesso da parlamentare di Clacton-on-Sea per ricandidarsi alle suppletive, subito dopo l'apertura di una seconda indagine della commissione etica sui finanziamenti illeciti del partito per milioni di sterline. La mossa è letta da tutta la politica britannica come un modo per distogliere l'attenzione dalle indagini; i principali partiti (Conservatori, Laburisti, Liberaldemocratici, Verdi) non presenteranno candidati alle suppletive di agosto-settembre.",
+						"dataPoints": [
+							"Donazioni illecite per milioni di sterline",
+							"Suppletive tra agosto e settembre"
+						],
+						"entities": [
+							"Nigel Farage",
+							"Reform UK",
+							"Clacton-on-Sea"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				}
+			]
+		},
+		{
+			"id": "attualita",
+			"emoji": "&#x1F30D;",
+			"name": "Attualità",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "continuation",
+			"newThemes": [
+				"Record termico di giugno in Europa occidentale",
+				"Incendio del deposito BRT a Milano",
+				"Condanna per la morte di Satnam Singh",
+				"Frana in un campo rohingya in Bangladesh",
+				"Esplosione in una fabbrica di fuochi a Rieti",
+				"Boeing 737 cargo disperso nel mar Arabico"
+			],
+			"continuingThemes": [
+				"Nuova ondata di calore in Europa",
+				"Emergenza climatica"
+			],
+			"summary": "L'attualità è segnata dall'emergenza climatica, che trova conferma nei dati e si intreccia con una nuova ondata di calore in arrivo. Secondo la collaborazione scientifica europea Copernicus, giugno 2026 è stato il mese più caldo mai registrato nell'Europa occidentale, con temperature di 3,06 gradi sopra la media degli ultimi decenni, e il secondo giugno più caldo a livello globale (+1,39 gradi sul periodo preindustriale). La ricercatrice Samantha Burgess parla di «un sistema climatico in continuo accumulo di calore», con ondate sempre più intense e rischi crescenti per persone, ecosistemi e infrastrutture.\n\nDirettamente collegata è la nuova ondata di calore segnalata martedì dall'Organizzazione Mondiale della Sanità: eccezionale e prolungata, colpirà soprattutto Portogallo e Spagna meridionale, con massime fino a 43 gradi. In Italia le temperature salgono da mercoledì, con dieci città in bollino arancione (Torino fino a 38 gradi, Milano 36), spinte dal consueto anticiclone subtropicale africano. Prosegue quindi il tema già aperto ieri, che rischia di aggravare gli effetti sanitari e ambientali del caldo estremo.\n\nA Milano è stato spento nella notte tra mercoledì e giovedì l'incendio che aveva coinvolto due capannoni del deposito dell'azienda di spedizioni BRT (ex Bartolini) in via Don Minzoni, nella zona nord tra Bovisa e Dergano. Il rogo ha interessato una superficie di 8mila metri quadrati, generando una colonna di fumo nero visibile da tutta la città; sulla base delle analisi di Arpa Lombardia il comune ha chiesto per precauzione a chi abita entro due chilometri di non sostare all'aperto e tenere le finestre chiuse. Non risultano feriti, le cause sono ignote e la procura di Milano ha aperto un'indagine.\n\nSul fronte del lavoro, il tribunale di Latina ha condannato in primo grado a 16 anni Antonello Lovato per la morte del bracciante indiano Satnam Singh, rimasto senza un braccio dopo un incidente in un'azienda agricola nel giugno 2024 e lasciato davanti a casa invece di essere soccorso. Il reato contestato è omicidio volontario con dolo eventuale; la procura aveva chiesto 22 anni, ridotti per attenuanti generiche. È un caso simbolo dello sfruttamento e del caporalato nelle campagne italiane.\n\nDiversi eventi drammatici completano il quadro internazionale e nazionale. In Bangladesh una frana di fango causata dalle piogge monsoniche ha travolto una scuola femminile nel campo profughi rohingya di Kutupalong, il più grande al mondo (circa 700mila persone), uccidendo sette studentesse e un'insegnante. In provincia di Rieti due persone — un operaio trentenne e sua madre — sono morte in un'esplosione alla Pirotecnica Mattei di Sant'Anatolia di Borgorose, la stessa fabbrica dove nel 2023 erano morte altre tre persone della medesima famiglia, in un segnale allarmante sulla sicurezza del settore pirotecnico. Nel mar Arabico il Pakistan sta cercando un Boeing 737 cargo della compagnia K2 Airways, partito da Sharjah e diretto a Karachi, che si ritiene precipitato con cinque membri dell'equipaggio a bordo dopo aver perso 1.500 metri di quota in un minuto secondo i dati di Flightradar24.",
+			"articles": [
+				{
+					"title": "È stato il giugno più caldo per l'Europa occidentale",
+					"url": "https://www.ilpost.it/2026/07/09/giugno-piu-caldo-europa-occidentale/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Secondo Copernicus, giugno 2026 è stato il mese più caldo mai registrato nell'Europa occidentale, con temperature di 3,06 gradi sopra la media degli ultimi decenni, superando il record dello scorso anno. A livello globale è stato il secondo giugno più caldo di sempre, con +1,39 gradi sul periodo preindustriale. Le ondate di calore di giugno e di fine mese hanno contribuito al record. La ricercatrice Samantha Burgess parla di un sistema climatico in continuo accumulo di calore.",
+						"dataPoints": [
+							"+3,06 gradi sopra la media in Europa occidentale",
+							"+1,39 gradi sul preindustriale a livello globale"
+						],
+						"entities": ["Copernicus", "Samantha Burgess"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "In Europa inizia un'altra ondata di calore",
+					"url": "https://www.ilpost.it/2026/07/08/nuova-ondata-di-calore-luglio/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "L'OMS ha avvisato di una nuova ondata di caldo eccezionale e prolungato in Europa. Massime fino a 43 gradi in Portogallo e Spagna meridionale. In Italia temperature in aumento da mercoledì, con dieci città in bollino arancione (Milano, Torino, Venezia, Bologna) e Torino fino a 38 gradi, Milano 36. Causa: anticiclone subtropicale-desertico africano. Per ora in Italia sembra un po' meno grave dell'ondata di giugno.",
+						"dataPoints": [
+							"Fino a 43 gradi in Portogallo e Spagna",
+							"Torino fino a 38 gradi",
+							"10 città in bollino arancione"
+						],
+						"entities": ["OMS", "Ministero della Salute"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "L'incendio nel magazzino dell'azienda BRT a Milano è stato spento",
+					"url": "https://www.ilpost.it/2026/07/09/deposito-brt-incendio-spento-raccomandazioni-arpa/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Nella notte tra mercoledì e giovedì è stato spento l'incendio in un deposito BRT (ex Bartolini) in via Don Minzoni, zona nord di Milano tra Bovisa e Dergano. Il rogo ha coinvolto due capannoni per 8mila metri quadrati, con una grossa colonna di fumo nero. Sulla base delle analisi di Arpa Lombardia, il comune ha chiesto a chi abita entro due chilometri di non sostare all'aperto e tenere le finestre chiuse. Nessun ferito, cause ignote, indagine della procura di Milano.",
+						"dataPoints": [
+							"8.000 metri quadrati coinvolti",
+							"Raccomandazioni entro 2 km dall'incendio"
+						],
+						"entities": [
+							"BRT",
+							"Arpa Lombardia",
+							"Comune di Milano",
+							"procura di Milano"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Il titolare dell'azienda di Satnam Singh è stato condannato a 16 anni",
+					"url": "https://www.ilpost.it/2026/07/08/processo-morte-satnam-singh-latina-caporalato/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Il tribunale di Latina ha condannato in primo grado a 16 anni Antonello Lovato per la morte del bracciante indiano Satnam Singh, che nel giugno 2024 rimase con un braccio tranciato da un macchinario nell'azienda agricola Agrilovato di Borgo Santa Maria e fu lasciato davanti a casa invece di essere portato in ospedale. Il reato contestato è omicidio volontario con dolo eventuale; la procura aveva chiesto 22 anni, ridotti per attenuanti generiche. Le motivazioni saranno pubblicate tra 90 giorni.",
+						"dataPoints": [
+							"Condanna a 16 anni (procura chiedeva 22)"
+						],
+						"entities": [
+							"Satnam Singh",
+							"Antonello Lovato",
+							"tribunale di Latina"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Almeno otto persone sono morte per una frana che ha travolto una scuola femminile in un campo di profughi rohingya in Bangladesh",
+					"url": "https://www.ilpost.it/2026/07/08/frana-scuola-femminile-campo-profughi-rohingya-bangladesh/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Una frana di fango causata dalle piogge monsoniche ha travolto una scuola femminile nel campo profughi rohingya di Kutupalong, vicino a Cox's Bazar in Bangladesh: sette studentesse e un'insegnante sono morte, sei persone ferite e 14 estratte vive. Kutupalong è il più grande campo profughi al mondo e accoglie circa 700mila rohingya fuggiti dal Myanmar, dove sono perseguitati. Le piogge hanno causato frane e morti anche in altre zone del paese da domenica.",
+						"dataPoints": [
+							"7 studentesse e 1 insegnante morte",
+							"Campo di circa 700mila persone"
+						],
+						"entities": [
+							"Bangladesh",
+							"Kutupalong",
+							"rohingya",
+							"Myanmar"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Due persone sono morte a causa di un'esplosione in una fabbrica di fuochi d'artificio in provincia di Rieti",
+					"url": "https://www.ilpost.it/2026/07/08/esplosione-fabbrica-fuochi-artificio-rieti-morti/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Un'esplosione alla Pirotecnica Mattei di Sant'Anatolia di Borgorose (Rieti) ha ucciso l'operaio trentenne Simone Colle e sua madre Teresa Tozzi, che collaborava con l'azienda; altri due operai sono sopravvissuti. L'esplosione è avvenuta in un edificio dove si trattavano i materiali per il confezionamento dei fuochi, poi crollato. Nel luglio 2023 nella stessa fabbrica un'altra esplosione aveva ucciso tre persone, tutte parenti delle vittime di mercoledì.",
+						"dataPoints": [
+							"2 morti, 2 sopravvissuti",
+							"Precedente esplosione nel 2023 con 3 morti"
+						],
+						"entities": [
+							"Pirotecnica Mattei",
+							"Rieti",
+							"Sant'Anatolia di Borgorose"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Il Pakistan sta cercando un Boeing 737 cargo che si ritiene sia precipitato nel mar Arabico con cinque persone a bordo",
+					"url": "https://www.ilpost.it/2026/07/08/pakistan-ricerche-aereo-cargo-mar-arabico/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Un Boeing 737 cargo della compagnia privata pakistana K2 Airways, partito da Sharjah (Emirati) e diretto a Karachi, ha perso le comunicazioni martedì sera circa 300 chilometri a ovest della città, con cinque membri dell'equipaggio a bordo. Secondo Flightradar24 l'aereo aveva perso 1.500 metri di quota in un minuto per poi precipitare con traiettoria quasi verticale da 11mila metri a oltre 400 km/h. Il Pakistan ha avviato le ricerche con una nave militare, due aerei e una nave commerciale.",
+						"dataPoints": [
+							"5 persone a bordo",
+							"Perdita di 1.500 metri di quota in un minuto"
+						],
+						"entities": [
+							"Pakistan",
+							"K2 Airways",
+							"Boeing 737",
+							"Flightradar24"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				}
+			]
+		},
+		{
+			"id": "finanza",
+			"emoji": "&#x1F4B0;",
+			"name": "Finanza",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "new",
+			"newThemes": [
+				"Acquisizione di Commerzbank da parte di UniCredit",
+				"Risiko bancario europeo"
+			],
+			"continuingThemes": [],
+			"summary": "La finanza è dominata da un evento di portata storica per il settore bancario europeo: UniCredit è riuscita a ottenere il controllo di Commerzbank, una delle principali banche tedesche, portando a termine un'operazione avviata due mesi prima. Attraverso un'offerta pubblica di scambio — in cui si offrono azioni proprie invece di denaro — UniCredit ha convinto gli azionisti a cedere il 17,60 per cento delle azioni entro il 3 luglio (oltre le attese degli analisti, ferme a poco più del 15 per cento), arrivando così a possedere il 47,59 per cento del capitale complessivo. È un traguardo raggiunto nonostante l'ostilità esplicita del governo tedesco guidato da Friedrich Merz, azionista della banca, contrario non per ragioni economiche — UniCredit è considerata solida — ma politiche: lasciare che una banca italiana ne acquisisca una tedesca espone l'esecutivo alle critiche dell'estrema destra di Alternative für Deutschland, in crescita nei consensi.\n\nL'operazione ha implicazioni rilevanti anche per il settore bancario italiano, nel quadro del cosiddetto «risiko bancario» europeo di consolidamento transfrontaliero. Restano però due incognite sul grado di controllo effettivo che UniCredit potrà esercitare. La prima è che, fermandosi appena sotto il 50 per cento delle azioni, la banca non dispone automaticamente della maggioranza dei diritti di voto in assemblea; il vincolo è però aggirabile perché nelle assemblee delle società quotate raramente si presenta il 100 per cento dei soci, il che rende il 47,59 per cento una quota di fatto determinante nell'organo che approva bilanci, nomina i dirigenti e definisce le strategie. La seconda incognita riguarda le autorizzazioni ancora necessarie da parte delle autorità tedesche, che UniCredit punta a ottenere entro il 2027, così da massimizzare il proprio peso quando l'assemblea di Commerzbank rinnoverà le cariche principali.\n\nPer i mercati il segnale è duplice. Da un lato conferma la spinta al consolidamento bancario nell'eurozona, tema che alimenta le attese di ulteriori operazioni transfrontaliere e valutazioni più elevate per gli istituti considerati possibili prede o predatori; dall'altro evidenzia il fattore politico come principale ostacolo a queste fusioni, con i governi nazionali che restano riluttanti a cedere il controllo di grandi banche domestiche. Per UniCredit l'operazione rafforza la proiezione europea del gruppo, ma la governance di Commerzbank e i tempi delle autorizzazioni tedesche restano le variabili chiave da monitorare per gli investitori del comparto finanziario italiano ed europeo. Il tema, che il Post ha ripreso anche in un episodio dedicato del proprio podcast, è destinato a restare centrale nelle prossime settimane.",
+			"articles": [
+				{
+					"title": "Alla fine UniCredit ce l'ha fatta a prendersi Commerzbank",
+					"url": "https://www.ilpost.it/2026/07/09/unicredit-commerzbank-offerta-pubblica-di-scambio-finita-controllo-governo-tedesco-autorizzazioni/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "high",
+					"sentiment": "positive",
+					"extract": {
+						"text": "Due mesi dopo l'annuncio, UniCredit ha ottenuto il controllo di Commerzbank tramite un'offerta pubblica di scambio, arrivando al 47,59 per cento delle azioni dopo che gli azionisti hanno ceduto il 17,60 per cento entro il 3 luglio. Il risultato è stato raggiunto nonostante l'ostilità del governo tedesco, azionista della banca. Restano due incognite: la quota sotto il 50 per cento non garantisce la maggioranza dei voti in assemblea (aggirabile per la scarsa affluenza dei soci) e servono ancora le autorizzazioni delle autorità tedesche, attese entro il 2027.",
+						"dataPoints": [
+							"47,59% delle azioni di Commerzbank",
+							"17,60% ceduto nell'offerta",
+							"Autorizzazioni tedesche attese entro il 2027"
+						],
+						"entities": [
+							"UniCredit",
+							"Commerzbank",
+							"Friedrich Merz",
+							"Alternative für Deutschland"
+						],
+						"tickers": ["UCG.MI", "CBK.DE"],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "L'offerta pubblica di UniCredit per comprare Commerzbank ha avuto successo: avrà quasi il 50 per cento delle azioni",
+					"url": "https://www.ilpost.it/2026/07/08/offerta-unicredit-commerzbank-successo/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "I risultati dell'offerta pubblica di scambio di UniCredit su Commerzbank: gli azionisti hanno aderito per il 17,60 per cento delle azioni (oltre il 15 per cento previsto dagli analisti), portando UniCredit al 47,59 per cento del capitale e a un controllo determinante nell'assemblea dei soci. Il governo Merz è contrario per ragioni politiche, temendo le critiche di Alternative für Deutschland. L'offerta dovrà essere autorizzata dalle autorità tedesche, obiettivo entro il 2027.",
+						"dataPoints": [
+							"17,60% di adesioni (attese 15%)",
+							"47,59% del capitale totale"
+						],
+						"entities": [
+							"UniCredit",
+							"Commerzbank",
+							"Friedrich Merz",
+							"AfD"
+						],
+						"tickers": ["UCG.MI", "CBK.DE"],
+						"followedLinks": []
+					}
+				}
+			]
+		},
+		{
+			"id": "tech",
+			"emoji": "&#x1F916;",
+			"name": "Tech",
+			"isYoutube": false,
+			"isOther": false,
+			"evolution": "new",
+			"newThemes": [
+				"Controllo delle macchine EUV di ASML e tensioni USA-Cina sui chip",
+				"AI generativa e questioni etiche"
+			],
+			"continuingThemes": [],
+			"summary": "Il fronte tech ruota attorno al nodo geopolitico dei semiconduttori avanzati e al controllo delle tecnologie critiche. L'azienda nederlandese ASML, unica al mondo a costruire le macchine per la litografia ultravioletta estrema (EUV) — dispositivi grandi quanto un autobus e indispensabili per produrre i microchip più avanzati, quelli di smartphone, computer di alta gamma e server per l'intelligenza artificiale — è finita al centro di uno scandalo dopo che a giugno il segretario al Commercio statunitense Howard Lutnick ha affermato che una di queste macchine sarebbe arrivata in Cina. Né Lutnick né altri esponenti dell'amministrazione Trump hanno fornito prove, e ASML ha smentito tutto, ma il solo sospetto ha messo in difficoltà l'azienda. Le macchine EUV sono uno snodo fondamentale dell'intera tecnologia mondiale: ogni esportazione deve essere approvata dal governo nederlandese e può essere bloccata anche dagli Stati Uniti, perché contengono componenti americani. La vicenda conferma quanto la catena di fornitura dei chip sia diventata terreno di scontro strategico tra Washington, l'Aia e Pechino, con ricadute dirette sui grandi clienti come TSMC, Samsung e Intel.\n\nSul versante dei prodotti di consumo, un'analisi dedicata alle app per il monitoraggio del sonno mette in guardia da un paradosso: strumenti pensati per migliorare il riposo — che elaborano i dati di smartwatch e anelli tracker su battito, movimenti e rumori — possono diventare controproducenti. Se per alcuni i report spingono a cambiare abitudini virtuose, per altri generano ansia da prestazione o comportamenti disfunzionali, con report non sempre precisi. È il segnale di una crescente maturità critica verso l'economia del «self-tracking» e del benessere quantificato.\n\nChiude il quadro una riflessione più ampia sull'intelligenza artificiale generativa proposta da Guerre di Rete: è possibile «decolonizzare» l'AI? La testata analizza come il controllo economico e politico delle infrastrutture resti saldamente nelle mani di poche grandi aziende, in gran parte statunitensi, e come i modelli commerciali come ChatGPT o Gemini, presentati come archivi neutrali di conoscenza universale, riflettano in realtà i bias dei dati con cui sono addestrati. Fuori dal mondo occidentale nascono però iniziative che riorganizzano i dataset e riorientano gli usi degli strumenti verso l'interesse pubblico e la giustizia sociale, arrivando a immaginare infrastrutture pubbliche gestite localmente. È un dibattito che tocca insieme etica, sovranità tecnologica e concentrazione del potere nel comparto dell'AI, con implicazioni di lungo periodo anche per gli equilibri industriali del settore.",
+			"articles": [
+				{
+					"title": "La macchina più importante del mondo potrebbe essere finita in Cina",
+					"url": "https://www.ilpost.it/2026/07/08/cina-asml-euv/",
+					"source": "Il Post",
+					"financial": true,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "ASML, azienda nederlandese unica al mondo a produrre le macchine per la litografia ultravioletta estrema (EUV) necessarie per i microchip avanzati, è finita al centro di uno scandalo dopo che a giugno il segretario al Commercio USA Howard Lutnick ha affermato senza prove che una macchina EUV sarebbe arrivata in Cina. ASML ha smentito. Le macchine, grandi quanto un autobus, sono vendute a TSMC, Samsung e Intel; ogni esportazione va approvata dal governo nederlandese e può essere bloccata dagli USA per la presenza di componenti americani.",
+						"dataPoints": [
+							"ASML unica produttrice di macchine EUV al mondo"
+						],
+						"entities": [
+							"ASML",
+							"Howard Lutnick",
+							"Cina",
+							"TSMC",
+							"Samsung",
+							"Intel"
+						],
+						"tickers": ["ASML.AS", "TSM", "INTC"],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "A volte le app per dormire meglio fanno dormire peggio",
+					"url": "https://www.ilpost.it/2026/07/08/app-per-dormire-peggio/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Le app per il tracciamento del sonno elaborano i dati di smartwatch e anelli tracker (battito, movimenti, rumori) per stimare la qualità del riposo, in un'economia diventata enorme. Non sempre funzionano: i report non sono sempre precisi e per alcune persone diventano controproducenti, generando ansia da prestazione o comportamenti disfunzionali come rimanere più a letto. Per altri invece aiutano a cambiare abitudini virtuose.",
+						"dataPoints": [],
+						"entities": ["app per il sonno", "smartwatch"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "È possibile decolonizzare l'intelligenza artificiale?",
+					"url": "https://www.guerredirete.it/e-possibile-decolonizzare-lintelligenza-artificiale/",
+					"source": "Guerre di Rete",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Guerre di Rete analizza se sia possibile riadattare l'AI generativa alle necessità dei gruppi marginalizzati. Il controllo economico e politico delle infrastrutture resta nelle mani di poche grandi aziende statunitensi. I modelli commerciali come ChatGPT e Gemini, presentati come neutrali, riflettono i bias dei dati di addestramento. Fuori dall'Occidente nascono iniziative che riorganizzano i dataset e riorientano gli usi verso l'interesse pubblico, immaginando infrastrutture pubbliche gestite localmente.",
+						"dataPoints": [],
+						"entities": ["Guerre di Rete", "ChatGPT", "Gemini"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				}
+			]
+		},
+		{
+			"id": "altro",
+			"emoji": "&#x1F4CC;",
+			"name": "Altro",
+			"isYoutube": false,
+			"isOther": true,
+			"summary": "Tra le notizie minori del giorno, il romanzo I convitati di pietra di Michele Mari ha vinto il Premio Strega, il più influente riconoscimento letterario italiano. Sul fronte giudiziario torna in scena Valter Lavitola, accusato dalla procura di Roma di essere il mandante dell'attentato dell'ottobre 2025 al giornalista di Report Sigfrido Ranucci, mentre prosegue il caso di Mario Adinolfi, ai domiciliari per truffa ed evasione fiscale. In politica interna, a Napoli attivisti di Potere al Popolo hanno contestato la prima manifestazione del «campo largo» PD-M5S-AVS. Molto spazio allo sport: a Wimbledon Novak Djokovic, a 39 anni, ha superato in oltre cinque ore i quarti e sfiderà Sinner in semifinale, mentre gli italiani Cobolli e Paolini sono stati eliminati; ai Mondiali di calcio a 48 squadre si segnano moltissimi gol nei minuti finali. Il CIO ha inoltre escluso la combinata nordica dalle Olimpiadi invernali del 2030. Chiude un articolo di costume sugli «snail mail club», abbonamenti per ricevere posta cartacea decorata a mano dagli artisti.",
+			"articles": [
+				{
+					"title": "\"I convitati di pietra\" di Michele Mari ha vinto il Premio Strega",
+					"url": "https://www.ilpost.it/2026/07/09/premio-strega-convitati-di-pietra-michele-mari/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "Il romanzo I convitati di pietra di Michele Mari ha vinto il Premio Strega, il più influente premio letterario italiano e quello che più incide sulle vendite. È uno dei romanzi più accessibili di uno scrittore noto per l'uso colto della lingua: racconta di una classe di liceo che dopo il diploma stringe un patto secondo cui ogni anno ciascuno versa una somma in un fondo che sarà riscosso dagli ultimi tre rimasti in vita.",
+						"dataPoints": [],
+						"entities": ["Michele Mari", "Premio Strega"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Storia e vicende giudiziarie di Valter Lavitola",
+					"url": "https://www.ilpost.it/2026/07/08/chi-e-valter-lavitola/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Valter Lavitola, già noto per la vicenda della casa di Monte Carlo di Gianfranco Fini e per un tentativo di estorsione ai danni di Berlusconi, è tornato al centro delle cronache perché la procura di Roma lo accusa di essere il mandante dell'attentato compiuto nell'ottobre 2025 contro il giornalista Sigfrido Ranucci, conduttore della trasmissione di inchieste di Rai 3 Report.",
+						"dataPoints": [],
+						"entities": [
+							"Valter Lavitola",
+							"Sigfrido Ranucci",
+							"procura di Roma"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Mario Adinolfi è stato messo agli arresti domiciliari per truffa ed evasione fiscale",
+					"url": "https://www.ilpost.it/2026/07/08/mario-adinolfi-arrestato-truffa-ed-evasione-fiscale/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "Mario Adinolfi è ai domiciliari per truffa ed evasione fiscale legate a un sistema di scommesse collettive avviato nel 2005, in cui i partecipanti versavano quote da 3mila a 10mila euro. La procura di Roma stima un danno di 5 milioni di euro e 400mila euro di tasse evase.",
+						"dataPoints": [
+							"Danno stimato 5 milioni di euro",
+							"400mila euro di tasse evase"
+						],
+						"entities": ["Mario Adinolfi", "procura di Roma"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "La contestazione di Potere al Popolo contro la manifestazione del \"campo largo\" a Napoli",
+					"url": "https://www.ilpost.it/flashes/manifestazione-campo-largo-napoli-potere-al-popolo/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "A Napoli attivisti del movimento di sinistra Potere al Popolo hanno contestato la prima manifestazione del cosiddetto campo largo, l'alleanza tra PD, Movimento 5 Stelle e Alleanza Verdi e Sinistra. Mentre parlava Roberto Fico, alcune decine di attivisti sono entrati in piazza intonando cori contro i leader sul palco, tra cui Giuseppe Conte.",
+						"dataPoints": [],
+						"entities": [
+							"Potere al Popolo",
+							"PD",
+							"Movimento 5 Stelle",
+							"Roberto Fico",
+							"Giuseppe Conte"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Novak Djokovic è ancora qui",
+					"url": "https://www.ilpost.it/2026/07/08/novak-djokovic-wimbledon-semifinale-sinner/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "positive",
+					"extract": {
+						"text": "A 39 anni Novak Djokovic ha eliminato in cinque set (7-6, 3-6, 6-3, 6-7, 7-6) il canadese Felix Auger-Aliassime ai quarti di Wimbledon, in una partita durata oltre cinque ore. Venerdì 10 luglio giocherà la semifinale contro Jannik Sinner.",
+						"dataPoints": [],
+						"entities": [
+							"Novak Djokovic",
+							"Jannik Sinner",
+							"Wimbledon"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Flavio Cobolli e Jasmine Paolini sono fuori da Wimbledon",
+					"url": "https://www.ilpost.it/2026/07/08/jasmine-paolini-wimbledon-flavio-cobolli/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "negative",
+					"extract": {
+						"text": "I tennisti italiani Flavio Cobolli e Jasmine Paolini sono stati eliminati ai quarti di finale di Wimbledon. Cobolli ha perso in tre set (6-4, 7-6, 6-0) contro il poco conosciuto inglese Arthur Fery, in modo sorprendente.",
+						"dataPoints": [],
+						"entities": [
+							"Flavio Cobolli",
+							"Jasmine Paolini",
+							"Wimbledon",
+							"Arthur Fery"
+						],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Come sono stati questi Mondiali finora",
+					"url": "https://www.ilpost.it/2026/07/08/come-stanno-andando-mondiali-di-calcio-2026-ottavi-di-finale-quarti-gol-nel-recupero-record-dati-altezza/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Si sono conclusi gli ottavi di finale dei Mondiali maschili di calcio, ospitati da Messico, Canada e soprattutto Stati Uniti. Con 48 squadre partecipanti al posto delle 32 precedenti è l'edizione più grande di sempre: si sono segnati molti gol, in particolare negli ultimi minuti, con possibili spiegazioni legate anche al formato e ai ritmi di gioco.",
+						"dataPoints": ["48 squadre partecipanti (prima 32)"],
+						"entities": ["Mondiali di calcio 2026"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "La combinata nordica non sarà più alle Olimpiadi invernali",
+					"url": "https://www.ilpost.it/2026/07/08/la-combinata-nordica-non-sara-piu-alle-olimpiadi-invernali/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Il 7 luglio il CIO ha confermato che alle Olimpiadi invernali del 2030 sulle Alpi francesi non ci sarà la combinata nordica, sport che combina salto con gli sci e sci di fondo presente fin dalla prima edizione del 1924. Arriveranno invece pattinaggio sincronizzato e sci e snowboard freeride.",
+						"dataPoints": [],
+						"entities": ["CIO", "Olimpiadi invernali 2030"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				},
+				{
+					"title": "Come una newsletter, ma di carta",
+					"url": "https://www.ilpost.it/2026/07/08/snail-mail-club/",
+					"source": "Il Post",
+					"financial": false,
+					"deepDived": true,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": {
+						"text": "Gli snail mail club permettono di sostenere artisti e autori con un abbonamento mensile e ricevere in cambio buste decorate a mano con lettere, illustrazioni, adesivi, ricette e altre creazioni. Ogni mese migliaia di persone nel mondo aspettano queste spedizioni cartacee.",
+						"dataPoints": [],
+						"entities": ["snail mail club"],
+						"tickers": [],
+						"followedLinks": []
+					}
+				}
+			]
+		},
+		{
+			"id": "youtube",
+			"emoji": "&#x1F4FA;",
+			"name": "YouTube",
+			"isYoutube": true,
+			"isOther": false,
+			"summary": null,
+			"articles": [
+				{
+					"title": "Hamas ha annunciato lo scioglimento del governo a Gaza: perché adesso?",
+					"url": "https://www.youtube.com/shorts/XaNZL8Ts-4E",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Svendeva segreti di Stato alla Russia per poche migliaia di euro, ma perché?",
+					"url": "https://www.youtube.com/watch?v=2RpT_LABcsc",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Negare una legge sul fine vita è prevaricazione",
+					"url": "https://www.youtube.com/shorts/5lFBFYbGmOI",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Le cose non si stanno mettendo bene per Putin e la Russia",
+					"url": "https://www.youtube.com/shorts/Eb_UD-RLeg8",
+					"source": "Breaking Italy",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "Smettetela di giudicare le vostre DECISIONI in base al loro RISULTATO.",
+					"url": "https://www.youtube.com/watch?v=dkx-uuTIMDc",
+					"source": "Mr. RIP",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "RESISTORI Ep. 3 - FORMA vs CONTENUTO con @enkk, @EntropyforLife, @antirez",
+					"url": "https://www.youtube.com/watch?v=t2OY7yqEj2Y",
+					"source": "Mr. RIP",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				},
+				{
+					"title": "La spia ucraina dietro la bomba a Montecarlo",
+					"url": "https://www.youtube.com/watch?v=9rilHh4mB7k",
+					"source": "Stories",
+					"financial": false,
+					"deepDived": false,
+					"impact": "normal",
+					"sentiment": "neutral",
+					"extract": null
+				}
+			]
+		}
+	]
+}
